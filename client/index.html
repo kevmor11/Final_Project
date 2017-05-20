@@ -10,8 +10,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.1/css/bulma.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-   <link rel='stylesheet' type='text/css' href='styles/home.css'>
-   
+  <link rel='stylesheet' type='text/css' href='styles/home.css'>
+  <link rel='stylesheet' type='text/css' href='styles/pinboard.css'>
 </head>
 
 <body>
@@ -20,12 +20,18 @@
     <div class="container">
       <div class="nav-left">
         <a class="nav-item">
-          <img src="http://design.se.rit.edu/bridge/images/logo.png" alt="Bulma logo">
+          <img src="http://www.kailarogers.org/wp-content/uploads/2014/11/bridge-logo-1-300x231.gif" alt="Bulma logo">
         </a>
-        <a class="nav-item is-tab is-hidden-mobile is-active">Home</a>
-        <a class="nav-item is-tab is-hidden-mobile">Features</a>
-        <a class="nav-item is-tab is-hidden-mobile">Pricing</a>
-        <a class="nav-item is-tab is-hidden-mobile">About</a>
+        <a class="nav-item is-tab is-hidden-mobile is-active">
+          <span class="icon">
+            <i class="fa fa-home"></i>
+          </span>
+        </a>
+        <a class="nav-item is-tab is-hidden-mobile ">
+          <span class="icon">
+            <i class="fa fa-envelope-open" aria-hidden="true"></i>
+          </span>
+        </a>
       </div>
       <span class="nav-toggle">
         <span></span>
@@ -57,13 +63,13 @@
         <div class="field">
           <label for="name" class="label">Email</label>
           <p class="control">
-          <input class="input" type="email" id="name" placeholder="Email">
+            <input class="input" type="email" id="name" placeholder="Email">
           </p>
         </div>
         <div class="field">
           <label for="password" class="label">Password</label>
           <p class="control">
-          <input class="input" type="password" id="password" placeholder="Password">
+            <input class="input" type="password" id="password" placeholder="Password">
           </p>
         </div>
         <div class="field is-grouped">
