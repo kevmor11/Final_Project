@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+5.times do
+  user = User.create!({ first_name: Faker::Name.first_name, password_digest: Faker::Crypto.md5 })
+  room = user.rooms.create!({ name: Faker::Team.creature })
+  post = room.posts.create!({ user_id: user.id, content: Faker::Hipster.word, description: Faker::Lorem.sentence })
+end
