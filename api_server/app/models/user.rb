@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_secure_password 
   has_many :userrooms
   has_many :rooms, through: :userrooms
+  has_many :posts
   
   validates :first_name, presence: true
   validates :last_name, presence: true
