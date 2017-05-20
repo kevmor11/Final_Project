@@ -1,0 +1,11 @@
+{
+  "name": "final_project_client",
+  "version": "0.0.1",
+  "description": "Final Project Client",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kevin Morisette, Jinny Huang, Nawar Tamawi, Shawn Yates",
+  "license": "ISC"
+}
