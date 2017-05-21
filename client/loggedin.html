@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.1/css/bulma.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel='stylesheet' type='text/css' href='styles/home.css'>
-  <link rel='stylesheet' type='text/css' href='styles/pinboard.css'>
+  <link rel='stylesheet' type='text/css' href='styles/dashboard.css'>
+  <link rel='stylesheet' href='style.scss'>
 </head>
 
 <body>
@@ -53,13 +54,16 @@
     </div>
   </nav>
 
-<div class="tile is-ancestor">
+<div class="tile is-ancestor logged">
   <div class="tile is-vertical is-8">
     <div class="tile">
       <div class="tile is-parent is-vertical">
-        <article class="tile is-child box">
-          <p class="subtitle">Notification Center</p>
-        </article>
+          <div class="notification notification-center">
+            <p>Notification</p>
+          </div>
+           
+           
+            
           <div class="notification">
             <button class="delete"></button>
               Lorem ipsum dolor sit amet, consectetur
@@ -91,8 +95,8 @@
               consectetur adipiscing elit
           </div>
       </div>
-      <div class="tile is-parent">
-        <article class="tile is-child box dashboard">
+      <div class="tile is-parent is-2">
+        <article class="tile is-child box dashboard profilebox">
           <p class="title">User Dashboard</p>
           <p class="subtitle">With an image</p>
           <figure class="image is-4by3">
@@ -108,47 +112,40 @@
         </article>
       </div>
     </div>
-    <div class="tile is-parent">
+  </div>
+  <div class="tile is-parent is-2 rooms">
       <article class="tile is-child box">
-          <p class="title">Five</p>
-          <p class="subtitle">Subtitle</p>
-          <div class="content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Morbi maximus, leo sit amet vehicula eleifend, nunc dui porta orci, quis semper odio felis ut quam.</p>
-          </div>
-        </article>
-    </div>
-  </div>
-  <div class="tile is-parent">
-    <article class="tile is-child box">
-      <div class="content">
-        <p class="title">Rooms you have</p>
-        <p class="subtitle">With even more content</p>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>
-                <i class="fa fa-hashtag" aria-hidden="true"></i>
-              </th>
-              <th>Room Name</th>
-            </tr>
-          </thead>
-          <tfoot>
-          </tfoot>
-          <tbody>
-            <tr>
-              <th>1</th>
-              <td><a href="" title="this room blah blah blah">Secret Graden</a></td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td><a href="this room blah blah blah" >Hanging Gradens</a></td>
-            </tr>
+        <div class="content">
           
-          </tbody>
-        </table>
-      </div>
-    </article>
-  </div>
+          <p class="subtitle">Your Rooms</p>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>
+                  <i class="fa fa-hashtag" aria-hidden="true"></i>
+                </th>
+                <th>Room Name</th>
+              </tr>
+            </thead>
+            <tfoot>
+            </tfoot>
+            <tbody>
+              
+              <tr>
+                <th>1</th>
+                <td><a href="" title="this room blah blah blah">Secret Graden</a></td>
+              </tr>
+
+              <tr>
+                <th>2</th>
+                <td><a href="this room blah blah blah" >Hanging Gradens</a></td>
+              </tr>
+            
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </div>
 </div>
 
 

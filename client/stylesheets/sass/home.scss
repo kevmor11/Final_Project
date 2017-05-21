@@ -1,0 +1,22 @@
+$background_color: #adf0ff;
+
+body {
+  background-color:$background_color;
+}
+
+.login-registration {
+  /*background-color:red;*/
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 300px;
+  padding-top: 50px;
+  
+}
+
+.col-lg-6 { 
+padding: 30px;
+display: flex;
+justify-content:space-around;
+align-items:center
+}

@@ -1,6 +1,5 @@
 body {
-  background-color:#adf0ff;
-}
+  background-color: #adf0ff; }
 
 .login-registration {
   /*background-color:red;*/
@@ -8,13 +7,10 @@ body {
   justify-content: space-around;
   align-items: center;
   padding-bottom: 300px;
-  padding-top: 50px;
-  
-}
+  padding-top: 50px; }
 
-.col-lg-6 { 
-padding: 30px;
-display: flex;
-justify-content:space-around;
-align-items:center
-}
+.col-lg-6 {
+  padding: 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }

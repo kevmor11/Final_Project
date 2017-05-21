@@ -5,28 +5,111 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Bridge</title>
+  <!--<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.1/css/bulma.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel='stylesheet' type='text/css' href='styles/home.css'>
+  <link rel='stylesheet' type='text/css' href='styles/pinboard.css'>
+  <link rel='stylesheet' type='text/css' href='styles/dashboard.css'>
+    <!-- Compiled and minified CSS -->
+  <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">-->
+
+  <!-- Compiled and minified JavaScript -->
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>-->
+          
 </head>
 
 <body>
-  <div class="row">
-    <div class="nav-bar">
-      <h1>Bridge</h1>
+    <nav class="nav has-shadow">
+    <div class="container">
+      <div class="nav-left">
+        <a class="nav-item">
+          <img src="http://www.kailarogers.org/wp-content/uploads/2014/11/bridge-logo-1-300x231.gif" alt="Bulma logo">
+        </a>
+        <a class="nav-item is-tab is-hidden-mobile is-active">
+          <span class="icon">
+            <i class="fa fa-home"></i>
+          </span>
+        </a>
+        <a class="nav-item is-tab is-hidden-mobile ">
+          <span class="icon">
+            <i class="fa fa-envelope-open" aria-hidden="true"></i>
+          </span>
+        </a>
+      </div>
+      <span class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+      <div class="nav-right nav-menu">
+        <a class="nav-item is-tab is-hidden-tablet is-active">Home</a>
+        <a class="nav-item is-tab is-hidden-tablet">Features</a>
+        <a class="nav-item is-tab is-hidden-tablet">Pricing</a>
+        <a class="nav-item is-tab is-hidden-tablet">About</a>
+        <a class="nav-item is-tab">
+          <figure class="image is-16x16" style="margin-right: 8px;">
+            <img src="http://bulma.io/images/jgthms.png">
+          </figure>
+          Profile
+        </a>
+        <a class="nav-item is-tab">Log out</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="tile is-ancestor pinboard">
+  
+    <div class="tile is-parent is-2 rooms">
+      <article class="tile is-child box">
+        <div class="content">
+          
+          <p class="subtitle">Your Rooms</p>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>
+                  <i class="fa fa-hashtag" aria-hidden="true"></i>
+                </th>
+                <th>Room Name</th>
+              </tr>
+            </thead>
+            <tfoot>
+            </tfoot>
+            <tbody>
+              
+              <tr>
+                <th>1</th>
+                <td><a href="" title="this room blah blah blah">Secret Graden</a></td>
+              </tr>
+
+              <tr>
+                <th>2</th>
+                <td><a href="this room blah blah blah" >Hanging Gradens</a></td>
+              </tr>
+            
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </div>
+
+    <div class="tile is-parent is-10">
+      <article class="tile is-child box">
+        
+
+        <p class="title">Main column</p>
+        <p class="subtitle">With some content</p>
+        <div class="content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+        </div>
+      </article>
     </div>
   </div>
 
-  <div class="row">
-    <div class="left-side-bar">
-      <div class="accessories col-lg-3">
-        <span>calendar</span>
-      </div>
-    </div>
-    <div class="board">
-      <div class="content col-lg-9">
-        <span>notes</span>
-      </div>
-    </div>
-  </div>
+ <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>>
 </body>
 </html>

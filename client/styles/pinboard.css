@@ -1,29 +1,4 @@
- 
-.tile.is-ancestor { 
-  padding:20px;
+.tile.is-ancestor.pinboard {
+  padding: 20px;
   display: flex;
-  flex-direction: row-reverse;
-  height: 1000px;
-}
-
-.button.is-primary {
-background-color: #127A93;
-}
-
-.button.is-primary:hover { 
-    text-decoration:none;
-}
-
-.tile .is-child .box { 
-  
-}
-
-tile .is-parent { 
-  
-}
-
-.dashboard { 
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
+  height: 1000px; }
