@@ -7,9 +7,9 @@ class User < ApplicationRecord
   
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates_length_of :password, minimum: 6
+  validates_length_of :password_digest, minimum: 6
   EMAIL_REGEX = /\A\S+@.+\.\S+\z/
-  USERNAME_REGEX = /\A[a-zA-Z0-9_-]{3,30}\z/
+  USERNAME_REGEX = /\A[a-zA-Z0-9_\.]+\z/
   validates :email, presence: true, uniqueness: { case_sensitive: false }, 
                     format: { with: EMAIL_REGEX }
   validates :username, presence: true, uniqueness: { case_sensitive: false }, 
