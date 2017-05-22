@@ -14,9 +14,9 @@ class UsersController < ApplicationController
   end
 
   def show 
-    @user = User.find_by(username: params[:id])
+    @user = User.find_by(id: params[:id])
     if @user.present?
-      render json: @user, serializer: UserSerializer
+      render json: @user, serializer: UserSerializer, status: 200
     else 
       render json: { errors: ["User not found."] }, status: 422
     end
@@ -30,12 +30,9 @@ class UsersController < ApplicationController
     end
   end
 
-
-
-
   private
     def user_params
-      params.permit(:first_name, :last_name, :username, :gender,
+      params.permit(:first_name, :last_name, :gender,
                      :email, :password, :password_confirmation, :avatar)
     end
 
