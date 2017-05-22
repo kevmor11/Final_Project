@@ -7,9 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 5.times do
-  user = User.create!({ first_name: Faker::Name.first_name, 
+  user = User.create!({ first_name: Faker::Name.first_name,
                         last_name: Faker::Name.last_name,
-                        username: Faker::Internet.user_name,
                         gender: "no_answer",
                         email: Faker::Internet.email,
                         password_digest: Faker::Internet.password
@@ -17,10 +16,10 @@
   room = Room.new({ name: Faker::Team.creature })
   room.userrooms << Userroom.new({ user: user, admin: true })
   room.save!
-  post = room.posts.create!({ user_id: user.id, 
+  post = room.posts.create!({ user_id: user.id,
                               room_id: room.id,
-                              content: Faker::Hipster.word, 
-                              description: Faker::Lorem.sentence, 
+                              content: Faker::Hipster.word,
+                              description: Faker::Lorem.sentence,
                               seen: false,
                               category: "note"
                             })

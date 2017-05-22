@@ -33,17 +33,18 @@ ActiveRecord::Schema.define(version: 20170521221626) do
   end
 
   create_table "userrooms", force: :cascade do |t|
+    t.bigint "room_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.integer "room_id"
     t.boolean "admin"
+    t.index ["room_id"], name: "index_userrooms_on_room_id"
+    t.index ["user_id"], name: "index_userrooms_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.string "username"
     t.string "gender"
     t.string "email"
     t.string "password_digest"
@@ -52,4 +53,6 @@ ActiveRecord::Schema.define(version: 20170521221626) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "userrooms", "rooms"
+  add_foreign_key "userrooms", "users"
 end
