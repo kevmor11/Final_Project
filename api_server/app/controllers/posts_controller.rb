@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   def show 
     @post = Post.find_by(id: params[:id])
     if @post.present? 
-      render json: @post, serializer: PostSerializer, status: 201
+      render json: @post, serializer: PostSerializer, status: 200
     else
       render json: { errors: ["Post not found."] }, status: 422
     end
