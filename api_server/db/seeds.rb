@@ -10,15 +10,19 @@
   user = User.create!({ first_name: Faker::Name.first_name, 
                         last_name: Faker::Name.last_name,
                         username: Faker::Internet.user_name,
-                        gender: "n/a",
+                        gender: "no_answer",
                         email: Faker::Internet.email,
                         password_digest: Faker::Internet.password
                       })
-  room = user.rooms.create!({ name: Faker::Team.creature })
+  room = Room.new({ name: Faker::Team.creature })
+  room.userrooms << Userroom.new({ user: user, admin: true })
+  room.save!
   post = room.posts.create!({ user_id: user.id, 
+                              room_id: room.id,
                               content: Faker::Hipster.word, 
                               description: Faker::Lorem.sentence, 
                               seen: false,
                               category: "note"
                             })
 end
+
