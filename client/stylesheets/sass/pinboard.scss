@@ -1,6 +1,21 @@
-.tile.is-ancestor.pinboard { 
-  padding:20px;
+.tile.is-ancestor.mainboard { 
+  padding: 20px;
   display: flex;
-
+  
   height: 700px;
-}  
+} 
+.hangout-pinboard {
+  
+  background-color: white;
+  padding-left:0;
+}
+
+.mainboard-contents {
+  padding-top:0;
+  padding-left:2;
+  padding-right:2;
+
+}
+
+
+
