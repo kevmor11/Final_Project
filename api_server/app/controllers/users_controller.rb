@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def show 
     @user = User.find_by(id: params[:id])
     if @user.present?
-      render json: @user, serializer: UserSerializer
+      render json: @user, serializer: UserSerializer, status: 200
     else 
       render json: { errors: ["User not found."] }, status: 422
     end
@@ -29,9 +29,6 @@ class UsersController < ApplicationController
       render json: { errors: current_user.errors.full_messages }, status: 422
     end
   end
-
-
-
 
   private
     def user_params

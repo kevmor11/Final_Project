@@ -32,6 +32,11 @@ ActiveRecord::Schema.define(version: 20170521221626) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_rooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "userrooms", force: :cascade do |t|
     t.bigint "room_id"
     t.bigint "user_id"
