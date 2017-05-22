@@ -1,29 +1,24 @@
 class RoomsController < ApplicationController
 
-
   def new
-    @room = Room.new
   end
 
   def create
-    @room = Room.new(room_params)
-    if @room.save
-      redirect_to [:rooms]
+    room = Room.new(room_params)
+    if room.save
+      render json: room, serializer: RoomSerializer
     else 
-      redirect_to "/"
+      render json: { errors: [user.errors.full_messages] }, status: 422
     end
   end
 
-  def index 
-    @rooms = Room.order("created_at DESC")
-    render json: @rooms, each_serializer: RoomSerializer
-  end
-  
-  
-
   def show 
-    @room = Room.find(params[:id])
-    @posts = @room.posts.order(created_at: :desc) 
+    @room = Room.find_by(name: params[:id])
+    if @room.present?
+      render json: @room, serializer: RoomSerializer
+    else 
+      render json: { errors: ["Room not found."] }, status: 422 
+    end
   end
 
   private
