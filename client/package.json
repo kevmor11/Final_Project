@@ -4,12 +4,13 @@
   "description": "Final Project Client",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch-sass":"./node_modules/node-sass/bin/node-sass --watch --recursive --output styles stylesheets/sass"},
   "author": "Kevin Morissette, Jinny Huang, Nawar Tamawi, Shawn Yates",
   "license": "ISC",
   "dependencies": {
     "actioncable": "^5.1.1",
+    "node-sass": "^4.5.3",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",

@@ -1,3 +1,3 @@
 class RoomSerializer < ApplicationSerializer
-  attributes :id, :name, :created_at, :updated_at
+  attributes :name, :users, :posts
 end

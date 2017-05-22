@@ -15,11 +15,7 @@ class User < ApplicationRecord
 
   def self.authenticate_with_credentials(email, password)
     user = User.where("lower(email) = ?", email.downcase.strip).first
-    if user && user.authenticate(password)
-      return user
-    else 
-      nil
-    end
+    user && user.authenticate(password)
   end
   
 

@@ -1,14 +1,18 @@
 class PostsController < ApplicationController
 
-  def index 
-    @posts = Post.order("created_at DESC")
-    render json: @posts, each_serializer: PostSerializer
-  end
-  
   def create 
     room = Room.find(params[:room_id])
     @post = room.posts.create
     @post.user = current_user
+  end
+
+  def show 
+    @post = Post.find_by(id: params[:id])
+    if @post.present? 
+      render json: @post, serializer: PostSerializer, status: 200
+    else
+      render json: { errors: ["Post not found."] }, status: 422
+    end
   end
 
 end
