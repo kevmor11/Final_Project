@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Rooms from './Rooms.jsx';
+import Hangout from './Hangout.jsx';
 
 export default
 class Dashboard extends Component {
@@ -84,6 +85,7 @@ class Dashboard extends Component {
             </div>
           </article>
         </div>
+        <Hangout />
       </div>
     );
   }
