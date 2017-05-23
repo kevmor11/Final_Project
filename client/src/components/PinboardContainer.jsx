@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import PinboardItems from './PinboardItems.jsx'
+import PinboardHeader from './PinboardHeader.jsx'
 
 export default
 class PinboardSidebar extends Component {
@@ -8,14 +9,7 @@ class PinboardSidebar extends Component {
       <div>
         <div className="tile is-parent">
           <article className="tile is-child box mainboard-contents">
-            <header className="hangout-pinboard">
-              <div className="tabs is-centered">
-              <ul>
-                <li><a className="is-active">Pinboard</a></li>
-                <li><a>Hangout</a></li>
-              </ul>
-              </div>
-            </header>
+            <PinboardHeader />
             <section>
               <PinboardItems />
             </section>
