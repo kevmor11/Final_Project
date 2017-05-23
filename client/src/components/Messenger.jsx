@@ -7,12 +7,13 @@ class App extends Component {
     super(props);
     this.state = {
       currentUser: {name: "Anonymous"},
-      userCount: '', // total active users
+      // TODO: store messages in database
       messages: [] // messages coming from the server will be stored here as they arrive
     };
   }
 
-  // TODO: Setup with Action Cable instead of sockets
+  // ****** TODO: Setup with Action Cable instead of sockets *******
+
   // Once the components have mounted, initialize the socket connection to the server
   // componentDidMount() {
   //   this.socket = new WebSocket('ws://localhost:3001/');
@@ -46,15 +47,6 @@ class App extends Component {
     }
   }
 
-  // // Formats the notification data set acquired using onNewUsername
-  // makeNotification(newUsername) {
-  //   const oldName = this.state.currentUser.name;
-  //   return {
-  //     type: 'postNotification',
-  //     content: `User ${oldName} changed their name to ${newUsername}`
-  //   }
-  // }
-
   // Passed to ChatBar module and triggered upon press of the Enter key in the message input
   // message prop is then sent to the server-side via socket as a JSON string
   onNewMessage = (content) => {
@@ -62,22 +54,10 @@ class App extends Component {
     this.socket.send(JSON.stringify(newMessage));
   }
 
-  // Passed to ChatBar module and triggered upon press of the Enter key in the username input
-  // message prop is then sent to the server-side via socket as a JSON string
-  // onNewUsername = (user) => {
-  //   const notify = this.makeNotification(user);
-  //   this.setState({ currentUser: {name: user}});
-  //   this.socket.send(JSON.stringify(notify));
-  // }
-
   // Renders html, including the contained modules
   render() {
     return (
       <div>
-        <nav className="navbar">
-          <a href="/" className="navbar-brand">ChattyApp</a>
-          <img src="https://freeiconshop.com/wp-content/uploads/edd/chat-alt-outline.png" className="icon"/>
-        </nav>
         <MessageList messages={this.state.messages} />
         <ChatBar user={this.state.currentUser.name} onNewMessage={this.onNewMessage} />
       </div>

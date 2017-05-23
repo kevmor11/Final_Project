@@ -30,9 +30,9 @@ class ChatBar extends Component {
 
     render() {
         return (
-            <footer className="chatbar">
+            <div className="chatbar">
                 <input className="chatbar-message" placeholder="Type a message and hit ENTER" value={this.state.message} onChange={this.onMessageChanged} onKeyPress={this.onMessageKeypress} />
-            </footer>
+            </div>
         );
     }
 };
