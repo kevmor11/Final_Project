@@ -38,3 +38,15 @@ tile .is-parent {
 .notification {
   background-color: $notification-color;
 }
+
+p.notification-content {
+  display: inline;
+  margin-left: 15px;
+}
+img.notification-avatar {
+  border-radius: 4px;
+  height: 50px;
+}
+.tile.is-child.box.dashboard.profilebox {
+  right: 0;
+}

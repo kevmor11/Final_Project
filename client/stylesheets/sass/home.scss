@@ -1,7 +1,9 @@
 $background_color:#3591A7;
-
+$background_photo: 23;
 body {
-  background-color:$background_color;
+  background: url(http://www.psdgraphics.com/file/abstract-network-background.jpg);
+  background-size: 1450px 1200px; 
+  height:100vh;
 }
 
 .login-registration {
@@ -20,3 +22,11 @@ display: flex;
 justify-content:space-around;
 align-items:center
 }
+div.field.is-grouped.welcome-space { 
+    margin-top: 250px;
+    padding: 200px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+} 
