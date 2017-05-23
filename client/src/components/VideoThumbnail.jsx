@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 export default
 class VideoThumbNail extends Component {
 
-
   createVideo = () => {
     this.props.pick(this.props.nail.id);
   }
@@ -23,5 +22,3 @@ class VideoThumbNail extends Component {
     );
   }
 }
-
-

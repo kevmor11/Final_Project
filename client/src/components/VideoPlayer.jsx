@@ -16,4 +16,3 @@ class VideoPlayer extends Component {
     );
   }
 }
-
