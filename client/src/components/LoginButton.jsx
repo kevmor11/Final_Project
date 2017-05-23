@@ -1,12 +1,8 @@
-import React, {Component} from 'react';
-
-export default
-class LoginButton extends Component { 
-  render(){
-    return (
+import React, { Component } from 'react';
+export default function login(props) {
+      return (
       <p className="control">
-        <button className="button is-primary">Login in</button>
+        <button className="button is-primary" onClick={props.clickHandler} >Login</button>
       </p>
-    )
-  }
-}
+      );
+    }

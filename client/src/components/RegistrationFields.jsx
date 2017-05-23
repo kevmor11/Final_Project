@@ -4,7 +4,6 @@ export default
 class Registration extends Component { 
   render(){
     return (
-    <div className="login-registration container">
         <div className="col-lg-6">
           <form action="route" method="POST" className="registration">
             <h1 className="title">Sign Up here</h1>
@@ -51,7 +50,6 @@ class Registration extends Component {
             </div>
           </form>
         </div>
-      </div> 
     )
   }
 }

@@ -12,8 +12,7 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding-bottom: 300px;
-  padding-top: 50px;
+  
   
 } 
 
@@ -23,11 +22,15 @@ display: flex;
 justify-content:space-around;
 align-items:center
 }
-div.field.is-grouped.welcome-space { 
-    margin-top: 250px;
-    padding: 200px;
-    align-items: center;
+
+.is-grouped.welcome-space {
+  display: felx;
+  flex-direction:column;
+  .optionButtons {
+    padding-left:200px; 
+    padding-top:60px; 
     display: flex;
-    justify-content: center;
-    align-items: baseline;
-} 
+    flex-direction:row;
+    justify-content: flex-start;
+  }
+}

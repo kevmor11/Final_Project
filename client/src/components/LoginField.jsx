@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Registration from './Registration.jsx';
 
 export default
 class LoginField extends Component { 
