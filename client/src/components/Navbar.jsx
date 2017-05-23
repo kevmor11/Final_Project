@@ -8,7 +8,7 @@ class Navbar extends Component {
           <div className="container">
             <NavbarLeft />
             <span className="nav-toggle">
-              <span></span>
+              <span>one</span>
               <span></span>
               <span></span>
             </span>

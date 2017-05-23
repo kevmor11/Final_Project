@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import Registration from './Registration.jsx'
+import Registration from './Registration.jsx';
+
 export default
-class Login extends Component { 
+class LoginField extends Component { 
   render(){
     return (
-    <div className="login-registration container">
-        <div className="col-lg-6">
+      <div className="col-lg-6">
           <form action="route" method="POST" className="login">
             <h1 className="title">Login here</h1>
             <h2 className="subtitle">Enter your Email and Password </h2>
@@ -27,9 +27,7 @@ class Login extends Component {
               </p>
             </div>
           </form>
-        </div>
-        <Registration />
-      </div> 
+      </div>
     )
   }
 }
