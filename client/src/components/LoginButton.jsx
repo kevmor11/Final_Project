@@ -5,7 +5,7 @@ class LoginButton extends Component {
   render(){
     return (
       <p className="control">
-        <button className="button is-primary">Login</button>
+        <button className="button is-primary">Login in</button>
       </p>
     )
   }

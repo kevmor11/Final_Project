@@ -1,7 +1,8 @@
 $background_color:#3591A7;
 $background_photo: 23;
 body {
-  background: url(http://www.psdgraphics.com/file/abstract-network-background.jpg);
+  // background: url(http://www.psdgraphics.com/file/abstract-network-background.jpg);
+  background-color: $background_color;
   background-size: 1450px 1200px; 
   height:100vh;
 }
