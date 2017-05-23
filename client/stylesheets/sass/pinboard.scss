@@ -17,5 +17,26 @@
 
 }
 
+.components-container {
+  display: flex;
+  flex-flow: row wrap;
+  
+}
+.item {
+  margin: 10px;
+  flex-wrap: wrap;
+  padding: 30px 50px;
+  flex-grow: 10;
+  background: skyblue;
+  line-height: 100px;
+  display: flex;
+  border-radius: 10px;
+}
+
+.item:hover {
+  background: #d49de8;
+  cursor: pointer;
+}
+
 
 

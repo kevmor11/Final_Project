@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
+import PinboardItems from './PinboardItems.jsx'
 
 export default
 class PinboardSidebar extends Component {
@@ -16,11 +17,7 @@ class PinboardSidebar extends Component {
               </div>
             </header>
             <section>
-              <p className="title">Main column</p>
-              <p className="subtitle">With some content</p>
-              <div className="content">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
-              </div>
+              <PinboardItems />
             </section>
           </article>
         </div>
