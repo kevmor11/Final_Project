@@ -1,7 +1,10 @@
 $background_color:#3591A7;
-
+$background_photo: 23;
 body {
-  background-color:$background_color;
+  // background: url(http://www.psdgraphics.com/file/abstract-network-background.jpg);
+  background-color: $background_color;
+  background-size: 1450px 1200px; 
+  height:100vh;
 }
 
 .login-registration {
@@ -9,14 +12,25 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding-bottom: 300px;
-  padding-top: 50px;
   
-}
+  
+} 
 
-.col-lg-6 { 
+.col-lg-6 {  
 padding: 30px;
 display: flex;
 justify-content:space-around;
 align-items:center
+}
+
+.is-grouped.welcome-space {
+  display: felx;
+  flex-direction:column;
+  .optionButtons {
+    padding-left:200px; 
+    padding-top:60px; 
+    display: flex;
+    flex-direction:row;
+    justify-content: flex-start;
+  }
 }

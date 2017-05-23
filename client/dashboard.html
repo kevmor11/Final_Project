@@ -9,9 +9,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.1/css/bulma.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel='stylesheet' type='text/css' href='styles/home.css'>
-  <link rel='stylesheet' type='text/css' href='styles/dashboard.css'>
-  <link rel='stylesheet' href='style.scss'>
+  <link rel='stylesheet' type='text/css' href='./styles/home.css'>
+  <link rel='stylesheet' type='text/css' href='./styles/dashboard.css'>
+
 </head>
 
 <body>
@@ -58,42 +58,42 @@
   <div class="tile is-vertical is-8">
     <div class="tile">
       <div class="tile is-parent is-vertical">
-          <div class="notification notification-center">
-            <p>Notification</p>
-          </div>
-           
-           
-            
-          <div class="notification">
-            <button class="delete"></button>
-              Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit lorem ipsum dolor sit amet,
-              consectetur adipiscing elit
-          </div>
-          <div class="notification">
-            <button class="delete"></button>
-              Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit lorem ipsum dolor sit amet,
-              consectetur adipiscing elit
-          </div>
-          <div class="notification">
-            <button class="delete"></button>
-              Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit lorem ipsum dolor sit amet,
-              consectetur adipiscing elit
-          </div>
-          <div class="notification">
-            <button class="delete"></button>
-              Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit lorem ipsum dolor sit amet,
-              consectetur adipiscing elit
-          </div>
-          <div class="notification">
-            <button class="delete"></button>
-              Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit lorem ipsum dolor sit amet,
-              consectetur adipiscing elit
-          </div>
+        <div class="notification notification-center">
+          <p>Notification</p>
+        </div>
+
+
+
+        <div class="notification">
+          <img class="notification-avatar" src="http://www.stottpilates.com/studio/images/instructors/person-placeholder.png">
+          <button class="delete"></button>
+          <p class="notification-content">Nawar invited you to join his room.</p>
+          <button class="btn btn-primary">Join</button>
+        </div>
+        <div class="notification">
+          <img class="notification-avatar" src="http://www.stottpilates.com/studio/images/instructors/person-placeholder.png">
+          <button class="delete"></button>
+          <p class="notification-content">Shawn invited you to join his room.</p>
+          <button class="btn btn-primary">Join</button>
+        </div>
+        <div class="notification">
+          <img class="notification-avatar" src="http://www.stottpilates.com/studio/images/instructors/person-placeholder.png">
+          <button class="delete"></button>
+          <p class="notification-content">Kevin invited you to join his room.</p>
+          <button class="btn btn-primary">Join</button>
+        </div>
+        <div class="notification">
+          <img class="notification-avatar" src="http://www.stottpilates.com/studio/images/instructors/person-placeholder.png">
+          <button class="delete"></button>
+          <p class="notification-content">Jinny invited you to join her room.</p>
+          <button class="btn btn-primary">Join</button>
+        </div>
+        <div class="notification">
+          <img class="notification-avatar" src="http://www.stottpilates.com/studio/images/instructors/person-placeholder.png">
+          <button class="delete"></button>
+          <p class="notification-content">5 unread messages from Shawn.</p>
+          <button class="btn btn-primary">View</button>
+        </div>
       </div>
       <div class="tile is-parent is-2">
         <article class="tile is-child box dashboard profilebox">
@@ -102,50 +102,51 @@
           <figure class="image is-4by3">
             <img src="http://www.stottpilates.com/studio/images/instructors/person-placeholder.png">
           </figure>
-            <a class="button is-primary">
-              <span class="icon">
+          <a class="button is-primary">
+            <span class="icon">
                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>
               </span>
-              <span>Profile Setting</span>
-            </a>
-            
+            <span>Profile Setting</span>
+          </a>
+
         </article>
       </div>
     </div>
   </div>
   <div class="tile is-parent is-2 rooms">
-      <article class="tile is-child box">
-        <div class="content">
-          
-          <p class="subtitle">Your Rooms</p>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>
-                  <i class="fa fa-hashtag" aria-hidden="true"></i>
-                </th>
-                <th>Room Name</th>
-              </tr>
-            </thead>
-            <tfoot>
-            </tfoot>
-            <tbody>
-              
-              <tr>
-                <th>1</th>
-                <td><a href="" title="this room blah blah blah">Secret Graden</a></td>
-              </tr>
+    <article class="tile is-child box">
+      <div class="content">
 
-              <tr>
-                <th>2</th>
-                <td><a href="this room blah blah blah" >Hanging Gradens</a></td>
-              </tr>
-            
-            </tbody>
-          </table>
-        </div>
-      </article>
-    </div>
+        <p class="subtitle">Your Rooms</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>
+                <!--<i class="fa fa-hashtag" aria-hidden="true"></i>-->
+              </th>
+              <th>Room Name <i class="glyphicon-plus"></i></th>
+            </tr>
+          </thead>
+          <tfoot>
+            <!--<i class="fa glyphicon-plus"></i>-->
+          </tfoot>
+          <tbody>
+
+            <tr>
+              <th>1</th>
+              <td><a href="" title="this room blah blah blah">Secret Graden</a></td>
+            </tr>
+
+            <tr>
+              <th>2</th>
+              <td><a href="this room blah blah blah">Hanging Gardens</a></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </article>
+  </div>
 </div>
 
 

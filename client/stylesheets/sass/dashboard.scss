@@ -1,7 +1,7 @@
 $notification-center-color: white;
 $notification-color:#D1D1D1;
 
-.tile.is-ancestor.logged { 
+.tile.is-ancestor.logged {
   padding:20px;
   display: flex;
   flex-direction: row-reverse;
@@ -13,28 +13,40 @@ $notification-color:#D1D1D1;
 background-color: #127A93;
 }
 
-.button.is-primary:hover { 
+.button.is-primary:hover {
     text-decoration:none;
 }
 
-.tile .is-child .box { 
-  
-}
-
-tile .is-parent { 
+.tile .is-child .box {
 
 }
 
-.dashboard { 
+tile .is-parent {
+
+}
+
+.dashboard {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
- .notification.notification-center { 
+ .notification.notification-center {
   background-color:$notification-center-color;
 }
 
-.notification { 
+.notification {
   background-color: $notification-color;
+}
+
+p.notification-content {
+  display: inline;
+  margin-left: 15px;
+}
+img.notification-avatar {
+  border-radius: 4px;
+  height: 50px;
+}
+.tile.is-child.box.dashboard.profilebox {
+  right: 0;
 }
