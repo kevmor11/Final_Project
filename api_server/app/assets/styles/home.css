@@ -16,11 +16,11 @@ body {
   align-items: center; }
 
 .is-grouped.welcome-space {
-  display: felx;
-  flex-direction: column; }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5em; }
   .is-grouped.welcome-space .optionButtons {
-    padding-left: 200px;
-    padding-top: 60px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start; }
