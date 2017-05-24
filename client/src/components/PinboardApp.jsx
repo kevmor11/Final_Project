@@ -5,7 +5,7 @@ import RegistrationButton from './RegistrationButton.jsx';
 import LoginField from './LoginField.jsx';
 import RegistrationFields from './RegistrationFields.jsx';
 export default
-class DashApp extends Component {
+class App extends Component {
   static propTypes = {
     foo: PropTypes.string
   }
@@ -19,7 +19,7 @@ class DashApp extends Component {
     return (
       <div>
         <Navbar />
-        
+        <h2>Pinboard app is here</h2>
       </div>
     );
   }

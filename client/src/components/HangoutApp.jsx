@@ -5,21 +5,13 @@ import RegistrationButton from './RegistrationButton.jsx';
 import LoginField from './LoginField.jsx';
 import RegistrationFields from './RegistrationFields.jsx';
 export default
-class DashApp extends Component {
-  static propTypes = {
-    foo: PropTypes.string
-  }
-
-  constructor(props) {
-    super(props); // super calls `constructor` in React.Component
-    this.foo = "bar";
-  }
+class HangoutApp extends Component {
   
   render() {
     return (
       <div>
         <Navbar />
-        
+        <h3>Hello world hangout</h3>
       </div>
     );
   }
