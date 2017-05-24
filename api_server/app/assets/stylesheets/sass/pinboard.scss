@@ -77,6 +77,17 @@
   padding: 5px 5.5px;
 }
 
+.close-popup {
+  width: 10px;
+}
+
+h2.popup-header {
+  display: flex;
+  // background-color: blue;
+}
+.whatever {
+  background-color: red;
+}
 .modal {
-  z-index: 9000;
+  z-index: 9001;
 }

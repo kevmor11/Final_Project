@@ -1,12 +1,14 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import Navbar from './Navbar.jsx';
 import LoginButton from './LoginButton.jsx';
 import RegistrationButton from './RegistrationButton.jsx';
 import LoginField from './LoginField.jsx';
 import RegistrationFields from './RegistrationFields.jsx';
+import PropTypes from 'prop-types';
+
 export default
 class DashApp extends Component {
-  static propTypes = {
+  static PropTypes = {
     foo: PropTypes.string
   }
 
@@ -14,12 +16,12 @@ class DashApp extends Component {
     super(props); // super calls `constructor` in React.Component
     this.foo = "bar";
   }
-  
+
   render() {
     return (
       <div>
         <Navbar />
-        
+
       </div>
     );
   }
