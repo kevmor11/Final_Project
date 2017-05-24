@@ -24,13 +24,15 @@ align-items:center
 }
 
 .is-grouped.welcome-space {
-  display: felx;
+  display: flex;
   flex-direction:column;
+  align-items: center;
+  padding-top: 5em;
+
   .optionButtons {
-    padding-left:200px; 
-    padding-top:60px; 
     display: flex;
     flex-direction:row;
     justify-content: flex-start;
   }
 }
+
