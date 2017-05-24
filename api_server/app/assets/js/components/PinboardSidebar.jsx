@@ -35,11 +35,10 @@ class PinboardSidebar extends Component {
                 
                 </tbody>
               </table>
-            </div>
+            </div>  
           </article>
         </div>
       </div>
-
     )
   }
 }
