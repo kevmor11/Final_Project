@@ -4,6 +4,8 @@ import LoginButton from './LoginButton.jsx';
 import RegistrationButton from './RegistrationButton.jsx';
 import LoginField from './LoginField.jsx';
 import RegistrationFields from './RegistrationFields.jsx';
+import Pinboard from './Pinboard.jsx'
+
 export default
 class App extends Component {
   static propTypes = {
@@ -14,12 +16,12 @@ class App extends Component {
     super(props); // super calls `constructor` in React.Component
     this.foo = "bar";
   }
-  
+
   render() {
     return (
       <div>
         <Navbar />
-        <h2>Pinboard app is here</h2>
+        <Pinboard />
       </div>
     );
   }
