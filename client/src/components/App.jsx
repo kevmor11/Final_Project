@@ -20,15 +20,16 @@ class App extends Component {
   }
 
   render() {
-    const isLoggedIn = this.state.isLoggedIn;
+    const { isLoggedIn } = this.state;
 
-    let userFieldInput = null;
-    if (isLoggedIn) {
-      userFieldInput = <LoginField />;
-    } else {
-      userFieldInput = <RegistrationFields />;
-    }
+    // let userFieldInput = null;
+    // if (isLoggedIn) {
+    //   userFieldInput = <LoginField />;
+    // } else {
+    //   userFieldInput = <RegistrationFields />;
+    // }
 
+    
     return (
       <div>
 
@@ -39,7 +40,7 @@ class App extends Component {
             <LoginButton clickHandler={this.handleLoginClick}/>
             <RegistrationButton clickHandler={this.handleLogoutClick} />
           </div>
-          {userFieldInput}
+          {isLoggedIn ? <LoginField /> : <RegistrationFields />}
         </div>
         
       </div>
