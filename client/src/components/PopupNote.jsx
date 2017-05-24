@@ -1,24 +1,41 @@
 import React, {Component} from 'react';
 import Modal from 'react-modal';
+import PropTypes from 'prop-types';
 
 const customStyles = {
+  overlay : {
+    position          : 'fixed',
+    top               : 0,
+    left              : 0,
+    right             : 0,
+    bottom            : 0,
+    backgroundColor   : 'rgba(255, 255, 255, 0.44)'
+  },
   content : {
     top                   : '50%',
     left                  : '50%',
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    transform             : 'translate(-50%, -50%)',
+    backgroundColor       : 'rgba(255, 255, 255)',
+    // padding               : '50px'
   }
 };
 
+
 export default
 class PopupNote extends Component {
+
+  static propTypes = {
+    isActive: PropTypes.bool.isRequired
+  }
+
   constructor() {
     super();
 
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: this.props.isActive
     };
 
     this.openModal = this.openModal.bind(this);
@@ -42,30 +59,36 @@ class PopupNote extends Component {
   render() {
     return (
     <div>
-      <button onClick={this.openModal}>Create Note</button>
+      {/*<button onClick={this.openModal}>Create Note</button>*/}
       <Modal
         isOpen={this.state.modalIsOpen}
         onAfterOpen={this.afterOpenModal}
         onRequestClose={this.closeModal}
         style={customStyles}
-        contentLabel="Example Modal"
+        contentLabel="Note"
       >
 
-        <h2 ref={subtitle => this.subtitle = subtitle}>Note</h2>
-        <button onClick={this.closeModal}>Close</button>
-        <form action="api/posts" method="POST">
-          <div className="note_title">
-            <label htmlFor="note_title">Title</label>
-            <input type="text" name="title" id="note_title" />
-          </div>
-          <div className="note_content">
-            <label htmlFor="note_content">Description</label>
-            <input type="text" name="content" id="note_content" />
-          </div>
-          <div className="note_submit">
-            <button type="submit">Submit</button>
-          </div>
-        </form>
+        <div className="field is-grouped">
+          <p ref={subtitle => this.subtitle = subtitle} className="popup-header">Note</p>
+          <div onClick={this.closeModal}><img className="close-popup" src="https://cdn0.iconfinder.com/data/icons/basic-ui-elements-plain/385/010_x-512.png" /></div>
+          <form action="api/posts" method="POST">
+            <div className="field">
+              <label htmlFor="note_title" className="label">Title</label>
+              <p className="control">
+                <input className="input" type="text" id="note_title" />
+              </p>
+            </div>
+            <div className="field">
+              <label htmlFor="note_content" className="label">Content</label>
+              <p className="control">
+                <input className="input" type="text" id="note_content" />
+              </p>
+            </div>
+             <p className="control">
+              <button type="submit" className="button is-primary">Submit</button>
+            </p>
+          </form>
+        </div>
       </Modal>
 
     </div>

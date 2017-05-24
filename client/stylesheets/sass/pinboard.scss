@@ -1,9 +1,9 @@
-.tile.is-ancestor.mainboard { 
+.tile.is-ancestor.mainboard {
   padding: 20px;
   display: flex;
-  
+
   height: 700px;
-} 
+}
 .hangout-pinboard {
   background-color: white;
   padding-left:0;
@@ -77,5 +77,14 @@
   padding: 5px 5.5px;
 }
 
+.close-popup {
+  width: 10px;
+}
 
-
+h2.popup-header {
+  display: flex;
+  // background-color: blue;
+}
+.whatever {
+  background-color: red;
+}

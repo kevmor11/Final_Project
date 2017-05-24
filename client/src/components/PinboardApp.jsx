@@ -14,7 +14,13 @@ class App extends Component {
 
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
+    this.state = { openModal: '' };
     this.foo = "bar";
+  }
+
+  openModal(modalName) {
+    // image, link, note
+    this.setState(Object.assign({}, this.state, { openModal: modalName }));
   }
 
   render() {

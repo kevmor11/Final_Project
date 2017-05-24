@@ -4,14 +4,26 @@ import PinboardHeader from './PinboardHeader.jsx'
 
 export default
 class PinboardSidebar extends Component {
+
+  constructor(props) {
+    super(props); // super calls `constructor` in React.Component
+    this.state = { openModal: '' };
+  }
+
+
+  openModal(modalName) {
+    // image, link, note
+    this.setState(Object.assign({}, this.state, { openModal: modalName }));
+  }
+
   render(){
     return(
       <div>
         <div className="tile is-parent">
           <article className="tile is-child box mainboard-contents">
-            <PinboardHeader />
+            <PinboardHeader modalToggle={this.openModal.bind(this)} />
             <section>
-              <PinboardItems />
+              <PinboardItems openModal={this.state.openModal} />
             </section>
           </article>
         </div>

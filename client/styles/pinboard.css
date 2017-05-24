@@ -63,3 +63,12 @@
 
 .fa-plus {
   padding: 5px 5.5px; }
+
+.close-popup {
+  width: 10px; }
+
+h2.popup-header {
+  display: flex; }
+
+.whatever {
+  background-color: red; }
