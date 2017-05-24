@@ -5,9 +5,65 @@
 
 .hangout-pinboard {
   background-color: white;
-  padding-left: 0; }
+  padding-left: 0;
+  justify-content: center; }
 
 .mainboard-contents {
   padding-top: 0;
   padding-left: 2;
   padding-right: 2; }
+
+.components-container {
+  display: flex;
+  flex-flow: row wrap; }
+
+.item {
+  margin: 10px;
+  flex-wrap: wrap;
+  padding: 30px 50px;
+  flex-grow: 10;
+  background: skyblue;
+  line-height: 100px;
+  display: flex;
+  border-radius: 10px; }
+
+.item:hover {
+  background: #d49de8;
+  cursor: pointer; }
+
+.add-content-container {
+  display: inline-block;
+  position: relative; }
+  .add-content-container.open .photo {
+    transform: translate(2.5em); }
+  .add-content-container.open .message {
+    transform: translate(5em); }
+  .add-content-container.open .note {
+    transform: translate(7.5em); }
+  .add-content-container.open .voice-message {
+    transform: translate(10em); }
+
+.add-content {
+  position: absolute;
+  border-radius: 100%;
+  background: #8cebff;
+  display: inline-block;
+  padding: .5em;
+  width: 2.5em;
+  height: 2.5em;
+  transition: transform .5s linear; }
+  .add-content.top {
+    position: relative; }
+
+.add {
+  padding: 5px 5.5px; }
+
+.add-button {
+  background: #8cebcc; }
+
+.fa-plus {
+  padding: 5px 5.5px; }
+
+.modal {
+  z-index: 9000;
+}
