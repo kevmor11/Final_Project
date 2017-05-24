@@ -34,9 +34,9 @@ class PinboardItems extends Component {
             <p>This is card 6</p>
           </div>
         </div>
-        <PopupNote isActive={this.props.openModal === 'note'} />
-        <PopupLink isActive={this.props.openModal === 'link'} />
-        <PopupImage isActive={this.props.openModal === 'image'} />
+        <PopupNote isActive={this.props.openModal === 'note'} onClose={() => this.props.onClose()}/>
+        <PopupLink isActive={this.props.openModal === 'link'} onClose={() => this.props.onClose()} />
+        <PopupImage isActive={this.props.openModal === 'image'} onClose={() => this.props.onClose()} />
 
       </div>
     )
