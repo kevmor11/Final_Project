@@ -4,12 +4,23 @@ import LoginButton from './LoginButton.jsx';
 import RegistrationButton from './RegistrationButton.jsx';
 import LoginField from './LoginField.jsx';
 import RegistrationFields from './RegistrationFields.jsx';
+import axios from 'axios';
+import http from 'http';
 
 export default
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = {isLoggedIn: false};
+    this.state = {isLoggedIn: false, user: [] };
+  }
+
+  componentDidMount() {
+    axios.get(`http://localhost:3000/api/users/1.json`)
+      .then(res => {
+        console.log(res.data.user);
+        const user = res.data.user;
+        this.setState({ user });
+      });
   }
 
   handleLoginClick = () => {
@@ -40,6 +51,7 @@ class App extends Component {
             <RegistrationButton clickHandler={this.handleLogoutClick} />
           </div>
           {isLoggedIn ? <LoginField /> : <RegistrationFields />}
+          Hello, {this.state.user.first_name} {this.state.user.last_name} !!!
         </div>
       </div>
     )
