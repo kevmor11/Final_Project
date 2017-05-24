@@ -3,7 +3,8 @@ import Navbar from './Navbar.jsx';
 import LoginButton from './LoginButton.jsx';
 import RegistrationButton from './RegistrationButton.jsx';
 import LoginField from './LoginField.jsx';
-import RegistrationFields from './RegistrationFields.jsx'
+import RegistrationFields from './RegistrationFields.jsx';
+
 export default
 class App extends Component {
   constructor(props){
@@ -32,9 +33,7 @@ class App extends Component {
     
     return (
       <div>
-
         <Navbar/>
-
         <div className="field is-grouped welcome-space">
           <div className="col-log-2 optionButtons">
             <LoginButton clickHandler={this.handleLoginClick}/>
@@ -42,7 +41,6 @@ class App extends Component {
           </div>
           {isLoggedIn ? <LoginField /> : <RegistrationFields />}
         </div>
-        
       </div>
     )
   }
