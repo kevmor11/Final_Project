@@ -1,7 +1,8 @@
 // require("../styles/home.css");
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
+import ReactDOM, { render } from 'react-dom';
+import {Router, Route} from 'react-router';
 import App from './App.jsx';
 import DashApp from './DashApp.jsx';
 import PinboardApp from './PinboardApp.jsx';
@@ -21,6 +22,7 @@ Object.entries(pages).forEach(([id, Component]) => {
   console.log('Rendering into ', id);
   ReactDOM.render(<Component/>, root);
 });
+
 
 // {
 //   const root = document.getElementById('react-dashboard');

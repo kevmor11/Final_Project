@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { Router, Route } from 'react-router'
 import Navbar from './Navbar.jsx';
 import LoginButton from './LoginButton.jsx';
 import RegistrationButton from './RegistrationButton.jsx';
@@ -27,12 +29,14 @@ class App extends Component {
     this.setState({isLoggedIn: true});
   }
 
-  handleLogoutClick = () => {
+  handleRegistrationClick = () => {
     this.setState({isLoggedIn: false});
   }
 
   render() {
-    const { isLoggedIn } = this.state;
+    const { isLoggedIn } = this.state.isLoggedIn;
+
+
 
     // let userFieldInput = null;
     // if (isLoggedIn) {
@@ -48,12 +52,13 @@ class App extends Component {
         <div className="field is-grouped welcome-space">
           <div className="col-log-2 optionButtons">
             <LoginButton clickHandler={this.handleLoginClick}/>
-            <RegistrationButton clickHandler={this.handleLogoutClick} />
+            <RegistrationButton clickHandler={this.handleRegistrationClick} />
           </div>
           {isLoggedIn ? <LoginField /> : <RegistrationFields />}
           Hello, {this.state.user.first_name} {this.state.user.last_name} !!!
         </div>
       </div>
+
     )
   }
-}  
+}
