@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170521221626) do
     t.integer "room_id"
     t.integer "user_id"
     t.string "content"
+    t.string "title"
     t.text "description"
     t.boolean "seen"
     t.string "category"
