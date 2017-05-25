@@ -17,7 +17,7 @@ constructor(props) {
   componentDidMount() {
     axios.get(`http://localhost:3000/api/users/1.json`)
       .then(res => {
-        console.log(res.data.user);
+        // console.log(res.data.user);
         const user = res.data.user;
         this.setState({ user });
       });
@@ -53,7 +53,7 @@ constructor(props) {
                 <Modal.Title>{this.state.user.posts[2].title}</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <img src={this.state.user.posts[2].content.url}/>
+                <img src={'http://localhost:3000/' + this.state.user.posts[2].content.url}/>
                 <p>{this.state.user.posts[2].description}</p>
               </Modal.Body>
             </Modal>
