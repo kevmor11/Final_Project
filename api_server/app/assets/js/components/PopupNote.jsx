@@ -27,13 +27,13 @@ class PopupNote extends Component {
               <div className="field">
                 <label htmlFor="note_title" className="label">Title</label>
                 <p className="control">
-                  <input className="input" type="text" id="note_title" />
+                  <input className="input" type="text" name="title" id="note_title" />
                 </p>
               </div>
               <div className="field">
                 <label htmlFor="note_content" className="label">Content</label>
                 <p className="control">
-                  <input className="input" type="text" id="note_content" />
+                  <input className="input" type="text" name="content" id="note_content" />
                 </p>
               </div>
               <p className="control">

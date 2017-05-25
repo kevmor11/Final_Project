@@ -6,14 +6,6 @@ import Rooms from './Rooms.jsx';
 
 export default
 class DashApp extends Component {
-  static PropTypes = {
-    foo: PropTypes.string
-  }
-
-  constructor(props) {
-    super(props); // super calls `constructor` in React.Component
-    this.foo = "bar";
-  }
 
   render() {
     return (
