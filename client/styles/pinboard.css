@@ -62,18 +62,13 @@
   background: #8cebcc; }
 
 .fa-plus {
-  padding: 5px 5.5px;
-}
+  padding: 5px 5.5px; }
 
+.close-popup {
+  width: 10px; }
 
-.modal {
-  z-index: 9001;
-}
+h2.popup-header {
+  display: flex; }
 
-img.img-thumb {
-  height: 100%;
-}
-
-img.img-title {
-  height: 100%;
-}
+.whatever {
+  background-color: red; }
