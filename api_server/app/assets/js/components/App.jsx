@@ -27,7 +27,7 @@ class App extends Component {
     this.setState({isLoggedIn: true});
   }
 
-  handleLogoutClick = () => {
+  handleRegistrationClick = () => {
     this.setState({isLoggedIn: false});
   }
 
@@ -48,7 +48,7 @@ class App extends Component {
         <div className="field is-grouped welcome-space">
           <div className="col-log-2 optionButtons">
             <LoginButton clickHandler={this.handleLoginClick}/>
-            <RegistrationButton clickHandler={this.handleLogoutClick} />
+            <RegistrationButton clickHandler={this.handleRegistrationClick} />
           </div>
           {isLoggedIn ? <LoginField /> : <RegistrationFields />}
           Hello, {this.state.user.first_name} {this.state.user.last_name} !!!
