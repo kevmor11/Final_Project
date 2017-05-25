@@ -11,7 +11,15 @@ export default
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = {isLoggedIn: false, user: [] };
+    this.state = {isLoggedIn: false, user: { first_name: "",
+                                             last_name: "",
+                                             email: "",
+                                             password: "",
+                                             gender: "",
+                                             rooms: [],
+                                             posts: []
+                                            } 
+                 };
   }
 
   componentDidMount() {
@@ -19,7 +27,17 @@ class App extends Component {
       .then(res => {
         console.log(res.data.user);
         const user = res.data.user;
-        this.setState({ user });
+        this.setState( {user: { first_name:  user.first_name,
+                                last_name: user.last_name,
+                                email: user.email,
+                                password: user.password,
+                                gender: user.gender,
+                                rooms: user.rooms,
+                                posts: user.posts
+                               }
+                      
+      
+                     });
       });
   }
 
@@ -50,8 +68,9 @@ class App extends Component {
             <LoginButton clickHandler={this.handleLoginClick}/>
             <RegistrationButton clickHandler={this.handleRegistrationClick} />
           </div>
+          {console.log("HERE BE USER STATE: ", this.state.user.rooms[0])}
           {isLoggedIn ? <LoginField /> : <RegistrationFields />}
-          Hello, {this.state.user.first_name} {this.state.user.last_name} !!!
+          Hello, {this.state.user.first_name + " "} {this.state.user.last_name} !!!
         </div>
       </div>
     )
