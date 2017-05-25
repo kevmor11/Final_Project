@@ -3,7 +3,7 @@ import PinboardItems from './PinboardItems.jsx'
 import PinboardHeader from './PinboardHeader.jsx'
 
 export default
-class PinboardContainer extends Component {
+class PinboardSidebar extends Component {
 
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
@@ -23,7 +23,7 @@ class PinboardContainer extends Component {
           <article className="tile is-child box mainboard-contents">
             <PinboardHeader modalToggle={this.openModal.bind(this)} />
             <section>
-              <PinboardItems openModal={this.state.openModal} onClose={() => this.setState({openModal: ''})}/>
+              <PinboardItems openModal={this.state.openModal} />
             </section>
           </article>
         </div>

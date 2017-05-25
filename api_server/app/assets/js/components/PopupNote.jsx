@@ -1,74 +1,48 @@
 import React, {Component} from 'react';
-import Modal from 'react-modal';
-
-const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
-  }
-};
+import PropTypes from 'prop-types';
+import {Modal, Popover, OverlayTrigger} from 'react-bootstrap'
 
 export default
 class PopupNote extends Component {
-  constructor() {
-    super();
 
-    this.state = {
-      modalIsOpen: false
-    };
-
-    this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+  constructor(props) {
+    super(props); // super calls `constructor` in React.Component
+    this.state = { showModal: false };
   }
 
-  openModal() {
-    this.setState({modalIsOpen: true});
-  }
-
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#f00';
-  }
-
-  closeModal() {
-    this.setState({modalIsOpen: false});
+  close() {
+    this.props.onClose();
   }
 
   render() {
     return (
-    <div>
-      <button onClick={this.openModal}>Create Note</button>
-      <Modal
-        isOpen={this.state.modalIsOpen}
-        onAfterOpen={this.afterOpenModal}
-        onRequestClose={this.closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
+      <div>
 
-        <h2 ref={subtitle => this.subtitle = subtitle}>Note</h2>
-        <button onClick={this.closeModal}>Close</button>
-        <form action="api/posts" method="POST">
-          <div className="note_title">
-            <label htmlFor="note_title">Title</label>
-            <input type="text" name="title" id="note_title" />
-          </div>
-          <div className="note_content">
-            <label htmlFor="note_content">Description</label>
-            <input type="text" name="content" id="note_content" />
-          </div>
-          <div className="note_submit">
-            <button type="submit">Submit</button>
-          </div>
-        </form>
-      </Modal>
-
-    </div>
-    )
+        <Modal show={this.props.isActive} onHide={this.close.bind(this)}>
+          <Modal.Header closeButton>
+            <Modal.Title>Note</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <form action="api/posts" method="POST">
+              <div className="field">
+                <label htmlFor="note_title" className="label">Title</label>
+                <p className="control">
+                  <input className="input" type="text" id="note_title" />
+                </p>
+              </div>
+              <div className="field">
+                <label htmlFor="note_content" className="label">Content</label>
+                <p className="control">
+                  <input className="input" type="text" id="note_content" />
+                </p>
+              </div>
+              <p className="control">
+                <button type="submit" className="button is-primary">Submit</button>
+              </p>
+            </form>
+          </Modal.Body>
+        </Modal>
+      </div>
+    );
   }
 }

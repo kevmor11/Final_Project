@@ -1,74 +1,48 @@
 import React, {Component} from 'react';
-import Modal from 'react-modal';
-
-const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
-  }
-};
+import PropTypes from 'prop-types';
+import {Modal, Button, OverlayTrigger} from 'react-bootstrap'
 
 export default
 class PopupLink extends Component {
-  constructor() {
-    super();
 
-    this.state = {
-      modalIsOpen: false
-    };
-
-    this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+  constructor(props) {
+    super(props); // super calls `constructor` in React.Component
   }
 
-  openModal() {
-    this.setState({modalIsOpen: true});
-  }
-
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#f00';
-  }
-
-  closeModal() {
-    this.setState({modalIsOpen: false});
+  close() {
+    this.props.onClose();
   }
 
   render() {
+
     return (
-    <div>
-      <button onClick={this.openModal}>Create Link</button>
-      <Modal
-        isOpen={this.state.modalIsOpen}
-        onAfterOpen={this.afterOpenModal}
-        onRequestClose={this.closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
+      <div>
 
-        <h2 ref={subtitle => this.subtitle = subtitle}>Note</h2>
-        <button onClick={this.closeModal}>Close</button>
-        <form action="api/posts" method="POST">
-          <div className="link_url">
-            <label htmlFor="link">URL</label>
-            <input type="url" name="link" id="link" />
-          </div>
-          <div className="link_description">
-            <label htmlFor="link_description">Description</label>
-            <input type="text" name="description" id="link_description" />
-          </div>
-          <div className="link_submit">
-            <button type="submit">Submit</button>
-          </div>
-        </form>
-      </Modal>
-
-    </div>
-    )
+        <Modal show={this.props.isActive} onHide={this.close.bind(this)}>
+          <Modal.Header closeButton>
+            <Modal.Title>Link</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <form action="api/posts" method="POST">
+              <div className="field">
+                <label htmlFor="url" className="label">URL</label>
+                <p className="control">
+                  <input className="input" type="url" id="url" />
+                </p>
+              </div>
+              <div className="field">
+                <label htmlFor="link_description" className="label">Description</label>
+                <p className="control">
+                  <input className="input" type="text" id="link_description" />
+                </p>
+              </div>
+              <p className="control">
+                <button type="submit" className="button is-primary">Submit</button>
+              </p>
+            </form>
+          </Modal.Body>
+        </Modal>
+      </div>
+    );
   }
 }

@@ -3,6 +3,19 @@ import Room from './Room.jsx';
 
 export default
 class Rooms extends Component {
+   constructor(props){
+    super(props);
+    this.state = {isLoggedIn: false, user: [] };
+  }
+
+  componentDidMount() {
+    axios.get(`http://localhost:3000/api/users/1.json`)
+      .then(res => {
+        console.log(res.data.user);
+        const user = res.data.user;
+        this.setState({ user });
+      });
+  }
   render() {
     return (
       <div className="tile is-parent is-2 rooms">

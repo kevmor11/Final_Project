@@ -1,10 +1,12 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import Navbar from './Navbar.jsx';
+
 import Notification from './Notification.jsx';
 import Rooms from './Rooms.jsx';
+
 export default
 class DashApp extends Component {
-  static propTypes = {
+  static PropTypes = {
     foo: PropTypes.string
   }
 
@@ -12,7 +14,7 @@ class DashApp extends Component {
     super(props); // super calls `constructor` in React.Component
     this.foo = "bar";
   }
-  
+
   render() {
     return (
       <div>
@@ -39,7 +41,6 @@ class DashApp extends Component {
                       </span>
                     <span>Profile Setting</span>
                   </a>
-
                 </article>
               </div>
             </div>

@@ -1,78 +1,55 @@
 import React, {Component} from 'react';
-import Modal from 'react-modal';
-
-const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
-  }
-};
+import PropTypes from 'prop-types';
+import {Modal, Button, OverlayTrigger} from 'react-bootstrap'
 
 export default
 class PopupLink extends Component {
-  constructor() {
-    super();
 
-    this.state = {
-      modalIsOpen: false
-    };
-
-    this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+  constructor(props) {
+    super(props); // super calls `constructor` in React.Component
   }
 
-  openModal() {
-    this.setState({modalIsOpen: true});
-  }
-
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#f00';
-  }
-
-  closeModal() {
-    this.setState({modalIsOpen: false});
+  close() {
+    this.props.onClose();
   }
 
   render() {
+
     return (
-    <div>
-      <button onClick={this.openModal}>Create Image</button>
-      <Modal
-        isOpen={this.state.modalIsOpen}
-        onAfterOpen={this.afterOpenModal}
-        onRequestClose={this.closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
+      <div>
 
-        <h2 ref={subtitle => this.subtitle = subtitle}>Note</h2>
-        <button onClick={this.closeModal}>Close</button>
-        <form action="api/posts" method="POST">
-          <div className="image_file">
-            <label htmlFor="image_file">Image</label>
-            <input type="file" id="image_file" name="image file" />
-          </div>
-          <div className="image_title">
-            <label htmlFor="image_title">Title</label>
-            <input type="text" name="title" id="image_title" />
-          </div>
-          <div className="image_description">
-            <label htmlFor="image_description">Description</label>
-            <input type="text" name="description" id="image_description" />
-          </div>
-          <div className="image_submit">
-            <button type="submit">Submit</button>
-          </div>
-        </form>
-      </Modal>
+        <Modal show={this.props.isActive} onHide={this.close.bind(this)}>
+          <Modal.Header closeButton>
+            <Modal.Title>Image</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <form action="api/posts" method="POST">
+              <div className="field">
+                <label htmlFor="image_file" className="label">Image</label>
+                <p className="control">
+                  <input className="input" type="file" id="image_file" />
+                </p>
+              </div>
+              <div className="field">
+                <label htmlFor="image_title" className="label">Content</label>
+                <p className="control">
+                  <input className="input" type="text" id="image_title" />
+                </p>
+              </div>
+              <div className="field">
+                <label htmlFor="image_description" className="label">Description</label>
+                <p className="control">
+                  <input className="input" type="text" id="image_description" />
+                </p>
+              </div>
+              <p className="control">
+                <button type="submit" className="button is-primary">Submit</button>
+              </p>
+            </form>
+          </Modal.Body>
+        </Modal>
 
-    </div>
-    )
+      </div>
+    );
   }
 }

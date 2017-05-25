@@ -12,7 +12,6 @@ const pages = {
   'react-root': App,
   'react-pinboard': PinboardApp,
   'react-hangout': HangoutApp
-
 };
 
 Object.entries(pages).forEach(([id, Component]) => {

@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
-import PinboardItem from './PinboardItem.jsx'
 import PopupNote from './PopupNote.jsx'
 import PopupLink from './PopupLink.jsx'
 import PopupImage from './PopupImage.jsx'
 import PropTypes from 'prop-types';
-
 
 export default
 class PinboardItems extends Component {
@@ -17,7 +15,9 @@ class PinboardItems extends Component {
     return(
       <div>
         <div className="components-container">
-          <PinboardItem />
+          <div className="item fa fa-picture-o">
+            <p>This is card 3</p>
+          </div>
           <div className="item">
             <p>This is card 2</p>
           </div>
@@ -34,9 +34,9 @@ class PinboardItems extends Component {
             <p>This is card 6</p>
           </div>
         </div>
-        <PopupNote isActive={this.props.openModal === 'note'} onClose={() => this.props.onClose()}/>
-        <PopupLink isActive={this.props.openModal === 'link'} onClose={() => this.props.onClose()} />
-        <PopupImage isActive={this.props.openModal === 'image'} onClose={() => this.props.onClose()} />
+        <PopupNote isActive={this.props.openModal === 'note'} />
+        <PopupLink isActive={this.props.openModal === 'link'} />
+        <PopupImage isActive={this.props.openModal === 'image'} />
 
       </div>
     )

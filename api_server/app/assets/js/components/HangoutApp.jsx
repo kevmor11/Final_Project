@@ -4,9 +4,11 @@ import LoginButton from './LoginButton.jsx';
 import RegistrationButton from './RegistrationButton.jsx';
 import LoginField from './LoginField.jsx';
 import RegistrationFields from './RegistrationFields.jsx';
+
+
 export default
 class HangoutApp extends Component {
-  
+
   render() {
     return (
       <div>
