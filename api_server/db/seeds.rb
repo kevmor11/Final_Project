@@ -19,7 +19,7 @@
   2.times do
     post = room.posts.create!({ user_id: user.id,
                                 room_id: room.id,
-                                content: Faker::Hipster.word,
+                                title: Faker::Hipster.word,
                                 description: Faker::Lorem.sentence,
                                 seen: false,
                                 category: "note"
@@ -38,7 +38,8 @@
   2.times do
     post = room.posts.create!({ user_id: user.id,
                                 room_id: room.id,
-                                content: "https://www.google.ca/",
+                                link: "https://www.google.ca/",
+                                title: Faker::Hipster.word,
                                 description: Faker::Lorem.sentence,
                                 seen: false,
                                 category: "link"
