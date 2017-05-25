@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import {Modal, Popover, OverlayTrigger} from 'react-bootstrap'
 
 export default
@@ -14,7 +15,15 @@ class PopupNote extends Component {
     this.props.onClose();
   }
 
+  submitForm() {
+    const createNote = note => axios.post('http://localhost:3000/api/posts', note)
+                                    .then(this.setState({ loading: false, note }));
+  }
+
   render() {
+    const submitForm = (note) => {
+      this.submitForm(note);
+    };
     return (
       <div>
 
