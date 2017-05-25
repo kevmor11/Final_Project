@@ -25,5 +25,25 @@
                                 category: "note"
                               })
   end
+  2.times do
+    post = room.posts.create!({ user_id: user.id,
+                                room_id: room.id,
+                                content: "https://upload.wikimedia.org/wikipedia/commons/5/58/Sunset_2007-1.jpg",
+                                title: Faker::Hipster.word,
+                                description: Faker::Lorem.sentence,
+                                seen: false,
+                                category: "image"
+                              })
+  end
+  2.times do
+    post = room.posts.create!({ user_id: user.id,
+                                room_id: room.id,
+                                content: "https://www.google.ca/",
+                                description: Faker::Lorem.sentence,
+                                seen: false,
+                                category: "link"
+                              })
+  end
+
 end
 
