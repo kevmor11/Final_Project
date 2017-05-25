@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PinboardItem from './PinboardItem.jsx'
+import PinboardItemRequest from './PinboardItemRequest.jsx'
 import PopupNote from './PopupNote.jsx'
 import PopupLink from './PopupLink.jsx'
 import PopupImage from './PopupImage.jsx'
@@ -17,7 +17,7 @@ class PinboardItems extends Component {
     return(
       <div>
         <div className="components-container">
-          <PinboardItem />
+          <PinboardItemRequest />
           <div className="item">
             <p>This is card 2</p>
           </div>
