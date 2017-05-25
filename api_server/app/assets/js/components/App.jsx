@@ -11,16 +11,7 @@ export default
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = {isLoggedIn: false, user: [] };
-  }
-
-  componentDidMount() {
-    axios.get(`/api/users/1.json`)
-      .then(res => {
-        console.log(res.data.user);
-        const user = res.data.user;
-        this.setState({ user });
-      });
+    this.state = {isLoggedIn: false};
   }
 
   handleLoginClick = () => {
@@ -33,6 +24,11 @@ class App extends Component {
 
   render() {
     const { isLoggedIn } = this.state;
+    let allRooms;
+    if (this.state.user) {
+      const user = this.state.user;
+      allRooms = user.rooms.map((room, i))
+    }
 
     // let userFieldInput = null;
     // if (isLoggedIn) {
@@ -51,7 +47,6 @@ class App extends Component {
             <RegistrationButton clickHandler={this.handleRegistrationClick} />
           </div>
           {isLoggedIn ? <LoginField /> : <RegistrationFields />}
-          Hello, {this.state.user.first_name} {this.state.user.last_name} !!!
         </div>
       </div>
     )
