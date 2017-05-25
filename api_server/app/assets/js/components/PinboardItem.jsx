@@ -15,7 +15,7 @@ constructor(props) {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:3000/api/users/1.json`)
+    axios.get(`/api/users/1.json`)
       .then(res => {
         // console.log(res.data.user);
         const user = res.data.user;
@@ -44,17 +44,17 @@ constructor(props) {
         { this.state.user &&
           <div>
             <div className="item" onClick={this.open}>
-              <p className="img-title">{this.state.user.posts[2].title}</p>
-              <img className="img-thumb" src={'http://localhost:3000/' + this.state.user.posts[2].content.thumb.url}/>
+              <p className="img-title">TODO: REPLACE</p>
+              { /* <img className="img-thumb" src={'http://localhost:3000/' + this.state.user.posts[2].content.thumb.url}/> */}
             </div>
 
             <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
               <Modal.Header closeButton>
-                <Modal.Title>{this.state.user.posts[2].title}</Modal.Title>
+                <Modal.Title>TODO: REPLACE</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <img src={'http://localhost:3000/' + this.state.user.posts[2].content.url}/>
-                <p>{this.state.user.posts[2].description}</p>
+                { /* <img src={'http://localhost:3000/' + this.state.user.posts[2].content.url}/> */ }
+                <p>TODO: REPLACE</p>
               </Modal.Body>
             </Modal>
           </div>

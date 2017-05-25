@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:3000/api/users/1.json`)
+    axios.get(`/api/users/1.json`)
       .then(res => {
         console.log(res.data.user);
         const user = res.data.user;
