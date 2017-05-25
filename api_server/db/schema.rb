@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20170521221626) do
     t.integer "user_id"
     t.string "content"
     t.string "title"
+    t.string "link"
     t.text "description"
     t.boolean "seen"
     t.string "category"
