@@ -62,7 +62,17 @@
   background: #8cebcc; }
 
 .fa-plus {
-  padding: 5px 5.5px; }
+  padding: 5px 5.5px;
+}
+
 .modal {
   z-index: 9001;
+}
+
+img.img-thumb {
+  height: 100%;
+}
+
+img.img-title {
+  height: 100%;
 }

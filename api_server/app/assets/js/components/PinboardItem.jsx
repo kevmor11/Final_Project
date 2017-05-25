@@ -35,20 +35,29 @@ constructor(props) {
 
     return(
       <div>
-        <div className="item fa fa-picture-o" onClick={this.open}>
-          <p>This is card 1</p>
-        </div>
+
+        {/*<div className="item" onClick={this.open}>
+          <p>Image Title</p>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/Sunset_2007-1.jpg"/>
+        </div>*/}
 
         { this.state.user &&
-          <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
-            <Modal.Header closeButton>
-              <Modal.Title>{this.state.user.posts[2].title}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <img src={this.state.user.posts[2].content}/>
-              <p>{this.state.user.posts[2].description}</p>
-            </Modal.Body>
-          </Modal>
+          <div>
+            <div className="item" onClick={this.open}>
+              <p className="img-title">{this.state.user.posts[2].title}</p>
+              <img className="img-thumb" src={'http://localhost:3000/' + this.state.user.posts[2].content.thumb.url}/>
+            </div>
+
+            <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
+              <Modal.Header closeButton>
+                <Modal.Title>{this.state.user.posts[2].title}</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <img src={this.state.user.posts[2].content.url}/>
+                <p>{this.state.user.posts[2].description}</p>
+              </Modal.Body>
+            </Modal>
+          </div>
         }
 
       </div>
