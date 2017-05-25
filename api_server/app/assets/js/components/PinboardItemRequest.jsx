@@ -30,8 +30,9 @@ constructor(props) {
       <div>
 
         { this.state.user && this.state.user.posts.map((obj) => {
+          console.log(obj);
           return (
-            <PinboardItemModal key={obj.id} obj={obj} user={this.state.user} />
+            <PinboardItemModal key={obj.id} title={obj.title} description={obj.description} img={obj.content.url} thumb={obj.content.thumb.url} link={obj.link} user={this.state.user} postID={this.state.user.posts.id} category={obj.category} />
             )
         })}
 

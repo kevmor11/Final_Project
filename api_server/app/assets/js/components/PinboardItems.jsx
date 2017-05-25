@@ -18,7 +18,7 @@ class PinboardItems extends Component {
       <div>
         <div className="components-container">
           <PinboardItemRequest />
-          <div className="item">
+          {/*<div className="item">
             <p>This is card 2</p>
           </div>
           <div className="item">
@@ -32,7 +32,7 @@ class PinboardItems extends Component {
           </div>
           <div className="item">
             <p>This is card 6</p>
-          </div>
+          </div>*/}
         </div>
         <PopupNote isActive={this.props.openModal === 'note'} onClose={() => this.props.onClose()}/>
         <PopupLink isActive={this.props.openModal === 'link'} onClose={() => this.props.onClose()} />

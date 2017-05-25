@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Modal, Button, OverlayTrigger} from 'react-bootstrap'
-import axios from 'axios'
+import PinItemModalImage from './PinItemModalImage.jsx'
+import PinItemModalNote from './PinItemModalNote.jsx'
+import PinItemModalLink from './PinItemModalLink.jsx'
+
 
 export default
 class PinboardItemModal extends Component {
@@ -15,48 +17,26 @@ constructor(props) {
     }
   }
 
-  // componentDidMount() {
-  //   axios.get(`http://localhost:3000/api/users/1.json`)
-  //     .then(res => {
-  //       // console.log(res.data.user);
-  //       const user = res.data.user;
-  //       this.setState({ user });
-  //     });
-  // }
-
-  open = () => {
-      this.setState({
-        showModal: true,
-        postID: this.props.user.posts.id,
-      });
-  }
-
-  close = () => {
-    this.setState({ showModal: false });
-  }
-
   render() {
-    return(
-
-      // { this.props.user &&
-        <div>
-          <div className="item" onClick={this.open}>
-            <p className="img-title">{this.props.obj.title}</p>
-            <img className="img-thumb" src={'http://localhost:3000/' + this.props.obj.content.thumb.url}/>
-          </div>
-
-          <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
-            <Modal.Header closeButton>
-              <Modal.Title>{this.props.obj.title}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <img src={'http://localhost:3000/' + this.props.obj.content.url}/>
-              <p>{this.props.obj.description}</p>
-            </Modal.Body>
-          </Modal>
-        </div>
-      // }
-
-    )
+    console.log("link:", this.props.link);
+    switch (this.props.category) {
+      case "image":
+        return(
+          <PinItemModalImage postID={this.props.postID} title={this.props.title} description={this.props.description} img={this.props.img} thumb={this.props.thumb} user={this.state.user} />
+        )
+        break;
+      case "note":
+        return(
+          <PinItemModalNote postID={this.props.postID} title={this.props.title} description={this.props.description} user={this.state.user} />
+        )
+        break;
+      case "link":
+        return(
+          <PinItemModalLink postID={this.props.postID} title={this.props.title} description={this.props.description} link={this.props.link} user={this.state.user} />
+        )
+        break;
+      default:
+        throw new Error('Content category is not valid');
+    }
   }
 }
