@@ -4,5 +4,6 @@ Rails.application.routes.draw do
     resources :users, except: [:index]
     resources :rooms, except: [:index] 
     resources :posts, except: [:index]
+    resources :sessions, only: [:create, :destroy]
   end 
 end
