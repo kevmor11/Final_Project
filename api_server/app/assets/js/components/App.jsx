@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
-import { Router, Route } from 'react-router'
 import Navbar from './Navbar.jsx';
 import LoginButton from './LoginButton.jsx';
 import RegistrationButton from './RegistrationButton.jsx';
@@ -34,9 +32,7 @@ class App extends Component {
   }
 
   render() {
-    const { isLoggedIn } = this.state.isLoggedIn;
-
-
+    const { isLoggedIn } = this.state;
 
     // let userFieldInput = null;
     // if (isLoggedIn) {
@@ -58,7 +54,6 @@ class App extends Component {
           Hello, {this.state.user.first_name} {this.state.user.last_name} !!!
         </div>
       </div>
-
     )
   }
-}
+}  
