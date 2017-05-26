@@ -32985,9 +32985,9 @@
 	  }, {
 	    key: 'handleRedirect',
 	    value: function handleRedirect(res) {
-	      _axios2.default.get('/api/sessions');
-	      alert(JSON.stringify(res));
-	      window.location.href = '/api/users/12';
+	      console.log('Result', res);
+	      alert(JSON.stringify(res.data.user.id));
+	      window.location.href = '/users/' + res.data.user.id;
 	    }
 	  }, {
 	    key: 'render',

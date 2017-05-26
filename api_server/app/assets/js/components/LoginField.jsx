@@ -37,9 +37,9 @@ class LoginField extends Component {
   }
 
   handleRedirect(res) {
-    axios.get('/api/sessions')
-    alert(JSON.stringify(res));
-    window.location.href = '/api/users/12';
+    console.log('Result', res);
+    alert(JSON.stringify(res.data.user.id));
+    window.location.href = `/users/${res.data.user.id}`;
   }
 
   render(){
