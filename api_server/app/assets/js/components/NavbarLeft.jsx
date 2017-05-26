@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import Logo from './Logo.jsx';
 export default
-class NavbarLeft extends Component { 
+
+class NavbarLeft extends Component {
   render() {
     return (
       <div className="nav-left">
@@ -22,4 +23,3 @@ class NavbarLeft extends Component {
     )
   }
 }
-

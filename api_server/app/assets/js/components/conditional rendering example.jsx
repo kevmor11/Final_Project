@@ -5,6 +5,7 @@ import RegistrationButton from './RegistrationButton.jsx';
 import LoginField from './LoginField.jsx';
 import Registration from './Registration.jsx'
 export default
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -19,8 +20,6 @@ class App extends Component {
     this.setState({isLoggedIn: false});
   }
 
-
-
   render() {
     const isLoggedIn = this.state.isLoggedIn;
 
@@ -31,20 +30,18 @@ class App extends Component {
       button = <LoginButton onClick={this.handleLoginClick} />;
     }
 
-
-
     function LoginGreeting(props) {
       return (
       <div>
       <h1>Hello User</h1>
-      
+
       <LoginField />
       </div>
       );
-    } 
+    }
     function RegistrationGreeting(props) {
       return <Registration />
-    } 
+    }
 
     function Greeting(props) {
     const isLoggedIn = props.isLoggedIn;
@@ -70,10 +67,6 @@ class App extends Component {
       );
     }
 
-
-
-
-
     return (
       <div>
         <Navbar/>
@@ -86,15 +79,11 @@ class App extends Component {
       </div>
     )
   }
-}  
+}
 
-
-
-
-
- {true && true && 
+ {true && true &&
           <div></div>
         }
-        {!false && true && 
+        {!false && true &&
           <div></div>
         }

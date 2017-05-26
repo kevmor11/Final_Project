@@ -3,7 +3,7 @@ import axios from 'axios';
 import http from 'http';
 
 export default
-class Registration extends Component { 
+class Registration extends Component {
 
   constructor(props){
     super(props);
@@ -12,13 +12,12 @@ class Registration extends Component {
                    email: "",
                    password: "",
                    gender: ""
-                 }  
+                 }
     this.handleRegistrationChange =this.handleRegistrationChange.bind(this);
   }
 
-
   handleRegistrationChange = (e) => {
-    const name = e.target.name;    
+    const name = e.target.name;
     const value = e.target.value;
     this.setState({
       [name]: value
@@ -52,28 +51,28 @@ class Registration extends Component {
             <div className="field">
               <label htmlFor="first-name" className="label">Firstname</label>
               <p className="control">
-                <input className="input" type="text" name="first_name" id="first-name" 
+                <input className="input" type="text" name="first_name" id="first-name"
                 value={this.state.first_name} onChange={this.handleRegistrationChange} placeholder="First Name"/>
               </p>
             </div>
             <div className="field">
               <label htmlFor="last-name" className="label">Last Name</label>
               <p className="control">
-                <input className="input" type="text" name="last_name" id="last-name" 
+                <input className="input" type="text" name="last_name" id="last-name"
                 value={this.state.last_name} onChange={this.handleRegistrationChange} placeholder="Last Name"/>
               </p>
             </div>
             <div className="field">
               <label htmlFor="email" className="label">Email</label>
               <p className="control">
-                <input className="input" type="email" name="email" id="email" 
+                <input className="input" type="email" name="email" id="email"
                 value={this.state.email} onChange={this.handleRegistrationChange} placeholder="Email"/>
               </p>
             </div>
             <div className="field">
               <label htmlFor="password" className="label">Password</label>
               <p className="control">
-                <input className="input" type="password" name="password" id="password" 
+                <input className="input" type="password" name="password" id="password"
                 value={this.state.password} onChange={this.handleRegistrationChange} placeholder="Password"/>
               </p>
             </div>
@@ -99,5 +98,4 @@ class Registration extends Component {
         </div>
       )
     }
-  
 }

@@ -1,19 +1,10 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar.jsx';
-
 import Notification from './Notification.jsx';
 import Rooms from './Rooms.jsx';
 
 export default
 class DashApp extends Component {
-  static PropTypes = {
-    foo: PropTypes.string
-  }
-
-  constructor(props) {
-    super(props); // super calls `constructor` in React.Component
-    this.foo = "bar";
-  }
 
   render() {
     return (
@@ -51,10 +42,3 @@ class DashApp extends Component {
     );
   }
 }
-
-// className ExtendedApp extends App {
-//   render() {
-//     const inner = super.render(); // calls render in <App />
-//     return <div id="wrapped">{inner}</div>;
-//   }
-// }

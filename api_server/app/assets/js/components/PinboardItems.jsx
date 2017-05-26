@@ -5,7 +5,6 @@ import PopupLink from './PopupLink.jsx'
 import PopupImage from './PopupImage.jsx'
 import PropTypes from 'prop-types';
 
-
 export default
 class PinboardItems extends Component {
 
@@ -37,7 +36,6 @@ class PinboardItems extends Component {
         <PopupNote isActive={this.props.openModal === 'note'} onClose={() => this.props.onClose()}/>
         <PopupLink isActive={this.props.openModal === 'link'} onClose={() => this.props.onClose()} />
         <PopupImage isActive={this.props.openModal === 'image'} onClose={() => this.props.onClose()} />
-
       </div>
     )
   }
