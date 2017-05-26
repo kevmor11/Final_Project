@@ -30,6 +30,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def posts
+    posts = User.find(params[:user_id]).posts
+    render json: posts
+  end
+
   private
     def user_params
       params.permit(:first_name, :last_name, :gender,
