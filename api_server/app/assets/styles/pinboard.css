@@ -90,3 +90,20 @@ img.img-title {
   max-width: none;
   z-index: 9001;
 }
+
+.button.is-primary {
+  margin-left: 16.5em;
+}
+
+.input {
+  resize: none;
+}
+
+.input-description {
+  height: 200px;
+}
+
+.modal-title {
+  display: inline
+  margin-left: 16.5em;
+}

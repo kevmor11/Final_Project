@@ -38,13 +38,13 @@ class PopupLink extends Component {
               <div className="field">
                 <label htmlFor="image_title" className="label">Title</label>
                 <p className="control">
-                  <input className="input" type="text" id="image_title" />
+                  <textarea className="input" type="text" id="image_title" />
                 </p>
               </div>
               <div className="field">
                 <label htmlFor="image_description" className="label">Description</label>
                 <p className="control">
-                  <input className="input" type="text" id="image_description" />
+                  <textarea className="input input-description" type="text" id="image_description" />
                 </p>
               </div>
               <p className="control">
