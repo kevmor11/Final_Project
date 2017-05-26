@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bridge</title>
+  <!--<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.1/css/bulma.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel='stylesheet' type='text/css' href='./styles/home.css'>
+  <link rel='stylesheet' type='text/css' href='./styles/dashboard.css'>
+
+</head>
+
+<body>
+
+  <nav class="nav has-shadow">
+    <div class="container">
+      <div class="nav-left">
+        <a class="nav-item">
+          <img src="http://www.kailarogers.org/wp-content/uploads/2014/11/bridge-logo-1-300x231.gif" alt="Bulma logo">
+        </a>
+        <a class="nav-item is-tab is-hidden-mobile is-active">
+          <span class="icon">
+            <i class="fa fa-home"></i>
+          </span>
+        </a>
+        <a class="nav-item is-tab is-hidden-mobile ">
+          <span class="icon">
+            <i class="fa fa-envelope-open" aria-hidden="true"></i>
+          </span>
+        </a>
+      </div>
+      <span class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+      <div class="nav-right nav-menu">
+        <a class="nav-item is-tab is-hidden-tablet is-active">Home</a>
+        <a class="nav-item is-tab is-hidden-tablet">Features</a>
+        <a class="nav-item is-tab is-hidden-tablet">Pricing</a>
+        <a class="nav-item is-tab is-hidden-tablet">About</a>
+        <a class="nav-item is-tab">
+          <figure class="image is-16x16" style="margin-right: 8px;">
+            <img src="http://bulma.io/images/jgthms.png">
+          </figure>
+          Profile
+        </a>
+        <a class="nav-item is-tab">Log out</a>
+      </div>
+    </div>
+  </nav>
+
+<div class="tile is-ancestor logged">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <div class="notification notification-center">
+          <p>Notification</p>
+        </div>
+
+
+
+        <div class="notification">
+          <img class="notification-avatar" src="http://www.stottpilates.com/studio/images/instructors/person-placeholder.png">
+          <button class="delete"></button>
+          <p class="notification-content">Nawar invited you to join his room.</p>
+          <button class="btn btn-primary">Join</button>
+        </div>
+        <div class="notification">
+          <img class="notification-avatar" src="http://www.stottpilates.com/studio/images/instructors/person-placeholder.png">
+          <button class="delete"></button>
+          <p class="notification-content">Shawn invited you to join his room.</p>
+          <button class="btn btn-primary">Join</button>
+        </div>
+        <div class="notification">
+          <img class="notification-avatar" src="http://www.stottpilates.com/studio/images/instructors/person-placeholder.png">
+          <button class="delete"></button>
+          <p class="notification-content">Kevin invited you to join his room.</p>
+          <button class="btn btn-primary">Join</button>
+        </div>
+        <div class="notification">
+          <img class="notification-avatar" src="http://www.stottpilates.com/studio/images/instructors/person-placeholder.png">
+          <button class="delete"></button>
+          <p class="notification-content">Jinny invited you to join her room.</p>
+          <button class="btn btn-primary">Join</button>
+        </div>
+        <div class="notification">
+          <img class="notification-avatar" src="http://www.stottpilates.com/studio/images/instructors/person-placeholder.png">
+          <button class="delete"></button>
+          <p class="notification-content">5 unread messages from Shawn.</p>
+          <button class="btn btn-primary">View</button>
+        </div>
+      </div>
+      <div class="tile is-parent is-2">
+        <article class="tile is-child box dashboard profilebox">
+          <p class="title">User Dashboard</p>
+          <p class="subtitle">With an image</p>
+          <figure class="image is-4by3">
+            <img src="http://www.stottpilates.com/studio/images/instructors/person-placeholder.png">
+          </figure>
+          <a class="button is-primary">
+            <span class="icon">
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+              </span>
+            <span>Profile Setting</span>
+          </a>
+
+        </article>
+      </div>
+    </div>
+  </div>
+  <div class="tile is-parent is-2 rooms">
+    <article class="tile is-child box">
+      <div class="content">
+
+        <p class="subtitle">Your Rooms</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>
+                <!--<i class="fa fa-hashtag" aria-hidden="true"></i>-->
+              </th>
+              <th>Room Name <i class="glyphicon-plus"></i></th>
+            </tr>
+          </thead>
+          <tfoot>
+            <!--<i class="fa glyphicon-plus"></i>-->
+          </tfoot>
+          <tbody>
+
+            <tr>
+              <th>1</th>
+              <td><a href="" title="this room blah blah blah">Secret Garden</a></td>
+            </tr>
+
+            <tr>
+              <th>2</th>
+              <td><a href="this room blah blah blah">Hanging Gardens</a></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </article>
+  </div>
+</div>
+
+
+
+</body>
+</html>

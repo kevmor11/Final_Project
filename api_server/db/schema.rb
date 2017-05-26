@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20170521221626) do
     t.integer "room_id"
     t.integer "user_id"
     t.string "content"
+    t.string "title"
+    t.string "link"
     t.text "description"
     t.boolean "seen"
     t.string "category"
@@ -28,11 +30,6 @@ ActiveRecord::Schema.define(version: 20170521221626) do
 
   create_table "rooms", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "user_rooms", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -4,6 +4,8 @@ class CreatePosts < ActiveRecord::Migration[5.1]
       t.integer :room_id
       t.integer :user_id
       t.string :content
+      t.string :title
+      t.string :link
       t.text :description
       t.boolean :seen
       t.string :category

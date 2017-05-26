@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bridge</title>
+  <!--<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.1/css/bulma.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel='stylesheet' type='text/css' href='styles/home.css'>
+  <link rel='stylesheet' type='text/css' href='styles/pinboard.css'>
+</head>
+
+<body>
+
+  <nav class="nav has-shadow">
+    <div class="container">
+      <div class="nav-left">
+        <a class="nav-item">
+          <p> BRIDGE LOGO</p>
+        </a>
+        <a class="nav-item is-tab is-hidden-mobile is-active">
+          <span class="icon">
+            <i class="fa fa-home"></i>
+          </span>
+        </a>
+        <a class="nav-item is-tab is-hidden-mobile ">
+          <span class="icon">
+            <i class="fa fa-envelope-open" aria-hidden="true"></i>
+          </span>
+        </a>
+      </div>
+      <span class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+      <div class="nav-right nav-menu">
+        <a class="nav-item is-tab is-hidden-tablet is-active">Home</a>
+        <a class="nav-item is-tab is-hidden-tablet">Features</a>
+        <a class="nav-item is-tab is-hidden-tablet">Pricing</a>
+        <a class="nav-item is-tab is-hidden-tablet">About</a>
+        <a class="nav-item is-tab">
+          <figure class="image is-16x16" style="margin-right: 8px;">
+            <img src="http://bulma.io/images/jgthms.png">
+          </figure>
+          Profile
+        </a>
+        <a class="nav-item is-tab">Log out</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="login-registration container">
+    <div class="col-lg-6">
+      <form action="route" method="POST" class="login">
+        <h1 class="title">Login here</h1>
+        <h2 class="subtitle">Enter your Email and Password </h2>
+        <div class="field">
+          <label for="name" class="label">Email</label>
+          <p class="control">
+            <input class="input" type="email" id="name" placeholder="Email">
+          </p>
+        </div>
+        <div class="field">
+          <label for="password" class="label">Password</label>
+          <p class="control">
+            <input class="input" type="password" id="password" placeholder="Password">
+          </p>
+        </div>
+        <div class="field is-grouped">
+          <p class="control">
+            <button class="button is-primary">Login</button>
+          </p>
+        </div>
+      </form>
+    </div>
+    <div class="col-lg-6">
+      <form action="route" method="POST" class="registration">
+        <h1 class="title">Sign Up here</h1>
+        <h2 class="subtitle">Join in and bridge with your loved ones </h2>
+        <div class="field">
+          <label for="first-name" class="label">Firstname</label>
+          <p class="control">
+            <input class="input" type="text" id="first-name" placeholder="First Name">
+          </p>
+        </div>
+        <div class="field">
+          <label for="last-name" class="label">Last Name</label>
+          <p class="control">
+            <input class="input" type="text" id="last-name" placeholder="Last Name">
+          </p>
+        </div>
+        <div class="field">
+          <label for="email" class="label">Email</label>
+          <p class="control">
+            <input class="input" type="email" id="email" placeholder="Email">
+          </p>
+        </div>
+        <div class="field">
+          <label for="password" class="label">Password</label>
+          <p class="control">
+            <input class="input" type="password" id="password" placeholder="Password">
+          </p>
+        </div>
+        <div class="field">
+          <label class="label">Gender</label>
+          <p class="control">
+            <span class="select">
+              <select>
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </span>
+          </p>
+        </div>
+        <div class="field is-grouped">
+          <p class="control">
+            <button class="button is-primary">Register</button>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+<div class="field is-grouped">
+  <p class="control">
+    <a class="button is-primary">
+      Save changes
+    </a>
+  </p>
+  <p class="control">
+    <a class="button">
+      Cancel
+    </a>
+  </p>
+  <p class="control">
+    <a class="button is-danger">
+      Delete post
+    </a>
+  </p>
+</div>
+
+  <!--<div class="row">
+    <div class="footer">
+      <link rel="stylesheet" href="">
+      <span>facebook link</span>
+      <link rel="stylesheet" href="">
+    </div>
+  </div>-->
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+.tile.is-ancestor.mainboard {
+  padding: 20px;
+  display: flex;
+
+  height: 700px;
+}
+.hangout-pinboard {
+  background-color: white;
+  padding-left:0;
+  justify-content: center;
+}
+.mainboard-contents {
+  padding-top:0;
+  padding-left:2;
+  padding-right:2;
+}
+.components-container {
+  // display: flex;
+  // flex-flow: row wrap;
+
+}
+.item {
+  margin: 10px;
+  flex-wrap: wrap;
+  padding: 30px 50px;
+  flex-grow: 10;
+  background: skyblue;
+  line-height: 100px;
+  display: flex;
+  border-radius: 10px;
+}
+
+.item:hover {
+  background: #d49de8;
+  cursor: pointer;
+}
+
+.add-content-container {
+  display: inline-block;
+  position: relative;
+  &.open{
+  $dist: 2.5em;
+    .photo{
+      transform: translate($dist);
+    }
+    .message{
+      transform: translate($dist * 2);
+    }
+    .note{
+      transform:translate($dist * 3);
+    }
+    .voice-message{
+      transform: translate($dist * 4);
+    }
+  }
+}
+.add-content {
+  position:absolute;
+  border-radius: 100%;
+  background: #8cebff;
+  display: inline-block;
+  padding: .5em;
+  width: 2.5em;
+  height: 2.5em;
+  transition: transform .5s linear;
+  &.top{
+    position:relative;
+  }
+}
+.add {
+  padding: 5px 5.5px;
+}
+.add-button {
+  background: #8cebcc;
+}
+
+.fa-plus {
+  padding: 5px 5.5px;
+
+}
+
+.close-popup {
+  width: 10px;
+}
+
+h2.popup-header {
+  display: flex;
+  // background-color: blue;
+}
+.whatever {
+  background-color: red;
+}
+.modal {
+  z-index: 9001;
+}
+
+
+img.img-thumb {
+  height: 100%;
+}
+
+img.img-title {
+  height: 100%;
+}
+
+#tooltip {
+  max-width: none;
+  z-index: 9001;
+}
+
+.button.is-primary {
+  margin-left: 16.5em;
+}
+
+.input {
+  resize: none;
+}
+
+.input-description {
+  height: 200px;
+}
+
+.modal-title {
+  display: inline
+  margin-left: 16.5em;
+}
