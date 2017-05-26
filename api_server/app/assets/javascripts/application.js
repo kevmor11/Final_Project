@@ -1,2 +1,1 @@
-//= require testing
-//= require bundle
+ //= require bundle

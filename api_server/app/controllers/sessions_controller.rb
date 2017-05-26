@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
 
   def new
+    respond_to do |format|
+      format.html {}
+    end
   end
 
   def create
@@ -15,5 +18,6 @@ class SessionsController < ApplicationController
   def destroy 
     session[:user_id] = nil
   end
+
   
 end

@@ -8031,7 +8031,9 @@
 	
 	  console.log('page id', id);
 	  var root = document.getElementById(id);
-	  // if(!root) { return; }
+	  if (!root) {
+	    return;
+	  }
 	  console.log('Rendering into ', id);
 	  _reactDom2.default.render(_react2.default.createElement(Component, null), root);
 	});
@@ -41867,7 +41869,7 @@
 	      var _this2 = this;
 	
 	      _axios2.default.get('http://localhost:3000/api/users/1.json').then(function (res) {
-	        console.log(res.data.user);
+	        // console.log(res.data.user);
 	        var user = res.data.user;
 	        _this2.setState({ user: user });
 	      });

@@ -6,8 +6,9 @@ Rails.application.routes.draw do
     resources :posts, except: [:index]
     resources :sessions, only: [:create, :destroy]
   end
-  resources :users
-  resources :rooms
+  resources :users, only: [:new, :create, :show]
+  resources :rooms, only: [:new, :create, :show]
+  root to: 'sessions#new'
   
 
 end
