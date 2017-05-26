@@ -7,6 +7,11 @@ new WebpackDevServer(webpack(config), {
     watchOptions: {
       aggregateTimeout: 300,
       poll: 1000
+    },
+    proxy: {
+      '/api/**': {
+        target: 'http://0.0.0.0:3000/'
+      }
     }
   })
   .listen(3001, '0.0.0.0', function (err, result) {

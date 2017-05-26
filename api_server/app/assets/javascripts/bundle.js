@@ -8031,7 +8031,9 @@
 	
 	  console.log('page id', id);
 	  var root = document.getElementById(id);
-	  // if(!root) { return; }
+	  if (!root) {
+	    return;
+	  }
 	  console.log('Rendering into ', id);
 	  _reactDom2.default.render(_react2.default.createElement(Component, null), root);
 	});
@@ -32530,25 +32532,20 @@
 	      _this.setState({ isLoggedIn: false });
 	    };
 	
-	    _this.state = { isLoggedIn: false, user: [] };
+	    _this.state = { isLoggedIn: false };
 	    return _this;
 	  }
 	
 	  _createClass(App, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      var _this2 = this;
-	
-	      _axios2.default.get('http://localhost:3000/api/users/1.json').then(function (res) {
-	        console.log(res.data.user);
-	        var user = res.data.user;
-	        _this2.setState({ user: user });
-	      });
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var isLoggedIn = this.state.isLoggedIn;
+	
+	      var allRooms = void 0;
+	      if (this.state.user) {
+	        var user = this.state.user;
+	        allRooms = user.rooms.map((room, i));
+	      }
 	
 	      // let userFieldInput = null;
 	      // if (isLoggedIn) {
@@ -32571,12 +32568,7 @@
 	            _react2.default.createElement(_LoginButton2.default, { clickHandler: this.handleLoginClick }),
 	            _react2.default.createElement(_RegistrationButton2.default, { clickHandler: this.handleRegistrationClick })
 	          ),
-	          isLoggedIn ? _react2.default.createElement(_LoginField2.default, null) : _react2.default.createElement(_RegistrationFields2.default, null),
-	          'Hello, ',
-	          this.state.user.first_name,
-	          ' ',
-	          this.state.user.last_name,
-	          ' !!!'
+	          isLoggedIn ? _react2.default.createElement(_LoginField2.default, null) : _react2.default.createElement(_RegistrationFields2.default, null)
 	        )
 	      );
 	    }
@@ -32924,7 +32916,7 @@
   \**************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -32935,6 +32927,10 @@
 	var _react = __webpack_require__(/*! react */ 75);
 	
 	var _react2 = _interopRequireDefault(_react);
+	
+	var _axios = __webpack_require__(/*! axios */ 286);
+	
+	var _axios2 = _interopRequireDefault(_axios);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -32947,69 +32943,106 @@
 	var LoginField = function (_Component) {
 	  _inherits(LoginField, _Component);
 	
-	  function LoginField() {
+	  function LoginField(props) {
 	    _classCallCheck(this, LoginField);
 	
-	    return _possibleConstructorReturn(this, (LoginField.__proto__ || Object.getPrototypeOf(LoginField)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (LoginField.__proto__ || Object.getPrototypeOf(LoginField)).call(this, props));
+	
+	    _this.state = {
+	      email: '',
+	      password: ''
+	    };
+	
+	    _this.handleEmailChange = _this.handleEmailChange.bind(_this);
+	    _this.handlePasswordChange = _this.handlePasswordChange.bind(_this);
+	    _this.submitForm = _this.submitForm.bind(_this);
+	    return _this;
 	  }
 	
 	  _createClass(LoginField, [{
-	    key: "render",
+	    key: 'handleEmailChange',
+	    value: function handleEmailChange(event) {
+	      this.setState({
+	        email: event.target.value
+	      });
+	    }
+	  }, {
+	    key: 'handlePasswordChange',
+	    value: function handlePasswordChange(event) {
+	      this.setState({
+	        password: event.target.value
+	      });
+	    }
+	  }, {
+	    key: 'submitForm',
+	    value: function submitForm(event) {
+	      _axios2.default.post('/api/sessions', {
+	        email: this.state.email,
+	        password: this.state.password
+	      }).then(this.handleRedirect);
+	    }
+	  }, {
+	    key: 'handleRedirect',
+	    value: function handleRedirect(res) {
+	      window.location.href = '/api/users/15';
+	    }
+	  }, {
+	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        "div",
-	        { className: "col-lg-6" },
+	        'div',
+	        { className: 'col-lg-6' },
 	        _react2.default.createElement(
-	          "form",
-	          { action: "route", method: "POST", className: "login" },
+	          'div',
+	          { className: 'login' },
 	          _react2.default.createElement(
-	            "h1",
-	            { className: "title" },
-	            "Login here"
+	            'h1',
+	            { className: 'title' },
+	            'Login here'
 	          ),
 	          _react2.default.createElement(
-	            "h2",
-	            { className: "subtitle" },
-	            "Enter your Email and Password "
+	            'h2',
+	            { className: 'subtitle' },
+	            'Enter your Email and Password '
 	          ),
 	          _react2.default.createElement(
-	            "div",
-	            { className: "field" },
+	            'div',
+	            { className: 'field' },
 	            _react2.default.createElement(
-	              "label",
-	              { htmlFor: "name", className: "label" },
-	              "Email"
+	              'label',
+	              { htmlFor: 'name', className: 'label' },
+	              'Email'
 	            ),
 	            _react2.default.createElement(
-	              "p",
-	              { className: "control" },
-	              _react2.default.createElement("input", { className: "input", type: "email", id: "name", placeholder: "Email" })
+	              'p',
+	              { className: 'control' },
+	              _react2.default.createElement('input', { className: 'input', type: 'email', id: 'name', name: 'email', value: this.state.email, onChange: this.handleEmailChange, placeholder: 'Email' })
 	            )
 	          ),
 	          _react2.default.createElement(
-	            "div",
-	            { className: "field" },
+	            'div',
+	            { className: 'field' },
 	            _react2.default.createElement(
-	              "label",
-	              { htmlFor: "password", className: "label" },
-	              "Password"
+	              'label',
+	              { htmlFor: 'password', className: 'label' },
+	              'Password'
 	            ),
 	            _react2.default.createElement(
-	              "p",
-	              { className: "control" },
-	              _react2.default.createElement("input", { className: "input", type: "password", id: "password", placeholder: "Password" })
+	              'p',
+	              { className: 'control' },
+	              _react2.default.createElement('input', { className: 'input', type: 'password', id: 'password', name: 'password', value: this.state.password, onChange: this.handlePasswordChange, placeholder: 'Password' })
 	            )
 	          ),
 	          _react2.default.createElement(
-	            "div",
-	            { className: "field is-grouped" },
+	            'div',
+	            { className: 'field is-grouped' },
 	            _react2.default.createElement(
-	              "p",
-	              { className: "control" },
+	              'p',
+	              { className: 'control' },
 	              _react2.default.createElement(
-	                "button",
-	                { className: "button is-primary" },
-	                "Login"
+	                'button',
+	                { type: 'submit', className: 'button is-primary', onClick: this.submitForm },
+	                'Login'
 	              )
 	            )
 	          )
@@ -33030,7 +33063,7 @@
   \**********************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -33042,7 +33075,17 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _axios = __webpack_require__(/*! axios */ 286);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	var _http = __webpack_require__(/*! http */ 315);
+	
+	var _http2 = _interopRequireDefault(_http);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -33053,128 +33096,175 @@
 	var Registration = function (_Component) {
 	  _inherits(Registration, _Component);
 	
-	  function Registration() {
+	  function Registration(props) {
 	    _classCallCheck(this, Registration);
 	
-	    return _possibleConstructorReturn(this, (Registration.__proto__ || Object.getPrototypeOf(Registration)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (Registration.__proto__ || Object.getPrototypeOf(Registration)).call(this, props));
+	
+	    _this.handleRegistrationChange = function (e) {
+	      var name = e.target.name;
+	      var value = e.target.value;
+	      _this.setState(_defineProperty({}, name, value));
+	    };
+	
+	    _this.handleRegistrationSubmit = function (e) {
+	      if (_this.state.gender === "Other" || _this.state.gender === "Prefer Not to Say") {
+	        _this.state.gender = "n/a";
+	      }
+	      e.preventDefault();
+	      _axios2.default.post('http://localhost:3000/api/users', {
+	        first_name: _this.state.first_name,
+	        last_name: _this.state.last_name,
+	        email: _this.state.email,
+	        password: _this.state.password,
+	        gender: _this.state.gender
+	      }).then(function (res) {
+	        console.log(res);
+	      }).catch(function (err) {
+	        console.log(err);
+	      });
+	    };
+	
+	    _this.state = { first_name: "",
+	      last_name: "",
+	      email: "",
+	      password: "",
+	      gender: ""
+	    };
+	    _this.handleRegistrationChange = _this.handleRegistrationChange.bind(_this);
+	    return _this;
 	  }
 	
 	  _createClass(Registration, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        "div",
-	        { className: "col-lg-6" },
+	        'div',
+	        { className: 'col-lg-6' },
 	        _react2.default.createElement(
-	          "form",
-	          { action: "route", method: "POST", className: "registration" },
+	          'form',
+	          { action: '/', method: 'POST', className: 'registration', onSubmit: this.handleRegistrationSubmit },
 	          _react2.default.createElement(
-	            "h1",
-	            { className: "title" },
-	            "Sign Up here"
+	            'h1',
+	            { className: 'title' },
+	            'Sign Up here'
 	          ),
 	          _react2.default.createElement(
-	            "h2",
-	            { className: "subtitle" },
-	            "Join in and bridge with your loved ones "
+	            'h2',
+	            { className: 'subtitle' },
+	            'Join in and bridge with your loved ones '
 	          ),
 	          _react2.default.createElement(
-	            "div",
-	            { className: "field" },
+	            'div',
+	            { className: 'field' },
 	            _react2.default.createElement(
-	              "label",
-	              { htmlFor: "first-name", className: "label" },
-	              "Firstname"
+	              'label',
+	              { htmlFor: 'first-name', className: 'label' },
+	              'Firstname'
 	            ),
 	            _react2.default.createElement(
-	              "p",
-	              { className: "control" },
-	              _react2.default.createElement("input", { className: "input", type: "text", id: "first-name", placeholder: "First Name" })
+	              'p',
+	              { className: 'control' },
+	              _react2.default.createElement('input', { className: 'input', type: 'text', name: 'first_name', id: 'first-name',
+	                value: this.state.first_name, onChange: this.handleRegistrationChange, placeholder: 'First Name' })
 	            )
 	          ),
 	          _react2.default.createElement(
-	            "div",
-	            { className: "field" },
+	            'div',
+	            { className: 'field' },
 	            _react2.default.createElement(
-	              "label",
-	              { htmlFor: "last-name", className: "label" },
-	              "Last Name"
+	              'label',
+	              { htmlFor: 'last-name', className: 'label' },
+	              'Last Name'
 	            ),
 	            _react2.default.createElement(
-	              "p",
-	              { className: "control" },
-	              _react2.default.createElement("input", { className: "input", type: "text", id: "last-name", placeholder: "Last Name" })
+	              'p',
+	              { className: 'control' },
+	              _react2.default.createElement('input', { className: 'input', type: 'text', name: 'last_name', id: 'last-name',
+	                value: this.state.last_name, onChange: this.handleRegistrationChange, placeholder: 'Last Name' })
 	            )
 	          ),
 	          _react2.default.createElement(
-	            "div",
-	            { className: "field" },
+	            'div',
+	            { className: 'field' },
 	            _react2.default.createElement(
-	              "label",
-	              { htmlFor: "email", className: "label" },
-	              "Email"
+	              'label',
+	              { htmlFor: 'email', className: 'label' },
+	              'Email'
 	            ),
 	            _react2.default.createElement(
-	              "p",
-	              { className: "control" },
-	              _react2.default.createElement("input", { className: "input", type: "email", id: "email", placeholder: "Email" })
+	              'p',
+	              { className: 'control' },
+	              _react2.default.createElement('input', { className: 'input', type: 'email', name: 'email', id: 'email',
+	                value: this.state.email, onChange: this.handleRegistrationChange, placeholder: 'Email' })
 	            )
 	          ),
 	          _react2.default.createElement(
-	            "div",
-	            { className: "field" },
+	            'div',
+	            { className: 'field' },
 	            _react2.default.createElement(
-	              "label",
-	              { htmlFor: "password", className: "label" },
-	              "Password"
+	              'label',
+	              { htmlFor: 'password', className: 'label' },
+	              'Password'
 	            ),
 	            _react2.default.createElement(
-	              "p",
-	              { className: "control" },
-	              _react2.default.createElement("input", { className: "input", type: "password", id: "password", placeholder: "Password" })
+	              'p',
+	              { className: 'control' },
+	              _react2.default.createElement('input', { className: 'input', type: 'password', name: 'password', id: 'password',
+	                value: this.state.password, onChange: this.handleRegistrationChange, placeholder: 'Password' })
 	            )
 	          ),
 	          _react2.default.createElement(
-	            "div",
-	            { className: "field" },
+	            'div',
+	            { className: 'field' },
 	            _react2.default.createElement(
-	              "label",
-	              { className: "label" },
-	              "Gender"
+	              'label',
+	              { className: 'label' },
+	              'Gender'
 	            ),
 	            _react2.default.createElement(
-	              "p",
-	              { className: "control" },
+	              'p',
+	              { className: 'control' },
 	              _react2.default.createElement(
-	                "span",
-	                { className: "select" },
+	                'span',
+	                { className: 'select' },
 	                _react2.default.createElement(
-	                  "select",
-	                  null,
+	                  'select',
+	                  { name: 'gender', value: this.state.gender, onChange: this.handleRegistrationChange },
 	                  _react2.default.createElement(
-	                    "option",
+	                    'option',
 	                    null,
-	                    "Male"
+	                    'Male'
 	                  ),
 	                  _react2.default.createElement(
-	                    "option",
+	                    'option',
 	                    null,
-	                    "Female"
+	                    'Female'
+	                  ),
+	                  _react2.default.createElement(
+	                    'option',
+	                    null,
+	                    'Other'
+	                  ),
+	                  _react2.default.createElement(
+	                    'option',
+	                    null,
+	                    'Prefer Not to Say'
 	                  )
 	                )
 	              )
 	            )
 	          ),
 	          _react2.default.createElement(
-	            "div",
-	            { className: "field is-grouped" },
+	            'div',
+	            { className: 'field is-grouped' },
 	            _react2.default.createElement(
-	              "p",
-	              { className: "control" },
+	              'p',
+	              { className: 'control' },
 	              _react2.default.createElement(
-	                "button",
-	                { className: "button is-primary" },
-	                "Register"
+	                'button',
+	                { className: 'button is-primary' },
+	                'Register'
 	              )
 	            )
 	          )
@@ -41147,7 +41237,7 @@
 	    value: function componentDidMount() {
 	      var _this2 = this;
 	
-	      _axios2.default.get('http://localhost:3000/api/users/1.json').then(function (res) {
+	      _axios2.default.get('/api/users/1.json').then(function (res) {
 	        // console.log(res.data.user);
 	        var user = res.data.user;
 	        _this2.setState({ user: user });
@@ -41684,9 +41774,9 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _PinboardItem = __webpack_require__(/*! ./PinboardItem.jsx */ 351);
+	var _PinboardItemRequest = __webpack_require__(/*! ./PinboardItemRequest.jsx */ 609);
 	
-	var _PinboardItem2 = _interopRequireDefault(_PinboardItem);
+	var _PinboardItemRequest2 = _interopRequireDefault(_PinboardItemRequest);
 	
 	var _PopupNote = __webpack_require__(/*! ./PopupNote.jsx */ 604);
 	
@@ -41732,52 +41822,7 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'components-container' },
-	          _react2.default.createElement(_PinboardItem2.default, null),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'item' },
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'This is card 2'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'item' },
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'This is card 3'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'item' },
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'This is card 4'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'item' },
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'This is card 5'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'item' },
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'This is card 6'
-	            )
-	          )
+	          _react2.default.createElement(_PinboardItemRequest2.default, null)
 	        ),
 	        _react2.default.createElement(_PopupNote2.default, { isActive: this.props.openModal === 'note', onClose: function onClose() {
 	            return _this2.props.onClose();
@@ -41801,131 +41846,7 @@
 	exports.default = PinboardItems;
 
 /***/ }),
-/* 351 */
-/*!****************************************!*\
-  !*** ./js/components/PinboardItem.jsx ***!
-  \****************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 75);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _propTypes = __webpack_require__(/*! prop-types */ 257);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 352);
-	
-	var _axios = __webpack_require__(/*! axios */ 286);
-	
-	var _axios2 = _interopRequireDefault(_axios);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var PinboardItem = function (_Component) {
-	  _inherits(PinboardItem, _Component);
-	
-	  function PinboardItem(props) {
-	    _classCallCheck(this, PinboardItem);
-	
-	    // super calls `constructor` in React.Component
-	    var _this = _possibleConstructorReturn(this, (PinboardItem.__proto__ || Object.getPrototypeOf(PinboardItem)).call(this, props));
-	
-	    _this.open = function () {
-	      _this.setState({ showModal: true });
-	    };
-	
-	    _this.close = function () {
-	      _this.setState({ showModal: false });
-	    };
-	
-	    _this.state = {
-	      showModal: false,
-	      user: null
-	    };
-	    return _this;
-	  }
-	
-	  _createClass(PinboardItem, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      var _this2 = this;
-	
-	      _axios2.default.get('http://localhost:3000/api/users/1.json').then(function (res) {
-	        console.log(res.data.user);
-	        var user = res.data.user;
-	        _this2.setState({ user: user });
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        this.state.user && _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'item', onClick: this.open },
-	            _react2.default.createElement(
-	              'p',
-	              { className: 'img-title' },
-	              this.state.user.posts[2].title
-	            ),
-	            _react2.default.createElement('img', { className: 'img-thumb', src: 'http://localhost:3000/' + this.state.user.posts[2].content.thumb.url })
-	          ),
-	          _react2.default.createElement(
-	            _reactBootstrap.Modal,
-	            { show: this.state.showModal, onHide: this.close.bind(this) },
-	            _react2.default.createElement(
-	              _reactBootstrap.Modal.Header,
-	              { closeButton: true },
-	              _react2.default.createElement(
-	                _reactBootstrap.Modal.Title,
-	                null,
-	                this.state.user.posts[2].title
-	              )
-	            ),
-	            _react2.default.createElement(
-	              _reactBootstrap.Modal.Body,
-	              null,
-	              _react2.default.createElement('img', { src: 'http://localhost:3000/' + this.state.user.posts[2].content.url }),
-	              _react2.default.createElement(
-	                'p',
-	                null,
-	                this.state.user.posts[2].description
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return PinboardItem;
-	}(_react.Component);
-	
-	exports.default = PinboardItem;
-
-/***/ }),
+/* 351 */,
 /* 352 */
 /*!****************************************!*\
   !*** ./~/react-bootstrap/lib/index.js ***!
@@ -62214,6 +62135,10 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
+	var _axios = __webpack_require__(/*! axios */ 286);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
 	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 352);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -62233,7 +62158,14 @@
 	    // super calls `constructor` in React.Component
 	    var _this = _possibleConstructorReturn(this, (PopupNote.__proto__ || Object.getPrototypeOf(PopupNote)).call(this, props));
 	
-	    _this.state = { showModal: false };
+	    _this.state = {
+	      title: '',
+	      content: ''
+	    };
+	
+	    _this.handleTitleChange = _this.handleTitleChange.bind(_this);
+	    _this.handleContentChange = _this.handleContentChange.bind(_this);
+	    _this.submitForm = _this.submitForm.bind(_this);
 	    return _this;
 	  }
 	
@@ -62241,6 +62173,28 @@
 	    key: 'close',
 	    value: function close() {
 	      this.props.onClose();
+	    }
+	  }, {
+	    key: 'handleTitleChange',
+	    value: function handleTitleChange(event) {
+	      this.setState({
+	        title: event.target.value
+	      });
+	    }
+	  }, {
+	    key: 'handleContentChange',
+	    value: function handleContentChange(event) {
+	      this.setState({
+	        content: event.target.value
+	      });
+	    }
+	  }, {
+	    key: 'submitForm',
+	    value: function submitForm(event) {
+	      _axios2.default.post('/api/rooms/1/posts', {
+	        title: this.state.title,
+	        content: this.state.content
+	      }).then(this.close.bind(this));
 	    }
 	  }, {
 	    key: 'render',
@@ -62264,44 +62218,40 @@
 	            _reactBootstrap.Modal.Body,
 	            null,
 	            _react2.default.createElement(
-	              'form',
-	              { action: 'api/posts', method: 'POST' },
+	              'div',
+	              { className: 'field' },
 	              _react2.default.createElement(
-	                'div',
-	                { className: 'field' },
-	                _react2.default.createElement(
-	                  'label',
-	                  { htmlFor: 'note_title', className: 'label' },
-	                  'Title'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'control' },
-	                  _react2.default.createElement('input', { className: 'input', type: 'text', id: 'note_title' })
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'field' },
-	                _react2.default.createElement(
-	                  'label',
-	                  { htmlFor: 'note_content', className: 'label' },
-	                  'Content'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'control' },
-	                  _react2.default.createElement('input', { className: 'input', type: 'text', id: 'note_content' })
-	                )
+	                'label',
+	                { htmlFor: 'note_title', className: 'label' },
+	                'Title'
 	              ),
 	              _react2.default.createElement(
 	                'p',
 	                { className: 'control' },
-	                _react2.default.createElement(
-	                  'button',
-	                  { type: 'submit', className: 'button is-primary' },
-	                  'Submit'
-	                )
+	                _react2.default.createElement('input', { className: 'input', type: 'text', value: this.state.title, name: 'title', id: 'note_title', onChange: this.handleTitleChange })
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'field' },
+	              _react2.default.createElement(
+	                'label',
+	                { htmlFor: 'note_content', className: 'label' },
+	                'Content'
+	              ),
+	              _react2.default.createElement(
+	                'p',
+	                { className: 'control' },
+	                _react2.default.createElement('input', { className: 'input', type: 'text', value: this.state.content, name: 'content', id: 'note_content', onChange: this.handleContentChange })
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'control' },
+	              _react2.default.createElement(
+	                'button',
+	                { type: 'submit', className: 'button is-primary', onClick: this.submitForm },
+	                'Submit'
 	              )
 	            )
 	          )
@@ -62785,6 +62735,512 @@
 	
 	
 	exports.default = HangoutApp;
+
+/***/ }),
+/* 609 */
+/*!***********************************************!*\
+  !*** ./js/components/PinboardItemRequest.jsx ***!
+  \***********************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 75);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _propTypes = __webpack_require__(/*! prop-types */ 257);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 352);
+	
+	var _axios = __webpack_require__(/*! axios */ 286);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	var _PinboardItemModal = __webpack_require__(/*! ./PinboardItemModal.jsx */ 610);
+	
+	var _PinboardItemModal2 = _interopRequireDefault(_PinboardItemModal);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var PinboardItemRequest = function (_Component) {
+	  _inherits(PinboardItemRequest, _Component);
+	
+	  function PinboardItemRequest(props) {
+	    _classCallCheck(this, PinboardItemRequest);
+	
+	    // super calls `constructor` in React.Component
+	    var _this = _possibleConstructorReturn(this, (PinboardItemRequest.__proto__ || Object.getPrototypeOf(PinboardItemRequest)).call(this, props));
+	
+	    _this.state = {
+	      showModal: false,
+	      user: null,
+	      postID: null
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(PinboardItemRequest, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+	
+	      _axios2.default.get('http://localhost:3000/api/users/1.json').then(function (res) {
+	        // console.log(res.data.user);
+	        var user = res.data.user;
+	        _this2.setState({ user: user });
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this3 = this;
+	
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        this.state.user && this.state.user.posts.map(function (obj) {
+	          console.log(obj);
+	          return _react2.default.createElement(_PinboardItemModal2.default, { key: obj.id, title: obj.title, description: obj.description, img: obj.content.url, thumb: obj.content.thumb.url, link: obj.link, user: _this3.state.user, postID: _this3.state.user.posts.id, category: obj.category });
+	        })
+	      );
+	    }
+	  }]);
+	
+	  return PinboardItemRequest;
+	}(_react.Component);
+	
+	exports.default = PinboardItemRequest;
+
+/***/ }),
+/* 610 */
+/*!*********************************************!*\
+  !*** ./js/components/PinboardItemModal.jsx ***!
+  \*********************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 75);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _propTypes = __webpack_require__(/*! prop-types */ 257);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _PinItemModalImage = __webpack_require__(/*! ./PinItemModalImage.jsx */ 611);
+	
+	var _PinItemModalImage2 = _interopRequireDefault(_PinItemModalImage);
+	
+	var _PinItemModalNote = __webpack_require__(/*! ./PinItemModalNote.jsx */ 612);
+	
+	var _PinItemModalNote2 = _interopRequireDefault(_PinItemModalNote);
+	
+	var _PinItemModalLink = __webpack_require__(/*! ./PinItemModalLink.jsx */ 613);
+	
+	var _PinItemModalLink2 = _interopRequireDefault(_PinItemModalLink);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var PinboardItemModal = function (_Component) {
+	  _inherits(PinboardItemModal, _Component);
+	
+	  function PinboardItemModal(props) {
+	    _classCallCheck(this, PinboardItemModal);
+	
+	    // super calls `constructor` in React.Component
+	    var _this = _possibleConstructorReturn(this, (PinboardItemModal.__proto__ || Object.getPrototypeOf(PinboardItemModal)).call(this, props));
+	
+	    _this.state = {
+	      showModal: false,
+	      user: null,
+	      postID: null
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(PinboardItemModal, [{
+	    key: 'render',
+	    value: function render() {
+	      console.log("link:", this.props.link);
+	      switch (this.props.category) {
+	        case "image":
+	          return _react2.default.createElement(_PinItemModalImage2.default, { postID: this.props.postID, title: this.props.title, description: this.props.description, img: this.props.img, thumb: this.props.thumb, user: this.state.user });
+	          break;
+	        case "note":
+	          return _react2.default.createElement(_PinItemModalNote2.default, { postID: this.props.postID, title: this.props.title, description: this.props.description, user: this.state.user });
+	          break;
+	        case "link":
+	          return _react2.default.createElement(_PinItemModalLink2.default, { postID: this.props.postID, title: this.props.title, description: this.props.description, link: this.props.link, user: this.state.user });
+	          break;
+	        default:
+	          throw new Error('Content category is not valid');
+	      }
+	    }
+	  }]);
+	
+	  return PinboardItemModal;
+	}(_react.Component);
+	
+	exports.default = PinboardItemModal;
+
+/***/ }),
+/* 611 */
+/*!*********************************************!*\
+  !*** ./js/components/PinItemModalImage.jsx ***!
+  \*********************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 75);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _propTypes = __webpack_require__(/*! prop-types */ 257);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 352);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var PinItemModalImage = function (_Component) {
+	  _inherits(PinItemModalImage, _Component);
+	
+	  function PinItemModalImage(props) {
+	    _classCallCheck(this, PinItemModalImage);
+	
+	    // super calls `constructor` in React.Component
+	    var _this = _possibleConstructorReturn(this, (PinItemModalImage.__proto__ || Object.getPrototypeOf(PinItemModalImage)).call(this, props));
+	
+	    _this.open = function () {
+	      _this.setState({
+	        showModal: true,
+	        postID: _this.props.postID
+	      });
+	    };
+	
+	    _this.close = function () {
+	      _this.setState({ showModal: false });
+	    };
+	
+	    _this.state = {
+	      showModal: false,
+	      user: null,
+	      postID: null
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(PinItemModalImage, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'item', onClick: this.open },
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'img-title' },
+	            this.props.title
+	          ),
+	          _react2.default.createElement('i', { className: 'add fa fa-picture-o' }),
+	          _react2.default.createElement('img', { className: 'img-thumb', src: 'http://localhost:3000/' + this.props.thumb })
+	        ),
+	        _react2.default.createElement(
+	          _reactBootstrap.Modal,
+	          { show: this.state.showModal, onHide: this.close.bind(this) },
+	          _react2.default.createElement(
+	            _reactBootstrap.Modal.Header,
+	            { closeButton: true },
+	            _react2.default.createElement(
+	              _reactBootstrap.Modal.Title,
+	              null,
+	              this.props.title
+	            )
+	          ),
+	          _react2.default.createElement(
+	            _reactBootstrap.Modal.Body,
+	            null,
+	            _react2.default.createElement('img', { src: 'http://localhost:3000/' + this.props.img }),
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              this.props.description
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return PinItemModalImage;
+	}(_react.Component);
+	
+	exports.default = PinItemModalImage;
+
+/***/ }),
+/* 612 */
+/*!********************************************!*\
+  !*** ./js/components/PinItemModalNote.jsx ***!
+  \********************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 75);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _propTypes = __webpack_require__(/*! prop-types */ 257);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 352);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var PinItemModalNote = function (_Component) {
+	  _inherits(PinItemModalNote, _Component);
+	
+	  function PinItemModalNote(props) {
+	    _classCallCheck(this, PinItemModalNote);
+	
+	    // super calls `constructor` in React.Component
+	    var _this = _possibleConstructorReturn(this, (PinItemModalNote.__proto__ || Object.getPrototypeOf(PinItemModalNote)).call(this, props));
+	
+	    _this.open = function () {
+	      _this.setState({
+	        showModal: true,
+	        postID: _this.props.postID
+	      });
+	    };
+	
+	    _this.close = function () {
+	      _this.setState({ showModal: false });
+	    };
+	
+	    _this.state = {
+	      showModal: false,
+	      user: null,
+	      postID: null
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(PinItemModalNote, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'item', onClick: this.open },
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'img-title' },
+	            this.props.title
+	          ),
+	          _react2.default.createElement('i', { className: 'add fa fa-sticky-note-o' })
+	        ),
+	        _react2.default.createElement(
+	          _reactBootstrap.Modal,
+	          { show: this.state.showModal, onHide: this.close.bind(this) },
+	          _react2.default.createElement(
+	            _reactBootstrap.Modal.Header,
+	            { closeButton: true },
+	            _react2.default.createElement(
+	              _reactBootstrap.Modal.Title,
+	              null,
+	              this.props.title
+	            )
+	          ),
+	          _react2.default.createElement(
+	            _reactBootstrap.Modal.Body,
+	            null,
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              this.props.description
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return PinItemModalNote;
+	}(_react.Component);
+	
+	exports.default = PinItemModalNote;
+
+/***/ }),
+/* 613 */
+/*!********************************************!*\
+  !*** ./js/components/PinItemModalLink.jsx ***!
+  \********************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 75);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _propTypes = __webpack_require__(/*! prop-types */ 257);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 352);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var PinItemModalLink = function (_Component) {
+	  _inherits(PinItemModalLink, _Component);
+	
+	  function PinItemModalLink(props) {
+	    _classCallCheck(this, PinItemModalLink);
+	
+	    // super calls `constructor` in React.Component
+	    var _this = _possibleConstructorReturn(this, (PinItemModalLink.__proto__ || Object.getPrototypeOf(PinItemModalLink)).call(this, props));
+	
+	    _this.open = function () {
+	      _this.setState({
+	        showModal: true,
+	        postID: _this.props.postID
+	      });
+	    };
+	
+	    _this.close = function () {
+	      _this.setState({ showModal: false });
+	    };
+	
+	    _this.state = {
+	      showModal: false,
+	      user: null,
+	      postID: null
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(PinItemModalLink, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'item', onClick: this.open },
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'img-title' },
+	            this.props.title
+	          ),
+	          _react2.default.createElement('i', { className: 'add fa fa-link' })
+	        ),
+	        _react2.default.createElement(
+	          _reactBootstrap.Modal,
+	          { show: this.state.showModal, onHide: this.close.bind(this) },
+	          _react2.default.createElement(
+	            _reactBootstrap.Modal.Header,
+	            { closeButton: true },
+	            _react2.default.createElement(
+	              _reactBootstrap.Modal.Title,
+	              null,
+	              this.props.title
+	            )
+	          ),
+	          _react2.default.createElement(
+	            _reactBootstrap.Modal.Body,
+	            null,
+	            _react2.default.createElement(
+	              'a',
+	              { href: this.props.link },
+	              this.props.link
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              this.props.description
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return PinItemModalLink;
+	}(_react.Component);
+	
+	exports.default = PinItemModalLink;
 
 /***/ })
 /******/ ]);

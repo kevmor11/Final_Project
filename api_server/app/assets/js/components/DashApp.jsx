@@ -6,6 +6,7 @@ import Rooms from './Rooms.jsx';
 
 export default
 class DashApp extends Component {
+
     constructor(props) {
     super(props); // super calls `constructor` in React.Component
     this.state = {
@@ -22,6 +23,7 @@ class DashApp extends Component {
         this.setState({ user });
       });
   }
+
 
 
   render() {
