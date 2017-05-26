@@ -35,6 +35,7 @@ class UsersController < ApplicationController
     # TODO: do some error checking later
     posts = User.find(params[:user_id]).posts
     render json: posts, status: 200
+
   end
 
   private
