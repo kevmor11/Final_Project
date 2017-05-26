@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar.jsx';
-
+import PropTypes from 'prop-types';
 import Notification from './Notification.jsx';
 import Rooms from './Rooms.jsx';
 
