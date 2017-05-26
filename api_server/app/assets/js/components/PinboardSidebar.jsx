@@ -8,7 +8,7 @@ class PinboardSidebar extends Component {
         <div className="tile is-parent is-2 rooms">
           <article className="tile is-child box">
             <div className="content">
-              
+
               <p className="subtitle">Your Rooms</p>
               <table className="table">
                 <thead>
@@ -22,20 +22,20 @@ class PinboardSidebar extends Component {
                 <tfoot>
                 </tfoot>
                 <tbody>
-                  
+
                   <tr>
                     <th>1</th>
-                    <td><a href="" title="this room blah blah blah">Secret Graden</a></td>
+                    <td><a href="" title="this room blah blah blah">Secret Garden</a></td>
                   </tr>
 
                   <tr>
                     <th>2</th>
-                    <td><a href="this room blah blah blah" >Hanging Gradens</a></td>
+                    <td><a href="this room blah blah blah" >Hanging Gardens</a></td>
                   </tr>
-                
+
                 </tbody>
               </table>
-            </div>  
+            </div>
           </article>
         </div>
       </div>
