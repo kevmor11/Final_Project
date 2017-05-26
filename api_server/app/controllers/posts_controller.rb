@@ -4,6 +4,13 @@ class PostsController < ApplicationController
     room = Room.find(params[:room_id])
     @post = room.posts.create
     @post.user = current_user
+    if @post.save
+      ActionCable.server.broadcast 'posts',
+        title: post.title,
+        description: post.description,
+        user: post.user.first_name
+      head :ok
+    end       
   end
 
   def show 
