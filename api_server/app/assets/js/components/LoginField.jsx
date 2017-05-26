@@ -13,6 +13,7 @@ class LoginField extends Component {
 
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleRedirect = this.handleRedirect.bind(this);
     this.submitForm = this.submitForm.bind(this);
   }
   
@@ -36,7 +37,9 @@ class LoginField extends Component {
   }
 
   handleRedirect(res) {
-    window.location.href = '/api/users/15';
+    axios.get('/api/sessions')
+    alert(JSON.stringify(res));
+    window.location.href = '/api/users/12';
   }
 
   render(){

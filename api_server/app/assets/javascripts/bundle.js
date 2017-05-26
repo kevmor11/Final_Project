@@ -32955,6 +32955,7 @@
 	
 	    _this.handleEmailChange = _this.handleEmailChange.bind(_this);
 	    _this.handlePasswordChange = _this.handlePasswordChange.bind(_this);
+	    _this.handleRedirect = _this.handleRedirect.bind(_this);
 	    _this.submitForm = _this.submitForm.bind(_this);
 	    return _this;
 	  }
@@ -32984,7 +32985,9 @@
 	  }, {
 	    key: 'handleRedirect',
 	    value: function handleRedirect(res) {
-	      window.location.href = '/api/users/15';
+	      _axios2.default.get('/api/sessions');
+	      alert(JSON.stringify(res));
+	      window.location.href = '/api/users/12';
 	    }
 	  }, {
 	    key: 'render',
@@ -41237,7 +41240,7 @@
 	    value: function componentDidMount() {
 	      var _this2 = this;
 	
-	      _axios2.default.get('/api/users/1.json').then(function (res) {
+	      _axios2.default.get('/api/users/2.json').then(function (res) {
 	        // console.log(res.data.user);
 	        var user = res.data.user;
 	        _this2.setState({ user: user });
