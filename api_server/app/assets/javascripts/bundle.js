@@ -40909,13 +40909,9 @@
 	  _createClass(DashApp, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      var _this2 = this;
 	
 	      axios.get('users/me').then(function (res) {
-	        console.log(res.data.user);
-	        console.log(res.data.user.rooms[0].name);
-	        var user = res.data.user;
-	        _this2.setState({ user: user });
+	        alert(res);
 	      });
 	    }
 	  }, {

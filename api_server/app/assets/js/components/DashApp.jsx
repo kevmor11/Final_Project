@@ -18,10 +18,7 @@ class DashApp extends Component {
     
     axios.get(`users/me`)
       .then(res => {
-        console.log(res.data.user);
-        console.log(res.data.user.rooms[0].name);
-        const user = res.data.user;
-        this.setState({ user });
+        alert(res);
       });
   }
 
