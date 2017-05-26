@@ -1,48 +1,47 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar.jsx';
-
-import Notification from './Notification.jsx';
+import UserProfile from './UserProfile.jsx';
+import Notifications from './Notifications.jsx';
 import Rooms from './Rooms.jsx';
 
 export default
 class DashApp extends Component {
-  static PropTypes = {
-    foo: PropTypes.string
+    constructor(props) {
+    super(props); // super calls `constructor` in React.Component
+    this.state = {
+      user: null
+    }
   }
 
-  constructor(props) {
-    super(props); // super calls `constructor` in React.Component
-    this.foo = "bar";
+  ccomponentDidMount() {
+    axios.get(`http://localhost:3000/api/users/1.json`)
+      .then(res => {
+        console.log(res.data.user);
+        console.log(res.data.user.rooms[0].name);
+        const user = res.data.user;
+        this.setState({ user });
+      });
   }
+
 
   render() {
+    let userProfile;
+    if(!this.state.user){
+      const userAvatarURL = "http://www.clipartbest.com/cliparts/ncB/RK7/ncBRK7qei.png";
+      const firstName ="Nawar";
+      const userProfile = <UserProfile avatarURL={userAvatarURL} name={firstName}/>
+      console.log("hi", userProfile);
+    }
+      console.log(userProfile);
+    
     return (
       <div>
         <Navbar />
         <div className="tile is-ancestor logged">
           <div className="tile is-vertical is-8">
             <div className="tile">
-              <div className="tile is-parent is-vertical">
-                <div className="notification notification-center">
-                  <p>Notification</p>
-                </div>
-                <Notification />
-              </div>
-              <div className="tile is-parent is-2">
-                <article className="tile is-child box dashboard profilebox">
-                  <p className="title">User Dashboard</p>
-                  <p className="subtitle">With an image</p>
-                  <figure className="image is-4by3">
-                    <img src="http://www.stottpilates.com/studio/images/instructors/person-placeholder.png"/>
-                  </figure>
-                  <a className="button is-primary">
-                    <span className="icon">
-                        <i className="fa fa-user-circle-o" aria-hidden="true"></i>
-                      </span>
-                    <span>Profile Setting</span>
-                  </a>
-                </article>
-              </div>
+              <Notifications />
+              {userProfile}
             </div>
           </div>
           <Rooms/>
