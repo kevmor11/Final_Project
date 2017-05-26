@@ -12,7 +12,7 @@
                         gender: "n/a",
                         email: Faker::Internet.email,
                         password_digest: Faker::Internet.password,
-                        avatar: "http://www.stottpilates.com/studio/images/instructors/person-placeholder.png"
+                        remote_avatar_url: "http://www.stottpilates.com/studio/images/instructors/person-placeholder.png"
                       })
   room = Room.new({ name: Faker::Team.creature })
   room.userrooms << Userroom.new({ user: user, admin: true })
