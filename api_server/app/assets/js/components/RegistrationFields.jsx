@@ -47,7 +47,7 @@ class Registration extends Component {
       email: this.state.email,
       password: this.state.password,
       gender: this.state.gender
-    }).then(this.loginPage).catch(err => {
+    }).then(this.goLoginPage).catch(err => {
       console.log(err)
     });
   }
@@ -101,7 +101,7 @@ class Registration extends Component {
             </div>
             <div className="field is-grouped">
               <p className="control">
-                <button  className="button is-primary" onClick={ this.goLoginPage } >Register</button>
+                <button className="button is-primary" onClick={ this.goLoginPage } >Register</button>
               </p>
             </div>
           </form>

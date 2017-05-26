@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   def new
   end
 
-  def create
+  def create 
     user = User.new(user_params)
     if user.save
       session[:user_id] = user.id
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     respond_to do |format|
       format.json { render json: @user }
-      format.html {}
+      format.html { @user }
     end
     # if @user.present?
     #   render json: @user, serializer: UserSerializer, status: 200
@@ -33,6 +33,10 @@ class UsersController < ApplicationController
       render json: { errors: current_user.errors.full_messages }, status: 422
     end
   end
+
+  def me 
+    render json: current_user, serializer: UserSerializer, status: 200 
+  end 
 
   private
     def user_params

@@ -13,10 +13,3 @@ LoginButton.propTypes = {
 
 export default LoginButton;
 
-/*export default function login({clickHandler}) {
-  return (
-    <p className="control">
-      <button className="button is-primary" onClick={clickHandler}>Login</button>
-    </p>
-  );
-}*/

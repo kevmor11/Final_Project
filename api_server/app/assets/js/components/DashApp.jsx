@@ -14,8 +14,9 @@ class DashApp extends Component {
     }
   }
 
-  ccomponentDidMount() {
-    axios.get(`http://localhost:3000/api/users/1.json`)
+  componentDidMount() {
+    
+    axios.get(`users/me`)
       .then(res => {
         console.log(res.data.user);
         console.log(res.data.user.rooms[0].name);
