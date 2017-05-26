@@ -91,6 +91,7 @@ class Registration extends Component {
               <p className="control">
                 <span className="select">
                   <select name="gender" value={this.state.gender} onChange={this.handleRegistrationChange}>
+                    <option value="" disabled>Please Select</option>
                     <option>Male</option>
                     <option>Female</option>
                     <option>Other</option>

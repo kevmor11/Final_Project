@@ -36806,6 +36806,11 @@
 	                  { name: 'gender', value: this.state.gender, onChange: this.handleRegistrationChange },
 	                  _react2.default.createElement(
 	                    'option',
+	                    { value: '', disabled: true },
+	                    'Please Select'
+	                  ),
+	                  _react2.default.createElement(
+	                    'option',
 	                    null,
 	                    'Male'
 	                  ),
