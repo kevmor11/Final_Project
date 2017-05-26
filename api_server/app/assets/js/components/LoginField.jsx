@@ -32,7 +32,11 @@ class LoginField extends Component {
     axios.post('/api/sessions', {
       email: this.state.email,
       password: this.state.password
-    }).then('/api/users/1');
+    }).then(this.handleRedirect);
+  }
+
+  handleRedirect(res) {
+    window.location.href = '/api/users/15';
   }
 
   render(){

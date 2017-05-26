@@ -25,6 +25,7 @@ class PostsController < ApplicationController
     def post_params
       params.permit(
         :room_id,
+        :user_id,
         :content,
         :title,
       )

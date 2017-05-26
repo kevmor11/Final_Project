@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-      byebug
     if user = User.authenticate_with_credentials(params[:email], params[:password])
       session[:user_id] = user.id
       render json: user, serializer: UserSerializer, status: 201
