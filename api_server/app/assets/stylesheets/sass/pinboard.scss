@@ -15,8 +15,9 @@
   padding-right:2;
 }
 .components-container {
-  display: flex;
-  flex-flow: row wrap;
+  // display: flex;
+  // flex-flow: row wrap;
+
 }
 .item {
   margin: 10px;
@@ -102,3 +103,7 @@ img.img-title {
   height: 100%;
 }
 
+#tooltip {
+  max-width: none;
+  z-index: 9001;
+}

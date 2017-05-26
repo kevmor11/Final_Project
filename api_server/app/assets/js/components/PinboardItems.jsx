@@ -15,24 +15,7 @@ class PinboardItems extends Component {
   render(){
     return(
       <div>
-        <div className="components-container">
-          <PinboardItemRequest />
-          {/*<div className="item">
-            <p>This is card 2</p>
-          </div>
-          <div className="item">
-            <p>This is card 3</p>
-          </div>
-          <div className="item">
-            <p>This is card 4</p>
-          </div>
-          <div className="item">
-            <p>This is card 5</p>
-          </div>
-          <div className="item">
-            <p>This is card 6</p>
-          </div>*/}
-        </div>
+        <PinboardItemRequest />
         <PopupNote isActive={this.props.openModal === 'note'} onClose={() => this.props.onClose()}/>
         <PopupLink isActive={this.props.openModal === 'link'} onClose={() => this.props.onClose()} />
         <PopupImage isActive={this.props.openModal === 'image'} onClose={() => this.props.onClose()} />
