@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {Modal, Button, OverlayTrigger} from 'react-bootstrap'
 
 export default
@@ -31,9 +30,15 @@ class PopupLink extends Component {
                 </p>
               </div>
               <div className="field">
+                <label htmlFor="link_title" className="label">Title</label>
+                <p className="control">
+                  <textarea className="input" type="text" id="link_title" />
+                </p>
+              </div>
+              <div className="field">
                 <label htmlFor="link_description" className="label">Description</label>
                 <p className="control">
-                  <input className="input" type="text" id="link_description" />
+                  <textarea className="input input-description" type="text" id="link_description" />
                 </p>
               </div>
               <p className="control">

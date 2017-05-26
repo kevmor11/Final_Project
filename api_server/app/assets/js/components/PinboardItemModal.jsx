@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import PinItemModalImage from './PinItemModalImage.jsx'
 import PinItemModalNote from './PinItemModalNote.jsx'
 import PinItemModalLink from './PinItemModalLink.jsx'
-
 
 export default
 class PinboardItemModal extends Component {
@@ -18,22 +16,36 @@ constructor(props) {
   }
 
   render() {
-    console.log("link:", this.props.link);
     switch (this.props.category) {
       case "image":
         return(
-          <PinItemModalImage postID={this.props.postID} title={this.props.title} description={this.props.description} img={this.props.img} thumb={this.props.thumb} user={this.state.user} />
-        )
+          <PinItemModalImage
+          postID={this.props.postID}
+          title={this.props.title}
+          description={this.props.description}
+          img={this.props.img}
+          thumb={this.props.thumb}
+          user={this.state.user}
+          />)
         break;
       case "note":
         return(
-          <PinItemModalNote postID={this.props.postID} title={this.props.title} description={this.props.description} user={this.state.user} />
-        )
+          <PinItemModalNote
+          postID={this.props.postID}
+          title={this.props.title}
+          description={this.props.description}
+          user={this.state.user}
+          />)
         break;
       case "link":
         return(
-          <PinItemModalLink postID={this.props.postID} title={this.props.title} description={this.props.description} link={this.props.link} user={this.state.user} />
-        )
+          <PinItemModalLink
+          postID={this.props.postID}
+          title={this.props.title}
+          description={this.props.description}
+          link={this.props.link}
+          user={this.state.user}
+          />)
         break;
       default:
         throw new Error('Content category is not valid');

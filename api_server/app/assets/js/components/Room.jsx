@@ -6,7 +6,7 @@ class Rooms extends Component {
     return (
       <tr>
         <th>1</th>
-        <td><a href="" title="this room blah blah blah">Secret Graden</a></td>
+        <td><a href="" title="this room blah blah blah">Secret Garden</a></td>
       </tr>
     );
   }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar.jsx';
-
 import Notification from './Notification.jsx';
 import Rooms from './Rooms.jsx';
 
@@ -43,10 +42,3 @@ class DashApp extends Component {
     );
   }
 }
-
-// className ExtendedApp extends App {
-//   render() {
-//     const inner = super.render(); // calls render in <App />
-//     return <div id="wrapped">{inner}</div>;
-//   }
-// }

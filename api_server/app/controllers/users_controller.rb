@@ -13,26 +13,29 @@ class UsersController < ApplicationController
     end
   end
 
-  def show 
+  def show
     @user = User.find_by(id: params[:id])
     if @user.present?
       render json: @user, serializer: UserSerializer, status: 200
-    else 
+    else
       render json: { errors: ["User not found."] }, status: 422
     end
   end
 
   def update
     if current_user.update(user_params)
-      render json: current_user, serializer: UserSerializer, status: 200 
-    else 
+      render json: current_user, serializer: UserSerializer, status: 200
+    else
       render json: { errors: current_user.errors.full_messages }, status: 422
     end
   end
 
+  # temp solution, maybe use a namespaced ctrl later
   def posts
+    # TODO: do some error checking later
     posts = User.find(params[:user_id]).posts
-    render json: posts
+    render json: posts, status: 200
+
   end
 
   private
