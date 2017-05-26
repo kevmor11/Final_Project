@@ -36714,6 +36714,17 @@
 	
 	    var _this = _possibleConstructorReturn(this, (Registration.__proto__ || Object.getPrototypeOf(Registration)).call(this, props));
 	
+	    _this.handleRedirect = function (res) {
+	      window.location.href = '/users/' + res.data.user.id;
+	    };
+	
+	    _this.goLoginPage = function (e) {
+	      _axios2.default.post('/api/sessions', {
+	        email: _this.state.email,
+	        password: _this.state.password
+	      }).then(_this.handleRedirect);
+	    };
+	
 	    _this.handleRegistrationChange = function (e) {
 	      var name = e.target.name;
 	      var value = e.target.value;
@@ -36725,20 +36736,19 @@
 	        _this.state.gender = "n/a";
 	      }
 	      e.preventDefault();
-	      _axios2.default.post('http://localhost:3000/api/users', {
+	      _axios2.default.post('/api/users', {
 	        first_name: _this.state.first_name,
 	        last_name: _this.state.last_name,
 	        email: _this.state.email,
 	        password: _this.state.password,
 	        gender: _this.state.gender
-	      }).then(function (res) {
-	        console.log(res);
-	      }).catch(function (err) {
+	      }).then(_this.loginPage).catch(function (err) {
 	        console.log(err);
 	      });
 	    };
 	
-	    _this.state = { first_name: "",
+	    _this.state = {
+	      first_name: "",
 	      last_name: "",
 	      email: "",
 	      password: "",
@@ -36876,7 +36886,7 @@
 	              { className: 'control' },
 	              _react2.default.createElement(
 	                'button',
-	                { className: 'button is-primary' },
+	                { className: 'button is-primary', onClick: this.goLoginPage },
 	                'Register'
 	              )
 	            )
@@ -41212,6 +41222,10 @@
 	
 	var _axios2 = _interopRequireDefault(_axios);
 	
+	var _RoomButton = __webpack_require__(/*! ./RoomButton.jsx */ 613);
+	
+	var _RoomButton2 = _interopRequireDefault(_RoomButton);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -41291,6 +41305,11 @@
 	                'tbody',
 	                null,
 	                allRooms
+	              ),
+	              _react2.default.createElement(
+	                'tfoot',
+	                null,
+	                _react2.default.createElement(_RoomButton2.default, null)
 	              )
 	            )
 	          )
@@ -63243,6 +63262,56 @@
 	
 	
 	exports.default = HangoutApp;
+
+/***/ }),
+/* 613 */
+/*!**************************************!*\
+  !*** ./js/components/RoomButton.jsx ***!
+  \**************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 75);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _propTypes = __webpack_require__(/*! prop-types */ 257);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var LoginButton = function LoginButton(_ref) {
+	  var clickHandler = _ref.clickHandler;
+	  return _react2.default.createElement(
+	    'p',
+	    { className: 'control' },
+	    _react2.default.createElement(
+	      'button',
+	      { className: 'button is-primary create-room', onClick: clickHandler },
+	      ' Creat Room '
+	    )
+	  );
+	};
+	
+	LoginButton.propTypes = {
+	  clickHandler: _propTypes2.default.func.isRequired
+	};
+	
+	exports.default = LoginButton;
+	
+	/*export default function login({clickHandler}) {
+	  return (
+	    <p className="control">
+	      <button className="button is-primary" onClick={clickHandler}>Login</button>
+	    </p>
+	  );
+	}*/
 
 /***/ })
 /******/ ]);

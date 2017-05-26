@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Room from './Room.jsx';
 import axios from 'axios';  
+import RoomButton from './RoomButton.jsx';
 export default
 
 class Rooms extends Component {
@@ -46,6 +47,9 @@ class Rooms extends Component {
               <tbody>
                 {allRooms}
               </tbody>
+              <tfoot>
+                <RoomButton />
+              </tfoot>
             </table>
           </div>
         </article>
