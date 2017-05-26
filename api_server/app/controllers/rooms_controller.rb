@@ -14,11 +14,15 @@ class RoomsController < ApplicationController
 
   def show 
     @room = Room.find_by(name: params[:id])
-    if @room.present?
-      render json: @room, serializer: RoomSerializer, status: 200
-    else 
-      render json: { errors: ["Room not found."] }, status: 422 
+    respond_to do |format|
+      format.json { render json: @room }
+      format.html {}
     end
+    # if @room.present?
+    #   render json: @room, serializer: RoomSerializer, status: 200
+    # else 
+    #   render json: { errors: ["Room not found."] }, status: 422 
+    # end
   end
 
   private

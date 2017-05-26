@@ -8,10 +8,14 @@ module.exports = {
     './js/components/index.jsx'
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/build/'
+    path: path.join(__dirname, 'javascripts')
   },
+  // output: {
+  //   path: path.join(__dirname, 'dist'),
+  //   filename: 'bundle.js',
+  //   publicPath: '/build/'
+  // },
   module: {
     loaders: [
       {

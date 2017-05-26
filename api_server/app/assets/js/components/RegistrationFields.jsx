@@ -7,13 +7,25 @@ class Registration extends Component {
 
   constructor(props){
     super(props);
-    this.state = { first_name: "",
-                   last_name: "",
-                   email: "",
-                   password: "",
-                   gender: ""
-                 }
+    this.state = {
+      first_name: "",
+      last_name: "",
+      email: "",
+      password: "",
+      gender: ""
+      }
     this.handleRegistrationChange =this.handleRegistrationChange.bind(this);
+  }
+
+  handleRedirect = (res) => {
+    window.location.href = `/users/${res.data.user.id}`;
+  }
+
+  goLoginPage = (e) => {
+    axios.post('/api/sessions', {
+      email: this.state.email,
+      password: this.state.password
+    }).then(this.handleRedirect);
   }
 
   handleRegistrationChange = (e) => {
@@ -29,15 +41,13 @@ class Registration extends Component {
       this.state.gender = "n/a";
     }
     e.preventDefault();
-    axios.post('http://localhost:3000/api/users', {
+    axios.post('/api/users', {
       first_name: this.state.first_name,
       last_name: this.state.last_name,
       email: this.state.email,
       password: this.state.password,
       gender: this.state.gender
-    }).then(res => {
-      console.log(res);
-    }).catch(err => {
+    }).then(this.goLoginPage).catch(err => {
       console.log(err)
     });
   }
@@ -91,7 +101,7 @@ class Registration extends Component {
             </div>
             <div className="field is-grouped">
               <p className="control">
-                <button  className="button is-primary">Register</button>
+                <button  className="button is-primary" onClick={ this.goLoginPage } >Register</button>
               </p>
             </div>
           </form>

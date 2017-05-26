@@ -14,6 +14,7 @@ const pages = {
 };
 
 Object.entries(pages).forEach(([id, Component]) => {
+  console.log('page id', id);
   const root = document.getElementById(id);
   if(!root) { return; }
   console.log('Rendering into ', id);

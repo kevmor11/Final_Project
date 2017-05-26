@@ -1,0 +1,26 @@
+body {
+  background-color: #3591A7;
+  background-size: 1450px 1200px;
+  height: 100vh; }
+
+.login-registration {
+  /*background-color:red;*/
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+
+.col-lg-6 {
+  padding: 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+
+.is-grouped.welcome-space {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5em; }
+  .is-grouped.welcome-space .optionButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start; }
