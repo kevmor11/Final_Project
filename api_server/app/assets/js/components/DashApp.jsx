@@ -20,24 +20,28 @@ class DashApp extends Component {
     console.log("Did mount", "and props now are", this.props['userData']['data']['user']);
     
     this.setState({
-      user: this.props['userData']['data']['user']
+      user: this.props.userData.data.user
     });
-   
+
   }
 
-  
 
 
   render() {
     let userProfile;
+    let rooms = [];
     if(!this.state.user){
       const userAvatarURL = "http://www.clipartbest.com/cliparts/ncB/RK7/ncBRK7qei.png";
       const firstName = "this.state.user['first_name'];"
       const userProfile = <UserProfile avatarURL={userAvatarURL} name={firstName}/>
       console.log("State at render", this.state);
+    } else {
+      rooms = this.state.user.rooms;
     }
-      console.log("Prooooooops",this.props.userData['data']['user']);
+    console.log("Prooooooops",this.props.userData['data']['user']);
     
+
+
     return ( 
       <div>
         <Navbar />
@@ -48,8 +52,8 @@ class DashApp extends Component {
               {userProfile}
             </div>
           </div>
-          <Rooms/>
-          <button> create Room</button>
+          <Rooms rooms={rooms}/>
+          <button>create Room</button>
         </div>
       </div>
     );

@@ -25,11 +25,16 @@ class Rooms extends Component {
 
   render() {
     let allRooms;
-    if(this.state.user){
-      allRooms = this.state.user.rooms.map((room,i) => {
-        return <Room key={i} roomName={room.name} roomNumber={i+1}/>
-      })
-    }
+    console.log("yark", this.props.rooms);
+    // if (this.state.user){
+    //   allRooms = this.state.user.rooms.map((room,i) => {
+    //     return <Room key={i} roomName={room.name} roomNumber={i+1}/>
+    //   })
+    // }
+
+    allRooms = this.props.rooms.map((room, i) => {
+      return <Room key={room.name} roomName={room.name} roomNumber={i+1}/>
+    })
 
     return (
       <div className="tile is-parent is-2 rooms">
