@@ -20,10 +20,10 @@ class DashApp extends Component {
   }
 
   componentDidMount() {
-    // console.log("Did mount", "and props now are", this.props['userData']['data']['user']);
 
+    console.log("Did mount", "and props now are", this.props.userData);
     this.setState({
-      user: this.props['userData']['data']['user']
+      user: this.props.userData
     });
 
     // PSEUDO CREATE USERROOM SO THAT WE ARE ABLE TO GET THE ROOM FOR INVITING USERS, DELETE ONCE NAWAR AND JINNY FINISH THE REAL VERSION OF THIS
@@ -84,13 +84,17 @@ class DashApp extends Component {
   // console.log("state here from render", this.state.user);
 
     let userProfile;
+    let rooms = [];
     if(!this.state.user){
       const userAvatarURL = "http://www.clipartbest.com/cliparts/ncB/RK7/ncBRK7qei.png";
       const firstName = "this.state.user['first_name'];"
       const userProfile = <UserProfile avatarURL={userAvatarURL} name={firstName}/>
-      // console.log("State at render", this.state);
+
+      console.log("State at render", this.state.user);
+    } else {
+      rooms = this.state.user.rooms;
     }
-      // console.log("Prooooooops",this.props.userData['data']['user']);
+    console.log("Prooooooops",this.props.userData);
 
     return (
       <div>
@@ -102,7 +106,9 @@ class DashApp extends Component {
               {userProfile}
             </div>
           </div>
-          <Rooms/>
+
+          <Rooms rooms={rooms}/>
+          {/*<button>create Room</button>*/}
         </div>
 
         { this.state.room_users === 1 &&
