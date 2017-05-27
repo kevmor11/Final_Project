@@ -53,13 +53,15 @@ class PopupNote extends Component {
             <div className="field">
               <label htmlFor="note_title" className="label">Title</label>
               <p className="control">
-                <input className="input" type="text" value={ this.state.title } name="title" id="note_title" onChange={ this.handleTitleChange } />
+                <input className="input" type="text" value={ this.state.title } name="title" 
+                id="note_title" onChange={ this.handleTitleChange } />
               </p>
             </div>
             <div className="field">
               <label htmlFor="note_content" className="label">Content</label>
               <p className="control">
-                <input className="input" type="text" value={ this.state.content } name="content" id="note_content" onChange={ this.handleContentChange }  />
+                <input className="input" type="text" value={ this.state.content } name="content" 
+                id="note_content" onChange={ this.handleContentChange }  />
               </p>
             </div>
             <p className="control">
