@@ -11,6 +11,7 @@ constructor(props) {
       showModal: false,
       user: null,
       postID: null,
+      posts: [] 
     }
   }
 
@@ -21,6 +22,24 @@ constructor(props) {
         const user = res.data.user;
         this.setState({ user });
       });
+    this.setupSubscription();
+  }
+
+  updatePosts(post) {
+    this.setState({
+      posts: this.state.posts.concat({
+        user_first_name: post.user.first_name, description: post.description
+      }) 
+    });
+  }
+
+  setupSubscription() {
+    App.cable.subscriptions.create('PostsChannel', {
+      received(post) {
+        return this.updatePosts(post);
+      },
+      updatePosts: this.updatePosts.bind(this)
+    });
   }
 
   render() {

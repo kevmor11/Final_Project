@@ -4,12 +4,22 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     # @post = room.posts.new
     @post.user = current_user
+
     room = Room.find params[:room_id]
     if @post.save
       render json: {}
     else
       render json: { errors: ["Post could not be saved."] }, status: 500
     end
+
+    if @post.save
+      ActionCable.server.broadcast 'posts',
+        title: post.title,
+        description: post.description,
+        user: post.user.first_name
+      head :ok
+    end       
+
   end
 
   def show 

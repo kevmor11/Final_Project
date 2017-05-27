@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   get '/users/me', to: 'users#me'
+
+  mount ActionCable.server => '/cable'
+
   scope '/api' do
 
     resources :users, except: [:index]
