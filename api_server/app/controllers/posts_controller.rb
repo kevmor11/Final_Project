@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  def create 
+  def create
     @post = Post.new(post_params)
     # @post = room.posts.new
     @post.user = current_user
@@ -18,13 +18,13 @@ class PostsController < ApplicationController
         description: post.description,
         user: post.user.first_name
       head :ok
-    end       
+    end
 
   end
 
-  def show 
+  def show
     @post = Post.find_by(id: params[:id])
-    if @post.present? 
+    if @post.present?
       render json: @post, serializer: PostSerializer, status: 200
     else
       render json: { errors: ["Post not found."] }, status: 422

@@ -20,7 +20,7 @@ class UserProfile extends Component {
             <span>Profile Setting</span>
           </a>
         </article>
-        </div>
+      </div>
     )
   }
 }
