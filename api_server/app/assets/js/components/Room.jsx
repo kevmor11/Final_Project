@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 export default
 class Rooms extends Component {
 
-
-
   redirectionTime() {
     window.location.href = "/rooms/" + this.props.roomName;
   }
