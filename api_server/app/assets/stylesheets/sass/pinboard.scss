@@ -15,8 +15,8 @@
   padding-right:2;
 }
 .components-container {
-  // display: flex;
-  // flex-flow: row wrap;
+  display: flex;
+  flex-flow: row wrap;
 
 }
 .item {
@@ -121,6 +121,6 @@ img.img-title {
 }
 
 .modal-title {
-  display: inline
+  display: inline;
   margin-left: 16.5em;
 }

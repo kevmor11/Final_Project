@@ -5,6 +5,7 @@ import App from './App.jsx';
 import DashApp from './DashApp.jsx';
 import PinboardApp from './PinboardApp.jsx';
 import HangoutApp from './HangoutApp.jsx';
+import axios from 'axios';
 
 const pages = {
   'react-dashboard': DashApp,
@@ -13,14 +14,20 @@ const pages = {
   'react-hangout': HangoutApp
 };
 
-Object.entries(pages).forEach(([id, Component]) => {
-  console.log('page id', id);
-  const root = document.getElementById(id);
-  if(!root) { return; }
-  console.log('Rendering into ', id);
-  ReactDOM.render(<Component/>, root);
-});
 
+function run(user) {
+  Object.entries(pages).forEach(([id, Component]) => {
+    console.log('page id', id);
+    const root = document.getElementById(id);
+    if(!root) { return; }
+    console.log('Rendering into ', id);
+    ReactDOM.render(<Component userData={user}/>, root);
+  });
+}
+
+axios.get('/users/me').then(run);
+
+run();
 
 // {
 //   const root = document.getElementById('react-dashboard');

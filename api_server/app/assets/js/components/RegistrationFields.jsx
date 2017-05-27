@@ -102,7 +102,7 @@ class Registration extends Component {
             </div>
             <div className="field is-grouped">
               <p className="control">
-                <button  className="button is-primary" onClick={ this.goLoginPage } >Register</button>
+                <button className="button is-primary" onClick={ this.goLoginPage } >Register</button>
               </p>
             </div>
           </form>
@@ -110,3 +110,4 @@ class Registration extends Component {
       )
     }
 }
+

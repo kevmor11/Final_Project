@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     respond_to do |format|
       format.json { render json: @user }
-      format.html {}
+      format.html { @user }
     end
     # if @user.present?
     #   render json: @user, serializer: UserSerializer, status: 200
@@ -34,12 +34,8 @@ class UsersController < ApplicationController
     end
   end
 
-  # temp solution, maybe use a namespaced ctrl later
-  def posts
-    # TODO: do some error checking later
-    posts = User.find(params[:user_id]).posts
-    render json: posts, status: 200
-
+  def me
+    render json: current_user, serializer: UserSerializer, status: 200
   end
 
   private

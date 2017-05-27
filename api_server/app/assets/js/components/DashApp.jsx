@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar.jsx';
-import Notification from './Notification.jsx';
 import UserProfile from './UserProfile.jsx';
 import Notifications from './Notifications.jsx';
 import Rooms from './Rooms.jsx';
@@ -19,21 +18,21 @@ class DashApp extends Component {
     }
   }
 
+// ['data']['user']
   componentDidMount() {
-    axios.get(`http://localhost:3000/api/users/1.json`)
+    console.log("Did mount", "and props now are", this.props['userData']['data']['user']);
+
+    this.setState({
+      user: this.props['userData']['data']['user']
+    });
+
+    axios.get(`/api/userrooms/1.json`)
       .then(res => {
-        console.log(res.data.user);
-        console.log(res.data.user.rooms[0].name);
-        const user = res.data.user;
-        this.setState({ user });
+        console.log(res.data);
+        // const user = res.data.user;
+        this.setState({ current_room:  });
       });
 
-    axios.get(`http://localhost:3000/api/userrooms/1.json`)
-      .then(res => {
-        console.log(res.data.user);
-        const user = res.data.user;
-        this.setState({ user });
-      });
   }
 
   handleInviteFormChange(event) {
@@ -55,11 +54,12 @@ class DashApp extends Component {
     let userProfile;
     if(!this.state.user){
       const userAvatarURL = "http://www.clipartbest.com/cliparts/ncB/RK7/ncBRK7qei.png";
-      const firstName ="Nawar";
+      const firstName = "this.state.user['first_name'];"
       const userProfile = <UserProfile avatarURL={userAvatarURL} name={firstName}/>
-      console.log("hi", userProfile);
+      console.log("State at render", this.state);
     }
-      // console.log(userProfile);
+
+      console.log("Prooooooops",this.props.userData['data']['user']);
 
     return (
       <div>
@@ -71,6 +71,7 @@ class DashApp extends Component {
             </div>
           </div>
           <Rooms/>
+          <button> create Room</button>
         </div>
 
         { this.state.room_users === 1 &&

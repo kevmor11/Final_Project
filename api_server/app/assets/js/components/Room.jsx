@@ -6,13 +6,11 @@ class Rooms extends Component {
   render() {
 
     return (
-      <div>
-        <tr>
-          <th>1</th>
-          <td><a href="" title="this room blah blah blah">{this.props.roomName}</a></td>
-        </tr>
+      <tr>
+        <th>{this.props.roomNumber}</th>
 
-      </div>
+        <td><a href="" title="this room blah blah blah">{this.props.roomName}</a></td>
+      </tr>
     );
   }
 }

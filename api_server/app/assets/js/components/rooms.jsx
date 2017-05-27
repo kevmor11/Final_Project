@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Room from './Room.jsx';
 import axios from 'axios';  
-import RoomButton from './RoomButton.jsx';
 export default
 
 class Rooms extends Component {
@@ -14,12 +13,13 @@ class Rooms extends Component {
   }
 
   componentDidMount() {
-    axios.get(`/api/users/2.json`)
-      .then(res => {
-        // console.log(res.data.user);
-        const user = res.data.user;
-        this.setState({ user });
-      });
+
+    // axios.get(`/api/users/2.json`)
+    //   .then(res => {
+    //     // console.log(res.data.user);
+    //     const user = res.data.user;
+    //     this.setState({ user });
+    //   });
   }
 
 
@@ -48,8 +48,9 @@ class Rooms extends Component {
                 {allRooms}
               </tbody>
               <tfoot>
-                <RoomButton />
+                
               </tfoot>
+             
             </table>
           </div>
         </article>

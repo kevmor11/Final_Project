@@ -19,7 +19,7 @@ class LoginField extends Component {
   
   handleEmailChange(event) {
     this.setState({
-      email: event.target.value
+      email: event.target.value 
     });
   }
 

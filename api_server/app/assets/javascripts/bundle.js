@@ -7965,6 +7965,10 @@
 	
 	var _HangoutApp2 = _interopRequireDefault(_HangoutApp);
 	
+	var _axios = __webpack_require__(/*! axios */ 284);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var pages = {
@@ -7974,19 +7978,25 @@
 	  'react-hangout': _HangoutApp2.default
 	};
 	
-	Object.entries(pages).forEach(function (_ref) {
-	  var _ref2 = _slicedToArray(_ref, 2),
-	      id = _ref2[0],
-	      Component = _ref2[1];
+	function run(user) {
+	  Object.entries(pages).forEach(function (_ref) {
+	    var _ref2 = _slicedToArray(_ref, 2),
+	        id = _ref2[0],
+	        Component = _ref2[1];
 	
-	  console.log('page id', id);
-	  var root = document.getElementById(id);
-	  if (!root) {
-	    return;
-	  }
-	  console.log('Rendering into ', id);
-	  _reactDom2.default.render(_react2.default.createElement(Component, null), root);
-	});
+	    console.log('page id', id);
+	    var root = document.getElementById(id);
+	    if (!root) {
+	      return;
+	    }
+	    console.log('Rendering into ', id);
+	    _reactDom2.default.render(_react2.default.createElement(Component, { userData: user }), root);
+	  });
+	}
+	
+	_axios2.default.get('/users/me').then(run);
+	
+	run();
 	
 	// {
 	//   const root = document.getElementById('react-dashboard');
@@ -41278,7 +41288,8 @@
 	    _this.state = {
 	      showModal: false,
 	      user: null,
-	      postID: null
+	      postID: null,
+	      posts: []
 	    };
 	    return _this;
 	  }
@@ -41292,6 +41303,27 @@
 	        // console.log('res', res.data);
 	        var user = res.data.user;
 	        _this2.setState({ user: user });
+	      });
+	      this.setupSubscription();
+	    }
+	  }, {
+	    key: 'updatePosts',
+	    value: function updatePosts(post) {
+	      this.setState({
+	        posts: this.state.posts.concat({
+	          user_first_name: post.user.first_name, description: post.description
+	        })
+	      });
+	    }
+	  }, {
+	    key: 'setupSubscription',
+	    value: function setupSubscription() {
+	      App.cable.subscriptions.create('PostsChannel', {
+	        received: function received(post) {
+	          return this.updatePosts(post);
+	        },
+	
+	        updatePosts: this.updatePosts.bind(this)
 	      });
 	    }
 	  }, {
@@ -62122,7 +62154,7 @@
 	              _react2.default.createElement(
 	                'p',
 	                { className: 'control' },
-	                _react2.default.createElement('input', { className: 'input input-description', type: 'text', value: this.state.title, name: 'title', id: 'note_title', onChange: this.handleTitleChange })
+	                _react2.default.createElement('textarea', { className: 'input', type: 'text', value: this.state.title, name: 'title', id: 'note_title', onChange: this.handleTitleChange })
 	              )
 	            ),
 	            _react2.default.createElement(

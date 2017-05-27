@@ -54,7 +54,7 @@ class PopupNote extends Component {
             <div className="field">
               <label htmlFor="note_title" className="label">Title</label>
               <p className="control">
-                <input className="input input-description" type="text" value={ this.state.title } name="title" id="note_title" onChange={ this.handleTitleChange } />
+                <textarea className="input" type="text" value={ this.state.title } name="title" id="note_title" onChange={ this.handleTitleChange } />
               </p>
             </div>
             <div className="field">
