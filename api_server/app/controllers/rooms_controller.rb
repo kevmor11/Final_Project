@@ -5,13 +5,13 @@ class RoomsController < ApplicationController
 
   def create
     user = current_user
-    puts user
-    room = user.userrooms.rooms.new(room_params)
-    if room.save
+    room = user.rooms.create(room_params)
+    userroom = user.userrooms.where(room: room.id).first
+    # if room.save
       render json: room, serializer: RoomSerializer, status: 201
-    else 
-      render json: { errors: [user.errors.full_messages] }, status: 422
-    end
+    # else 
+    #   render json: { errors: [user.errors.full_messages] }, status: 422
+    # end
   end
 
   def show 
