@@ -1,40 +1,44 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar.jsx';
+
 import UserProfile from './UserProfile.jsx';
 import Notifications from './Notifications.jsx';
+
 import Rooms from './Rooms.jsx';
 
 export default
 class DashApp extends Component {
 
-    constructor(props) {
+  constructor(props) {
     super(props); // super calls `constructor` in React.Component
     this.state = {
       user: null
     }
   }
-
+// ['data']['user']
   componentDidMount() {
+    console.log("Did mount", "and props now are", this.props['userData']['data']['user']);
     
-    axios.get(`users/me`)
-      .then(res => {
-        alert(res);
-      });
+    this.setState({
+      user: this.props['userData']['data']['user']
+    });
+   
   }
 
+  
 
 
   render() {
     let userProfile;
     if(!this.state.user){
       const userAvatarURL = "http://www.clipartbest.com/cliparts/ncB/RK7/ncBRK7qei.png";
-      const firstName ="Nawar";
+      const firstName = "this.state.user['first_name'];"
       const userProfile = <UserProfile avatarURL={userAvatarURL} name={firstName}/>
-      console.log("hi", userProfile);
+      console.log("State at render", this.state);
     }
-      console.log(userProfile);
+      console.log("Prooooooops",this.props.userData['data']['user']);
     
-    return (
+    return ( 
       <div>
         <Navbar />
         <div className="tile is-ancestor logged">
@@ -45,15 +49,9 @@ class DashApp extends Component {
             </div>
           </div>
           <Rooms/>
+          <button> create Room</button>
         </div>
       </div>
     );
   }
 }
-
-// className ExtendedApp extends App {
-//   render() {
-//     const inner = super.render(); // calls render in <App />
-//     return <div id="wrapped">{inner}</div>;
-//   }
-// }

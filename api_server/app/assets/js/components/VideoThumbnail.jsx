@@ -23,5 +23,3 @@ class VideoThumbNail extends Component {
     );
   }
 }
-
-

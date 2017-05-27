@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {Modal, Button, OverlayTrigger} from 'react-bootstrap'
+import {Modal, Button, OverlayTrigger, Tooltip} from 'react-bootstrap'
 
 export default
 class PopupLink extends Component {
@@ -15,6 +14,10 @@ class PopupLink extends Component {
 
   render() {
 
+    const tooltip = (
+      <Tooltip id="tooltip">Upload a .jpg, .jpeg, .png, or .gif file.</Tooltip>
+    );
+
     return (
       <div>
 
@@ -26,20 +29,22 @@ class PopupLink extends Component {
             <form action="api/posts" method="POST">
               <div className="field">
                 <label htmlFor="image_file" className="label">Image</label>
-                <p className="control">
-                  <input className="input" type="file" id="image_file" />
-                </p>
+                <OverlayTrigger placement="bottom" overlay={tooltip} style="z-index: 9001" >
+                  <p className="control">
+                    <input className="input" type="file" id="image_file" />
+                  </p>
+                </OverlayTrigger>
               </div>
               <div className="field">
-                <label htmlFor="image_title" className="label">Content</label>
+                <label htmlFor="image_title" className="label">Title</label>
                 <p className="control">
-                  <input className="input" type="text" id="image_title" />
+                  <textarea className="input" type="text" id="image_title" />
                 </p>
               </div>
               <div className="field">
                 <label htmlFor="image_description" className="label">Description</label>
                 <p className="control">
-                  <input className="input" type="text" id="image_description" />
+                  <textarea className="input input-description" type="text" id="image_description" />
                 </p>
               </div>
               <p className="control">

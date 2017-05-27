@@ -31,7 +31,6 @@ constructor(props) {
         <div className="item" onClick={this.open}>
           <p className="img-title">{this.props.title}</p>
           <i className="add fa fa-link"></i>
-          {/*<img className="img-thumb" src={'http://localhost:3000/' + this.props.thumb}/>*/}
         </div>
 
         <Modal show={this.state.showModal} onHide={this.close.bind(this)}>

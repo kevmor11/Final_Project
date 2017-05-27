@@ -3,10 +3,7 @@ var webpack = require('webpack');
 
 module.exports = {
   devtool: 'source-map',
-  entry: [
-    'webpack-dev-server/client?http://localhost:3001',
-    './js/components/index.jsx'
-  ],
+  entry: './js/components/index.jsx',
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, 'javascripts')
@@ -20,12 +17,12 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        loaders: ['babel'],
+        loaders: ['babel-loader'],
         include: path.join(__dirname, 'js')
       },
       {
         test: /\.scss$/,
-        loaders: ["style", "css", "sass"]
+        loaders: ["style-loader", "css-loader", "sass-loader"]
       }
     ]
   }

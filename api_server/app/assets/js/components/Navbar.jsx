@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import NavbarLeft from './NavbarLeft.jsx'
-class Navbar extends Component { 
+
+class Navbar extends Component {
   render() {
     return (
       <div>

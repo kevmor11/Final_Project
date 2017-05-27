@@ -6,7 +6,8 @@ class Rooms extends Component {
 
     return (
       <tr>
-        <th>1</th>
+        <th>{this.props.roomNumber}</th>
+
         <td><a href="" title="this room blah blah blah">{this.props.roomName}</a></td>
       </tr>
     );
