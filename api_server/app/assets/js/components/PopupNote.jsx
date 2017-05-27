@@ -37,7 +37,8 @@ class PopupNote extends Component {
   submitForm(event) {
     axios.post('/api/rooms/1/posts', {
       title: this.state.title,
-      content: this.state.content
+      content: this.state.content,
+      category: "note"
     }).then(this.close.bind(this));
   }
 
