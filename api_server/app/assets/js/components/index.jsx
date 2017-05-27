@@ -22,7 +22,7 @@ function run(user) {
     if(!root) { return; }
     console.log('Rendering into ', id);
     ReactDOM.render(
-      <Component userData={user}/>, root);
+      <Component userData={user.data.user}/>, root);
   });
 }
 

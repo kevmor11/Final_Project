@@ -14,12 +14,12 @@ const PostNew = require('../components/PostNew.jsx');
 
 
 module.exports = (
-  <Route name="index" path="/" component={index}>
+  <Router name="index" path="/" component={index}>
     <DefaultRoute component={UserPage} />
     <Route name="user" path="users/:userId" component={DashApp}/>
     <Route name="room" path="/room/:roomId" component={RoomPage}/>
     <Route name="room" path="/room/:roomId" component={RoomPage}/>
     <Route name="new-room" path="/room/new" component={RoomNew}/> 
     <Route name="new-post" path="/post/new" component={PostNew}/>
-  </Route>
+  </Router>
 );

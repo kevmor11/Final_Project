@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar.jsx';
-
 import UserProfile from './UserProfile.jsx';
 import Notifications from './Notifications.jsx';
-
 import Rooms from './Rooms.jsx';
 
 export default
@@ -15,17 +13,13 @@ class DashApp extends Component {
       user: null
     }
   }
-// ['data']['user']
+
   componentDidMount() {
-    console.log("Did mount", "and props now are", this.props['userData']['data']['user']);
-    
+    console.log("Did mount", "and props now are", this.props.userData);
     this.setState({
-      user: this.props.userData.data.user
+      user: this.props.userData
     });
-
   }
-
-
 
   render() {
     let userProfile;
@@ -34,11 +28,11 @@ class DashApp extends Component {
       const userAvatarURL = "http://www.clipartbest.com/cliparts/ncB/RK7/ncBRK7qei.png";
       const firstName = "this.state.user['first_name'];"
       const userProfile = <UserProfile avatarURL={userAvatarURL} name={firstName}/>
-      console.log("State at render", this.state);
+      console.log("State at render", this.state.user);
     } else {
       rooms = this.state.user.rooms;
     }
-    console.log("Prooooooops",this.props.userData['data']['user']);
+    console.log("Prooooooops",this.props.userData);
     
 
 
@@ -53,7 +47,7 @@ class DashApp extends Component {
             </div>
           </div>
           <Rooms rooms={rooms}/>
-          <button>create Room</button>
+          {/*<button>create Room</button>*/}
         </div>
       </div>
     );

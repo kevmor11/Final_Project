@@ -16,7 +16,7 @@ constructor(props) {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:3000/api/users/1.json`)
+    axios.get(`/api/users/1.json`)
       .then(res => {
         // console.log('res', res.data);
         const user = res.data.user;

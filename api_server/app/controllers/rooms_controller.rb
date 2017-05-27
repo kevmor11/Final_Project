@@ -4,7 +4,9 @@ class RoomsController < ApplicationController
   end
 
   def create
-    room = Room.new(room_params)
+    user = current_user
+    puts user
+    room = user.userrooms.rooms.new(room_params)
     if room.save
       render json: room, serializer: RoomSerializer, status: 201
     else 
