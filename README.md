@@ -1,4 +1,4 @@
-#Bridge App (in progress)
+Bridge App (in progress)
 
 An application that enables couples or groups of friends to maintain their own private hangout space.
 
