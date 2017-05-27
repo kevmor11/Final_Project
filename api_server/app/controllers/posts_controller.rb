@@ -7,7 +7,7 @@ class PostsController < ApplicationController
 
     room = Room.find params[:room_id]
     if @post.save
-      render json: {}
+      render json: {@post}
     else
       render json: { errors: ["Post could not be saved."] }, status: 500
     end
