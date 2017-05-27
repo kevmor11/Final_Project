@@ -20,7 +20,7 @@ class UserroomsController < ApplicationController
 
   private
     def userroom_params
-      params.permit(:user_id, :room_id, :userroom)
+      params.permit(:user_id, :room_id)
     end
 
 end

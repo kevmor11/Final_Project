@@ -34605,6 +34605,7 @@
 	      console.log("INSIDE", _this.state.invited_id);
 	      _axios2.default.post('/api/userrooms', {
 	        user_id: _this.state.invited_id,
+	        // TO DO Change to this.state.current_room instead of hardcoding *********************
 	        room_id: 6
 	      });
 	      _this.setState({
@@ -34620,11 +34621,8 @@
 	
 	    _this.submitInviteForm = function () {
 	      var userID = "";
-	      _axios2.default.get('/api/users')
-	      // WE ARE ABLE TO GET ALL USERS, NOW WE MUST EXTRACT THE USERS ID BASED ON THE USERS EMAIL *******
-	      .then(function (res) {
+	      _axios2.default.get('/api/users').then(function (res) {
 	        var users = res.data.users;
-	        // console.log("GET USER", users[0].email);
 	        users.forEach(function (user, i) {
 	          // console.log("INSIDE", user);
 	          if (user.email === _this.state.receiver) {

@@ -48,6 +48,7 @@ class DashApp extends Component {
     console.log("INSIDE", this.state.invited_id);
     axios.post('/api/userrooms', {
       user_id: this.state.invited_id,
+      // TO DO Change to this.state.current_room instead of hardcoding *********************
       room_id: 6,
     });
     this.setState({
@@ -64,10 +65,8 @@ class DashApp extends Component {
   submitInviteForm = () => {
     var userID = "";
     axios.get('/api/users')
-    // WE ARE ABLE TO GET ALL USERS, NOW WE MUST EXTRACT THE USERS ID BASED ON THE USERS EMAIL *******
     .then(res => {
       const users = res.data.users;
-      // console.log("GET USER", users[0].email);
       users.forEach((user, i) => {
         // console.log("INSIDE", user);
         if (user.email === this.state.receiver) {
