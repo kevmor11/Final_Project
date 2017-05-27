@@ -15,6 +15,7 @@ class PinboardApp extends Component {
 
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
+    console.log("I hate you");
     this.state = { openModal: '' };
   }
 
