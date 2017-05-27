@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :rooms, except: [:index]
     resources :posts, except: [:index]
     resources :sessions, only: [:create, :destroy]
+    resources :invites
   end
   resources :users, only: [:new, :create, :show]
   resources :rooms, only: [:new, :create, :show]

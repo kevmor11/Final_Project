@@ -4,14 +4,18 @@ import Notification from './Notification.jsx';
 import UserProfile from './UserProfile.jsx';
 import Notifications from './Notifications.jsx';
 import Rooms from './Rooms.jsx';
+import axios from 'axios';
 
 export default
 class DashApp extends Component {
 
-    constructor(props) {
+  constructor(props) {
     super(props); // super calls `constructor` in React.Component
     this.state = {
-      user: null
+      user: null,
+      reciever: "",
+      room_users: 1,
+      invite_exists: false
     }
   }
 
@@ -25,6 +29,21 @@ class DashApp extends Component {
       });
   }
 
+  handleInviteFormChange(event) {
+    this.setState({
+      receiver: event.target.value
+    });
+  }
+
+  submitInviteForm(event) {
+    axios.post('/api/invites', {
+      receiver: this.state.receiver,
+    }).then(this.close.bind(this));
+    this.setState({
+      room_users: 2
+    })
+  }
+
   render() {
     let userProfile;
     if(!this.state.user){
@@ -33,7 +52,7 @@ class DashApp extends Component {
       const userProfile = <UserProfile avatarURL={userAvatarURL} name={firstName}/>
       console.log("hi", userProfile);
     }
-      console.log(userProfile);
+      // console.log(userProfile);
 
     return (
       <div>
@@ -47,6 +66,25 @@ class DashApp extends Component {
           </div>
           <Rooms/>
         </div>
+
+        { this.state.room_users === 1 &&
+              <div className="user-invite">
+                <div className="field">
+                  <label htmlFor="receiver" className="label">Invite a User to Join Your Room</label>
+                  <p className="control">
+                    <input className="input" type="text" value={ this.state.receiver } name="receiver" id="invite_receiver" onChange={ this.handleInviteFormChange } />
+                  </p>
+                </div>
+                <p className="control">
+                  <button type="submit" className="button is-primary" onClick={ this.submitInviteForm }>Submit</button>
+                </p>
+              </div>
+        }
+        {/* this second conditional must also only display on the receiving users page */}
+        { this.state.invite_exists === true &&
+            <Notification sender={this.state.sender} receiver={this.state.receiver} />
+        }
+
       </div>
     );
   }

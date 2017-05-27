@@ -40789,6 +40789,10 @@
 	
 	var _Rooms2 = _interopRequireDefault(_Rooms);
 	
+	var _axios = __webpack_require__(/*! axios */ 284);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -40807,7 +40811,10 @@
 	    var _this = _possibleConstructorReturn(this, (DashApp.__proto__ || Object.getPrototypeOf(DashApp)).call(this, props));
 	
 	    _this.state = {
-	      user: null
+	      user: null,
+	      reciever: "",
+	      room_users: 1,
+	      invite_exists: false
 	    };
 	    return _this;
 	  }
@@ -40817,11 +40824,28 @@
 	    value: function ccomponentDidMount() {
 	      var _this2 = this;
 	
-	      axios.get('http://localhost:3000/api/users/1.json').then(function (res) {
+	      _axios2.default.get('http://localhost:3000/api/users/1.json').then(function (res) {
 	        console.log(res.data.user);
 	        console.log(res.data.user.rooms[0].name);
 	        var user = res.data.user;
 	        _this2.setState({ user: user });
+	      });
+	    }
+	  }, {
+	    key: 'handleInviteFormChange',
+	    value: function handleInviteFormChange(event) {
+	      this.setState({
+	        receiver: event.target.value
+	      });
+	    }
+	  }, {
+	    key: 'submitInviteForm',
+	    value: function submitInviteForm(event) {
+	      _axios2.default.post('/api/invites', {
+	        receiver: this.state.receiver
+	      }).then(this.close.bind(this));
+	      this.setState({
+	        room_users: 2
 	      });
 	    }
 	  }, {
@@ -40834,7 +40858,7 @@
 	        var _userProfile = _react2.default.createElement(_UserProfile2.default, { avatarURL: userAvatarURL, name: firstName });
 	        console.log("hi", _userProfile);
 	      }
-	      console.log(userProfile);
+	      // console.log(userProfile);
 	
 	      return _react2.default.createElement(
 	        'div',
@@ -40854,7 +40878,35 @@
 	            )
 	          ),
 	          _react2.default.createElement(_Rooms2.default, null)
-	        )
+	        ),
+	        this.state.room_users === 1 && _react2.default.createElement(
+	          'div',
+	          { className: 'user-invite' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'field' },
+	            _react2.default.createElement(
+	              'label',
+	              { htmlFor: 'receiver', className: 'label' },
+	              'Invite a User to Join Your Room'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'control' },
+	              _react2.default.createElement('input', { className: 'input', type: 'text', value: this.state.receiver, name: 'receiver', id: 'invite_receiver', onChange: this.handleInviteFormChange })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'control' },
+	            _react2.default.createElement(
+	              'button',
+	              { type: 'submit', className: 'button is-primary', onClick: this.submitInviteForm },
+	              'Submit'
+	            )
+	          )
+	        ),
+	        this.state.invite_exists === true && _react2.default.createElement(_Notification2.default, { sender: this.state.sender, receiver: this.state.receiver })
 	      );
 	    }
 	  }]);
@@ -41259,23 +41311,53 @@
 	
 	  _createClass(Rooms, [{
 	    key: "render",
+	
+	
+	    // constructor(props) {
+	    //   super(props); // super calls `constructor` in React.Component
+	    //   this.state = {
+	    //     room_users: 1,
+	    //     reciever: "",
+	    //     invite_accepted: false
+	    //   }
+	    // }
+	
+	    // handleFormChange(event) {
+	    //   this.setState({
+	    //     receiver: event.target.value
+	    //   });
+	    // }
+	
+	    // submitForm(event) {
+	    //   axios.post('/api/invites', {
+	    //     receiver: this.state.receiver,
+	    //   }).then(this.close.bind(this));
+	    //   this.setState({
+	    //     room_users: 2
+	    //   })
+	    // }
+	
 	    value: function render() {
 	
 	      return _react2.default.createElement(
-	        "tr",
+	        "div",
 	        null,
 	        _react2.default.createElement(
-	          "th",
-	          null,
-	          "1"
-	        ),
-	        _react2.default.createElement(
-	          "td",
+	          "tr",
 	          null,
 	          _react2.default.createElement(
-	            "a",
-	            { href: "", title: "this room blah blah blah" },
-	            this.props.roomName
+	            "th",
+	            null,
+	            "1"
+	          ),
+	          _react2.default.createElement(
+	            "td",
+	            null,
+	            _react2.default.createElement(
+	              "a",
+	              { href: "", title: "this room blah blah blah" },
+	              this.props.roomName
+	            )
 	          )
 	        )
 	      );

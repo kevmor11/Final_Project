@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :userrooms
   has_many :rooms, through: :userrooms
   has_many :posts
+  has_many :invites
 
   validates :first_name, presence: true
   validates :last_name, presence: true
