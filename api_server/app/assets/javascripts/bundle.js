@@ -56617,13 +56617,56 @@
 	  function PopupLink(props) {
 	    _classCallCheck(this, PopupLink);
 	
-	    return _possibleConstructorReturn(this, (PopupLink.__proto__ || Object.getPrototypeOf(PopupLink)).call(this, props)); // super calls `constructor` in React.Component
+	    // super calls `constructor` in React.Component
+	    var _this = _possibleConstructorReturn(this, (PopupLink.__proto__ || Object.getPrototypeOf(PopupLink)).call(this, props));
+	
+	    _this.state = {
+	      link: '',
+	      title: '',
+	      description: ''
+	    };
+	
+	    _this.handleLinkChange = _this.handleLinkChange.bind(_this);
+	    _this.handleDescriptionChange = _this.handleDescriptionChange.bind(_this);
+	    _this.handleTitleChange = _this.handleTitleChange.bind(_this);
+	    _this.submitForm = _this.submitForm.bind(_this);
+	    return _this;
 	  }
 	
 	  _createClass(PopupLink, [{
 	    key: 'close',
 	    value: function close() {
 	      this.props.onClose();
+	    }
+	  }, {
+	    key: 'handleLinkChange',
+	    value: function handleLinkChange(event) {
+	      this.setState({
+	        link: event.target.value
+	      });
+	    }
+	  }, {
+	    key: 'handleTitleChange',
+	    value: function handleTitleChange(event) {
+	      this.setState({
+	        link: event.target.value
+	      });
+	    }
+	  }, {
+	    key: 'handleDescriptionChange',
+	    value: function handleDescriptionChange(event) {
+	      this.setState({
+	        description: event.target.value
+	      });
+	    }
+	  }, {
+	    key: 'submitForm',
+	    value: function submitForm(event) {
+	      axios.post('/api/rooms/1/posts', {
+	        link: this.state.link,
+	        title: this.state.title,
+	        description: this.state.description
+	      }).then(this.close.bind(this));
 	    }
 	  }, {
 	    key: 'render',
@@ -56648,58 +56691,54 @@
 	            _reactBootstrap.Modal.Body,
 	            null,
 	            _react2.default.createElement(
-	              'form',
-	              { action: 'api/posts', method: 'POST' },
+	              'div',
+	              { className: 'field' },
 	              _react2.default.createElement(
-	                'div',
-	                { className: 'field' },
-	                _react2.default.createElement(
-	                  'label',
-	                  { htmlFor: 'url', className: 'label' },
-	                  'URL'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'control' },
-	                  _react2.default.createElement('input', { className: 'input', type: 'url', id: 'url' })
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'field' },
-	                _react2.default.createElement(
-	                  'label',
-	                  { htmlFor: 'link_title', className: 'label' },
-	                  'Title'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'control' },
-	                  _react2.default.createElement('textarea', { className: 'input', type: 'text', id: 'link_title' })
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'field' },
-	                _react2.default.createElement(
-	                  'label',
-	                  { htmlFor: 'link_description', className: 'label' },
-	                  'Description'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'control' },
-	                  _react2.default.createElement('textarea', { className: 'input input-description', type: 'text', id: 'link_description' })
-	                )
+	                'label',
+	                { htmlFor: 'url', className: 'label' },
+	                'URL'
 	              ),
 	              _react2.default.createElement(
 	                'p',
 	                { className: 'control' },
-	                _react2.default.createElement(
-	                  'button',
-	                  { type: 'submit', className: 'button is-primary' },
-	                  'Submit'
-	                )
+	                _react2.default.createElement('input', { className: 'input', type: 'url', value: this.state.link, id: 'url', onChange: this.handleLinkChange })
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'field' },
+	              _react2.default.createElement(
+	                'label',
+	                { htmlFor: 'title', className: 'label' },
+	                'Title'
+	              ),
+	              _react2.default.createElement(
+	                'p',
+	                { className: 'control' },
+	                _react2.default.createElement('textarea', { className: 'input', type: 'text', value: this.state.title, id: 'title', onChange: this.handleTitleChange })
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'field' },
+	              _react2.default.createElement(
+	                'label',
+	                { htmlFor: 'link_description', className: 'label' },
+	                'Description'
+	              ),
+	              _react2.default.createElement(
+	                'p',
+	                { className: 'control' },
+	                _react2.default.createElement('textarea', { className: 'input', type: 'text', value: this.state.description, id: 'link_description', onChange: this.handleDescriptionChange })
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'control' },
+	              _react2.default.createElement(
+	                'button',
+	                { type: 'submit', className: 'button is-primary', onClick: this.submitForm },
+	                'Submit'
 	              )
 	            )
 	          )
@@ -56748,13 +56787,56 @@
 	  function PopupLink(props) {
 	    _classCallCheck(this, PopupLink);
 	
-	    return _possibleConstructorReturn(this, (PopupLink.__proto__ || Object.getPrototypeOf(PopupLink)).call(this, props)); // super calls `constructor` in React.Component
+	    // super calls `constructor` in React.Component
+	    var _this = _possibleConstructorReturn(this, (PopupLink.__proto__ || Object.getPrototypeOf(PopupLink)).call(this, props));
+	
+	    _this.state = {
+	      image: null,
+	      content: '',
+	      description: ''
+	    };
+	
+	    _this.handleImageChange = _this.handleImageChange.bind(_this);
+	    _this.handleContentChange = _this.handleContentChange.bind(_this);
+	    _this.handleDescriptionChange = _this.handleDescriptionChange.bind(_this);
+	    _this.submitForm = _this.submitForm.bind(_this);
+	    return _this;
 	  }
 	
 	  _createClass(PopupLink, [{
 	    key: 'close',
 	    value: function close() {
 	      this.props.onClose();
+	    }
+	  }, {
+	    key: 'handleImageChange',
+	    value: function handleImageChange(event) {
+	      this.setState({
+	        image: event.target.value
+	      });
+	    }
+	  }, {
+	    key: 'handleContentChange',
+	    value: function handleContentChange(event) {
+	      this.setState({
+	        content: event.target.value
+	      });
+	    }
+	  }, {
+	    key: 'handleDescriptionChange',
+	    value: function handleDescriptionChange(event) {
+	      this.setState({
+	        description: event.target.value
+	      });
+	    }
+	  }, {
+	    key: 'submitForm',
+	    value: function submitForm(event) {
+	      axios.post('/api/rooms/1/posts', {
+	        image: this.state.image,
+	        content: this.state.content,
+	        description: this.state.description
+	      });
 	    }
 	  }, {
 	    key: 'render',
@@ -56801,7 +56883,7 @@
 	                  _react2.default.createElement(
 	                    'p',
 	                    { className: 'control' },
-	                    _react2.default.createElement('input', { className: 'input', type: 'file', id: 'image_file' })
+	                    _react2.default.createElement('input', { className: 'input', type: 'file', value: this.state.image, id: 'image_file', onChange: this.handleImageChange })
 	                  )
 	                )
 	              ),
@@ -56816,7 +56898,7 @@
 	                _react2.default.createElement(
 	                  'p',
 	                  { className: 'control' },
-	                  _react2.default.createElement('textarea', { className: 'input', type: 'text', id: 'image_title' })
+	                  _react2.default.createElement('textarea', { className: 'input', type: 'text', value: this.state.content, id: 'image_title', onChange: this.handleContentChange })
 	                )
 	              ),
 	              _react2.default.createElement(
@@ -56830,7 +56912,7 @@
 	                _react2.default.createElement(
 	                  'p',
 	                  { className: 'control' },
-	                  _react2.default.createElement('textarea', { className: 'input input-description', type: 'text', id: 'image_description' })
+	                  _react2.default.createElement('textarea', { className: 'input', type: 'text', value: this.state.content, id: 'image_description', onChange: this.handleDescriptionChange })
 	                )
 	              ),
 	              _react2.default.createElement(
@@ -56838,7 +56920,7 @@
 	                { className: 'control' },
 	                _react2.default.createElement(
 	                  'button',
-	                  { type: 'submit', className: 'button is-primary' },
+	                  { type: 'submit', className: 'button is-primary', onClick: this.submitForm },
 	                  'Submit'
 	                )
 	              )
