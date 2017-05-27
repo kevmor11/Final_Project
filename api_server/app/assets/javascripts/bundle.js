@@ -102,7 +102,7 @@
 	      return;
 	    }
 	    console.log('Rendering into ', id);
-	    _reactDom2.default.render(_react2.default.createElement(Component, { userData: user.data.user }), root);
+	    _reactDom2.default.render(_react2.default.createElement(Component, { userData: user }), root);
 	  });
 	}
 	
@@ -34767,9 +34767,9 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	
-	      console.log("Did mount", "and props now are", this.props.userData);
+	      console.log("Did mount", "and props now are", this.props.userData.data.user);
 	      this.setState({
-	        user: this.props.userData
+	        user: this.props.userData.data.user
 	      });
 	
 	      // PSEUDO CREATE USERROOM SO THAT WE ARE ABLE TO GET THE ROOM FOR INVITING USERS, DELETE ONCE NAWAR AND JINNY FINISH THE REAL VERSION OF THIS
@@ -34805,7 +34805,7 @@
 	      } else {
 	        rooms = this.state.user.rooms;
 	      }
-	      console.log("Prooooooops", this.props.userData);
+	      console.log("Prooooooops", this.props.userData.data.user);
 	
 	      return _react2.default.createElement(
 	        'div',
@@ -35361,6 +35361,10 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
+	var _axios = __webpack_require__(/*! axios */ 212);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -35378,17 +35382,28 @@
 	    // super calls `constructor` in React.Component
 	    var _this = _possibleConstructorReturn(this, (PinboardApp.__proto__ || Object.getPrototypeOf(PinboardApp)).call(this, props));
 	
-	    console.log("I hate you");
-	    _this.state = { openModal: '' };
+	    console.log("I hate you", window.location['pathname'].split('/')[2]);
+	    _this.state = {
+	      openModal: '',
+	      roomName: window.location['pathname'].split('/')[2]
+	    };
 	    return _this;
 	  }
 	
-	  // openModal(modalName) {
-	  //   // image, link, note
-	  //   this.setState(Object.assign({}, this.state, { openModal: modalName }));
-	  // }
-	
 	  _createClass(PinboardApp, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      _axios2.default.get('/rooms/' + roomName + '.json').then(function (res) {
+	        alert('response', res);
+	      });
+	    }
+	
+	    // openModal(modalName) {
+	    //   // image, link, note
+	    //   this.setState(Object.assign({}, this.state, { openModal: modalName }));
+	    // }
+	
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -35411,9 +35426,6 @@
 	// }
 	
 	
-	PinboardApp.propTypes = {
-	  foo: _propTypes2.default.string
-	};
 	exports.default = PinboardApp;
 
 /***/ }),

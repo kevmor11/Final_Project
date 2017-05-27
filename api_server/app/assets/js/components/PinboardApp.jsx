@@ -6,17 +6,24 @@ import LoginField from './LoginField.jsx';
 import RegistrationFields from './RegistrationFields.jsx';
 import Pinboard from './Pinboard.jsx'
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 export default
 class PinboardApp extends Component {
-  static propTypes = {
-    foo: PropTypes.string
-  }
 
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
-    console.log("I hate you");
-    this.state = { openModal: '' };
+    console.log("I hate you", window.location['pathname'].split('/')[2]);
+    this.state = { 
+      openModal: '',
+      roomName: window.location['pathname'].split('/')[2]
+    };
+  }
+
+  componentDidMount() {
+    axios.get(`/rooms/${roomName}.json`).then((res) => {
+      alert('response', res);
+    });
   }
 
   // openModal(modalName) {

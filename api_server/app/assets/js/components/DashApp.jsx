@@ -21,9 +21,9 @@ class DashApp extends Component {
 
   componentDidMount() {
 
-    console.log("Did mount", "and props now are", this.props.userData);
+    console.log("Did mount", "and props now are", this.props.userData.data.user);
     this.setState({
-      user: this.props.userData
+      user: this.props.userData.data.user
     });
 
     // PSEUDO CREATE USERROOM SO THAT WE ARE ABLE TO GET THE ROOM FOR INVITING USERS, DELETE ONCE NAWAR AND JINNY FINISH THE REAL VERSION OF THIS
@@ -94,7 +94,7 @@ class DashApp extends Component {
     } else {
       rooms = this.state.user.rooms;
     }
-    console.log("Prooooooops",this.props.userData);
+    console.log("Prooooooops",this.props.userData.data.user);
 
     return (
       <div>
