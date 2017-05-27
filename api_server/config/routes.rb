@@ -7,11 +7,12 @@ Rails.application.routes.draw do
 
   scope '/api' do
 
-    resources :users, except: [:index]
+    resources :users
     resources :rooms, except: [:index] do
       resources :posts, except: [:index]
     end
     resources :sessions, only: [:create, :destroy]
+    resources :userrooms, only: [:create, :show, :destroy]
   end
   resources :users, only: [:new, :create, :show]
   resources :rooms, only: [:new, :create, :show]

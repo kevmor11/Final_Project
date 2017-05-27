@@ -7,14 +7,13 @@ class Registration extends Component {
 
   constructor(props){
     super(props);
-
-    this.state = { 
+    this.state = {
       first_name: "",
       last_name: "",
       email: "",
       password: "",
       gender: ""
-      }  
+      }
     this.handleRegistrationChange =this.handleRegistrationChange.bind(this);
   }
 
@@ -27,13 +26,13 @@ class Registration extends Component {
       email: this.state.email,
       password: this.state.password
     }).then(this.handleRedirect);
-  }  
+  }
 
   handleRegistrationChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({
-      [name]: value 
+      [name]: value
     });
   }
 
