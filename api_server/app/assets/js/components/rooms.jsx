@@ -14,6 +14,9 @@ class Rooms extends Component {
   }
 
   componentDidMount() {
+    alert(res.data);
+    console.log(res.data);
+    console.log(res);
     axios.get(`/api/users/2.json`)
       .then(res => {
         // console.log(res.data.user);

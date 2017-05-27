@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/users/me', to: 'users#me'
   scope '/api' do
     resources :users, except: [:index]
     resources :rooms, except: [:index] do
@@ -10,6 +11,5 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show]
   resources :rooms, only: [:new, :create, :show]
   root to: 'sessions#new'
-  
 
 end

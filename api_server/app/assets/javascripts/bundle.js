@@ -36742,7 +36742,7 @@
 	        email: _this.state.email,
 	        password: _this.state.password,
 	        gender: _this.state.gender
-	      }).then(_this.loginPage).catch(function (err) {
+	      }).then(_this.goLoginPage).catch(function (err) {
 	        console.log(err);
 	      });
 	    };
@@ -40907,15 +40907,11 @@
 	  }
 	
 	  _createClass(DashApp, [{
-	    key: 'ccomponentDidMount',
-	    value: function ccomponentDidMount() {
-	      var _this2 = this;
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
 	
-	      axios.get('http://localhost:3000/api/users/1.json').then(function (res) {
-	        console.log(res.data.user);
-	        console.log(res.data.user.rooms[0].name);
-	        var user = res.data.user;
-	        _this2.setState({ user: user });
+	      axios.get('users/me').then(function (res) {
+	        alert(res);
 	      });
 	    }
 	  }, {
@@ -41254,6 +41250,9 @@
 	    value: function componentDidMount() {
 	      var _this2 = this;
 	
+	      alert(res.data);
+	      console.log(res.data);
+	      console.log(res);
 	      _axios2.default.get('/api/users/2.json').then(function (res) {
 	        // console.log(res.data.user);
 	        var user = res.data.user;
@@ -63304,14 +63303,6 @@
 	};
 	
 	exports.default = LoginButton;
-	
-	/*export default function login({clickHandler}) {
-	  return (
-	    <p className="control">
-	      <button className="button is-primary" onClick={clickHandler}>Login</button>
-	    </p>
-	  );
-	}*/
 
 /***/ })
 /******/ ]);
