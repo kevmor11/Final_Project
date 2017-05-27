@@ -3,6 +3,11 @@ class UsersController < ApplicationController
   def new
   end
 
+  def index
+    @users = User.all
+    render json: @users, each_serializer: UserSerializer, status: 201
+  end
+
   def create
     user = User.new(user_params)
     if user.save

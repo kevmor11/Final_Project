@@ -12,54 +12,86 @@ class DashApp extends Component {
     super(props); // super calls `constructor` in React.Component
     this.state = {
       user: null,
-      reciever: "",
+      receiver: "",
       room_users: 1,
-      current_room: null;
+      current_room: 6,
+      invited_id: ""
     }
   }
 
-// ['data']['user']
   componentDidMount() {
-    console.log("Did mount", "and props now are", this.props['userData']['data']['user']);
+    // console.log("Did mount", "and props now are", this.props['userData']['data']['user']);
 
     this.setState({
       user: this.props['userData']['data']['user']
     });
 
-    axios.get(`/api/userrooms/1.json`)
-      .then(res => {
-        console.log(res.data);
-        // const user = res.data.user;
-        this.setState({ current_room:  });
-      });
+    // PSEUDO CREATE USERROOM SO THAT WE ARE ABLE TO GET THE ROOM FOR INVITING USERS, DELETE ONCE NAWAR AND JINNY FINISH THE REAL VERSION OF THIS
+    // axios.post('/api/userrooms', {
+    //   user_id: 6,
+    //   room_id: 6,
+    // });
+    // this.setState({
+    //   current_room: 2
+    // })
 
+    // // set the current room so that we know which room to render???
+    // axios.get(`/api/userrooms/6.json`)
+    // .then(res => {
+    //   console.log("Room Get", res);
+    //   const current_room = res.data.user;
+    //   this.setState({ current_room: current_room });
+    // });
   }
 
-  handleInviteFormChange(event) {
-    this.setState({
-      receiver: event.target.value
-    });
-  }
-
-  submitInviteForm(event) {
+  addUserToRoom = () => {
+    console.log("INSIDE", this.state.invited_id);
     axios.post('/api/userrooms', {
-      receiver: this.state.receiver,
-    }).then(this.close.bind(this));
+      user_id: this.state.invited_id,
+      room_id: 6,
+    });
     this.setState({
       room_users: 2
     })
   }
 
+  handleInviteFormChange = (event) => {
+    this.setState({
+      receiver: event.target.value
+    });
+  }
+
+  submitInviteForm = () => {
+    var userID = "";
+    axios.get('/api/users')
+    // WE ARE ABLE TO GET ALL USERS, NOW WE MUST EXTRACT THE USERS ID BASED ON THE USERS EMAIL *******
+    .then(res => {
+      const users = res.data.users;
+      // console.log("GET USER", users[0].email);
+      users.forEach((user, i) => {
+        // console.log("INSIDE", user);
+        if (user.email === this.state.receiver) {
+          userID = user.id;
+          this.setState({
+            invited_id: userID
+          })
+          this.addUserToRoom();
+        }
+      })
+    });
+  }
+
   render() {
+  // console.log("state here from render", this.state.user);
+
     let userProfile;
     if(!this.state.user){
       const userAvatarURL = "http://www.clipartbest.com/cliparts/ncB/RK7/ncBRK7qei.png";
       const firstName = "this.state.user['first_name'];"
       const userProfile = <UserProfile avatarURL={userAvatarURL} name={firstName}/>
-      console.log("State at render", this.state);
+      // console.log("State at render", this.state);
     }
-
-      console.log("Prooooooops",this.props.userData['data']['user']);
+      // console.log("Prooooooops",this.props.userData['data']['user']);
 
     return (
       <div>
@@ -67,11 +99,11 @@ class DashApp extends Component {
         <div className="tile is-ancestor logged">
           <div className="tile is-vertical is-8">
             <div className="tile">
+              <Notifications />
               {userProfile}
             </div>
           </div>
           <Rooms/>
-          <button> create Room</button>
         </div>
 
         { this.state.room_users === 1 &&
@@ -79,7 +111,7 @@ class DashApp extends Component {
             <div className="field">
               <label htmlFor="receiver" className="label">Invite Someone to Join Your Room</label>
               <p className="control">
-                <input className="input" type="text" value={ this.state.receiver } name="receiver" id="invite_receiver" onChange={ this.handleInviteFormChange } />
+                <input className="input" type="text" name="receiver" id="invite_receiver" onChange={ this.handleInviteFormChange } />
               </p>
             </div>
             <p className="control">
