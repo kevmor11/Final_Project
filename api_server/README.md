@@ -1,24 +1,5 @@
-# README
+#Bridge App (in progress)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An application that enables couples or groups of friends to maintain their own private hangout space.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Technologies involved include Ruby on Rails, Node.js, React.js, Express, ActionCable, PostgreSQL, HTML, and CSS.   
