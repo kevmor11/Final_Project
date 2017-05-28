@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       resources :posts, except: [:index]
     end
     resources :sessions, only: [:create, :destroy]
-    resources :userrooms, only: [:create, :show, :destroy]
+    resources :userrooms, only: [:create, :show, :destroy, :index]
   end
   resources :users, only: [:new, :create, :show]
   resources :rooms, only: [:new, :create, :show]
