@@ -73,7 +73,7 @@
 	
 	var _PinboardApp2 = _interopRequireDefault(_PinboardApp);
 	
-	var _HangoutApp = __webpack_require__(/*! ./HangoutApp.jsx */ 547);
+	var _HangoutApp = __webpack_require__(/*! ./HangoutApp.jsx */ 544);
 	
 	var _HangoutApp2 = _interopRequireDefault(_HangoutApp);
 	
@@ -34748,15 +34748,6 @@
 	  }
 	
 	  _createClass(DashApp, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	
-	      console.log("Did mount", "and props now are", this.props.userData.data.user);
-	      this.setState({
-	        user: this.props.userData.data.user
-	      });
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var rooms = [];
@@ -35461,10 +35452,6 @@
 	    value: function componentDidMount() {
 	      var _this2 = this;
 	
-	      this.setState({
-	        user: this.props.userData
-	      });
-	
 	      var roomUsers = 0;
 	      _axios2.default.get('/api/userrooms').then(function (res) {
 	        // console.log("USERROOM DATA", res.data.userrooms)
@@ -35492,7 +35479,7 @@
 	          'div',
 	          { className: 'tile is-ancestor mainboard' },
 	          _react2.default.createElement(_PinboardSidebar2.default, { currentRoom: this.state.roomID }),
-	          _react2.default.createElement(_PinboardContainer2.default, { openModal: this.state.openModal, userData: this.state, roomID: this.state.roomID }),
+	          _react2.default.createElement(_PinboardContainer2.default, { openModal: this.state.openModal, userData: this.state.user, roomID: this.state.roomID }),
 	          this.state.room_users === 1 && _react2.default.createElement(
 	            'div',
 	            { className: 'user-invite' },
@@ -35722,7 +35709,8 @@
 	
 	    _this.state = {
 	      openModal: '',
-	      user: props.userData };
+	      user: props.userData
+	    };
 	    return _this;
 	  }
 	
@@ -35736,6 +35724,8 @@
 	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
+	
+	      console.log('pb console', this.state.user);
 	
 	      return _react2.default.createElement(
 	        'div',
@@ -35752,7 +35742,30 @@
 	              null,
 	              _react2.default.createElement(_PinboardItems2.default, { userData: this.state.user, openModal: this.state.openModal, onClose: function onClose() {
 	                  return _this2.setState({ openModal: '' });
-	                }, roomID: this.props.roomID })
+	                } }),
+	              _react2.default.createElement(
+	                'section',
+	                null,
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'title' },
+	                  'Main column'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'subtitle' },
+	                  'With some content'
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'content' },
+	                  _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.'
+	                  )
+	                )
+	              )
 	            )
 	          )
 	        )
@@ -35880,11 +35893,13 @@
 	      });
 	    };
 	
+	    console.log("Props from PBItemRequest", props);
 	    _this.state = {
 	      showModal: false,
 	      user: null,
 	      postID: null,
-	      posts: []
+	      posts: [],
+	      userData: props
 	    };
 	    return _this;
 	  }
@@ -35894,8 +35909,8 @@
 	    value: function componentDidMount() {
 	      var _this2 = this;
 	
-	      // PASS IN USER ID INSTEAD OF HARD CODING
-	      _axios2.default.get('/api/users/1.json').then(function (res) {
+	      // console.log('userIDDDDDD', this.props.userData.data.user.id);
+	      _axios2.default.get('/api/users/2.json').then(function (res) {
 	        console.log('res', res.data);
 	        var user = res.data.user;
 	        _this2.setState({ user: user });
@@ -56647,15 +56662,15 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _PopupNote = __webpack_require__(/*! ./PopupNote.jsx */ 544);
+	var _PopupNote = __webpack_require__(/*! ./PopupNote.jsx */ 545);
 	
 	var _PopupNote2 = _interopRequireDefault(_PopupNote);
 	
-	var _PopupLink = __webpack_require__(/*! ./PopupLink.jsx */ 545);
+	var _PopupLink = __webpack_require__(/*! ./PopupLink.jsx */ 546);
 	
 	var _PopupLink2 = _interopRequireDefault(_PopupLink);
 	
-	var _PopupImage = __webpack_require__(/*! ./PopupImage.jsx */ 546);
+	var _PopupImage = __webpack_require__(/*! ./PopupImage.jsx */ 547);
 	
 	var _PopupImage2 = _interopRequireDefault(_PopupImage);
 	
@@ -56714,6 +56729,7 @@
 	    value: function render() {
 	      var containerClass = "add-content-container";
 	      if (this.state.showAddButtons) containerClass += " open";
+	      console.log("header console.log", this.props.userData);
 	
 	      return _react2.default.createElement(
 	        'div',
@@ -56789,6 +56805,83 @@
 
 /***/ }),
 /* 544 */
+/*!**************************************!*\
+  !*** ./js/components/HangoutApp.jsx ***!
+  \**************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Navbar = __webpack_require__(/*! ./Navbar.jsx */ 206);
+	
+	var _Navbar2 = _interopRequireDefault(_Navbar);
+	
+	var _LoginButton = __webpack_require__(/*! ./LoginButton.jsx */ 238);
+	
+	var _LoginButton2 = _interopRequireDefault(_LoginButton);
+	
+	var _RegistrationButton = __webpack_require__(/*! ./RegistrationButton.jsx */ 239);
+	
+	var _RegistrationButton2 = _interopRequireDefault(_RegistrationButton);
+	
+	var _LoginField = __webpack_require__(/*! ./LoginField.jsx */ 240);
+	
+	var _LoginField2 = _interopRequireDefault(_LoginField);
+	
+	var _RegistrationFields = __webpack_require__(/*! ./RegistrationFields.jsx */ 241);
+	
+	var _RegistrationFields2 = _interopRequireDefault(_RegistrationFields);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var HangoutApp = function (_Component) {
+	  _inherits(HangoutApp, _Component);
+	
+	  function HangoutApp() {
+	    _classCallCheck(this, HangoutApp);
+	
+	    return _possibleConstructorReturn(this, (HangoutApp.__proto__ || Object.getPrototypeOf(HangoutApp)).apply(this, arguments));
+	  }
+	
+	  _createClass(HangoutApp, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_Navbar2.default, null),
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          'Hello world hangout'
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return HangoutApp;
+	}(_react.Component);
+	
+	exports.default = HangoutApp;
+
+/***/ }),
+/* 545 */
 /*!*************************************!*\
   !*** ./js/components/PopupNote.jsx ***!
   \*************************************/
@@ -56866,7 +56959,7 @@
 	    _this.submitForm = _this.submitForm.bind(_this);
 	    function findRoomID(roomName) {
 	      var roomID = void 0;
-	      props.userData.user.rooms.forEach(function (roomObject) {
+	      props.userData.rooms.forEach(function (roomObject) {
 	        var currentRoomName = window.location['pathname'].split('/')[2];
 	        if (currentRoomName == roomObject.name) {
 	          roomID = roomObject.id;
@@ -56986,7 +57079,7 @@
 	exports.default = PopupNote;
 
 /***/ }),
-/* 545 */
+/* 546 */
 /*!*************************************!*\
   !*** ./js/components/PopupLink.jsx ***!
   \*************************************/
@@ -57156,7 +57249,7 @@
 	exports.default = PopupLink;
 
 /***/ }),
-/* 546 */
+/* 547 */
 /*!**************************************!*\
   !*** ./js/components/PopupImage.jsx ***!
   \**************************************/
@@ -57338,83 +57431,6 @@
 	}(_react.Component);
 	
 	exports.default = PopupLink;
-
-/***/ }),
-/* 547 */
-/*!**************************************!*\
-  !*** ./js/components/HangoutApp.jsx ***!
-  \**************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _Navbar = __webpack_require__(/*! ./Navbar.jsx */ 206);
-	
-	var _Navbar2 = _interopRequireDefault(_Navbar);
-	
-	var _LoginButton = __webpack_require__(/*! ./LoginButton.jsx */ 238);
-	
-	var _LoginButton2 = _interopRequireDefault(_LoginButton);
-	
-	var _RegistrationButton = __webpack_require__(/*! ./RegistrationButton.jsx */ 239);
-	
-	var _RegistrationButton2 = _interopRequireDefault(_RegistrationButton);
-	
-	var _LoginField = __webpack_require__(/*! ./LoginField.jsx */ 240);
-	
-	var _LoginField2 = _interopRequireDefault(_LoginField);
-	
-	var _RegistrationFields = __webpack_require__(/*! ./RegistrationFields.jsx */ 241);
-	
-	var _RegistrationFields2 = _interopRequireDefault(_RegistrationFields);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var HangoutApp = function (_Component) {
-	  _inherits(HangoutApp, _Component);
-	
-	  function HangoutApp() {
-	    _classCallCheck(this, HangoutApp);
-	
-	    return _possibleConstructorReturn(this, (HangoutApp.__proto__ || Object.getPrototypeOf(HangoutApp)).apply(this, arguments));
-	  }
-	
-	  _createClass(HangoutApp, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(_Navbar2.default, null),
-	        _react2.default.createElement(
-	          'h3',
-	          null,
-	          'Hello world hangout'
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return HangoutApp;
-	}(_react.Component);
-	
-	exports.default = HangoutApp;
 
 /***/ })
 /******/ ]);

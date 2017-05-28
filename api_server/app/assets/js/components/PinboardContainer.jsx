@@ -9,7 +9,8 @@ class PinboardContainer extends Component {
     super(props); // super calls `constructor` in React.Component
     this.state = {
       openModal: '',
-      user:"", };
+      user: props.userData
+    };
   }
 
 
@@ -19,6 +20,8 @@ class PinboardContainer extends Component {
   }
 
   render(){
+    console.log('pb console', this.state.user);
+
     return(
       <div>
         <div className="tile is-parent">
