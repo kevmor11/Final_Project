@@ -35252,9 +35252,9 @@
 	    _classCallCheck(this, PinboardApp);
 	
 	    // super calls `constructor` in React.Component
+	    // console.log("I hate you", window.location['pathname'].split('/')[2]);
 	    var _this = _possibleConstructorReturn(this, (PinboardApp.__proto__ || Object.getPrototypeOf(PinboardApp)).call(this, props));
 	
-	    console.log("I hate you", window.location['pathname'].split('/')[2]);
 	    _this.state = {
 	      openModal: '',
 	      roomName: window.location['pathname'].split('/')[2]
@@ -35349,7 +35349,6 @@
 	    var _this = _possibleConstructorReturn(this, (Pinboard.__proto__ || Object.getPrototypeOf(Pinboard)).call(this, props));
 	
 	    _this.addUserToRoom = function () {
-	      console.log("INSIDE", _this.state.invited_id);
 	      _axios2.default.post('/api/userrooms', {
 	        user_id: _this.state.invited_id,
 	        // TO DO Change to this.state.current_room instead of hardcoding *********************
@@ -35400,7 +35399,7 @@
 	    value: function componentDidMount() {
 	      var _this2 = this;
 	
-	      console.log("Did mount", "and props now are", this.props.userData);
+	      // console.log("Did mount", "and props now are", this.props.userData);
 	      this.setState({
 	        user: this.props.userData
 	      });
@@ -35434,7 +35433,7 @@
 	          _this2.setState({
 	            room_users: roomUsers
 	          });
-	          console.log("room_users STATE", _this2.state.room_users);
+	          // console.log("room_users STATE", this.state.room_users);
 	        });
 	      });
 	    }
@@ -35447,7 +35446,7 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'tile is-ancestor mainboard' },
-	          _react2.default.createElement(_PinboardSidebar2.default, null),
+	          _react2.default.createElement(_PinboardSidebar2.default, { currentRoom: this.state.current_room }),
 	          _react2.default.createElement(_PinboardContainer2.default, { openModal: this.state.openModal }),
 	          this.state.room_users === 1 && _react2.default.createElement(
 	            'div',
@@ -35493,7 +35492,7 @@
   \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -35504,6 +35503,10 @@
 	var _react = __webpack_require__(/*! react */ 1);
 	
 	var _react2 = _interopRequireDefault(_react);
+	
+	var _axios = __webpack_require__(/*! axios */ 212);
+	
+	var _axios2 = _interopRequireDefault(_axios);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -35516,93 +35519,101 @@
 	var PinboardSidebar = function (_Component) {
 	  _inherits(PinboardSidebar, _Component);
 	
-	  function PinboardSidebar() {
+	  function PinboardSidebar(props) {
 	    _classCallCheck(this, PinboardSidebar);
 	
-	    return _possibleConstructorReturn(this, (PinboardSidebar.__proto__ || Object.getPrototypeOf(PinboardSidebar)).apply(this, arguments));
+	    // super calls `constructor` in React.Component
+	    var _this = _possibleConstructorReturn(this, (PinboardSidebar.__proto__ || Object.getPrototypeOf(PinboardSidebar)).call(this, props));
+	
+	    _this.state = {
+	      roomName: "",
+	      roomUsers: []
+	    };
+	    return _this;
 	  }
 	
+	  // Get Room Name and Room users
+	
+	
 	  _createClass(PinboardSidebar, [{
-	    key: "render",
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      var _this2 = this;
+	
+	      var room_name = "";
+	      var room_users = [];
+	      var room_users_firstNames = [];
+	      _axios2.default.get('/api/rooms.json').then(function (res) {
+	        var rooms = res.data.rooms;
+	        rooms.forEach(function (item, i) {
+	          // console.log("INSIDE", item);
+	          if (_this2.props.currentRoom === item.id) {
+	            room_name = item.name;
+	            room_users = item.users;
+	            // console.log("NAME", item.users);
+	          }
+	          room_users.forEach(function (item, i) {
+	            // console.log("NAME", item.first_name);
+	            room_users_firstNames.push(item.first_name);
+	          });
+	        });
+	        _this2.setState({
+	          roomName: room_name,
+	          roomUsers: room_users_firstNames
+	        });
+	        // console.log("NAME STATE", this.state);
+	      });
+	    }
+	  }, {
+	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        "div",
+	        'div',
 	        null,
 	        _react2.default.createElement(
-	          "div",
-	          { className: "tile is-parent is-2 rooms" },
+	          'div',
+	          { className: 'tile is-parent is-2 rooms' },
 	          _react2.default.createElement(
-	            "article",
-	            { className: "tile is-child box" },
+	            'article',
+	            { className: 'tile is-child box' },
 	            _react2.default.createElement(
-	              "div",
-	              { className: "content" },
+	              'div',
+	              { className: 'content' },
 	              _react2.default.createElement(
-	                "p",
-	                { className: "subtitle" },
-	                "Users"
+	                'p',
+	                { className: 'subtitle' },
+	                this.state.roomName
 	              ),
 	              _react2.default.createElement(
-	                "table",
-	                { className: "table" },
+	                'table',
+	                { className: 'table' },
 	                _react2.default.createElement(
-	                  "thead",
+	                  'thead',
 	                  null,
 	                  _react2.default.createElement(
-	                    "tr",
+	                    'tr',
 	                    null,
 	                    _react2.default.createElement(
-	                      "th",
+	                      'th',
 	                      null,
-	                      _react2.default.createElement("i", { className: "fa fa-hashtag", "aria-hidden": "true" })
-	                    ),
-	                    _react2.default.createElement(
-	                      "th",
-	                      null,
-	                      "Room Name"
+	                      'Friends'
 	                    )
 	                  )
 	                ),
-	                _react2.default.createElement("tfoot", null),
 	                _react2.default.createElement(
-	                  "tbody",
+	                  'tbody',
 	                  null,
-	                  _react2.default.createElement(
-	                    "tr",
-	                    null,
-	                    _react2.default.createElement(
-	                      "th",
-	                      null,
-	                      "1"
-	                    ),
-	                    _react2.default.createElement(
-	                      "td",
-	                      null,
+	                  this.state.roomUsers.map(function (item, i) {
+	                    return _react2.default.createElement(
+	                      'tr',
+	                      { key: i },
 	                      _react2.default.createElement(
-	                        "a",
-	                        { href: "", title: "this room blah blah blah" },
-	                        "Secret Garden"
+	                        'td',
+	                        null,
+	                        item
 	                      )
-	                    )
-	                  ),
-	                  _react2.default.createElement(
-	                    "tr",
-	                    null,
-	                    _react2.default.createElement(
-	                      "th",
-	                      null,
-	                      "2"
-	                    ),
-	                    _react2.default.createElement(
-	                      "td",
-	                      null,
-	                      _react2.default.createElement(
-	                        "a",
-	                        { href: "this room blah blah blah" },
-	                        "Hanging Gardens"
-	                      )
-	                    )
-	                  )
+	                    );
+	                  })
 	                )
 	              )
 	            )

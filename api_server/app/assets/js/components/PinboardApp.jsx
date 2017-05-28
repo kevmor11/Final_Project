@@ -13,8 +13,8 @@ class PinboardApp extends Component {
 
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
-    console.log("I hate you", window.location['pathname'].split('/')[2]);
-    this.state = { 
+    // console.log("I hate you", window.location['pathname'].split('/')[2]);
+    this.state = {
       openModal: '',
       roomName: window.location['pathname'].split('/')[2]
     };

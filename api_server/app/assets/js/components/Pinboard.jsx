@@ -21,7 +21,7 @@ class Pinboard extends Component {
 
   componentDidMount() {
 
-    console.log("Did mount", "and props now are", this.props.userData);
+    // console.log("Did mount", "and props now are", this.props.userData);
     this.setState({
       user: this.props.userData
     });
@@ -56,13 +56,12 @@ class Pinboard extends Component {
         this.setState({
           room_users: roomUsers
         })
-        console.log("room_users STATE", this.state.room_users);
+        // console.log("room_users STATE", this.state.room_users);
       })
     });
   }
 
   addUserToRoom = () => {
-    console.log("INSIDE", this.state.invited_id);
     axios.post('/api/userrooms', {
       user_id: this.state.invited_id,
       // TO DO Change to this.state.current_room instead of hardcoding *********************
@@ -101,7 +100,7 @@ class Pinboard extends Component {
     return (
     <div>
       <div className="tile is-ancestor mainboard">
-        <PinboardSidebar />
+        <PinboardSidebar currentRoom={this.state.current_room} />
         <PinboardContainer openModal={this.state.openModal} />
         { this.state.room_users === 1 &&
           <div className="user-invite">
