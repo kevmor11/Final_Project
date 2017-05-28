@@ -1,5 +1,10 @@
 class UserroomsController < ApplicationController
 
+  def index
+    @userrooms = Userroom.all
+    render json: @userrooms, each_serializer: UserroomSerializer, status: 201
+  end
+
   def create
     userroom = Userroom.new(userroom_params)
     # userroom.user_id = current_user.id
