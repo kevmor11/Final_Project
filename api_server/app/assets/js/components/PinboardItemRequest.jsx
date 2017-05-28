@@ -22,13 +22,15 @@ constructor(props) {
       });
     // this.setupSubscription();
   }
-  // updatePosts(post) {
-  //   this.setState({
-  //     posts: this.state.posts.concat({
-  //       user_first_name: post.user.first_name, description: post.description
-  //     })
-  //   });
-  // }
+
+  updatePosts = (post) => {
+    this.setState({
+      posts: this.state.posts.concat({
+        user_first_name: post.user.first_name, description: post.description
+      })
+    });
+  }
+
   // setupSubscription() {
   //   App.cable.subscriptions.create('PostsChannel', {
   //     received(post) {
@@ -38,6 +40,7 @@ constructor(props) {
   //   });
   // }
   render() {
+    // console.log("REQUEST", this.props.roomID);
     return(
       <div className="components-container">
         { this.state.user && this.state.user.posts.map((obj) => {

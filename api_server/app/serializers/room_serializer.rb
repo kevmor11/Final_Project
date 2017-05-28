@@ -4,5 +4,5 @@ class RoomSerializer < ApplicationSerializer
   has_many :userrooms
   has_many :users, through: :userrooms
   has_many :posts
-  
+
 end
