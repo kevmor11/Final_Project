@@ -7,17 +7,19 @@ class PinboardItemRequest extends Component {
 
 constructor(props) {
     super(props); // super calls `constructor` in React.Component
+    console.log("Props from PBItemRequest", props)
     this.state = {
       showModal: false,
       user: null,
       postID: null,
-      posts: []
+      posts: [],
+      userData:props
     }
   }
 
   componentDidMount() {
     // console.log('userIDDDDDD', this.props.userData.data.user.id);
-    axios.get(`/api/rooms/${window.location['pathname'].split('/')[2]}.json`)
+    axios.get(`/api/users/2.json`)
       .then(res => {
         console.log('res', res.data);
         // console.log("Room data", res);
