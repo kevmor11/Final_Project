@@ -37,8 +37,6 @@ class LoginField extends Component {
   }
 
   handleRedirect(res) {
-    console.log('Result', res);
-    alert(JSON.stringify(res.data.user.id));
     window.location.href = `/users/${res.data.user.id}`;
   }
 

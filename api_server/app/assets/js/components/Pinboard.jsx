@@ -10,7 +10,7 @@ class Pinboard extends Component {
     super(props); // super calls `constructor` in React.Component
     this.state = {
       openModal: '',
-      user: null,
+      user: props.userData,
       receiver: "",
       room_users: 1,
       // TO DO make an axios call to determine current room rather than hard coding it
@@ -102,7 +102,7 @@ class Pinboard extends Component {
     <div>
       <div className="tile is-ancestor mainboard">
         <PinboardSidebar />
-        <PinboardContainer openModal={this.state.openModal} />
+        <PinboardContainer openModal={this.state.openModal} userData={this.state}/>
         { this.state.room_users === 1 &&
           <div className="user-invite">
             <div className="field">
