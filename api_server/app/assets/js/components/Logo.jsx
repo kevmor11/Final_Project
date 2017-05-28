@@ -4,7 +4,7 @@ export default
 class Logo extends Component { 
   render() {
     return (
-        <a>
+        <a className="nav-item">
           <p> BRIDGE LOGO</p>
         </a>
     )
