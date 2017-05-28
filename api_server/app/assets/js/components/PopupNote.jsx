@@ -50,13 +50,7 @@ class PopupNote extends Component {
   componentDidMount() {
   
   }
-  postDB = () => { 
-    axios.post('/api/rooms/${1}/posts', {
-        title: this.state.title,
-        content: this.state.content,
-        category: "note"
-      }).then(this.close.bind(this));
-  }
+
   submitForm(event) {
       console.log("submit clicked");
       axios.post(`/api/rooms/${this.state.currentRoomID}/posts`, {
@@ -66,11 +60,7 @@ class PopupNote extends Component {
       }).then(this.close.bind(this));
 
 
-    // const rooms = this.props.userData.data.user.rooms;
-    // console.log("here1")
-    // this.setRoomId(rooms, this.postDB());
-    // console.log("here2")
-    // console.log("roomid inside submit form", this.state)
+
     
   }
 
