@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Modal, Button, OverlayTrigger} from 'react-bootstrap'
+import {Modal, Button, OverlayTrigger} from 'react-bootstrap';
+import axios from 'axios';
 
 export default
 class PinItemModalImage extends Component {
@@ -10,20 +11,20 @@ constructor(props) {
       showModal: false,
       user: null,
       postID: null,
-      currentRoomName: window.location['pathname'].split('/')[2],
-      currentRoomID: findRoomID(window.location['pathname'].split('/')[2])
+      // currentRoomName: window.location['pathname'].split('/')[2],
+      // currentRoomID: findRoomID(window.location['pathname'].split('/')[2])
     };
-    this.deletePost = this.deletePost.bind(this);
-    function findRoomID(roomName){
-      let roomID;
-      props.userData.rooms.forEach((roomObject)=>{
-        let currentRoomName = window.location['pathname'].split('/')[2]
-        if (currentRoomName == roomObject.name){
-          roomID = roomObject.id;
-        }
-      })
-      return roomID;
-    };
+    // this.deletePost = this.deletePost.bind(this);
+    // function findRoomID(roomName){
+    //   let roomID;
+    //   props.user.rooms.forEach((roomObject)=>{
+    //     let currentRoomName = window.location['pathname'].split('/')[2];
+    //     if (currentRoomName == roomObject.name){
+    //       roomID = roomObject.id;
+    //     }
+    //   })
+    //   return roomID;
+    // };
   }
 
   open = () => {
