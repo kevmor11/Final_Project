@@ -20,6 +20,7 @@ class PinboardSidebar extends Component {
     axios.get(`/api/rooms.json`)
       .then(res => {
         var rooms = res.data.rooms;
+        // console.log("ROOMS", rooms);
         rooms.forEach((item, i) => {
           // console.log("INSIDE", item);
           if (this.props.currentRoom === item.id) {

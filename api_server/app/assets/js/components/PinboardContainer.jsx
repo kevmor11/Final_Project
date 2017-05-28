@@ -23,7 +23,7 @@ class PinboardContainer extends Component {
           <article className="tile is-child box mainboard-contents">
             <PinboardHeader modalToggle={this.openModal.bind(this)} />
             <section>
-              <PinboardItems openModal={this.state.openModal} onClose={() => this.setState({openModal: ''})}/>
+              <PinboardItems openModal={this.state.openModal} onClose={() => this.setState({openModal: ''})} roomID={this.props.roomID} />
             </section>
           </article>
         </div>

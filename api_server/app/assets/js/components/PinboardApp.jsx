@@ -16,13 +16,23 @@ class PinboardApp extends Component {
     // console.log("I hate you", window.location['pathname'].split('/')[2]);
     this.state = {
       openModal: '',
-      roomName: window.location['pathname'].split('/')[2]
+      roomName: "",
+      roomID: 0
     };
   }
 
-  componentDidMount() {
-    axios.get(`/rooms/${roomName}.json`).then((res) => {
-      alert('response', res);
+  componentWillMount() {
+    var location = window.location['pathname'].split('/')[2];
+    var name = "";
+    var ID = "";
+    axios.get(`/rooms/${location}.json`).then((res) => {
+      // console.log('response', res);
+      name = res.data.room.name;
+      ID = res.data.room.id;
+      this.setState({
+        roomName: name,
+        roomID: ID
+      })
     });
   }
 
@@ -35,7 +45,7 @@ class PinboardApp extends Component {
     return (
       <div>
         <Navbar />
-        <Pinboard openModal={this.state.openModal} />
+        <Pinboard openModal={this.state.openModal} userData={this.props.userData} roomName={this.state.roomName} roomID={this.state.roomID} />
       </div>
     );
   }
