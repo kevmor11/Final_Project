@@ -21,7 +21,7 @@ class PopupNote extends Component {
     this.submitForm = this.submitForm.bind(this);
     function findRoomID(roomName){
       let roomID;
-      props.userData.user.rooms.forEach((roomObject)=>{
+      props.userData.rooms.forEach((roomObject)=>{
         let currentRoomName = window.location['pathname'].split('/')[2]
         if (currentRoomName == roomObject.name){
           roomID = roomObject.id;

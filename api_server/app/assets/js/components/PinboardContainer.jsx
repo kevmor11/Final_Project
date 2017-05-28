@@ -20,6 +20,8 @@ class PinboardContainer extends Component {
   }
 
   render(){
+    console.log('pb console', this.state.user);
+
     return(
       <div>
         <div className="tile is-parent">
