@@ -7,7 +7,7 @@ class PostsController < ApplicationController
 
     room = Room.find params[:room_id]
     if @post.save
-      render json: {@post}
+      render json: post, serializer: PostSerializer, status: 201
     else
       render json: { errors: ["Post could not be saved."] }, status: 500
     end
@@ -30,6 +30,11 @@ class PostsController < ApplicationController
       render json: { errors: ["Post not found."] }, status: 422
     end
   end
+  
+  def destroy 
+    @post = Post.find_by(id: params[:id])
+    @post.destroy
+  end    
 
   private
     def post_params

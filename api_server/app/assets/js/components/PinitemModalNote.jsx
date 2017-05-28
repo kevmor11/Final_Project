@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Modal, Button, OverlayTrigger} from 'react-bootstrap'
+import {Modal, Button, OverlayTrigger} from 'react-bootstrap';
+import axios from 'axios';
 
 export default
 class PinItemModalNote extends Component {
@@ -25,6 +26,11 @@ constructor(props) {
     this.setState({ showModal: false });
   }
 
+  deletePost(){
+    alert('inside deletePost')
+    axios.delete('/api/rooms/1/posts/1').then(this.close.bind(this));
+  }
+
   render() {
     return(
       <div>
@@ -35,6 +41,7 @@ constructor(props) {
 
         <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
           <Modal.Header closeButton>
+            <button type="submit" className="button" onClick={ this.deletePost }>Delete</button>
             <Modal.Title>{this.props.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
