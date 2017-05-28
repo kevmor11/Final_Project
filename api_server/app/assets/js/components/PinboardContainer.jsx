@@ -26,6 +26,13 @@ class PinboardContainer extends Component {
             <PinboardHeader modalToggle={this.openModal.bind(this)} userData={this.state.user}/>
             <section>
               <PinboardItems userData={this.state.user} openModal={this.state.openModal} onClose={() => this.setState({openModal: ''})}/>
+              <section>
+                <p calssName="title">Main column</p>
+                <p calssName="subtitle">With some content</p>
+                <div calssName="content">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+                </div>
+              </section>
             </section>
           </article>
         </div>
