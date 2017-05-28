@@ -17,13 +17,6 @@ class DashApp extends Component {
     }
   }
 
-  componentDidMount() {
-
-    console.log("Did mount", "and props now are", this.props.userData.data.user);
-    this.setState({
-      user: this.props.userData.data.user
-    });
-  }
 
   render() {
     let rooms = [];
