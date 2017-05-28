@@ -10,32 +10,32 @@ constructor(props) {
     console.log("Props from PBItemRequest", props)
     this.state = {
       showModal: false,
-      user: null,
+      user: props.userData.user,
       postID: null,
       posts: [],
-      userData:props
+      userData:props.userData.user
     }
   }
 
-  componentDidMount() {
-    // console.log('userIDDDDDD', this.props.userData.data.user.id);
-    axios.get(`/api/users/2.json`)
-      .then(res => {
-        console.log('res', res.data);
-        // console.log("Room data", res);
-        const user = res.data.user;
-        this.setState({ user });
-      });
-    // this.setupSubscription();
-  }
+  // componentDidMount() {
+  //   // console.log('userIDDDDDD', this.props.userData.data.user.id);
+  //   axios.get(`/api/users/8.json`)
+  //     .then(res => {
+  //       console.log('res', res.data);
+  //       // console.log("Room data", res);
+  //       const user = res.data.user;
+  //       this.setState({ user });
+  //     });
+  //   // this.setupSubscription();
+  // }
 
-  updatePosts = (post) => {
-    this.setState({
-      posts: this.state.posts.concat({
-        user_first_name: post.user.first_name, description: post.description
-      })
-    });
-  }
+  // updatePosts = (post) => {
+  //   this.setState({
+  //     posts: this.state.posts.concat({
+  //       user_first_name: post.user.first_name, description: post.description
+  //     })
+  //   });
+  // }
 
   // setupSubscription() {
   //   App.cable.subscriptions.create('PostsChannel', {
@@ -47,14 +47,14 @@ constructor(props) {
   // }
 
   render() {
-    // console.log("REQUEST", this.props.roomID);
-    return(
+    let allPosts;
+
+    allPosts = this.state.userData.posts.map((post, i) => {
+      return   <PinboardItemModal key={i} title={post.title} description={"hey"} img={"www.example.com"} thumb={"www.google.com"} link={"www.example.com"} user={this.state.user} postID={1} category={"note"} />
+    })
+    return( 
       <div className="components-container">
-        { this.state.user && this.state.user.posts.map((obj) => {
-          return (
-            <PinboardItemModal key={obj.id} title={obj.title} description={obj.description} img={obj.content.url} thumb={obj.content.thumb.url} link={obj.link} user={this.state.user} postID={this.state.user.posts.id} category={obj.category} />
-            )
-        })}
+        {allPosts}
       </div>
     )
   }
