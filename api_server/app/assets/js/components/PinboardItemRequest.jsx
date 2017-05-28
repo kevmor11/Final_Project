@@ -18,9 +18,9 @@ constructor(props) {
   componentDidMount() {
     axios.get(`/api/users/1.json`)
       .then(res => {
-        // console.log('res', res.data);
-        const user = res.data.user;
-        this.setState({ user });
+        console.log('res', res.data);
+      //   const user = res.data.user;
+      //   this.setState({ user });
       });
     // this.setupSubscription();
   }
