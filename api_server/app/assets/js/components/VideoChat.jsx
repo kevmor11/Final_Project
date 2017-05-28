@@ -14,7 +14,7 @@ class VideoChat extends Component {
             room_name = roomName;
           });
         }
-        <iframe src=`https://appear.in/${room_name}` width="800" height="640" frameborder="0" id="iframe-element"></iframe>
+        <iframe src={"https://appear.in/" + room_name} width="800" height="640" frameborder="0" id="iframe-element"></iframe>
       </div>
     );
   }

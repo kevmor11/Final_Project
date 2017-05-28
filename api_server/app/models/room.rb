@@ -3,5 +3,7 @@ class Room < ApplicationRecord
   has_many :users, through: :userrooms
   has_many :posts
 
-  validates :name, presence: true
+  validates :name, 
+            presence: true,
+            uniqueness: true
 end

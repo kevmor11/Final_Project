@@ -5,14 +5,18 @@ import PropTypes from 'prop-types';
 export default
 class PinboardItems extends Component {
 
+  constructor(props) {
+    super(props); // super calls `constructor` in React.Component
+  }
+
   static propTypes = {
     openModal: PropTypes.string
   }
 
-  render(){
+  render() {
     return(
       <div>
-        <PinboardItemRequest userData={this.props.userData}/>
+        <PinboardItemRequest roomID={this.props.roomID} userData={this.props.userData} />
       </div>
     )
   }

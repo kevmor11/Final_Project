@@ -13,11 +13,11 @@ class PinboardApp extends Component {
 
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
-    
-    this.state = { 
+    this.state = {
       user: props.userData.data.user,
       openModal: '',
-      roomName: window.location['pathname'].split('/')[2]
+      roomName: "",
+      roomID: 0
     };
   }
 
@@ -26,6 +26,20 @@ class PinboardApp extends Component {
 
   //   });
   // }
+  componentWillMount() {
+    var location = window.location['pathname'].split('/')[2];
+    var name = "";
+    var ID = "";
+    axios.get(`/rooms/${location}.json`).then((res) => {
+      // console.log('response', res);
+      name = res.data.room.name;
+      ID = res.data.room.id;
+      this.setState({
+        roomName: name,
+        roomID: ID
+      })
+    });
+  }
 
   // openModal(modalName) {
   //   // image, link, note
@@ -35,8 +49,8 @@ class PinboardApp extends Component {
   render() {
     return (
       <div>
-        <Navbar />
-        <Pinboard openModal={this.state.openModal} userData={this.state.user} roomName={this.state.roomName}/>
+        <Navbar currentUser={this.state.user} />
+        <Pinboard openModal={this.state.openModal} userData={this.state.user} roomName={this.state.roomName} roomID={this.state.roomID} />
       </div>
     );
   }
