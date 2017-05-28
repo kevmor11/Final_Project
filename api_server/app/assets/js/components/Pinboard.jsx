@@ -19,10 +19,6 @@ class Pinboard extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      user: this.props.userData
-    });
-
     var roomUsers = 0;
     axios.get('/api/userrooms')
     .then(res => {

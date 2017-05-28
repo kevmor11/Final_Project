@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import PinboardItemModal from './PinboardItemModal.jsx'
 import axios from 'axios'
-
 export default
 class PinboardItemRequest extends Component {
-
 constructor(props) {
     super(props); // super calls `constructor` in React.Component
     console.log("Props from PBItemRequest", props)
@@ -17,6 +15,7 @@ constructor(props) {
     }
   }
 
+
   // componentDidMount() {
   //   // console.log('userIDDDDDD', this.props.userData.data.user.id);
   //   axios.get(`/api/users/8.json`)
@@ -28,6 +27,7 @@ constructor(props) {
   //     });
   //   // this.setupSubscription();
   // }
+
 
   // updatePosts = (post) => {
   //   this.setState({
@@ -45,7 +45,6 @@ constructor(props) {
   //     updatePosts: this.updatePosts.bind(this)
   //   });
   // }
-
   render() {
     let allPosts;
 
