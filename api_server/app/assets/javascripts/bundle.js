@@ -34584,15 +34584,15 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _Notification = __webpack_require__(/*! ./Notification.jsx */ 274);
+	var _Notification = __webpack_require__(/*! ./Notification.jsx */ 272);
 	
 	var _Notification2 = _interopRequireDefault(_Notification);
 	
-	var _UserProfile = __webpack_require__(/*! ./UserProfile.jsx */ 272);
+	var _UserProfile = __webpack_require__(/*! ./UserProfile.jsx */ 273);
 	
 	var _UserProfile2 = _interopRequireDefault(_UserProfile);
 	
-	var _Notifications = __webpack_require__(/*! ./Notifications.jsx */ 273);
+	var _Notifications = __webpack_require__(/*! ./Notifications.jsx */ 274);
 	
 	var _Notifications2 = _interopRequireDefault(_Notifications);
 	
@@ -34628,10 +34628,20 @@
 	  }
 	
 	  _createClass(DashApp, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	
+	      console.log("Did mount", "and props now are", this.props.userData.data.user);
+	      this.setState({
+	        user: this.props.userData.data.user
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var rooms = [];
 	      rooms = this.state.user.rooms;
+	
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -34661,6 +34671,77 @@
 
 /***/ },
 /* 272 */
+/*!****************************************!*\
+  !*** ./js/components/Notification.jsx ***!
+  \****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _axios = __webpack_require__(/*! axios */ 212);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	var _http = __webpack_require__(/*! http */ 242);
+	
+	var _http2 = _interopRequireDefault(_http);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Notification = function (_Component) {
+	  _inherits(Notification, _Component);
+	
+	  function Notification() {
+	    _classCallCheck(this, Notification);
+	
+	    return _possibleConstructorReturn(this, (Notification.__proto__ || Object.getPrototypeOf(Notification)).apply(this, arguments));
+	  }
+	
+	  _createClass(Notification, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'notification' },
+	        _react2.default.createElement('img', { className: 'notification-avatar', src: 'http://www.stottpilates.com/studio/images/instructors/person-placeholder.png' }),
+	        _react2.default.createElement('button', { className: 'delete' }),
+	        _react2.default.createElement(
+	          'p',
+	          { className: 'notification-content' },
+	          'Nawar! invited you to join his room.'
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'btn btn-primary' },
+	          'Join'
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Notification;
+	}(_react.Component);
+	
+	exports.default = Notification;
+
+/***/ },
+/* 273 */
 /*!***************************************!*\
   !*** ./js/components/UserProfile.jsx ***!
   \***************************************/
@@ -34745,7 +34826,7 @@
 	exports.default = UserProfile;
 
 /***/ },
-/* 273 */
+/* 274 */
 /*!*****************************************!*\
   !*** ./js/components/Notifications.jsx ***!
   \*****************************************/
@@ -34771,7 +34852,7 @@
 	
 	var _http2 = _interopRequireDefault(_http);
 	
-	var _Notification = __webpack_require__(/*! ./Notification.jsx */ 274);
+	var _Notification = __webpack_require__(/*! ./Notification.jsx */ 272);
 	
 	var _Notification2 = _interopRequireDefault(_Notification);
 	
@@ -34816,77 +34897,6 @@
 	}(_react.Component);
 	
 	exports.default = Notifications;
-
-/***/ },
-/* 274 */
-/*!****************************************!*\
-  !*** ./js/components/Notification.jsx ***!
-  \****************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _axios = __webpack_require__(/*! axios */ 212);
-	
-	var _axios2 = _interopRequireDefault(_axios);
-	
-	var _http = __webpack_require__(/*! http */ 242);
-	
-	var _http2 = _interopRequireDefault(_http);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Notification = function (_Component) {
-	  _inherits(Notification, _Component);
-	
-	  function Notification() {
-	    _classCallCheck(this, Notification);
-	
-	    return _possibleConstructorReturn(this, (Notification.__proto__ || Object.getPrototypeOf(Notification)).apply(this, arguments));
-	  }
-	
-	  _createClass(Notification, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'notification' },
-	        _react2.default.createElement('img', { className: 'notification-avatar', src: 'http://www.stottpilates.com/studio/images/instructors/person-placeholder.png' }),
-	        _react2.default.createElement('button', { className: 'delete' }),
-	        _react2.default.createElement(
-	          'p',
-	          { className: 'notification-content' },
-	          'Nawar! invited you to join his room.'
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { className: 'btn btn-primary' },
-	          'Join'
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return Notification;
-	}(_react.Component);
-	
-	exports.default = Notification;
 
 /***/ },
 /* 275 */
@@ -35169,13 +35179,13 @@
 	    _classCallCheck(this, PinboardApp);
 	
 	    // super calls `constructor` in React.Component
-	
 	    var _this = _possibleConstructorReturn(this, (PinboardApp.__proto__ || Object.getPrototypeOf(PinboardApp)).call(this, props));
 	
 	    _this.state = {
 	      user: props.userData.data.user,
 	      openModal: '',
-	      roomName: window.location['pathname'].split('/')[2]
+	      roomName: "",
+	      roomID: 0
 	    };
 	    return _this;
 	  }
@@ -35186,19 +35196,39 @@
 	  //   });
 	  // }
 	
-	  // openModal(modalName) {
-	  //   // image, link, note
-	  //   this.setState(Object.assign({}, this.state, { openModal: modalName }));
-	  // }
 	
 	  _createClass(PinboardApp, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      var _this2 = this;
+	
+	      var location = window.location['pathname'].split('/')[2];
+	      var name = "";
+	      var ID = "";
+	      _axios2.default.get('/rooms/' + location + '.json').then(function (res) {
+	        // console.log('response', res);
+	        name = res.data.room.name;
+	        ID = res.data.room.id;
+	        _this2.setState({
+	          roomName: name,
+	          roomID: ID
+	        });
+	      });
+	    }
+	
+	    // openModal(modalName) {
+	    //   // image, link, note
+	    //   this.setState(Object.assign({}, this.state, { openModal: modalName }));
+	    // }
+	
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
 	        null,
 	        _react2.default.createElement(_Navbar2.default, null),
-	        _react2.default.createElement(_Pinboard2.default, { openModal: this.state.openModal, userData: this.state.user, roomName: this.state.roomName })
+	        _react2.default.createElement(_Pinboard2.default, { openModal: this.state.openModal, userData: this.state.user, roomName: this.state.roomName, roomID: this.state.roomID })
 	      );
 	    }
 	  }]);
@@ -35265,11 +35295,9 @@
 	    var _this = _possibleConstructorReturn(this, (Pinboard.__proto__ || Object.getPrototypeOf(Pinboard)).call(this, props));
 	
 	    _this.addUserToRoom = function () {
-	      console.log("INSIDE", _this.state.invited_id);
 	      _axios2.default.post('/api/userrooms', {
 	        user_id: _this.state.invited_id,
-	        // TO DO Change to this.state.current_room instead of hardcoding *********************
-	        room_id: 6
+	        room_id: _this.props.roomID
 	      });
 	      _this.setState({
 	        room_users: 2
@@ -35304,9 +35332,8 @@
 	      user: props.userData,
 	      receiver: "",
 	      room_users: 1,
-	      // TO DO make an axios call to determine current room rather than hard coding it
-	      current_room: 6,
-	      invited_id: ""
+	      invited_id: "",
+	      roomID: ""
 	    };
 	    return _this;
 	  }
@@ -35316,27 +35343,9 @@
 	    value: function componentDidMount() {
 	      var _this2 = this;
 	
-	      console.log("Did mount", "and props now are", this.props.userData);
 	      this.setState({
 	        user: this.props.userData
 	      });
-	
-	      // PSEUDO CREATE USERROOM SO THAT WE ARE ABLE TO GET THE ROOM FOR INVITING USERS, DELETE ONCE NAWAR AND JINNY FINISH THE REAL VERSION OF THIS
-	      // axios.post('/api/userrooms', {
-	      //   user_id: 6,
-	      //   room_id: 6,
-	      // });
-	      // this.setState({
-	      //   current_room: 2
-	      // })
-	
-	      // // set the current room so that we know which room to render???
-	      // axios.get(`/api/userrooms/6.json`)
-	      // .then(res => {
-	      //   console.log("Room Get", res);
-	      //   const current_room = res.data.user;
-	      //   this.setState({ current_room: current_room });
-	      // });
 	
 	      var roomUsers = 0;
 	      _axios2.default.get('/api/userrooms').then(function (res) {
@@ -35344,13 +35353,14 @@
 	        var userrooms = res.data.userrooms;
 	        userrooms.forEach(function (item, i) {
 	          // console.log("INSIDE", item);
-	          if (item.room_id === _this2.state.current_room) {
+	          if (item.room_id === _this2.props.roomID) {
 	            roomUsers += 1;
 	          }
 	          _this2.setState({
-	            room_users: roomUsers
+	            room_users: roomUsers,
+	            roomID: _this2.props.roomID
 	          });
-	          console.log("room_users STATE", _this2.state.room_users);
+	          // console.log("room_users STATE", this.state.room_users);
 	        });
 	      });
 	    }
@@ -35363,8 +35373,8 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'tile is-ancestor mainboard' },
-	          _react2.default.createElement(_PinboardSidebar2.default, null),
-	          _react2.default.createElement(_PinboardContainer2.default, { openModal: this.state.openModal, userData: this.state }),
+	          _react2.default.createElement(_PinboardSidebar2.default, { currentRoom: this.state.roomID }),
+	          _react2.default.createElement(_PinboardContainer2.default, { openModal: this.state.openModal, userData: this.state, roomID: this.state.roomID }),
 	          this.state.room_users === 1 && _react2.default.createElement(
 	            'div',
 	            { className: 'user-invite' },
@@ -35409,7 +35419,7 @@
   \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -35420,6 +35430,10 @@
 	var _react = __webpack_require__(/*! react */ 1);
 	
 	var _react2 = _interopRequireDefault(_react);
+	
+	var _axios = __webpack_require__(/*! axios */ 212);
+	
+	var _axios2 = _interopRequireDefault(_axios);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -35432,93 +35446,104 @@
 	var PinboardSidebar = function (_Component) {
 	  _inherits(PinboardSidebar, _Component);
 	
-	  function PinboardSidebar() {
+	  function PinboardSidebar(props) {
 	    _classCallCheck(this, PinboardSidebar);
 	
-	    return _possibleConstructorReturn(this, (PinboardSidebar.__proto__ || Object.getPrototypeOf(PinboardSidebar)).apply(this, arguments));
+	    // super calls `constructor` in React.Component
+	    var _this = _possibleConstructorReturn(this, (PinboardSidebar.__proto__ || Object.getPrototypeOf(PinboardSidebar)).call(this, props));
+	
+	    _this.state = {
+	      roomName: "",
+	      roomUsers: []
+	    };
+	    return _this;
 	  }
 	
+	  // Get Room Name and Room users
+	
+	
 	  _createClass(PinboardSidebar, [{
-	    key: "render",
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      var _this2 = this;
+	
+	      var room_name = "";
+	      var room_users = [];
+	      var room_users_firstNames = [];
+	      _axios2.default.get('/api/rooms.json').then(function (res) {
+	        var rooms = res.data.rooms;
+	        // console.log("ROOMS", rooms);
+	        rooms.forEach(function (item, i) {
+	          // console.log("INSIDE", item.id);
+	          if (_this2.props.currentRoom === item.id) {
+	            room_name = item.name;
+	            room_users = item.users;
+	            console.log("NAME", item.users);
+	            console.log("INSIDE");
+	          }
+	          room_users.forEach(function (item, i) {
+	            // console.log("NAME", item.first_name);
+	            room_users_firstNames.push(item.first_name);
+	          });
+	        });
+	        _this2.setState({
+	          roomName: room_name,
+	          roomUsers: room_users_firstNames
+	        });
+	        // console.log("NAME STATE", this.state);
+	      });
+	    }
+	  }, {
+	    key: 'render',
 	    value: function render() {
+	      // console.log("HELLO", this.props);
 	      return _react2.default.createElement(
-	        "div",
+	        'div',
 	        null,
 	        _react2.default.createElement(
-	          "div",
-	          { className: "tile is-parent is-2 rooms" },
+	          'div',
+	          { className: 'tile is-parent is-2 rooms' },
 	          _react2.default.createElement(
-	            "article",
-	            { className: "tile is-child box" },
+	            'article',
+	            { className: 'tile is-child box' },
 	            _react2.default.createElement(
-	              "div",
-	              { className: "content" },
+	              'div',
+	              { className: 'content' },
 	              _react2.default.createElement(
-	                "p",
-	                { className: "subtitle" },
-	                "Users"
+	                'p',
+	                { className: 'subtitle' },
+	                this.state.roomName
 	              ),
 	              _react2.default.createElement(
-	                "table",
-	                { className: "table" },
+	                'table',
+	                { className: 'table' },
 	                _react2.default.createElement(
-	                  "thead",
+	                  'thead',
 	                  null,
 	                  _react2.default.createElement(
-	                    "tr",
+	                    'tr',
 	                    null,
 	                    _react2.default.createElement(
-	                      "th",
+	                      'th',
 	                      null,
-	                      _react2.default.createElement("i", { className: "fa fa-hashtag", "aria-hidden": "true" })
-	                    ),
-	                    _react2.default.createElement(
-	                      "th",
-	                      null,
-	                      "Room Name"
+	                      'Friends'
 	                    )
 	                  )
 	                ),
-	                _react2.default.createElement("tfoot", null),
 	                _react2.default.createElement(
-	                  "tbody",
+	                  'tbody',
 	                  null,
-	                  _react2.default.createElement(
-	                    "tr",
-	                    null,
-	                    _react2.default.createElement(
-	                      "th",
-	                      null,
-	                      "1"
-	                    ),
-	                    _react2.default.createElement(
-	                      "td",
-	                      null,
+	                  this.state.roomUsers.map(function (item, i) {
+	                    return _react2.default.createElement(
+	                      'tr',
+	                      { key: i },
 	                      _react2.default.createElement(
-	                        "a",
-	                        { href: "", title: "this room blah blah blah" },
-	                        "Secret Garden"
+	                        'td',
+	                        null,
+	                        item
 	                      )
-	                    )
-	                  ),
-	                  _react2.default.createElement(
-	                    "tr",
-	                    null,
-	                    _react2.default.createElement(
-	                      "th",
-	                      null,
-	                      "2"
-	                    ),
-	                    _react2.default.createElement(
-	                      "td",
-	                      null,
-	                      _react2.default.createElement(
-	                        "a",
-	                        { href: "this room blah blah blah" },
-	                        "Hanging Gardens"
-	                      )
-	                    )
-	                  )
+	                    );
+	                  })
 	                )
 	              )
 	            )
@@ -35556,7 +35581,7 @@
 	
 	var _PinboardItems2 = _interopRequireDefault(_PinboardItems);
 	
-	var _PinboardHeader = __webpack_require__(/*! ./PinboardHeader.jsx */ 542);
+	var _PinboardHeader = __webpack_require__(/*! ./PinboardHeader.jsx */ 539);
 	
 	var _PinboardHeader2 = _interopRequireDefault(_PinboardHeader);
 	
@@ -35609,7 +35634,7 @@
 	              null,
 	              _react2.default.createElement(_PinboardItems2.default, { userData: this.state.user, openModal: this.state.openModal, onClose: function onClose() {
 	                  return _this2.setState({ openModal: '' });
-	                } })
+	                }, roomID: this.props.roomID })
 	            )
 	          )
 	        )
@@ -35660,10 +35685,10 @@
 	var PinboardItems = function (_Component) {
 	  _inherits(PinboardItems, _Component);
 	
-	  function PinboardItems() {
+	  function PinboardItems(props) {
 	    _classCallCheck(this, PinboardItems);
 	
-	    return _possibleConstructorReturn(this, (PinboardItems.__proto__ || Object.getPrototypeOf(PinboardItems)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (PinboardItems.__proto__ || Object.getPrototypeOf(PinboardItems)).call(this, props)); // super calls `constructor` in React.Component
 	  }
 	
 	  _createClass(PinboardItems, [{
@@ -35672,7 +35697,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_PinboardItemRequest2.default, { userData: this.props.userData })
+	        _react2.default.createElement(_PinboardItemRequest2.default, { roomID: this.props.roomID, userData: this.props.userData })
 	      );
 	    }
 	  }]);
@@ -35729,6 +35754,14 @@
 	    // super calls `constructor` in React.Component
 	    var _this = _possibleConstructorReturn(this, (PinboardItemRequest.__proto__ || Object.getPrototypeOf(PinboardItemRequest)).call(this, props));
 	
+	    _this.updatePosts = function (post) {
+	      _this.setState({
+	        posts: _this.state.posts.concat({
+	          user_first_name: post.user.first_name, description: post.description
+	        })
+	      });
+	    };
+	
 	    _this.state = {
 	      showModal: false,
 	      user: null,
@@ -35746,21 +35779,15 @@
 	      // console.log('userIDDDDDD', this.props.userData.data.user.id);
 	      _axios2.default.get('/api/rooms/' + window.location['pathname'].split('/')[2] + '.json').then(function (res) {
 	        // console.log('res', res.data);
-	        console.log("Room data", res);
+	        // console.log("Room data", res);
 	        var user = res.data.user;
 	        _this2.setState({ user: user });
 	      });
 	      // this.setupSubscription();
 	    }
 	  }, {
-	    key: 'updatePosts',
-	    value: function updatePosts(post) {
-	      this.setState({
-	        posts: this.state.posts.concat({
-	          user_first_name: post.user.first_name, description: post.description
-	        })
-	      });
-	    }
+	    key: 'render',
+	
 	
 	    // setupSubscription() {
 	    //   App.cable.subscriptions.create('PostsChannel', {
@@ -35771,11 +35798,10 @@
 	    //   });
 	    // }
 	
-	  }, {
-	    key: 'render',
 	    value: function render() {
 	      var _this3 = this;
 	
+	      // console.log("REQUEST", this.props.roomID);
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'components-container' },
@@ -56484,6 +56510,169 @@
 
 /***/ },
 /* 539 */
+/*!******************************************!*\
+  !*** ./js/components/PinboardHeader.jsx ***!
+  \******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _propTypes = __webpack_require__(/*! prop-types */ 184);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _PopupNote = __webpack_require__(/*! ./PopupNote.jsx */ 540);
+	
+	var _PopupNote2 = _interopRequireDefault(_PopupNote);
+	
+	var _PopupLink = __webpack_require__(/*! ./PopupLink.jsx */ 541);
+	
+	var _PopupLink2 = _interopRequireDefault(_PopupLink);
+	
+	var _PopupImage = __webpack_require__(/*! ./PopupImage.jsx */ 542);
+	
+	var _PopupImage2 = _interopRequireDefault(_PopupImage);
+	
+	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 285);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var PinboardHeader = function (_Component) {
+	  _inherits(PinboardHeader, _Component);
+	
+	  function PinboardHeader(props) {
+	    _classCallCheck(this, PinboardHeader);
+	
+	    var _this = _possibleConstructorReturn(this, (PinboardHeader.__proto__ || Object.getPrototypeOf(PinboardHeader)).call(this, props));
+	
+	    _this.close = function () {
+	      _this.setState({
+	        showModalNote: false,
+	        showModalLink: false,
+	        showModalImage: false
+	      });
+	    };
+	
+	    _this.openNote = function () {
+	      _this.setState({ showModalNote: true });
+	    };
+	
+	    _this.openLink = function () {
+	      _this.setState({ showModalLink: true });
+	    };
+	
+	    _this.openImage = function () {
+	      _this.setState({ showModalImage: true });
+	    };
+	
+	    _this.handleClick = function () {
+	      _this.setState({ showAddButtons: !_this.state.showAddButtons });
+	    };
+	
+	    _this.state = {
+	      showModalNote: false,
+	      showModalLink: false,
+	      showModalImage: false
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(PinboardHeader, [{
+	    key: 'render',
+	    value: function render() {
+	      var containerClass = "add-content-container";
+	      if (this.state.showAddButtons) containerClass += " open";
+	
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'header',
+	          { className: 'hangout-pinboard' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: containerClass },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'add-content photo', onClick: this.openImage },
+	              _react2.default.createElement('i', { className: 'add fa fa-picture-o' })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'add-content message', onClick: this.openLink },
+	              _react2.default.createElement('i', { className: 'add fa fa-link' })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'add-content note', onClick: this.openNote },
+	              _react2.default.createElement('i', { className: 'add fa fa-sticky-note-o' })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'add-content add-button', onClick: this.handleClick },
+	              _react2.default.createElement('i', { className: 'fa fa-plus' })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'tabs is-centered' },
+	            _react2.default.createElement(
+	              'ul',
+	              null,
+	              _react2.default.createElement(
+	                'li',
+	                null,
+	                _react2.default.createElement(
+	                  'a',
+	                  { className: 'is-active' },
+	                  'Pinboard'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                null,
+	                _react2.default.createElement(
+	                  'a',
+	                  null,
+	                  'Hangout'
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(_PopupNote2.default, { isActive: this.state.showModalNote, onClose: this.close, userData: this.props.userData }),
+	        _react2.default.createElement(_PopupLink2.default, { isActive: this.state.showModalLink, onClose: this.close }),
+	        _react2.default.createElement(_PopupImage2.default, { isActive: this.state.showModalImage, onClose: this.close })
+	      );
+	    }
+	  }]);
+	
+	  return PinboardHeader;
+	}(_react.Component);
+	
+	PinboardHeader.propTypes = {
+	  modalToggle: _propTypes2.default.func.isRequired
+	};
+	exports.default = PinboardHeader;
+
+/***/ },
+/* 540 */
 /*!*************************************!*\
   !*** ./js/components/PopupNote.jsx ***!
   \*************************************/
@@ -56681,7 +56870,7 @@
 	exports.default = PopupNote;
 
 /***/ },
-/* 540 */
+/* 541 */
 /*!*************************************!*\
   !*** ./js/components/PopupLink.jsx ***!
   \*************************************/
@@ -56851,7 +57040,7 @@
 	exports.default = PopupLink;
 
 /***/ },
-/* 541 */
+/* 542 */
 /*!**************************************!*\
   !*** ./js/components/PopupImage.jsx ***!
   \**************************************/
@@ -57033,169 +57222,6 @@
 	}(_react.Component);
 	
 	exports.default = PopupLink;
-
-/***/ },
-/* 542 */
-/*!******************************************!*\
-  !*** ./js/components/PinboardHeader.jsx ***!
-  \******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _propTypes = __webpack_require__(/*! prop-types */ 184);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	var _PopupNote = __webpack_require__(/*! ./PopupNote.jsx */ 539);
-	
-	var _PopupNote2 = _interopRequireDefault(_PopupNote);
-	
-	var _PopupLink = __webpack_require__(/*! ./PopupLink.jsx */ 540);
-	
-	var _PopupLink2 = _interopRequireDefault(_PopupLink);
-	
-	var _PopupImage = __webpack_require__(/*! ./PopupImage.jsx */ 541);
-	
-	var _PopupImage2 = _interopRequireDefault(_PopupImage);
-	
-	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 285);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var PinboardHeader = function (_Component) {
-	  _inherits(PinboardHeader, _Component);
-	
-	  function PinboardHeader(props) {
-	    _classCallCheck(this, PinboardHeader);
-	
-	    var _this = _possibleConstructorReturn(this, (PinboardHeader.__proto__ || Object.getPrototypeOf(PinboardHeader)).call(this, props));
-	
-	    _this.close = function () {
-	      _this.setState({
-	        showModalNote: false,
-	        showModalLink: false,
-	        showModalImage: false
-	      });
-	    };
-	
-	    _this.openNote = function () {
-	      _this.setState({ showModalNote: true });
-	    };
-	
-	    _this.openLink = function () {
-	      _this.setState({ showModalLink: true });
-	    };
-	
-	    _this.openImage = function () {
-	      _this.setState({ showModalImage: true });
-	    };
-	
-	    _this.handleClick = function () {
-	      _this.setState({ showAddButtons: !_this.state.showAddButtons });
-	    };
-	
-	    _this.state = {
-	      showModalNote: false,
-	      showModalLink: false,
-	      showModalImage: false
-	    };
-	    return _this;
-	  }
-	
-	  _createClass(PinboardHeader, [{
-	    key: 'render',
-	    value: function render() {
-	      var containerClass = "add-content-container";
-	      if (this.state.showAddButtons) containerClass += " open";
-	
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'header',
-	          { className: 'hangout-pinboard' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: containerClass },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'add-content photo', onClick: this.openImage },
-	              _react2.default.createElement('i', { className: 'add fa fa-picture-o' })
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'add-content message', onClick: this.openLink },
-	              _react2.default.createElement('i', { className: 'add fa fa-link' })
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'add-content note', onClick: this.openNote },
-	              _react2.default.createElement('i', { className: 'add fa fa-sticky-note-o' })
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'add-content add-button', onClick: this.handleClick },
-	              _react2.default.createElement('i', { className: 'fa fa-plus' })
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'tabs is-centered' },
-	            _react2.default.createElement(
-	              'ul',
-	              null,
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  'a',
-	                  { className: 'is-active' },
-	                  'Pinboard'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  'a',
-	                  null,
-	                  'Hangout'
-	                )
-	              )
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(_PopupNote2.default, { isActive: this.state.showModalNote, onClose: this.close, userData: this.props.userData }),
-	        _react2.default.createElement(_PopupLink2.default, { isActive: this.state.showModalLink, onClose: this.close }),
-	        _react2.default.createElement(_PopupImage2.default, { isActive: this.state.showModalImage, onClose: this.close })
-	      );
-	    }
-	  }]);
-	
-	  return PinboardHeader;
-	}(_react.Component);
-	
-	PinboardHeader.propTypes = {
-	  modalToggle: _propTypes2.default.func.isRequired
-	};
-	exports.default = PinboardHeader;
 
 /***/ },
 /* 543 */

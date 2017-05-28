@@ -3,18 +3,23 @@ class RoomsController < ApplicationController
   def new
   end
 
+  def index
+    @rooms = Room.all
+    render json: @rooms, each_serializer: RoomSerializer, status: 201
+  end
+
   def create
     user = current_user
     room = user.rooms.create(room_params)
     userroom = user.userrooms.where(room: room.id).first
     # if room.save
       render json: room, serializer: RoomSerializer, status: 201
-    # else 
+    # else
     #   render json: { errors: [user.errors.full_messages] }, status: 422
     # end
   end
 
-  def show 
+  def show
     @room = Room.find_by(name: params[:id])
     respond_to do |format|
       format.json { render json: @room }
@@ -22,8 +27,8 @@ class RoomsController < ApplicationController
     end
     # if @room.present?
     #   render json: @room, serializer: RoomSerializer, status: 200
-    # else 
-    #   render json: { errors: ["Room not found."] }, status: 422 
+    # else
+    #   render json: { errors: ["Room not found."] }, status: 422
     # end
   end
 

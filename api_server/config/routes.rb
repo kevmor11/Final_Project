@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   scope '/api' do
 
     resources :users
-    resources :rooms, except: [:index] do
+    resources :rooms do
       resources :posts, except: [:index]
     end
     resources :sessions, only: [:create, :destroy]

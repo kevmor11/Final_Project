@@ -20,14 +20,14 @@ constructor(props) {
     axios.get(`/api/rooms/${window.location['pathname'].split('/')[2]}.json`)
       .then(res => {
         // console.log('res', res.data);
-        console.log("Room data", res);
+        // console.log("Room data", res);
         const user = res.data.user;
         this.setState({ user });
       });
     // this.setupSubscription();
   }
 
-  updatePosts(post) {
+  updatePosts = (post) => {
     this.setState({
       posts: this.state.posts.concat({
         user_first_name: post.user.first_name, description: post.description
@@ -45,6 +45,7 @@ constructor(props) {
   // }
 
   render() {
+    // console.log("REQUEST", this.props.roomID);
     return(
       <div className="components-container">
         { this.state.user && this.state.user.posts.map((obj) => {
