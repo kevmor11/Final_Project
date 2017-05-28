@@ -43,7 +43,7 @@ class DashApp extends Component {
     } else {
       rooms = this.state.user.rooms;
     }
-    console.log("Prooooooops",this.props.userData.data.user);
+    // console.log("Prooooooops",this.props.userData.data.user);
 
     return (
       <div>

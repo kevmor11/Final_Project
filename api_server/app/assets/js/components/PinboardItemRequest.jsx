@@ -18,14 +18,14 @@ constructor(props) {
   componentWillMount() {
     // PASS IN USER ID INSTEAD OF HARD CODING
     var ID = this.props.roomID;
-    console.log("PROPS", this.props);
-    console.log("ID", ID);
-    // axios.get(`/api/users/1.json`)
-    axios.get(`/api/rooms/${this.props.roomID}.json`)
+    // console.log("PROPS", this.props);
+    // console.log("ID", ID);
+    axios.get(`/api/users/1.json`)
+    // axios.get(`/api/rooms/${this.props.roomID}.json`)
       .then(res => {
         console.log('res', res.data);
-        // const user = res.data.user;
-        // this.setState({ user });
+        const user = res.data.user;
+        this.setState({ user });
       });
     // this.setupSubscription();
   }
@@ -48,7 +48,7 @@ constructor(props) {
   // }
 
   render() {
-    console.log("REQUEST", this.props.roomID);
+    // console.log("REQUEST", this.props.roomID);
     return(
       <div className="components-container">
         { this.state.user && this.state.user.posts.map((obj) => {

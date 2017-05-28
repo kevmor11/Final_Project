@@ -34650,7 +34650,7 @@
 	      } else {
 	        rooms = this.state.user.rooms;
 	      }
-	      console.log("Prooooooops", this.props.userData.data.user);
+	      // console.log("Prooooooops",this.props.userData.data.user);
 	
 	      return _react2.default.createElement(
 	        'div',
@@ -35484,7 +35484,7 @@
 	      var room_users_firstNames = [];
 	      _axios2.default.get('/api/rooms.json').then(function (res) {
 	        var rooms = res.data.rooms;
-	        // console.log("ROOMS", rooms);
+	        console.log("ROOMS", rooms);
 	        rooms.forEach(function (item, i) {
 	          // console.log("INSIDE", item);
 	          if (_this2.props.currentRoom === item.id) {
@@ -35507,6 +35507,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      console.log("HELLO", this.props);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -35805,15 +35806,18 @@
 	  _createClass(PinboardItemRequest, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
+	      var _this2 = this;
+	
 	      // PASS IN USER ID INSTEAD OF HARD CODING
 	      var ID = this.props.roomID;
-	      console.log("PROPS", this.props);
-	      console.log("ID", ID);
-	      // axios.get(`/api/users/1.json`)
-	      _axios2.default.get('/api/rooms/' + this.props.roomID + '.json').then(function (res) {
+	      // console.log("PROPS", this.props);
+	      // console.log("ID", ID);
+	      _axios2.default.get('/api/users/1.json')
+	      // axios.get(`/api/rooms/${this.props.roomID}.json`)
+	      .then(function (res) {
 	        console.log('res', res.data);
-	        // const user = res.data.user;
-	        // this.setState({ user });
+	        var user = res.data.user;
+	        _this2.setState({ user: user });
 	      });
 	      // this.setupSubscription();
 	    }
@@ -35831,14 +35835,14 @@
 	    // }
 	
 	    value: function render() {
-	      var _this2 = this;
+	      var _this3 = this;
 	
-	      console.log("REQUEST", this.props.roomID);
+	      // console.log("REQUEST", this.props.roomID);
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'components-container' },
 	        this.state.user && this.state.user.posts.map(function (obj) {
-	          return _react2.default.createElement(_PinboardItemModal2.default, { key: obj.id, title: obj.title, description: obj.description, img: obj.content.url, thumb: obj.content.thumb.url, link: obj.link, user: _this2.state.user, postID: _this2.state.user.posts.id, category: obj.category });
+	          return _react2.default.createElement(_PinboardItemModal2.default, { key: obj.id, title: obj.title, description: obj.description, img: obj.content.url, thumb: obj.content.thumb.url, link: obj.link, user: _this3.state.user, postID: _this3.state.user.posts.id, category: obj.category });
 	        })
 	      );
 	    }
