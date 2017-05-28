@@ -7,22 +7,20 @@ class Rooms extends Component {
 
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
+    console.log("Props constructor", this.props)
     this.state = {
-      user: null,
-      roomName: '',
-      rooms: []
+      roomName: "",
+      rooms: props.rooms,
+      allRoomsNames: props.rooms.map((room) => {
+      return room.name
+      })
     }
   }
 
   componentDidMount() {
-    console.log('component didmount now', this.state);
-    // axios.get(`/api/users/2.json`)
-    //   .then(res => {
-    //     // console.log(res.data.user);
-    //     const user = res.data.user;
-    //     this.setState({ user });
-    //   });
+    console.log("Rooms State ", this.state);
   }
+
 
   handleRoomNameChange = (event) => {
     this.setState({
@@ -31,6 +29,10 @@ class Rooms extends Component {
   }
   
   createRoomClick = (event) => {
+    console.log("clicked");
+     this.setState({
+      rooms:this.state.rooms.concat({ name: this.state.roomName})
+        })
     axios.post(`/api/rooms`, {
       name: this.state.roomName
     }).then(console.log('succuss'));
@@ -38,16 +40,9 @@ class Rooms extends Component {
 
   render() {
     let allRooms;
-    // if (this.state.user){
-    //   allRooms = this.state.user.rooms.map((room,i) => { 
-    //   return <Room key={room.name} roomName={room.name} roomNumber={i+1}/>;
-    //     // return <Room key={i} roomName={room.name} roomNumber={i+1}/>
-    //   })
-    // }
-    console.log('render state now', this.state);
-    console.log('rooms', this.props.rooms);
-    allRooms = this.props.rooms.map((room, i) => {
-      return <Room key={room.name} roomName={room.name} roomNumber={i+1}/>
+
+    allRooms = this.state.rooms.map((room, i) => {
+      return <Room key={i} roomName={room.name} roomNumber={i+1}/>
     })
 
     return (
