@@ -25,6 +25,15 @@ constructor(props) {
     this.setState({ showModal: false });
   }
 
+
+  deletePost(){
+    alert('inside deletePost')
+    axios.delete(`/api/rooms/${window.location['pathname'].split('/')[2]}/posts/${this.state.postID}`)
+    .then(this.close.bind(this));
+  }
+
+
+
   render() {
     return(
       <div>
@@ -36,6 +45,7 @@ constructor(props) {
         <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
           <Modal.Header closeButton>
             <Modal.Title>{this.props.title}</Modal.Title>
+            <button type="submit" className="button" onClick={ this.deletePost }>Delete</button>
           </Modal.Header>
           <Modal.Body>
             <p>{this.props.description}</p>
@@ -45,3 +55,5 @@ constructor(props) {
     )
   }
 }
+
+
