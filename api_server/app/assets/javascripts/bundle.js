@@ -35463,8 +35463,8 @@
 	
 	
 	  _createClass(PinboardSidebar, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
 	      var _this2 = this;
 	
 	      var room_name = "";
@@ -35478,13 +35478,13 @@
 	          if (_this2.props.currentRoom === item.id) {
 	            room_name = item.name;
 	            room_users = item.users;
-	            console.log("NAME", item.users);
-	            console.log("INSIDE");
+	            console.log("USERS", room_users);
+	            // console.log("INSIDE");
 	          }
-	          room_users.forEach(function (item, i) {
-	            // console.log("NAME", item.first_name);
-	            room_users_firstNames.push(item.first_name);
-	          });
+	        });
+	        room_users.forEach(function (item, i) {
+	          console.log("INSIDE FOREACH", item.first_name);
+	          room_users_firstNames.push(item.first_name);
 	        });
 	        _this2.setState({
 	          roomName: room_name,
@@ -35496,7 +35496,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      // console.log("HELLO", this.props);
+	      // console.log("STATE", this.state);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
