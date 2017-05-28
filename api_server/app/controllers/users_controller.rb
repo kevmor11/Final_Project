@@ -39,16 +39,25 @@ class UsersController < ApplicationController
     end
   end
 
-  def me
-    render json: current_user, serializer: UserSerializer, status: 200
-  end
+  # if User.exists?
+    def me
+      render json: current_user, serializer: UserSerializer, status: 200
+    end
+  # end
 
   private
     def user_params
       params.permit(:first_name, :last_name, :gender,
       :email, :password, :password_confirmation, :avatar)
-
     end
 
 
 end
+
+  def me
+    if current_user
+      render json: current_user, serializer: UserSerializer, status: 200
+    else
+      render :new
+    end
+  end

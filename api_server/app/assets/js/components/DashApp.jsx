@@ -21,9 +21,9 @@ class DashApp extends Component {
 
   componentDidMount() {
 
-    console.log("Did mount", "and props now are", this.props.userData);
+    console.log("Did mount", "and props now are", this.props.userData.data.user);
     this.setState({
-      user: this.props.userData
+      user: this.props.userData.data.user
     });
 
     // PSEUDO CREATE USERROOM SO THAT WE ARE ABLE TO GET THE ROOM FOR INVITING USERS, DELETE ONCE NAWAR AND JINNY FINISH THE REAL VERSION OF THIS
@@ -44,41 +44,41 @@ class DashApp extends Component {
     // });
   }
 
-  addUserToRoom = () => {
-    console.log("INSIDE", this.state.invited_id);
-    axios.post('/api/userrooms', {
-      user_id: this.state.invited_id,
-      // TO DO Change to this.state.current_room instead of hardcoding *********************
-      room_id: 6,
-    });
-    this.setState({
-      room_users: 2
-    })
-  }
+  // addUserToRoom = () => {
+  //   console.log("INSIDE", this.state.invited_id);
+  //   axios.post('/api/userrooms', {
+  //     user_id: this.state.invited_id,
+  //     // TO DO Change to this.state.current_room instead of hardcoding *********************
+  //     room_id: 6,
+  //   });
+  //   this.setState({
+  //     room_users: 2
+  //   })
+  // }
 
-  handleInviteFormChange = (event) => {
-    this.setState({
-      receiver: event.target.value
-    });
-  }
+  // handleInviteFormChange = (event) => {
+  //   this.setState({
+  //     receiver: event.target.value
+  //   });
+  // }
 
-  submitInviteForm = () => {
-    var userID = "";
-    axios.get('/api/users')
-    .then(res => {
-      const users = res.data.users;
-      users.forEach((user, i) => {
-        // console.log("INSIDE", user);
-        if (user.email === this.state.receiver) {
-          userID = user.id;
-          this.setState({
-            invited_id: userID
-          })
-          this.addUserToRoom();
-        }
-      })
-    });
-  }
+  // submitInviteForm = () => {
+  //   var userID = "";
+  //   axios.get('/api/users')
+  //   .then(res => {
+  //     const users = res.data.users;
+  //     users.forEach((user, i) => {
+  //       // console.log("INSIDE", user);
+  //       if (user.email === this.state.receiver) {
+  //         userID = user.id;
+  //         this.setState({
+  //           invited_id: userID
+  //         })
+  //         this.addUserToRoom();
+  //       }
+  //     })
+  //   });
+  // }
 
   render() {
   // console.log("state here from render", this.state.user);
@@ -94,7 +94,7 @@ class DashApp extends Component {
     } else {
       rooms = this.state.user.rooms;
     }
-    console.log("Prooooooops",this.props.userData);
+    console.log("Prooooooops",this.props.userData.data.user);
 
     return (
       <div>
@@ -111,7 +111,7 @@ class DashApp extends Component {
           {/*<button>create Room</button>*/}
         </div>
 
-        { this.state.room_users === 1 &&
+        {/*{ this.state.room_users === 1 &&
           <div className="user-invite">
             <div className="field">
               <label htmlFor="receiver" className="label">Invite Someone to Join Your Room</label>
@@ -123,7 +123,7 @@ class DashApp extends Component {
               <button type="submit" className="button is-primary" onClick={ this.submitInviteForm }>Submit</button>
             </p>
           </div>
-        }
+        }*/}
 
       </div>
     );

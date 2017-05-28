@@ -11,7 +11,7 @@ class PinboardSidebar extends Component {
           <article className="tile is-child box">
             <div className="content">
 
-              <p className="subtitle">Your Rooms</p>
+              <p className="subtitle">Users</p>
               <table className="table">
                 <thead>
                   <tr>
