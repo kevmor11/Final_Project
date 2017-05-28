@@ -12,6 +12,7 @@ class PinboardItems extends Component {
   }
 
   render(){
+    console.log('props in pinboraditem', this.props);
     return(
       <div>
         <div className="components-container">
@@ -34,7 +35,7 @@ class PinboardItems extends Component {
             <p>This is card 6</p>
           </div>
         </div>
-        <PopupNote isActive={this.props.openModal === 'note'} />
+        <PopupNote isActive={this.props.openModal === 'note'} userData={this.props.userData}/>
         <PopupLink isActive={this.props.openModal === 'link'} />
         <PopupImage isActive={this.props.openModal === 'image'} />
 
