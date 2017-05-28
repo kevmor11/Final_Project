@@ -49,7 +49,7 @@ class PinboardApp extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <Navbar currentUser={this.state.user} />
         <Pinboard openModal={this.state.openModal} userData={this.state.user} roomName={this.state.roomName} roomID={this.state.roomID} />
       </div>
     );

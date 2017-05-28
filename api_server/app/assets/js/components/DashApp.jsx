@@ -31,7 +31,7 @@ class DashApp extends Component {
 
     return (
       <div>
-        <Navbar />
+        <Navbar currentUser={this.state.user} />
         <div className="tile is-ancestor logged">
           <div className="tile is-vertical is-8">
             <div className="tile">
