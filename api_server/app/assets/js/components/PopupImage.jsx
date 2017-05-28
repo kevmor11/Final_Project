@@ -41,6 +41,7 @@ class PopupLink extends Component {
   }
 
   submitForm(event) {
+    // TODO change so we are not hard coding user 2
     axios.post('/api/rooms/1/posts', {
       image: this.state.image,
       content: this.state.content,

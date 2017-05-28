@@ -14,7 +14,7 @@ class PopupLink extends Component {
 
     this.handleLinkChange = this.handleLinkChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
-    this.handleTitleChange = this.handleTitleChange.bind(this);    
+    this.handleTitleChange = this.handleTitleChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
   }
 
@@ -41,6 +41,7 @@ class PopupLink extends Component {
   }
 
   submitForm(event){
+    // TODO change so we are not hard coding the ID
     axios.post('/api/rooms/1/posts', {
       link: this.state.link,
       title: this.state.title,

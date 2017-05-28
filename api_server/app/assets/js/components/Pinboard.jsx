@@ -77,6 +77,8 @@ class Pinboard extends Component {
   }
 
   render() {
+    console.log('PROPS', this.props);
+    console.log('STATE', this.state);
     return (
     <div>
       <div className="tile is-ancestor mainboard">

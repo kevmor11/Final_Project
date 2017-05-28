@@ -6,16 +6,19 @@ import PinItemModalLink from './PinItemModalLink.jsx'
 export default
 class PinboardItemModal extends Component {
 
-constructor(props) {
+  constructor(props) {
     super(props); // super calls `constructor` in React.Component
     this.state = {
       showModal: false,
       user: null,
       postID: null,
     }
+  console.log("YO", this.state.user);
   }
 
+
   render() {
+    console.log("STATE", this.state.user);
     switch (this.props.category) {
       case "image":
         return(
@@ -26,7 +29,7 @@ constructor(props) {
           img={this.props.img}
           thumb={this.props.thumb}
           user={this.state.user}
-          />)
+          />);
         break;
       case "note":
         return(
@@ -35,7 +38,7 @@ constructor(props) {
           title={this.props.title}
           description={this.props.description}
           user={this.state.user}
-          />)
+          />);
         break;
       case "link":
         return(
@@ -45,7 +48,7 @@ constructor(props) {
           description={this.props.description}
           link={this.props.link}
           user={this.state.user}
-          />)
+          />);
         break;
       default:
         throw new Error('Content category is not valid');

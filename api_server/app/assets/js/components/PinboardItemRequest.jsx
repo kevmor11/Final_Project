@@ -15,7 +15,7 @@ constructor(props) {
     }
   }
   componentDidMount() {
-    // console.log('userIDDDDDD', this.props.userData.data.user.id);
+    // TODO change so we are not hard coding user 2
     axios.get(`/api/users/2.json`)
       .then(res => {
         console.log('res', res.data);
@@ -42,7 +42,6 @@ constructor(props) {
   //   });
   // }
   render() {
-    // console.log("REQUEST", this.props.roomID);
     return(
       <div className="components-container">
         { this.state.user && this.state.user.posts.map((obj) => {

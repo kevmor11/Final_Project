@@ -8,6 +8,7 @@ class PopupNote extends Component {
 
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
+    console.log("HEY THERE", this.props);
 
     this.state = {
       title: '',
@@ -28,7 +29,7 @@ class PopupNote extends Component {
       })
       return roomID;
     };
-  } 
+  }
 
   close() {
     this.props.onClose();
@@ -48,9 +49,9 @@ class PopupNote extends Component {
   }
 
   componentDidMount() {
-  
+
   }
-  postDB = () => { 
+  postDB = () => {
     axios.post('/api/rooms/${1}/posts', {
         title: this.state.title,
         content: this.state.content,
@@ -71,7 +72,7 @@ class PopupNote extends Component {
     // this.setRoomId(rooms, this.postDB());
     // console.log("here2")
     // console.log("roomid inside submit form", this.state)
-    
+
   }
 
   setRoomIdState = (id) => {
@@ -86,7 +87,7 @@ class PopupNote extends Component {
       };
     });
   }
-  
+
   render() {
     return (
       <div>
