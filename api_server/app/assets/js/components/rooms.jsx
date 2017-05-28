@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import Room from './Room.jsx';
 import axios from 'axios';  
 export default
-
 class Rooms extends Component {
-
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
     this.state = {
@@ -15,7 +13,6 @@ class Rooms extends Component {
       })
     }
   }
-
   handleRoomNameChange = (event) => {
     this.setState({
       roomName: event.target.value
@@ -31,14 +28,11 @@ class Rooms extends Component {
       name: this.state.roomName
     }).then(console.log('succuss'));
   }
-
   render() {
     let allRooms;
-
     allRooms = this.state.rooms.map((room, i) => {
       return <Room key={i} roomName={room.name} roomNumber={i+1}/>
     })
-
     return (
       <div className="tile is-parent is-3 rooms">
         <article className="tile is-child box">
