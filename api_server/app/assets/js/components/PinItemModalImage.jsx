@@ -10,7 +10,20 @@ constructor(props) {
       showModal: false,
       user: null,
       postID: null,
-    }
+      currentRoomName: window.location['pathname'].split('/')[2],
+      currentRoomID: findRoomID(window.location['pathname'].split('/')[2])
+    };
+    this.deletePost = this.deletePost.bind(this);
+    function findRoomID(roomName){
+      let roomID;
+      props.userData.rooms.forEach((roomObject)=>{
+        let currentRoomName = window.location['pathname'].split('/')[2]
+        if (currentRoomName == roomObject.name){
+          roomID = roomObject.id;
+        }
+      })
+      return roomID;
+    };
   }
 
   open = () => {
@@ -24,9 +37,36 @@ constructor(props) {
     this.setState({ showModal: false });
   }
 
-  deletePost(){
+  setRoomIdState = (id) => {
+    this.setState({room_id: id});
+  }
+
+  setRoomId = (rooms) => {
+    rooms.forEach((room, i)=> {
+      if (window.location['pathname'].split('/')[2] == room.name) {
+        const roomID = room.id;
+        this.setRoomIdState(roomID);
+      };
+    });
+  }
+
+  setRoomIdState = (id) => {
+    this.setState({room_id: id});
+  }
+
+  setRoomId = (rooms) => {
+    rooms.forEach((room, i)=> {
+      if (window.location['pathname'].split('/')[2] == room.name) {
+        const roomID = room.id;
+        this.setRoomIdState(roomID);
+      };
+    });
+  }
+  
+
+  deletePost(event){
     alert('inside deletePost')
-    axios.delete(`/api/rooms/${window.location['pathname'].split('/')[2]}/posts/${this.state.postID}`)
+    axios.delete(`/api/rooms/${this.state.currentRoomID}/posts/${this.state.postID}`)
     .then(this.close.bind(this));
   }
 
@@ -41,8 +81,8 @@ constructor(props) {
 
         <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
           <Modal.Header closeButton>
-            <Modal.Title>{this.props.title}</Modal.Title>
             <button type="submit" className="button" onClick={ this.deletePost }>Delete</button>
+            <Modal.Title>{this.props.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <img src={'http://localhost:3000/' + this.props.img}/>

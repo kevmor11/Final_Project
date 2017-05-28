@@ -41,8 +41,8 @@ constructor(props) {
 
         <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
           <Modal.Header closeButton>
-            <Modal.Title>{this.props.title}</Modal.Title>
             <button type="submit" className="button" onClick={ this.deletePost }>Delete</button>
+            <Modal.Title>{this.props.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <a href={this.props.link}>{this.props.link}</a>
