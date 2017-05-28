@@ -3,7 +3,8 @@ const Router = require('react-router');
 const Route = Router.Route;
 const DefaultRoute = Router.DefaultRoute;
 
-const App = require('../components/App.jsx');
+const index = require('../components/index.jsx');
+const DashApp = require('../components/DashApp.jsx');
 const Signup = require('../components/Signup.jsx');
 const Login = require('../components/Login.jsx');
 const UserPage = require('../components/User.jsx');
@@ -13,12 +14,12 @@ const PostNew = require('../components/PostNew.jsx');
 
 
 module.exports = (
-  <Route name="app" path="/" component={App}>
+  <Router name="index" path="/" component={index}>
     <DefaultRoute component={UserPage} />
-    <Route name="user" path="users/:userId" component={UserPage}/>
+    <Route name="user" path="users/:userId" component={DashApp}/>
     <Route name="room" path="/room/:roomId" component={RoomPage}/>
     <Route name="room" path="/room/:roomId" component={RoomPage}/>
     <Route name="new-room" path="/room/new" component={RoomNew}/> 
     <Route name="new-post" path="/post/new" component={PostNew}/>
-  </Route>
+  </Router>
 );

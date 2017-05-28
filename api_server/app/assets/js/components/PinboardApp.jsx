@@ -6,17 +6,26 @@ import LoginField from './LoginField.jsx';
 import RegistrationFields from './RegistrationFields.jsx';
 import Pinboard from './Pinboard.jsx'
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 export default
 class PinboardApp extends Component {
-  static propTypes = {
-    foo: PropTypes.string
-  }
 
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
-    this.state = { openModal: '' };
+    
+    this.state = { 
+      user: props.userData.data.user,
+      openModal: '',
+      roomName: window.location['pathname'].split('/')[2]
+    };
   }
+
+  // componentDidMount() {
+  //   axios.get(`/api/rooms/${roomName}/posts/new`).then((res) => {
+
+  //   });
+  // }
 
   // openModal(modalName) {
   //   // image, link, note
@@ -27,7 +36,7 @@ class PinboardApp extends Component {
     return (
       <div>
         <Navbar />
-        <Pinboard openModal={this.state.openModal} />
+        <Pinboard openModal={this.state.openModal} userData={this.state.user} roomName={this.state.roomName}/>
       </div>
     );
   }

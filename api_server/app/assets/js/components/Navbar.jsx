@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import NavbarLeft from './NavbarLeft.jsx'
-class Navbar extends Component { 
+
+class Navbar extends Component {
   render() {
     return (
       <div>
@@ -13,7 +14,7 @@ class Navbar extends Component {
               <span></span>
             </span>
             <div className="nav-right nav-menu">
-              <a className="nav-item is-tab is-hidden-tablet is-active">Home</a>
+              <a className="nav-item is-tab is-hidden-tablet is-active" href='https://www.google.com'>Home</a>
               <a className="nav-item is-tab is-hidden-tablet">Features</a>
               <a className="nav-item is-tab is-hidden-tablet">Pricing</a>
               <a className="nav-item is-tab is-hidden-tablet">About</a>

@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {Modal, Button, OverlayTrigger} from 'react-bootstrap'
-import axios from 'axios'
 import PinboardItemModal from './PinboardItemModal.jsx'
+import axios from 'axios'
 
 export default
 class PinboardItemRequest extends Component {
@@ -13,29 +11,47 @@ constructor(props) {
       showModal: false,
       user: null,
       postID: null,
+      posts: []
     }
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:3000/api/users/1.json`)
+    // console.log('userIDDDDDD', this.props.userData.data.user.id);
+    axios.get(`/api/rooms/${window.location['pathname'].split('/')[2]}.json`)
       .then(res => {
-        // console.log(res.data.user);
+        // console.log('res', res.data);
+        console.log("Room data", res);
         const user = res.data.user;
         this.setState({ user });
       });
+    // this.setupSubscription();
   }
+
+  updatePosts(post) {
+    this.setState({
+      posts: this.state.posts.concat({
+        user_first_name: post.user.first_name, description: post.description
+      })
+    });
+  }
+
+  // setupSubscription() {
+  //   App.cable.subscriptions.create('PostsChannel', {
+  //     received(post) {
+  //       return this.updatePosts(post);
+  //     },
+  //     updatePosts: this.updatePosts.bind(this)
+  //   });
+  // }
 
   render() {
     return(
-      <div>
-
+      <div className="components-container">
         { this.state.user && this.state.user.posts.map((obj) => {
-          console.log(obj);
           return (
             <PinboardItemModal key={obj.id} title={obj.title} description={obj.description} img={obj.content.url} thumb={obj.content.thumb.url} link={obj.link} user={this.state.user} postID={this.state.user.posts.id} category={obj.category} />
             )
         })}
-
       </div>
     )
   }

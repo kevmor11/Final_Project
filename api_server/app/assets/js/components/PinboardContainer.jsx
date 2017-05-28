@@ -7,7 +7,9 @@ class PinboardContainer extends Component {
 
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
-    this.state = { openModal: '' };
+    this.state = { 
+      openModal: '',
+      user:props.userData };
   }
 
 
@@ -21,9 +23,9 @@ class PinboardContainer extends Component {
       <div>
         <div className="tile is-parent">
           <article className="tile is-child box mainboard-contents">
-            <PinboardHeader modalToggle={this.openModal.bind(this)} />
+            <PinboardHeader modalToggle={this.openModal.bind(this)} userData={this.state.user}/>
             <section>
-              <PinboardItems openModal={this.state.openModal} onClose={() => this.setState({openModal: ''})}/>
+              <PinboardItems userData={this.state.user} openModal={this.state.openModal} onClose={() => this.setState({openModal: ''})}/>
             </section>
           </article>
         </div>

@@ -18,10 +18,3 @@ class HangoutApp extends Component {
     );
   }
 }
-
-// class ExtendedApp extends App {
-//   render() {
-//     const inner = super.render(); // calls render in <App />
-//     return <div id="wrapped">{inner}</div>;
-//   }
-// }

@@ -1,28 +1,58 @@
 import React, { Component } from 'react';
 import Room from './Room.jsx';
-
+import axios from 'axios';  
 export default
+
 class Rooms extends Component {
-   constructor(props){
-    super(props);
-    this.state = {isLoggedIn: false, user: [] };
+
+  constructor(props) {
+    super(props); // super calls `constructor` in React.Component
+    this.state = {
+      roomName: "",
+      rooms: props.rooms,
+      allRoomsNames: props.rooms.map((room) => {
+      return room.name
+      })
+    }
   }
 
-  componentDidMount() {
-    axios.get(`http://localhost:3000/api/users/1.json`)
-      .then(res => {
-        console.log(res.data.user);
-        const user = res.data.user;
-        this.setState({ user });
-      });
+
+
+
+  handleRoomNameChange = (event) => {
+    this.setState({
+      roomName: event.target.value
+    });
   }
+  
+  createRoomClick = (event) => {
+    console.log("clicked");
+     this.setState({
+      rooms:this.state.rooms.concat({ name: this.state.roomName})
+        })
+    axios.post(`/api/rooms`, {
+      name: this.state.roomName
+    }).then(console.log('succuss'));
+  }
+
   render() {
-    return (
-      <div className="tile is-parent is-2 rooms">
-        <article className="tile is-child box">
-          <div className="content">
+    let allRooms;
 
+    allRooms = this.state.rooms.map((room, i) => {
+      return <Room key={i} roomName={room.name} roomNumber={i+1}/>
+    })
+
+    return (
+      <div className="tile is-parent is-3 rooms">
+        <article className="tile is-child box">
+        <div className="content">
             <p className="subtitle">Your Rooms</p>
+            <div className="field">
+              <p className="control">
+                <input className="input" type="name" id="roomName" name="roomName" value={ this.state.roomName } onChange={ this.handleRoomNameChange } placeholder="Room Name" />
+              </p>
+              <button className="button" onClick={this.createRoomClick}>Create</button>
+            </div>
             <table className="table">
               <thead>
                 <tr>
@@ -32,7 +62,7 @@ class Rooms extends Component {
                 </tr>
               </thead>
               <tbody>
-                <Room />
+                {allRooms}
               </tbody>
             </table>
           </div>

@@ -3,22 +3,33 @@ import axios from 'axios';
 import http from 'http';
 
 export default
-class Registration extends Component { 
+class Registration extends Component {
 
   constructor(props){
     super(props);
-    this.state = { first_name: "",
-                   last_name: "",
-                   email: "",
-                   password: "",
-                   gender: ""
-                 }  
+    this.state = {
+      first_name: "",
+      last_name: "",
+      email: "",
+      password: "",
+      gender: ""
+      }
     this.handleRegistrationChange =this.handleRegistrationChange.bind(this);
   }
 
+  handleRedirect = (res) => {
+    window.location.href = `/users/${res.data.user.id}`;
+  }
+
+  goLoginPage = (e) => {
+    axios.post('/api/sessions', {
+      email: this.state.email,
+      password: this.state.password
+    }).then(this.handleRedirect);
+  }
 
   handleRegistrationChange = (e) => {
-    const name = e.target.name;    
+    const name = e.target.name;
     const value = e.target.value;
     this.setState({
       [name]: value
@@ -30,15 +41,13 @@ class Registration extends Component {
       this.state.gender = "n/a";
     }
     e.preventDefault();
-    axios.post('http://localhost:3000/api/users', {
+    axios.post('/api/users', {
       first_name: this.state.first_name,
       last_name: this.state.last_name,
       email: this.state.email,
       password: this.state.password,
       gender: this.state.gender
-    }).then(res => {
-      console.log(res);
-    }).catch(err => {
+    }).then(this.goLoginPage).catch(err => {
       console.log(err)
     });
   }
@@ -52,28 +61,28 @@ class Registration extends Component {
             <div className="field">
               <label htmlFor="first-name" className="label">Firstname</label>
               <p className="control">
-                <input className="input" type="text" name="first_name" id="first-name" 
+                <input className="input" type="text" name="first_name" id="first-name"
                 value={this.state.first_name} onChange={this.handleRegistrationChange} placeholder="First Name"/>
               </p>
             </div>
             <div className="field">
               <label htmlFor="last-name" className="label">Last Name</label>
               <p className="control">
-                <input className="input" type="text" name="last_name" id="last-name" 
+                <input className="input" type="text" name="last_name" id="last-name"
                 value={this.state.last_name} onChange={this.handleRegistrationChange} placeholder="Last Name"/>
               </p>
             </div>
             <div className="field">
               <label htmlFor="email" className="label">Email</label>
               <p className="control">
-                <input className="input" type="email" name="email" id="email" 
+                <input className="input" type="email" name="email" id="email"
                 value={this.state.email} onChange={this.handleRegistrationChange} placeholder="Email"/>
               </p>
             </div>
             <div className="field">
               <label htmlFor="password" className="label">Password</label>
               <p className="control">
-                <input className="input" type="password" name="password" id="password" 
+                <input className="input" type="password" name="password" id="password"
                 value={this.state.password} onChange={this.handleRegistrationChange} placeholder="Password"/>
               </p>
             </div>
@@ -82,6 +91,7 @@ class Registration extends Component {
               <p className="control">
                 <span className="select">
                   <select name="gender" value={this.state.gender} onChange={this.handleRegistrationChange}>
+                    <option value="" disabled>Please Select</option>
                     <option>Male</option>
                     <option>Female</option>
                     <option>Other</option>
@@ -92,12 +102,12 @@ class Registration extends Component {
             </div>
             <div className="field is-grouped">
               <p className="control">
-                <button  className="button is-primary">Register</button>
+                <button className="button is-primary" onClick={ this.goLoginPage } >Register</button>
               </p>
             </div>
           </form>
         </div>
       )
     }
-  
 }
+

@@ -14,25 +14,6 @@ class App extends Component {
     this.state = {isLoggedIn: false};
   }
 
-  // componentDidMount() {
-  //   axios.get(`http://localhost:3000/api/users/1.json`)
-  //     .then(res => {
-  //       console.log(res.data.user);
-  //       const user = res.data.user;
-  //       this.setState( {user: { first_name:  user.first_name,
-  //                               last_name: user.last_name,
-  //                               email: user.email,
-  //                               password: user.password,
-  //                               gender: user.gender,
-  //                               rooms: user.rooms,
-  //                               posts: user.posts
-  //                              }
-                      
-      
-  //                    });
-  //     });
-  // }
-
   handleLoginClick = () => {
     this.setState({isLoggedIn: true});
   }
