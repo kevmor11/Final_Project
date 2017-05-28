@@ -19,7 +19,7 @@ constructor(props) {
     // console.log('userIDDDDDD', this.props.userData.data.user.id);
     axios.get(`/api/rooms/${window.location['pathname'].split('/')[2]}.json`)
       .then(res => {
-        // console.log('res', res.data);
+        console.log('res', res.data);
         // console.log("Room data", res);
         const user = res.data.user;
         this.setState({ user });

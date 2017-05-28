@@ -35778,7 +35778,7 @@
 	
 	      // console.log('userIDDDDDD', this.props.userData.data.user.id);
 	      _axios2.default.get('/api/rooms/' + window.location['pathname'].split('/')[2] + '.json').then(function (res) {
-	        // console.log('res', res.data);
+	        console.log('res', res.data);
 	        // console.log("Room data", res);
 	        var user = res.data.user;
 	        _this2.setState({ user: user });
