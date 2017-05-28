@@ -20,6 +20,7 @@ function run(user) {
     const root = document.getElementById(id);
     if(!root) { return; }
     console.log('Rendering into ', id);
+    console.log("prop to be passed to ", id, "is", user)
     ReactDOM.render(
       <Component userData={user}/>, root);
   });

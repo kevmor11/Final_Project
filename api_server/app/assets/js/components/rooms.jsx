@@ -7,7 +7,6 @@ class Rooms extends Component {
 
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
-    console.log("Props constructor", this.props)
     this.state = {
       roomName: "",
       rooms: props.rooms,
@@ -17,9 +16,7 @@ class Rooms extends Component {
     }
   }
 
-  componentDidMount() {
-    console.log("Rooms State ", this.state);
-  }
+
 
 
   handleRoomNameChange = (event) => {

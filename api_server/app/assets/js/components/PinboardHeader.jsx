@@ -46,7 +46,7 @@ class PinboardHeader extends Component {
   render(){
     let containerClass = "add-content-container";
     if(this.state.showAddButtons) containerClass += " open";
-    console.log('propppppppppppppnnndslfkwe', this.props.userData);
+
     return(
       <div>
         <header className="hangout-pinboard">

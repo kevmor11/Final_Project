@@ -10,7 +10,7 @@ class Pinboard extends Component {
     super(props); // super calls `constructor` in React.Component
     this.state = {
       openModal: '',
-      user: null,
+      user: props.userData,
       receiver: "",
       room_users: 1,
       // TO DO make an axios call to determine current room rather than hard coding it
@@ -21,10 +21,27 @@ class Pinboard extends Component {
 
   componentDidMount() {
 
+    console.log("Did mount", "and props now are", this.props.userData);
     this.setState({
       user: this.props.userData
     });
 
+    // PSEUDO CREATE USERROOM SO THAT WE ARE ABLE TO GET THE ROOM FOR INVITING USERS, DELETE ONCE NAWAR AND JINNY FINISH THE REAL VERSION OF THIS
+    // axios.post('/api/userrooms', {
+    //   user_id: 6,
+    //   room_id: 6,
+    // });
+    // this.setState({
+    //   current_room: 2
+    // })
+
+    // // set the current room so that we know which room to render???
+    // axios.get(`/api/userrooms/6.json`)
+    // .then(res => {
+    //   console.log("Room Get", res);
+    //   const current_room = res.data.user;
+    //   this.setState({ current_room: current_room });
+    // });
 
     var roomUsers = 0;
     axios.get('/api/userrooms')
@@ -85,7 +102,7 @@ class Pinboard extends Component {
     <div>
       <div className="tile is-ancestor mainboard">
         <PinboardSidebar />
-        <PinboardContainer openModal={this.state.openModal} />
+        <PinboardContainer openModal={this.state.openModal} userData={this.state}/>
         { this.state.room_users === 1 &&
           <div className="user-invite">
             <div className="field">

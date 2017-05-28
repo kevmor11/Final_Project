@@ -10,7 +10,7 @@ constructor(props) {
     super(props); // super calls `constructor` in React.Component
     this.state = {
       showModal: false,
-      user: null
+      user: props.userData.user
     }
   }
 

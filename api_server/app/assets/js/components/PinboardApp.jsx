@@ -13,8 +13,9 @@ class PinboardApp extends Component {
 
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
-    console.log("I hate you", window.location['pathname'].split('/')[2]);
+    
     this.state = { 
+      user: props.userData.data.user,
       openModal: '',
       roomName: window.location['pathname'].split('/')[2]
     };
@@ -32,11 +33,10 @@ class PinboardApp extends Component {
   // }
 
   render() {
-    console.log("proppppps", this.props);
     return (
       <div>
         <Navbar />
-        <Pinboard openModal={this.state.openModal} userData={this.props.userData}/>
+        <Pinboard openModal={this.state.openModal} userData={this.state.user} roomName={this.state.roomName}/>
       </div>
     );
   }

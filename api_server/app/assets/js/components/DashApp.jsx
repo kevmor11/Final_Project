@@ -10,13 +10,10 @@ class DashApp extends Component {
 
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
-
     this.state = {
       user: props.userData.data.user,
     }
   }
-
-
 
   render() {
     let rooms = [];

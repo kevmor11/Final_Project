@@ -8,15 +8,27 @@ class PopupNote extends Component {
 
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
+
     this.state = {
       title: '',
-      content: ''
+      content: '',
+      currentRoomName: window.location['pathname'].split('/')[2],
+      currentRoomID: findRoomID(window.location['pathname'].split('/')[2])
     };
-
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleContentChange = this.handleContentChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
-  }
+    function findRoomID(roomName){
+      let roomID;
+      props.userData.user.rooms.forEach((roomObject)=>{
+        let currentRoomName = window.location['pathname'].split('/')[2]
+        if (currentRoomName == roomObject.name){
+          roomID = roomObject.id;
+        }
+      })
+      return roomID;
+    };
+  } 
 
   close() {
     this.props.onClose();
@@ -36,7 +48,7 @@ class PopupNote extends Component {
   }
 
   componentDidMount() {
-    console.log('props inside popupnote', this.props.userData.data.user.rooms);
+  
   }
   postDB = () => { 
     axios.post('/api/rooms/${1}/posts', {
@@ -46,11 +58,19 @@ class PopupNote extends Component {
       }).then(this.close.bind(this));
   }
   submitForm(event) {
-    const rooms = this.props.userData.data.user.rooms;
-    console.log("here1")
-    this.setRoomId(rooms, this.postDB());
-    console.log("here2")
-    console.log("roomid inside submit form", this.state)
+      console.log("submit clicked");
+      axios.post(`/api/rooms/${this.state.currentRoomID}/posts`, {
+        title: this.state.title,
+        content: this.state.content,
+        category: "note"
+      }).then(this.close.bind(this));
+
+
+    // const rooms = this.props.userData.data.user.rooms;
+    // console.log("here1")
+    // this.setRoomId(rooms, this.postDB());
+    // console.log("here2")
+    // console.log("roomid inside submit form", this.state)
     
   }
 
