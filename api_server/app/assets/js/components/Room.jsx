@@ -11,10 +11,11 @@ class Rooms extends Component {
     return (
       <tr>
         <th>{this.props.roomNumber}</th>
-
         <td>
-          <button onClick={this.redirectionTime.bind(this)}>{this.props.roomName}</button>
+          <p className="field">
+            <a className="button is-danger is-outlined" onClick={this.redirectionTime.bind(this)}>{this.props.roomName}</a>
           {/*<a href="" title="this room blah blah blah">{this.props.roomName}</a>*/}
+          </p>
         </td>
       </tr>
     );
