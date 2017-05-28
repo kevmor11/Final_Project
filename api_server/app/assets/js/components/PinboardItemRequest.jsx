@@ -5,16 +5,18 @@ export default
 class PinboardItemRequest extends Component {
 constructor(props) {
     super(props); // super calls `constructor` in React.Component
+    console.log("Props from PBItemRequest", props)
     this.state = {
       showModal: false,
       user: null,
       postID: null,
-      posts: []
+      posts: [],
+      userData:props
     }
   }
   componentDidMount() {
-    // PASS IN USER ID INSTEAD OF HARD CODING
-    axios.get(`/api/users/1.json`)
+    // console.log('userIDDDDDD', this.props.userData.data.user.id);
+    axios.get(`/api/users/2.json`)
       .then(res => {
         console.log('res', res.data);
         const user = res.data.user;
