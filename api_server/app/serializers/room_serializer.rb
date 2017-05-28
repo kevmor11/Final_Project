@@ -1,5 +1,5 @@
 class RoomSerializer < ApplicationSerializer
-  attributes :name, :users, :posts
+  attributes :id, :name, :users, :posts
 
   has_many :userrooms
   has_many :users, through: :userrooms

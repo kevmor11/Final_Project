@@ -20,11 +20,11 @@ class PinboardApp extends Component {
     };
   }
 
-  componentDidMount() {
-    axios.get(`/rooms/${roomName}.json`).then((res) => {
-      alert('response', res);
-    });
-  }
+  // componentDidMount() {
+  //   axios.get(`/api/rooms/${roomName}/posts/new`).then((res) => {
+
+  //   });
+  // }
 
   // openModal(modalName) {
   //   // image, link, note
@@ -32,10 +32,11 @@ class PinboardApp extends Component {
   // }
 
   render() {
+    console.log("proppppps", this.props);
     return (
       <div>
         <Navbar />
-        <Pinboard openModal={this.state.openModal} />
+        <Pinboard openModal={this.state.openModal} userData={this.props.userData}/>
       </div>
     );
   }

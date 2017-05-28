@@ -1,5 +1,11 @@
 class PostsController < ApplicationController
 
+  def new
+    # @room = Rooms.find_by(room_id: params[:room_id])
+    puts "Room found"
+    # render json: @room
+  end
+
   def create
     @post = Post.new(post_params)
     # @post = room.posts.new

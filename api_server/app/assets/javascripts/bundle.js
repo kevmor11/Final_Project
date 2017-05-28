@@ -35390,27 +35390,26 @@
 	    return _this;
 	  }
 	
+	  // componentDidMount() {
+	  //   axios.get(`/api/rooms/${roomName}/posts/new`).then((res) => {
+	
+	  //   });
+	  // }
+	
+	  // openModal(modalName) {
+	  //   // image, link, note
+	  //   this.setState(Object.assign({}, this.state, { openModal: modalName }));
+	  // }
+	
 	  _createClass(PinboardApp, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      _axios2.default.get('/rooms/' + roomName + '.json').then(function (res) {
-	        alert('response', res);
-	      });
-	    }
-	
-	    // openModal(modalName) {
-	    //   // image, link, note
-	    //   this.setState(Object.assign({}, this.state, { openModal: modalName }));
-	    // }
-	
-	  }, {
 	    key: 'render',
 	    value: function render() {
+	      console.log("proppppps", this.props);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
 	        _react2.default.createElement(_Navbar2.default, null),
-	        _react2.default.createElement(_Pinboard2.default, { openModal: this.state.openModal })
+	        _react2.default.createElement(_Pinboard2.default, { openModal: this.state.openModal, userData: this.props.userData })
 	      );
 	    }
 	  }]);
@@ -35486,7 +35485,7 @@
 	          'div',
 	          { className: 'tile is-ancestor mainboard' },
 	          _react2.default.createElement(_PinboardSidebar2.default, null),
-	          _react2.default.createElement(_PinboardContainer2.default, { openModal: this.state.openModal })
+	          _react2.default.createElement(_PinboardContainer2.default, { openModal: this.state.openModal, userData: this.props.userData })
 	        )
 	      );
 	    }
@@ -35651,7 +35650,7 @@
 	
 	var _PinboardItems2 = _interopRequireDefault(_PinboardItems);
 	
-	var _PinboardHeader = __webpack_require__(/*! ./PinboardHeader.jsx */ 546);
+	var _PinboardHeader = __webpack_require__(/*! ./PinboardHeader.jsx */ 543);
 	
 	var _PinboardHeader2 = _interopRequireDefault(_PinboardHeader);
 	
@@ -35696,11 +35695,11 @@
 	          _react2.default.createElement(
 	            'article',
 	            { className: 'tile is-child box mainboard-contents' },
-	            _react2.default.createElement(_PinboardHeader2.default, { modalToggle: this.openModal.bind(this) }),
+	            _react2.default.createElement(_PinboardHeader2.default, { modalToggle: this.openModal.bind(this), userData: this.props.userData }),
 	            _react2.default.createElement(
 	              'section',
 	              null,
-	              _react2.default.createElement(_PinboardItems2.default, { openModal: this.state.openModal, onClose: function onClose() {
+	              _react2.default.createElement(_PinboardItems2.default, { userData: this.props.userData, openModal: this.state.openModal, onClose: function onClose() {
 	                  return _this2.setState({ openModal: '' });
 	                } })
 	            )
@@ -35738,18 +35737,6 @@
 	
 	var _PinboardItemRequest2 = _interopRequireDefault(_PinboardItemRequest);
 	
-	var _PopupNote = __webpack_require__(/*! ./PopupNote.jsx */ 543);
-	
-	var _PopupNote2 = _interopRequireDefault(_PopupNote);
-	
-	var _PopupLink = __webpack_require__(/*! ./PopupLink.jsx */ 544);
-	
-	var _PopupLink2 = _interopRequireDefault(_PopupLink);
-	
-	var _PopupImage = __webpack_require__(/*! ./PopupImage.jsx */ 545);
-	
-	var _PopupImage2 = _interopRequireDefault(_PopupImage);
-	
 	var _propTypes = __webpack_require__(/*! prop-types */ 184);
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
@@ -35774,21 +35761,10 @@
 	  _createClass(PinboardItems, [{
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
-	
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_PinboardItemRequest2.default, null),
-	        _react2.default.createElement(_PopupNote2.default, { isActive: this.props.openModal === 'note', onClose: function onClose() {
-	            return _this2.props.onClose();
-	          } }),
-	        _react2.default.createElement(_PopupLink2.default, { isActive: this.props.openModal === 'link', onClose: function onClose() {
-	            return _this2.props.onClose();
-	          } }),
-	        _react2.default.createElement(_PopupImage2.default, { isActive: this.props.openModal === 'image', onClose: function onClose() {
-	            return _this2.props.onClose();
-	          } })
+	        _react2.default.createElement(_PinboardItemRequest2.default, { userData: this.props.userData })
 	      );
 	    }
 	  }]);
@@ -35859,8 +35835,10 @@
 	    value: function componentDidMount() {
 	      var _this2 = this;
 	
-	      _axios2.default.get('/api/users/1.json').then(function (res) {
+	      // console.log('userIDDDDDD', this.props.userData.data.user.id);
+	      _axios2.default.get('/api/rooms/' + window.location['pathname'].split('/')[2] + '.json').then(function (res) {
 	        // console.log('res', res.data);
+	        console.log("Room data", res);
 	        var user = res.data.user;
 	        _this2.setState({ user: user });
 	      });
@@ -56599,6 +56577,169 @@
 
 /***/ }),
 /* 543 */
+/*!******************************************!*\
+  !*** ./js/components/PinboardHeader.jsx ***!
+  \******************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _propTypes = __webpack_require__(/*! prop-types */ 184);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _PopupNote = __webpack_require__(/*! ./PopupNote.jsx */ 544);
+	
+	var _PopupNote2 = _interopRequireDefault(_PopupNote);
+	
+	var _PopupLink = __webpack_require__(/*! ./PopupLink.jsx */ 545);
+	
+	var _PopupLink2 = _interopRequireDefault(_PopupLink);
+	
+	var _PopupImage = __webpack_require__(/*! ./PopupImage.jsx */ 546);
+	
+	var _PopupImage2 = _interopRequireDefault(_PopupImage);
+	
+	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 289);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var PinboardHeader = function (_Component) {
+	  _inherits(PinboardHeader, _Component);
+	
+	  function PinboardHeader(props) {
+	    _classCallCheck(this, PinboardHeader);
+	
+	    var _this = _possibleConstructorReturn(this, (PinboardHeader.__proto__ || Object.getPrototypeOf(PinboardHeader)).call(this, props));
+	
+	    _this.close = function () {
+	      _this.setState({
+	        showModalNote: false,
+	        showModalLink: false,
+	        showModalImage: false
+	      });
+	    };
+	
+	    _this.openNote = function () {
+	      _this.setState({ showModalNote: true });
+	    };
+	
+	    _this.openLink = function () {
+	      _this.setState({ showModalLink: true });
+	    };
+	
+	    _this.openImage = function () {
+	      _this.setState({ showModalImage: true });
+	    };
+	
+	    _this.handleClick = function () {
+	      _this.setState({ showAddButtons: !_this.state.showAddButtons });
+	    };
+	
+	    _this.state = {
+	      showModalNote: false,
+	      showModalLink: false,
+	      showModalImage: false
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(PinboardHeader, [{
+	    key: 'render',
+	    value: function render() {
+	      var containerClass = "add-content-container";
+	      if (this.state.showAddButtons) containerClass += " open";
+	      console.log('propppppppppppppnnndslfkwe', this.props.userData);
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'header',
+	          { className: 'hangout-pinboard' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: containerClass },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'add-content photo', onClick: this.openImage },
+	              _react2.default.createElement('i', { className: 'add fa fa-picture-o' })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'add-content message', onClick: this.openLink },
+	              _react2.default.createElement('i', { className: 'add fa fa-link' })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'add-content note', onClick: this.openNote },
+	              _react2.default.createElement('i', { className: 'add fa fa-sticky-note-o' })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'add-content add-button', onClick: this.handleClick },
+	              _react2.default.createElement('i', { className: 'fa fa-plus' })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'tabs is-centered' },
+	            _react2.default.createElement(
+	              'ul',
+	              null,
+	              _react2.default.createElement(
+	                'li',
+	                null,
+	                _react2.default.createElement(
+	                  'a',
+	                  { className: 'is-active' },
+	                  'Pinboard'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                null,
+	                _react2.default.createElement(
+	                  'a',
+	                  null,
+	                  'Hangout'
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(_PopupNote2.default, { isActive: this.state.showModalNote, onClose: this.close, userData: this.props.userData }),
+	        _react2.default.createElement(_PopupLink2.default, { isActive: this.state.showModalLink, onClose: this.close }),
+	        _react2.default.createElement(_PopupImage2.default, { isActive: this.state.showModalImage, onClose: this.close })
+	      );
+	    }
+	  }]);
+	
+	  return PinboardHeader;
+	}(_react.Component);
+	
+	PinboardHeader.propTypes = {
+	  modalToggle: _propTypes2.default.func.isRequired
+	};
+	exports.default = PinboardHeader;
+
+/***/ }),
+/* 544 */
 /*!*************************************!*\
   !*** ./js/components/PopupNote.jsx ***!
   \*************************************/
@@ -56643,6 +56784,27 @@
 	    // super calls `constructor` in React.Component
 	    var _this = _possibleConstructorReturn(this, (PopupNote.__proto__ || Object.getPrototypeOf(PopupNote)).call(this, props));
 	
+	    _this.postDB = function () {
+	      _axios2.default.post('/api/rooms/${1}/posts', {
+	        title: _this.state.title,
+	        content: _this.state.content,
+	        category: "note"
+	      }).then(_this.close.bind(_this));
+	    };
+	
+	    _this.setRoomIdState = function (id) {
+	      _this.setState({ room_id: id });
+	    };
+	
+	    _this.setRoomId = function (rooms) {
+	      rooms.forEach(function (room, i) {
+	        if (window.location['pathname'].split('/')[2] == room.name) {
+	          var roomID = room.id;
+	          _this.setRoomIdState(roomID);
+	        };
+	      });
+	    };
+	
 	    _this.state = {
 	      title: '',
 	      content: ''
@@ -56670,17 +56832,23 @@
 	    key: 'handleContentChange',
 	    value: function handleContentChange(event) {
 	      this.setState({
-	        content: event.target.value
+	        content: event.target.value,
+	        room_id: ''
 	      });
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      console.log('props inside popupnote', this.props.userData.data.user.rooms);
 	    }
 	  }, {
 	    key: 'submitForm',
 	    value: function submitForm(event) {
-	      _axios2.default.post('/api/rooms/1/posts', {
-	        title: this.state.title,
-	        content: this.state.content,
-	        category: "note"
-	      }).then(this.close.bind(this));
+	      var rooms = this.props.userData.data.user.rooms;
+	      console.log("here1");
+	      this.setRoomId(rooms, this.postDB());
+	      console.log("here2");
+	      console.log("roomid inside submit form", this.state);
 	    }
 	  }, {
 	    key: 'render',
@@ -56752,7 +56920,7 @@
 	exports.default = PopupNote;
 
 /***/ }),
-/* 544 */
+/* 545 */
 /*!*************************************!*\
   !*** ./js/components/PopupLink.jsx ***!
   \*************************************/
@@ -56922,7 +57090,7 @@
 	exports.default = PopupLink;
 
 /***/ }),
-/* 545 */
+/* 546 */
 /*!**************************************!*\
   !*** ./js/components/PopupImage.jsx ***!
   \**************************************/
@@ -57104,136 +57272,6 @@
 	}(_react.Component);
 	
 	exports.default = PopupLink;
-
-/***/ }),
-/* 546 */
-/*!******************************************!*\
-  !*** ./js/components/PinboardHeader.jsx ***!
-  \******************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _propTypes = __webpack_require__(/*! prop-types */ 184);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var PinboardHeader = function (_Component) {
-	  _inherits(PinboardHeader, _Component);
-	
-	  function PinboardHeader(props) {
-	    _classCallCheck(this, PinboardHeader);
-	
-	    var _this = _possibleConstructorReturn(this, (PinboardHeader.__proto__ || Object.getPrototypeOf(PinboardHeader)).call(this, props));
-	
-	    _this.handleClick = function () {
-	      _this.setState({ showAddButtons: !_this.state.showAddButtons });
-	    };
-	
-	    _this.state = { showAddButtons: false };
-	    return _this;
-	  }
-	
-	  _createClass(PinboardHeader, [{
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-	
-	      var containerClass = "add-content-container";
-	      if (this.state.showAddButtons) containerClass += " open";
-	
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'header',
-	          { className: 'hangout-pinboard' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: containerClass },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'add-content photo', onClick: function onClick() {
-	                  return _this2.props.modalToggle('image');
-	                } },
-	              _react2.default.createElement('i', { className: 'add fa fa-picture-o' })
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'add-content message', onClick: function onClick() {
-	                  return _this2.props.modalToggle('link');
-	                } },
-	              _react2.default.createElement('i', { className: 'add fa fa-link' })
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'add-content note', onClick: function onClick() {
-	                  return _this2.props.modalToggle('note');
-	                } },
-	              _react2.default.createElement('i', { className: 'add fa fa-sticky-note-o' })
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'add-content add-button', onClick: this.handleClick },
-	              _react2.default.createElement('i', { className: 'fa fa-plus' })
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'tabs is-centered' },
-	            _react2.default.createElement(
-	              'ul',
-	              null,
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  'a',
-	                  { className: 'is-active' },
-	                  'Pinboard'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  'a',
-	                  null,
-	                  'Hangout'
-	                )
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return PinboardHeader;
-	}(_react.Component);
-	
-	PinboardHeader.propTypes = {
-	  modalToggle: _propTypes2.default.func.isRequired
-	};
-	exports.default = PinboardHeader;
 
 /***/ }),
 /* 547 */
