@@ -1,7 +1,23 @@
 import React, {Component} from 'react';
-import NavbarLeft from './NavbarLeft.jsx'
+import NavbarLeft from './NavbarLeft.jsx';
+import axios from 'axios';
 
 class Navbar extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: props.currentUser
+    }
+  }
+
+  logOutClick = () => {
+    axios.delete(`/api/sessions/${this.state.user.id}`).then(this.handleRedirectToLogin);
+  }
+
+  handleRedirectToLogin = () => {
+    window.location.href = '/';
+  }
   render() {
     return (
       <div>
@@ -24,7 +40,7 @@ class Navbar extends Component {
                 </figure>
                 Profile
               </a>
-              <a className="nav-item is-tab">Log out</a>
+              <button className="nav-item is-tab logoutButton" onClick={ this.logOutClick }>Log out</button>
             </div>
           </div>
         </nav>

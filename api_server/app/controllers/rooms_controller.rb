@@ -10,7 +10,7 @@ class RoomsController < ApplicationController
 
   def create
     user = current_user
-    room = user.rooms.create(room_params)
+    room = user.rooms.new(room_params)
     userroom = user.userrooms.where(room: room.id).first
     # if room.save
       render json: room, serializer: RoomSerializer, status: 201

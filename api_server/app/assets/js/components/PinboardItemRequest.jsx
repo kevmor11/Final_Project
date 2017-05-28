@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import PinboardItemModal from './PinboardItemModal.jsx'
 import axios from 'axios'
-
 export default
 class PinboardItemRequest extends Component {
-
 constructor(props) {
     super(props); // super calls `constructor` in React.Component
     this.state = {
@@ -14,13 +12,11 @@ constructor(props) {
       posts: []
     }
   }
-
   componentDidMount() {
-    // console.log('userIDDDDDD', this.props.userData.data.user.id);
-    axios.get(`/api/rooms/${window.location['pathname'].split('/')[2]}.json`)
+    // PASS IN USER ID INSTEAD OF HARD CODING
+    axios.get(`/api/users/1.json`)
       .then(res => {
         console.log('res', res.data);
-        // console.log("Room data", res);
         const user = res.data.user;
         this.setState({ user });
       });
@@ -43,7 +39,6 @@ constructor(props) {
   //     updatePosts: this.updatePosts.bind(this)
   //   });
   // }
-
   render() {
     // console.log("REQUEST", this.props.roomID);
     return(

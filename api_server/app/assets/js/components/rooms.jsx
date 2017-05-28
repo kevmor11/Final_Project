@@ -16,9 +16,6 @@ class Rooms extends Component {
     }
   }
 
-
-
-
   handleRoomNameChange = (event) => {
     this.setState({
       roomName: event.target.value
@@ -27,7 +24,7 @@ class Rooms extends Component {
   
   createRoomClick = (event) => {
     console.log("clicked");
-     this.setState({
+    this.setState({
       rooms:this.state.rooms.concat({ name: this.state.roomName})
         })
     axios.post(`/api/rooms`, {
