@@ -13,7 +13,7 @@ class PinboardSidebar extends Component {
   }
 
   // Get Room Name and Room users
-  componentWillMount() {
+  componentDidMount() {
     var room_name = "";
     var room_users = [];
     var room_users_firstNames = [];
@@ -26,13 +26,13 @@ class PinboardSidebar extends Component {
           if (this.props.currentRoom === item.id) {
             room_name = item.name;
             room_users = item.users;
-            console.log("NAME", item.users);
-            console.log("INSIDE");
+            console.log("USERS", room_users);
+            // console.log("INSIDE");
           }
-          room_users.forEach((item, i) => {
-            // console.log("NAME", item.first_name);
-            room_users_firstNames.push(item.first_name);
-          })
+        })
+        room_users.forEach((item, i) => {
+          console.log("INSIDE FOREACH", item.first_name);
+          room_users_firstNames.push(item.first_name);
         })
         this.setState({
           roomName: room_name,
@@ -43,7 +43,7 @@ class PinboardSidebar extends Component {
   }
 
   render() {
-    // console.log("HELLO", this.props);
+    // console.log("STATE", this.state);
     return(
       <div>
         {/*TODO Display all the users from the userrooms table that match the current_room ID which we should pass in to Sidebar
