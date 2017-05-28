@@ -7,11 +7,13 @@ class PinboardItemRequest extends Component {
 
 constructor(props) {
     super(props); // super calls `constructor` in React.Component
+    console.log("Props from PBItemRequest", props)
     this.state = {
       showModal: false,
       user: null,
       postID: null,
-      posts: []
+      posts: [],
+      userData:props
     }
   }
 
@@ -19,15 +21,15 @@ constructor(props) {
     // console.log('userIDDDDDD', this.props.userData.data.user.id);
     axios.get(`/api/users/2.json`)
       .then(res => {
-        // console.log('res', res.data);
-        console.log("Room data", res);
+        console.log('res', res.data);
+        // console.log("Room data", res);
         const user = res.data.user;
         this.setState({ user });
       });
     // this.setupSubscription();
   }
 
-  updatePosts(post) {
+  updatePosts = (post) => {
     this.setState({
       posts: this.state.posts.concat({
         user_first_name: post.user.first_name, description: post.description
@@ -45,6 +47,7 @@ constructor(props) {
   // }
 
   render() {
+    // console.log("REQUEST", this.props.roomID);
     return(
       <div className="components-container">
         { this.state.user && this.state.user.posts.map((obj) => {
