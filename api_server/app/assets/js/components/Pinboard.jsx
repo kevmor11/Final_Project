@@ -15,7 +15,7 @@ class Pinboard extends Component {
     <div>
       <div className="tile is-ancestor mainboard">
         <PinboardSidebar />
-        <PinboardContainer openModal={this.state.openModal} />
+        <PinboardContainer openModal={this.state.openModal} userData={this.props.userData}/>
       </div>
     </div>
     )
