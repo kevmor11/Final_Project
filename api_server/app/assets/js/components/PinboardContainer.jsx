@@ -9,7 +9,7 @@ class PinboardContainer extends Component {
     super(props); // super calls `constructor` in React.Component
     this.state = {
       openModal: '',
-      user:props.userData };
+      user:"", };
   }
 
 
