@@ -64,6 +64,8 @@ constructor(props) {
     allPosts = this.state.userData.posts.map((post, i) => {
       return   <PinboardItemModal key={i} title={post.title} content={post.content} description={post.description} img={post.image_file.url} thumb={post.image_file.thumb.url} link={post.link} user={this.state.user} category={post.category} />
     })
+    allPosts.reverse();
+    // console.log('POSTS', allPosts);
     return(
       <div className="components-container">
         {allPosts}

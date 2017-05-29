@@ -35894,6 +35894,8 @@
 	      allPosts = this.state.userData.posts.map(function (post, i) {
 	        return _react2.default.createElement(_PinboardItemModal2.default, { key: i, title: post.title, content: post.content, description: post.description, img: post.image_file.url, thumb: post.image_file.thumb.url, link: post.link, user: _this3.state.user, category: post.category });
 	      });
+	      allPosts.reverse();
+	      // console.log('POSTS', allPosts);
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'components-container' },
