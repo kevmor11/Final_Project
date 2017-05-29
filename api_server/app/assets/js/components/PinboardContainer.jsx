@@ -20,13 +20,11 @@ class PinboardContainer extends Component {
   }
 
   render(){
-    console.log('pb console', this.state.user);
-
     return(
       <div>
         <div className="tile is-parent">
           <article className="tile is-child box mainboard-contents">
-            <PinboardHeader modalToggle={this.openModal.bind(this)} userData={this.state.user}/>
+            <PinboardHeader modalToggle={this.openModal.bind(this)} userData={this.state.user} roomID={this.props.roomID} />
             <section>
               <PinboardItems userData={this.state.user} openModal={this.state.openModal} onClose={() => this.setState({openModal: ''})}/>
               <section>

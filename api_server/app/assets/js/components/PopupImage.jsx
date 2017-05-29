@@ -41,6 +41,7 @@ class PopupLink extends Component {
   }
 
   submitForm(event) {
+    // TODO change so we are not hard coding user 2
     axios.post('/api/rooms/1/posts', {
       image: this.state.image,
       content: this.state.content,
@@ -80,7 +81,7 @@ class PopupLink extends Component {
               <div className="field">
                 <label htmlFor="image_description" className="label">Description</label>
                 <p className="control">
-                  <textarea className="input" type="text" value={ this.state.content } id="image_description" onChange={ this.handleDescriptionChange } />
+                  <textarea className="input" type="text" value={ this.state.description } id="image_description" onChange={ this.handleDescriptionChange } />
                 </p>
               </div>
               <p className="control">

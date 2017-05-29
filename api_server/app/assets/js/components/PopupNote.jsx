@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import axios from 'axios';
 import {Modal, Popover, OverlayTrigger} from 'react-bootstrap'
 
@@ -8,27 +7,29 @@ class PopupNote extends Component {
 
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
+    // console.log("HEY THERE", this.props);
 
     this.state = {
       title: '',
       content: '',
       currentRoomName: window.location['pathname'].split('/')[2],
-      currentRoomID: findRoomID(window.location['pathname'].split('/')[2])
+      currentRoomID: this.props.roomID
     };
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleContentChange = this.handleContentChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
-    function findRoomID(roomName){
-      let roomID;
-      props.userData.user.rooms.forEach((roomObject)=>{
-        let currentRoomName = window.location['pathname'].split('/')[2]
-        if (currentRoomName == roomObject.name){
-          roomID = roomObject.id;
-        }
-      })
-      return roomID;
-    };
-  } 
+
+    // function findRoomID(roomName){
+    //   let roomID;
+    //   props.userData.user.rooms.forEach((roomObject)=>{
+    //     let currentRoomName = window.location['pathname'].split('/')[2]
+    //     if (currentRoomName == roomObject.name){
+    //       roomID = roomObject.id;
+    //     }
+    //   })
+    //   return roomID;
+    // };
+  }
 
   close() {
     this.props.onClose();
@@ -46,37 +47,31 @@ class PopupNote extends Component {
       room_id:''
     });
   }
+  // componentDidMount() {
+  // }
 
-  postDB = () => { 
-    axios.post('/api/rooms/${1}/posts', {
+  submitForm() {
+      // console.log("submit clicked");
+      axios.post(`/api/rooms/${this.props.roomID}/posts`, {
         title: this.state.title,
         content: this.state.content,
         category: "note"
       }).then(this.close.bind(this));
   }
-  submitForm(event) {
-      console.log("submit clicked");
-      axios.post(`/api/rooms/${this.state.currentRoomID}/posts`, {
-        title: this.state.title,
-        content: this.state.content,
-        category: "note"
-      }).then(this.close.bind(this));
 
-  }
+  // setRoomIdState = () => {
+  //   this.setState({room_id: this.props.roomID});
+  // }
 
-  setRoomIdState = (id) => {
-    this.setState({room_id: id});
-  }
+  // setRoomId = (rooms) => {
+  //   rooms.forEach((room, i)=> {
+  //     if (window.location['pathname'].split('/')[2] == room.name) {
+  //       const roomID = room.id;
+  //       this.setRoomIdState(roomID);
+  //     };
+  //   });
+  // }
 
-  setRoomId = (rooms) => {
-    rooms.forEach((room, i)=> {
-      if (window.location['pathname'].split('/')[2] == room.name) {
-        const roomID = room.id;
-        this.setRoomIdState(roomID);
-      };
-    });
-  }
-  
   render() {
     return (
       <div>
