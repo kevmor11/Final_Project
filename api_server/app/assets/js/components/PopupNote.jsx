@@ -21,7 +21,7 @@ class PopupNote extends Component {
     this.submitForm = this.submitForm.bind(this);
     function findRoomID(roomName){
       let roomID;
-      props.userData.rooms.forEach((roomObject)=>{
+      props.userData.user.rooms.forEach((roomObject)=>{
         let currentRoomName = window.location['pathname'].split('/')[2]
         if (currentRoomName == roomObject.name){
           roomID = roomObject.id;
@@ -51,13 +51,7 @@ class PopupNote extends Component {
   componentDidMount() {
 
   }
-  // postDB = () => {
-  //   axios.post('/api/rooms/${1}/posts', {
-  //       title: this.state.title,
-  //       content: this.state.content,
-  //       category: "note"
-  //     }).then(this.close.bind(this));
-  // }
+
   submitForm() {
       // console.log("submit clicked");
       axios.post(`/api/rooms/${this.props.roomID}/posts`, {
@@ -68,12 +62,6 @@ class PopupNote extends Component {
         }
       }).then(this.close.bind(this));
       console.log('AYO', this.state);
-
-    // const rooms = this.props.userData.data.user.rooms;
-    // console.log("here1")
-    // this.setRoomId(rooms, this.postDB());
-    // console.log("here2")
-    // console.log("roomid inside submit form", this.state)
   }
 
   setRoomIdState = () => {

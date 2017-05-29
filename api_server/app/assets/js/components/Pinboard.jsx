@@ -77,7 +77,7 @@ class Pinboard extends Component {
     <div>
       <div className="tile is-ancestor mainboard">
         <PinboardSidebar currentRoom={this.state.roomID} />
-        <PinboardContainer openModal={this.state.openModal} userData={this.state.user} roomID={this.state.roomID} />
+        <PinboardContainer openModal={this.state.openModal} userData={this.state} roomID={this.state.roomID} />
         { this.state.room_users === 1 &&
           <div className="user-invite">
             <div className="field">
