@@ -57135,7 +57135,11 @@
 	      var tooltip = _react2.default.createElement(
 	        _reactBootstrap.Tooltip,
 	        { id: 'tooltip' },
-	        'Upload a .jpg, .jpeg, .png, or .gif file.'
+	        _react2.default.createElement(
+	          'p',
+	          { 'class': 'tooltip' },
+	          'Upload a .jpg, .jpeg, .png, or .gif file.'
+	        )
 	      );
 	      console.log("IMAGE", this.props);
 	

@@ -50,7 +50,7 @@ class PopupLink extends Component {
 
   render() {
     const tooltip = (
-      <Tooltip id="tooltip">Upload a .jpg, .jpeg, .png, or .gif file.</Tooltip>
+      <Tooltip id="tooltip"><p class="tooltip">Upload a .jpg, .jpeg, .png, or .gif file.</p></Tooltip>
     );
     console.log("IMAGE", this.props);
 
