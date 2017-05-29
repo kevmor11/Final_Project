@@ -13,12 +13,27 @@ $notification-color:#D1D1D1;
 background-color: #127A93;
 }
 
+.input {
+  opacity: 0.5;
+}
+
+.input:hover {
+  opacity: 1;
+}
+
 .button.is-primary:hover {
     text-decoration:none;
 }
 
-.tile .is-child .box {
+.box {
+  background-color: rgba(254, 252, 250, 0.57);
+}
 
+.table {
+  background-color: rgba(63, 179, 242, 0);
+}
+.table .td.hover {
+  background-color: rgba(63, 179, 242, 0) !important;
 }
 
 tile .is-parent {
@@ -32,7 +47,7 @@ tile .is-parent {
 }
 
 .notification.notification-center {
-  background-color:$notification-center-color;
+  background-color:rgba(254, 252, 250, 0.57);
 }
 
 .notification {

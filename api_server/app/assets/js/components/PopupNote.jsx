@@ -47,7 +47,6 @@ class PopupNote extends Component {
       room_id:''
     });
   }
-
   // componentDidMount() {
   // }
 
@@ -98,7 +97,6 @@ class PopupNote extends Component {
             </p>
           </Modal.Body>
         </Modal>
-
       </div>
     );
   }

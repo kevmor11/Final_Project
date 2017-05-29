@@ -12,7 +12,7 @@ class NavbarLeft extends Component {
     if ( this.props.user !== null) {
       return (
         <div className="nav-left">
-          <a className="nav-item is-tab is-hidden-mobile is-active">
+          <a className="nav-item is-hidden-mobile is-active">
             <span className="icon">
               <i className="fa fa-home" onClick={this.profileHomeClick}></i>
             </span>
