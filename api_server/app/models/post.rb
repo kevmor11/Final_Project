@@ -5,15 +5,19 @@ class Post < ApplicationRecord
   # validates :content, presence: true, unless: :category_note?
   validate :image_size_validation
   mount_uploader :content, ImageUploader
+  after_commit :broadcast
 
   def category_note?
     self.category == "note"
   end
 
   private
-  def image_size_validation
-    errors[:content] << "should be less than 500MB" if content.size > 500.megabytes
-  end
+    def image_size_validation
+      errors[:content] << "should be less than 500MB" if content.size > 500.megabytes
+    end
 
+    def broadcast 
+      PostJob.perform_later self
+    end
 
 end
