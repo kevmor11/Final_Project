@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  after_commit :broadcast
 
   def new
     # @room = Rooms.find_by(room_id: params[:room_id])
@@ -50,6 +51,10 @@ class PostsController < ApplicationController
         :content,
         :title,
       )
+    end
+
+    def broadcast 
+      PostJob.perform_later self
     end
 
 end
