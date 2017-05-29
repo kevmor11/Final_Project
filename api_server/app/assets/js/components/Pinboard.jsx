@@ -87,7 +87,7 @@ class Pinboard extends Component {
               </p>
             </div>
               <p className="control">
-                <button type="submit" className="button is-primary" onClick={ this.submitInviteForm }>Submit</button>
+                <button type="submit" className="pinboard button is-primary" onClick={ this.submitInviteForm }>Submit</button>
               </p>
             </div>
           }
