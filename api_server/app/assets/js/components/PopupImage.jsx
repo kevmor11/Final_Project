@@ -7,13 +7,12 @@ class PopupLink extends Component {
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
     this.state = {
-      image: null,
-      content: '',
+      image: '',
+      title: '',
       description: '',
     };
-
     this.handleImageChange = this.handleImageChange.bind(this);
-    this.handleContentChange = this.handleContentChange.bind(this);
+    this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
   }
@@ -28,9 +27,9 @@ class PopupLink extends Component {
     });
   }
 
-  handleContentChange(event) {
+  handleTitleChange(event) {
     this.setState({
-      content: event.target.value
+      title: event.target.value
     });
   }
 
@@ -41,19 +40,19 @@ class PopupLink extends Component {
   }
 
   submitForm(event) {
-    // TODO change so we are not hard coding user 2
-    axios.post('/api/rooms/1/posts', {
+    axios.post(`/api/rooms/${this.props.roomID}/posts`, {
       image: this.state.image,
-      content: this.state.content,
-      description: this.state.description
-    });
+      title: this.state.title,
+      description: this.state.description,
+      category: "image"
+    }).then(this.close.bind(this));
   }
 
   render() {
-
     const tooltip = (
-      <Tooltip id="tooltip">Upload a .jpg, .jpeg, .png, or .gif file.</Tooltip>
+      <Tooltip id="tooltip"><p class="tooltip">Upload a .jpg, .jpeg, .png, or .gif file.</p></Tooltip>
     );
+    console.log("IMAGE", this.props);
 
     return (
       <div>
@@ -75,13 +74,13 @@ class PopupLink extends Component {
               <div className="field">
                 <label htmlFor="image_title" className="label">Title</label>
                 <p className="control">
-                  <textarea className="input" type="text" value={ this.state.content } id="image_title" onChange={ this.handleContentChange } />
+                  <textarea className="input" type="text" value={ this.state.title } id="image_title" onChange={ this.handleTitleChange } />
                 </p>
               </div>
               <div className="field">
                 <label htmlFor="image_description" className="label">Description</label>
                 <p className="control">
-                  <textarea className="input" type="text" value={ this.state.description } id="image_description" onChange={ this.handleDescriptionChange } />
+                  <textarea className="input input-description" type="text" value={ this.state.description } id="image_description" onChange={ this.handleDescriptionChange } />
                 </p>
               </div>
               <p className="control">
