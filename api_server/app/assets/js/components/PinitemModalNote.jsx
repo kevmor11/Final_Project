@@ -26,6 +26,7 @@ constructor(props) {
   }
 
   render() {
+    // console.log('NOTE', this.props);
     return(
       <div>
         <div className="item" onClick={this.open}>
@@ -38,7 +39,7 @@ constructor(props) {
             <Modal.Title>{this.props.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <p>{this.props.description}</p>
+            <p>{this.props.content}</p>
           </Modal.Body>
         </Modal>
       </div>
