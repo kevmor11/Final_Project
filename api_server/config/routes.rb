@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:new, :create, :show]
   resources :rooms, only: [:new, :create, :show]
+  resources :hangouts, only: [:show]
   root to: 'sessions#new'
 
 end

@@ -26,12 +26,12 @@ class PinboardSidebar extends Component {
           if (this.props.currentRoom === item.id) {
             room_name = item.name;
             room_users = item.users;
-            console.log("USERS", room_users);
+            // console.log("USERS", room_users);
             // console.log("INSIDE");
           }
         })
         room_users.forEach((item, i) => {
-          console.log("INSIDE FOREACH", item.first_name);
+          // console.log("INSIDE FOREACH", item.first_name);
           room_users_firstNames.push(item.first_name);
         })
         this.setState({
@@ -46,8 +46,6 @@ class PinboardSidebar extends Component {
     // console.log("STATE", this.state);
     return(
       <div>
-        {/*TODO Display all the users from the userrooms table that match the current_room ID which we should pass in to Sidebar
-        as a prop from the other component that determines the current_room state */}
         <div className="tile is-parent is-2 rooms">
           <article className="tile is-child box">
             <div className="content">
