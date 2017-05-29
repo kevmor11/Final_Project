@@ -33,7 +33,7 @@ class PinboardSidebar extends Component {
         room_users.forEach((item, i) => {
           // console.log("INSIDE FOREACH", item.first_name);
           room_users_firstNames.push(item.first_name);
-        })
+        });
         this.setState({
           roomName: room_name,
           roomUsers: room_users_firstNames
