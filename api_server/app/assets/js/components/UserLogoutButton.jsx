@@ -5,7 +5,11 @@ export default
 class UserLogoutButton extends Component {
 
   logOutClick = () => {
-    axios.delete(`/api/sessions/${this.props.user.id}`).then(this.handleRedirectToLogin);
+    axios.delete(`/api/sessions/${this.props.user.id}`)
+    .then(this.handleRedirectToLogin)
+    .catch((err) => {
+      throw new Error('Could not logout because', err.message);
+    });;
   }
 
   handleRedirectToLogin = () => {

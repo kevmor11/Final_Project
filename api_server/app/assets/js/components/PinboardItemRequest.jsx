@@ -21,6 +21,9 @@ constructor(props) {
         // console.log('res', res.data);
         const user = res.data.user;
         this.setState({ user });
+      })
+      .catch((err) => {
+        throw new Error('Could not retrieve room content because', err.message);
       });
     // this.setupSubscription();
   }

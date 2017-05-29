@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Room from './Room.jsx';
-import axios from 'axios';  
+import axios from 'axios';
 export default
 class Rooms extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class Rooms extends Component {
       roomName: event.target.value
     });
   }
-  
+
   createRoomClick = (event) => {
     console.log("clicked");
     this.setState({
@@ -26,7 +26,10 @@ class Rooms extends Component {
         })
     axios.post(`/api/rooms`, {
       name: this.state.roomName
-    }).then(console.log('succuss'));
+    }).then(console.log('Successly created a room'))
+    .catch((err) => {
+      throw new Error('Could not create a room because', err.message);
+    });;
   }
   render() {
     let allRooms;

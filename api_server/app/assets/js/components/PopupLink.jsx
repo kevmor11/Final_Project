@@ -41,13 +41,15 @@ class PopupLink extends Component {
   }
 
   submitForm(event){
-    // TODO change so we are not hard coding the ID
     axios.post(`/api/rooms/${this.props.roomID}/posts`, {
       link: this.state.link,
       title: this.state.title,
       description: this.state.description,
       category: "link"
-    }).then(this.close.bind(this));
+    }).then(this.close.bind(this))
+    .catch((err) => {
+      throw new Error('Could not post content because', err.message);
+    });;
   }
 
   render() {

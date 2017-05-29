@@ -27,13 +27,13 @@ class PinboardContainer extends Component {
             <PinboardHeader modalToggle={this.openModal.bind(this)} userData={this.state.user} roomID={this.props.roomID} />
             <section>
               <PinboardItems userData={this.state.user} openModal={this.state.openModal} onClose={() => this.setState({openModal: ''})}/>
-              <section>
+              {/*<section>
                 <p className="title">Main column</p>
                 <p className="subtitle">With some content</p>
                 <div className="content">
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
                 </div>
-              </section>
+              </section>*/}
 
             </section>
           </article>

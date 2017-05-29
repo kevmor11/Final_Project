@@ -53,7 +53,7 @@ class PopupLink extends Component {
     axios.post(`/api/rooms/${this.props.roomID}/posts`, data)
     .then(this.close.bind(this))
     .catch((err) => {
-      console.log(err.message);
+      throw new Error('Could not post content because', err.message);
     });
   }
 

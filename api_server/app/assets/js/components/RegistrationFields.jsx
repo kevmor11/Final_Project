@@ -25,7 +25,10 @@ class Registration extends Component {
     axios.post('/api/sessions', {
       email: this.state.email,
       password: this.state.password
-    }).then(this.handleRedirect);
+    }).then(this.handleRedirect)
+    .catch((err) => {
+      throw new Error('Could not go to Login page because', err.message);
+    });
   }
 
   handleRegistrationChange = (e) => {
@@ -47,8 +50,9 @@ class Registration extends Component {
       email: this.state.email,
       password: this.state.password,
       gender: this.state.gender
-    }).then(this.goLoginPage).catch(err => {
-      console.log(err)
+    }).then(this.goLoginPage)
+    .catch((err) => {
+      throw new Error('Could not post content because', err.message);
     });
   }
 

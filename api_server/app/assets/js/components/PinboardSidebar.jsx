@@ -39,6 +39,9 @@ class PinboardSidebar extends Component {
           roomUsers: room_users_firstNames
         })
       // console.log("NAME STATE", this.state);
+    })
+    .catch((err) => {
+      throw new Error('Could not retrieve room information because', err.message);
     });
   }
 

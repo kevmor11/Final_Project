@@ -25138,7 +25138,9 @@
 	    }
 	
 	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = UserLogoutButton.__proto__ || Object.getPrototypeOf(UserLogoutButton)).call.apply(_ref, [this].concat(args))), _this), _this.logOutClick = function () {
-	      _axios2.default.delete('/api/sessions/' + _this.props.user.id).then(_this.handleRedirectToLogin);
+	      _axios2.default.delete('/api/sessions/' + _this.props.user.id).then(_this.handleRedirectToLogin).catch(function (err) {
+	        throw new Error('Could not logout because', err.message);
+	      });;
 	    }, _this.handleRedirectToLogin = function () {
 	      window.location.href = '/';
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
@@ -28938,7 +28940,9 @@
 	      _axios2.default.post('/api/sessions', {
 	        email: this.state.email,
 	        password: this.state.password
-	      }).then(this.handleRedirect);
+	      }).then(this.handleRedirect).catch(function (err) {
+	        throw new Error('Could not login because', err.message);
+	      });
 	    }
 	  }, {
 	    key: 'handleRedirect',
@@ -29068,7 +29072,9 @@
 	      _axios2.default.post('/api/sessions', {
 	        email: _this.state.email,
 	        password: _this.state.password
-	      }).then(_this.handleRedirect);
+	      }).then(_this.handleRedirect).catch(function (err) {
+	        throw new Error('Could not go to Login page because', err.message);
+	      });
 	    };
 	
 	    _this.handleRegistrationChange = function (e) {
@@ -29089,7 +29095,7 @@
 	        password: _this.state.password,
 	        gender: _this.state.gender
 	      }).then(_this.goLoginPage).catch(function (err) {
-	        console.log(err);
+	        throw new Error('Could not post content because', err.message);
 	      });
 	    };
 	
@@ -35015,7 +35021,9 @@
 	      });
 	      _axios2.default.post('/api/rooms', {
 	        name: _this.state.roomName
-	      }).then(console.log('succuss'));
+	      }).then(console.log('Successly created a room')).catch(function (err) {
+	        throw new Error('Could not create a room because', err.message);
+	      });;
 	    };
 	
 	    _this.state = {
@@ -35271,6 +35279,8 @@
 	          roomName: name,
 	          roomID: ID
 	        });
+	      }).catch(function (err) {
+	        throw new Error('Could not retrieve room content because', err.message);
 	      });
 	    }
 	
@@ -35356,6 +35366,8 @@
 	      _axios2.default.post('/api/userrooms', {
 	        user_id: _this.state.invited_id,
 	        room_id: _this.props.roomID
+	      }).catch(function (err) {
+	        throw new Error('Could not add a user to the room because', err.message);
 	      });
 	      _this.setState({
 	        room_users: 2
@@ -35382,6 +35394,8 @@
 	            _this.addUserToRoom();
 	          }
 	        });
+	      }).catch(function (err) {
+	        throw new Error('Could not invite a user because', err.message);
 	      });
 	    };
 	
@@ -35416,6 +35430,8 @@
 	          });
 	          // console.log("room_users STATE", this.state.room_users);
 	        });
+	      }).catch(function (err) {
+	        throw new Error('Could not fetch room members because', err.message);
 	      });
 	    }
 	  }, {
@@ -35545,6 +35561,8 @@
 	          roomUsers: room_users_firstNames
 	        });
 	        // console.log("NAME STATE", this.state);
+	      }).catch(function (err) {
+	        throw new Error('Could not retrieve room information because', err.message);
 	      });
 	    }
 	  }, {
@@ -35689,30 +35707,7 @@
 	              null,
 	              _react2.default.createElement(_PinboardItems2.default, { userData: this.state.user, openModal: this.state.openModal, onClose: function onClose() {
 	                  return _this2.setState({ openModal: '' });
-	                } }),
-	              _react2.default.createElement(
-	                'section',
-	                null,
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'title' },
-	                  'Main column'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'subtitle' },
-	                  'With some content'
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'content' },
-	                  _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.'
-	                  )
-	                )
-	              )
+	                } })
 	            )
 	          )
 	        )
@@ -35853,6 +35848,8 @@
 	        // console.log('res', res.data);
 	        var user = res.data.user;
 	        _this2.setState({ user: user });
+	      }).catch(function (err) {
+	        throw new Error('Could not retrieve room content because', err.message);
 	      });
 	      // this.setupSubscription();
 	    }
@@ -56861,12 +56858,13 @@
 	  }, {
 	    key: 'submitForm',
 	    value: function submitForm() {
-	      // console.log("submit clicked");
 	      _axios2.default.post('/api/rooms/' + this.props.roomID + '/posts', {
 	        title: this.state.title,
 	        content: this.state.content,
 	        category: "note"
-	      }).then(this.close.bind(this));
+	      }).then(this.close.bind(this)).catch(function (err) {
+	        throw new Error('Could not post content because', err.message);
+	      });
 	    }
 	
 	    // setRoomIdState = () => {
@@ -57034,13 +57032,14 @@
 	  }, {
 	    key: 'submitForm',
 	    value: function submitForm(event) {
-	      // TODO change so we are not hard coding the ID
 	      _axios2.default.post('/api/rooms/' + this.props.roomID + '/posts', {
 	        link: this.state.link,
 	        title: this.state.title,
 	        description: this.state.description,
 	        category: "link"
-	      }).then(this.close.bind(this));
+	      }).then(this.close.bind(this)).catch(function (err) {
+	        throw new Error('Could not post content because', err.message);
+	      });;
 	    }
 	  }, {
 	    key: 'render',
@@ -57227,7 +57226,7 @@
 	      data.append('post[description]', this.state.description);
 	      data.append('post[category]', "image");
 	      _axios2.default.post('/api/rooms/' + this.props.roomID + '/posts', data).then(this.close.bind(this)).catch(function (err) {
-	        console.log(err.message);
+	        throw new Error('Could not post content because', err.message);
 	      });
 	    }
 	  }, {

@@ -35,6 +35,9 @@ class Pinboard extends Component {
         })
         // console.log("room_users STATE", this.state.room_users);
       })
+    })
+    .catch((err) => {
+      throw new Error('Could not fetch room members because', err.message);
     });
   }
 
@@ -42,6 +45,9 @@ class Pinboard extends Component {
     axios.post('/api/userrooms', {
       user_id: this.state.invited_id,
       room_id: this.props.roomID,
+    })
+    .catch((err) => {
+      throw new Error('Could not add a user to the room because', err.message);
     });
     this.setState({
       room_users: 2
@@ -69,6 +75,9 @@ class Pinboard extends Component {
           this.addUserToRoom();
         }
       })
+    })
+    .catch((err) => {
+      throw new Error('Could not invite a user because', err.message);
     });
   }
 

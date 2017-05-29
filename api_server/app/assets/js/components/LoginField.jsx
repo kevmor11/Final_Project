@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 export default
-class LoginField extends Component { 
+class LoginField extends Component {
 
   constructor(props) {
     super(props);
@@ -16,10 +16,10 @@ class LoginField extends Component {
     this.handleRedirect = this.handleRedirect.bind(this);
     this.submitForm = this.submitForm.bind(this);
   }
-  
+
   handleEmailChange(event) {
     this.setState({
-      email: event.target.value 
+      email: event.target.value
     });
   }
 
@@ -33,7 +33,10 @@ class LoginField extends Component {
     axios.post('/api/sessions', {
       email: this.state.email,
       password: this.state.password
-    }).then(this.handleRedirect);
+    }).then(this.handleRedirect)
+    .catch((err) => {
+      throw new Error('Could not login because', err.message);
+    });
   }
 
   handleRedirect(res) {

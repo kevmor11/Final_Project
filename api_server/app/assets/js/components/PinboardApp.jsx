@@ -38,6 +38,9 @@ class PinboardApp extends Component {
         roomName: name,
         roomID: ID
       })
+    })
+    .catch((err) => {
+      throw new Error('Could not retrieve room content because', err.message);
     });
   }
 
