@@ -3,3 +3,4 @@ node_modules
 .env
 app/assets/javascripts/bundle.js
 app/assets/javascripts/bundle.js.map
+public/uploads/

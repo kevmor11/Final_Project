@@ -35895,7 +35895,6 @@
 	      var allPosts = void 0;
 	
 	      allPosts = this.state.userData.posts.map(function (post, i) {
-	        console.log("POST", post);
 	        return _react2.default.createElement(_PinboardItemModal2.default, { key: i, title: post.title, content: post.content, description: post.description, img: post.image_file.url, thumb: post.image_file.thumb.url, link: post.link, user: _this3.state.user, category: post.category });
 	      });
 	      return _react2.default.createElement(
@@ -57046,6 +57045,11 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var tooltip = _react2.default.createElement(
+	        _reactBootstrap.Tooltip,
+	        { id: 'tooltip' },
+	        'Please enter a valid URL.'
+	      );
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -57073,9 +57077,13 @@
 	                'URL'
 	              ),
 	              _react2.default.createElement(
-	                'p',
-	                { className: 'control' },
-	                _react2.default.createElement('input', { className: 'input', type: 'url', value: this.state.link, id: 'url', onChange: this.handleLinkChange })
+	                _reactBootstrap.OverlayTrigger,
+	                { placement: 'bottom', overlay: tooltip, style: 'z-index: 9001' },
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'control' },
+	                  _react2.default.createElement('input', { className: 'input', type: 'url', value: this.state.link, id: 'url', onChange: this.handleLinkChange })
+	                )
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -57145,6 +57153,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _axios = __webpack_require__(/*! axios */ 210);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
 	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 286);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -57165,6 +57177,7 @@
 	    var _this = _possibleConstructorReturn(this, (PopupLink.__proto__ || Object.getPrototypeOf(PopupLink)).call(this, props));
 	
 	    _this.state = {
+	      imageData: null,
 	      image: '',
 	      title: '',
 	      description: ''
@@ -57185,8 +57198,10 @@
 	    key: 'handleImageChange',
 	    value: function handleImageChange(event) {
 	      this.setState({
+	        imageData: event.target.files[0],
 	        image: event.target.value
 	      });
+	      console.log("EVENT", event.target.files);
 	    }
 	  }, {
 	    key: 'handleTitleChange',
@@ -57205,12 +57220,15 @@
 	  }, {
 	    key: 'submitForm',
 	    value: function submitForm(event) {
-	      axios.post('/api/rooms/' + this.props.roomID + '/posts', {
-	        image: this.state.image,
-	        title: this.state.title,
-	        description: this.state.description,
-	        category: "image"
-	      }).then(this.close.bind(this));
+	      event.preventDefault();
+	      var data = new FormData();
+	      data.append('post[image_file]', this.state.imageData);
+	      data.append('post[title]', this.state.title);
+	      data.append('post[description]', this.state.description);
+	      data.append('post[category]', "image");
+	      _axios2.default.post('/api/rooms/' + this.props.roomID + '/posts', data).then(this.close.bind(this)).catch(function (err) {
+	        console.log(err.message);
+	      });
 	    }
 	  }, {
 	    key: 'render',
@@ -57218,13 +57236,8 @@
 	      var tooltip = _react2.default.createElement(
 	        _reactBootstrap.Tooltip,
 	        { id: 'tooltip' },
-	        _react2.default.createElement(
-	          'p',
-	          { 'class': 'tooltip' },
-	          'Upload a .jpg, .jpeg, .png, or .gif file.'
-	        )
+	        'Upload a .jpg, .jpeg, .png, or .gif file.'
 	      );
-	      console.log("IMAGE", this.props);
 	
 	      return _react2.default.createElement(
 	        'div',
@@ -57246,7 +57259,7 @@
 	            null,
 	            _react2.default.createElement(
 	              'form',
-	              { action: 'api/posts', method: 'POST' },
+	              { onSubmit: this.submitForm },
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'field' },
@@ -57298,7 +57311,7 @@
 	                { className: 'control' },
 	                _react2.default.createElement(
 	                  'button',
-	                  { type: 'submit', className: 'button is-primary', onClick: this.submitForm },
+	                  { type: 'submit', className: 'button is-primary' },
 	                  'Submit'
 	                )
 	              )
