@@ -18,6 +18,8 @@ gem 'carrierwave', '~> 1.0'
 gem 'react-rails'
 gem 'mini_magick', '~> 4.3'
 gem 'redis', '~>3.2'
+gem 'jsonapi-resources'
+gem 'sidekiq'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production

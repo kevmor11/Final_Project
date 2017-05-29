@@ -1,2 +1,13 @@
 node_modules
 .DS_Store
+
+
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+.byebug_history
+
+api_server/app/assets/javascripts/bundle.js
+api_server/app/assets/javascripts/bundle.js.map
