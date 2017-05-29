@@ -8,13 +8,13 @@ class PopupNote extends Component {
 
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
-    console.log("HEY THERE", this.props);
+    // console.log("HEY THERE", this.props);
 
     this.state = {
       title: '',
       content: '',
       currentRoomName: window.location['pathname'].split('/')[2],
-      currentRoomID: findRoomID(window.location['pathname'].split('/')[2])
+      currentRoomID: this.props.roomID
     };
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleContentChange = this.handleContentChange.bind(this);
@@ -51,32 +51,33 @@ class PopupNote extends Component {
   componentDidMount() {
 
   }
-  postDB = () => {
-    axios.post('/api/rooms/${1}/posts', {
-        title: this.state.title,
-        content: this.state.content,
-        category: "note"
+  // postDB = () => {
+  //   axios.post('/api/rooms/${1}/posts', {
+  //       title: this.state.title,
+  //       content: this.state.content,
+  //       category: "note"
+  //     }).then(this.close.bind(this));
+  // }
+  submitForm() {
+      // console.log("submit clicked");
+      axios.post(`/api/rooms/${this.props.roomID}/posts`, {
+        post: {
+          title: this.state.title,
+          content: this.state.content,
+          category: "note"
+        }
       }).then(this.close.bind(this));
-  }
-  submitForm(event) {
-      console.log("submit clicked");
-      axios.post(`/api/rooms/${this.state.currentRoomID}/posts`, {
-        title: this.state.title,
-        content: this.state.content,
-        category: "note"
-      }).then(this.close.bind(this));
-
+      console.log('AYO', this.state);
 
     // const rooms = this.props.userData.data.user.rooms;
     // console.log("here1")
     // this.setRoomId(rooms, this.postDB());
     // console.log("here2")
     // console.log("roomid inside submit form", this.state)
-
   }
 
-  setRoomIdState = (id) => {
-    this.setState({room_id: id});
+  setRoomIdState = () => {
+    this.setState({room_id: this.props.roomID});
   }
 
   setRoomId = (rooms) => {

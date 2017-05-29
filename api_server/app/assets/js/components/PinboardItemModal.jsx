@@ -13,12 +13,12 @@ class PinboardItemModal extends Component {
       user: null,
       postID: null,
     }
-  console.log("YO", this.state.user);
+  // console.log("YO", this.state.user);
   }
 
 
   render() {
-    console.log("STATE", this.state.user);
+    // console.log("STATE", this.state.user);
     switch (this.props.category) {
       case "image":
         return(
@@ -30,7 +30,7 @@ class PinboardItemModal extends Component {
           thumb={this.props.thumb}
           user={this.state.user}
           />);
-        break;
+        // break;
       case "note":
         return(
           <PinItemModalNote
@@ -39,7 +39,7 @@ class PinboardItemModal extends Component {
           description={this.props.description}
           user={this.state.user}
           />);
-        break;
+        // break;
       case "link":
         return(
           <PinItemModalLink
@@ -49,7 +49,7 @@ class PinboardItemModal extends Component {
           link={this.props.link}
           user={this.state.user}
           />);
-        break;
+        // break;
       default:
         throw new Error('Content category is not valid');
     }

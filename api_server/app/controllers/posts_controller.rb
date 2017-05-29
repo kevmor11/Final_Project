@@ -12,6 +12,10 @@ class PostsController < ApplicationController
     puts "------------------------"
     puts "------------------------"
     puts "------------------------"
+    puts "------------category------------#{post_params[:category]}"
+    puts "------------title------------#{post_params[:title]}"
+    puts "------------content------------#{post_params[:content]}"
+
     @post = Post.new(post_params)
     # @post = room.posts.new
     @post.user = current_user
@@ -27,7 +31,9 @@ class PostsController < ApplicationController
       ActionCable.server.broadcast 'posts',
         title: @post.title,
         description: @post.description,
-        user: @post.user.first_name
+        user: @post.user.first_name,
+        content: @post.content
+        # category: @post.category
       head :ok
     end
 
@@ -44,11 +50,16 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.permit(
+      params
+      .require(:post)
+      .permit(
         :room_id,
         :user_id,
         :content,
         :title,
+        :category,
+        :link,
+        :description
       )
     end
 

@@ -18,7 +18,7 @@ constructor(props) {
     // TODO change so we are not hard coding user 2
     axios.get(`/api/users/2.json`)
       .then(res => {
-        console.log('res', res.data);
+        // console.log('res', res.data);
         const user = res.data.user;
         this.setState({ user });
       });
