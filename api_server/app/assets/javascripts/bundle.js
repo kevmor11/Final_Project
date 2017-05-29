@@ -36209,6 +36209,7 @@
 	    if (this._events.removeListener)
 	      this.emit('removeListener', type, listener);
 	
+<<<<<<< HEAD
 	  } else if (isObject(list)) {
 	    for (i = length; i-- > 0;) {
 	      if (list[i] === listener ||
@@ -36216,6 +36217,16 @@
 	        position = i;
 	        break;
 	      }
+=======
+	      allPosts = this.state.userData.posts.map(function (post, i) {
+	        return _react2.default.createElement(_PinboardItemModal2.default, { key: i, title: post.title, content: post.content, description: post.description, img: post.image_file.url, thumb: post.image_file.thumb.url, link: post.link, user: _this3.state.user, category: post.category });
+	      });
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'components-container' },
+	        allPosts
+	      );
+>>>>>>> edc28221a903a3ce26c0515493e0904b347ade2e
 	    }
 	
 	    if (position < 0)
@@ -110434,9 +110445,17 @@
 	    key: 'render',
 	    value: function render() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 =======
 >>>>>>> 4c0c02f4dd47f3543dddd260246b8ee70c7cc6ee
+=======
+	      var tooltip = _react2.default.createElement(
+	        _reactBootstrap.Tooltip,
+	        { id: 'tooltip' },
+	        'Please enter a valid URL.'
+	      );
+>>>>>>> edc28221a903a3ce26c0515493e0904b347ade2e
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -110464,9 +110483,13 @@
 	                'URL'
 	              ),
 	              _react2.default.createElement(
-	                'p',
-	                { className: 'control' },
-	                _react2.default.createElement('input', { className: 'input', type: 'url', value: this.state.link, id: 'url', onChange: this.handleLinkChange })
+	                _reactBootstrap.OverlayTrigger,
+	                { placement: 'bottom', overlay: tooltip, style: 'z-index: 9001' },
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'control' },
+	                  _react2.default.createElement('input', { className: 'input', type: 'url', value: this.state.link, id: 'url', onChange: this.handleLinkChange })
+	                )
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -110541,6 +110564,7 @@
 	var _react2 = _interopRequireDefault(_react);
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 287);
 =======
 	var _Navbar = __webpack_require__(/*! ./Navbar.jsx */ 206);
@@ -110564,6 +110588,12 @@
 	var _RegistrationFields2 = _interopRequireDefault(_RegistrationFields);
 >>>>>>> 9ae51ac0de9239e7e7df378b4367e5072a94e040
 =======
+=======
+	var _axios = __webpack_require__(/*! axios */ 210);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+>>>>>>> edc28221a903a3ce26c0515493e0904b347ade2e
 	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 286);
 >>>>>>> 4c0c02f4dd47f3543dddd260246b8ee70c7cc6ee
 	
@@ -110590,6 +110620,7 @@
 	
 	    _this.state = {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	      image: null,
 	      content: '',
 	      description: ''
@@ -110598,6 +110629,9 @@
 	    _this.handleImageChange = _this.handleImageChange.bind(_this);
 	    _this.handleContentChange = _this.handleContentChange.bind(_this);
 =======
+=======
+	      imageData: null,
+>>>>>>> edc28221a903a3ce26c0515493e0904b347ade2e
 	      image: '',
 	      title: '',
 	      description: ''
@@ -110619,8 +110653,10 @@
 	    key: 'handleImageChange',
 	    value: function handleImageChange(event) {
 	      this.setState({
+	        imageData: event.target.files[0],
 	        image: event.target.value
 	      });
+	      console.log("EVENT", event.target.files);
 	    }
 	  }, {
 <<<<<<< HEAD
@@ -110647,6 +110683,7 @@
 	    key: 'submitForm',
 	    value: function submitForm(event) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	      axios.post('/api/rooms/1/posts', {
 	        image: this.state.image,
 	        content: this.state.content,
@@ -110660,6 +110697,17 @@
 	        category: "image"
 	      }).then(this.close.bind(this));
 >>>>>>> 4c0c02f4dd47f3543dddd260246b8ee70c7cc6ee
+=======
+	      event.preventDefault();
+	      var data = new FormData();
+	      data.append('post[image_file]', this.state.imageData);
+	      data.append('post[title]', this.state.title);
+	      data.append('post[description]', this.state.description);
+	      data.append('post[category]', "image");
+	      _axios2.default.post('/api/rooms/' + this.props.roomID + '/posts', data).then(this.close.bind(this)).catch(function (err) {
+	        console.log(err.message);
+	      });
+>>>>>>> edc28221a903a3ce26c0515493e0904b347ade2e
 	    }
 	  }, {
 	    key: 'render',
@@ -110675,14 +110723,13 @@
 	      var tooltip = _react2.default.createElement(
 	        _reactBootstrap.Tooltip,
 	        { id: 'tooltip' },
-	        _react2.default.createElement(
-	          'p',
-	          { 'class': 'tooltip' },
-	          'Upload a .jpg, .jpeg, .png, or .gif file.'
-	        )
+	        'Upload a .jpg, .jpeg, .png, or .gif file.'
 	      );
+<<<<<<< HEAD
 	      console.log("IMAGE", this.props);
 >>>>>>> 4c0c02f4dd47f3543dddd260246b8ee70c7cc6ee
+=======
+>>>>>>> edc28221a903a3ce26c0515493e0904b347ade2e
 	
 	      return _react2.default.createElement(
 	        'div',
@@ -110704,7 +110751,7 @@
 	            null,
 	            _react2.default.createElement(
 	              'form',
-	              { action: 'api/posts', method: 'POST' },
+	              { onSubmit: this.submitForm },
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'field' },
@@ -110764,7 +110811,7 @@
 	                { className: 'control' },
 	                _react2.default.createElement(
 	                  'button',
-	                  { type: 'submit', className: 'button is-primary', onClick: this.submitForm },
+	                  { type: 'submit', className: 'button is-primary' },
 	                  'Submit'
 	                )
 	              )

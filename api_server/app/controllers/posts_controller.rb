@@ -7,20 +7,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    puts "------------------------"
-    puts "------------------------"
-    puts "------------------------"
-    puts "------------------------"
-    puts "------------------------"
-    puts "------------category------------#{post_params[:category]}"
-    puts "------------title------------#{post_params[:title]}"
-    puts "------------content------------#{post_params[:content]}"
 
     @post = Post.new(post_params)
     # @post = room.posts.new
     @post.user = current_user
 
-    room = Room.find params[:room_id]
+    @post.room = Room.find params[:room_id]
+
     if @post.save
       render json: @post
     else
@@ -51,7 +44,7 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params
+      params.require(:post)
       .permit(
         :room_id,
         :user_id,
