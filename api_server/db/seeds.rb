@@ -29,7 +29,7 @@
   2.times do
     post = room.posts.create!({ user_id: user.id,
                                 room_id: room.id,
-                                remote_content_url: "https://upload.wikimedia.org/wikipedia/commons/5/58/Sunset_2007-1.jpg",
+                                remote_image_file_url: "https://upload.wikimedia.org/wikipedia/commons/5/58/Sunset_2007-1.jpg",
                                 title: Faker::Hipster.word,
                                 description: Faker::Lorem.sentence,
                                 seen: false,

@@ -46,7 +46,7 @@ class PinboardHeader extends Component {
   render(){
     let containerClass = "add-content-container";
     if(this.state.showAddButtons) containerClass += " open";
-      console.log("header console.log", this.props.userData)
+      // console.log("header console.log", this.props.userData)
 
     return(
       <div>
@@ -64,10 +64,9 @@ class PinboardHeader extends Component {
             </ul>
           </div>
         </header>
-        <PopupNote isActive={this.state.showModalNote} onClose={this.close} userData={this.props.userData}/>
-        <PopupLink isActive={this.state.showModalLink} onClose={this.close} />
-        <PopupImage isActive={this.state.showModalImage} onClose={this.close} />
-
+        <PopupNote isActive={this.state.showModalNote} onClose={this.close} userData={this.props.userData} roomID={this.props.roomID} />
+        <PopupLink isActive={this.state.showModalLink} onClose={this.close} userData={this.props.userData} roomID={this.props.roomID} />
+        <PopupImage isActive={this.state.showModalImage} onClose={this.close} userData={this.props.userData} roomID={this.props.roomID} />
       </div>
     )
   }
