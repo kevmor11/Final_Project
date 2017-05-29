@@ -42,7 +42,7 @@ class Hangout extends Component {
       <div>
         <Messenger />
         { this.state.videoChat === false &&
-          <button className="button is-primary" onClick={this.openBroadcast}>Watch a Video<i class="fa fa-youtube-play" aria-hidden="true"></i></button>
+          <button className="button is-primary" onClick={this.openBroadcast}>Broadcast<i class="fa fa-youtube-play" aria-hidden="true"></i></button>
         }
         { this.state.videoChat === true &&
           <VideoChat />

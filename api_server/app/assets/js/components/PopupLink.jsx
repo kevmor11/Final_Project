@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 import {Modal, Button, OverlayTrigger} from 'react-bootstrap'
 
 export default
@@ -11,7 +12,6 @@ class PopupLink extends Component {
       title: '',
       description: ''
     }
-
     this.handleLinkChange = this.handleLinkChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
@@ -30,7 +30,7 @@ class PopupLink extends Component {
 
   handleTitleChange(event) {
     this.setState({
-      link: event.target.value
+      title: event.target.value
     })
   }
 
@@ -42,16 +42,16 @@ class PopupLink extends Component {
 
   submitForm(event){
     // TODO change so we are not hard coding the ID
-    axios.post('/api/rooms/1/posts', {
+    axios.post(`/api/rooms/${this.props.roomID}/posts`, {
       link: this.state.link,
       title: this.state.title,
-      description: this.state.description
+      description: this.state.description,
+      category: "link"
     }).then(this.close.bind(this));
   }
 
 
   render() {
-
     return (
       <div>
 

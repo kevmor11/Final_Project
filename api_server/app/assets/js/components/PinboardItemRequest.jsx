@@ -5,7 +5,7 @@ export default
 class PinboardItemRequest extends Component {
 constructor(props) {
     super(props); // super calls `constructor` in React.Component
-    console.log("Props from PBItemRequest", props)
+    // console.log("Props from PBItemRequest", props)
     this.state = {
       showModal: false,
       user: props.userData.user,
@@ -54,11 +54,13 @@ constructor(props) {
   //     updatePosts: this.updatePosts.bind(this)
   //   });
   // }
+
   render() {
     let allPosts;
 
     allPosts = this.state.userData.posts.map((post, i) => {
-      return   <PinboardItemModal key={i} title={post.title} description={"hey"} img={"www.example.com"} thumb={"www.google.com"} link={"www.example.com"} user={this.state.user} postID={1} category={"note"} />
+      // console.log("POST", post);
+      return   <PinboardItemModal key={i} title={post.title} description={post.description} img={post.image_file.url} thumb={post.image_file.thumb.url} link={post.link} user={this.state.user} category={post.category} />
     })
     return(
       <div className="components-container">

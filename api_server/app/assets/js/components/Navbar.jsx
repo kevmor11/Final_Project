@@ -22,7 +22,7 @@ class Navbar extends Component {
   //   window.location.href = '/';
   // }
   render() {
-    console.log('userrrrrrr', this.state.user);
+    // console.log('userrrrrrr', this.state.user);
     return (
       <div>
         <nav className="nav has-shadow">

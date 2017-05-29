@@ -18,7 +18,7 @@ class PinboardItemModal extends Component {
 
 
   render() {
-    // console.log("STATE", this.state.user);
+    // console.log("PARENT", this.props);
     switch (this.props.category) {
       case "image":
         return(

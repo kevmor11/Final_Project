@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import axios from 'axios';
 import {Modal, Popover, OverlayTrigger} from 'react-bootstrap'
 
@@ -19,16 +18,17 @@ class PopupNote extends Component {
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleContentChange = this.handleContentChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
-    function findRoomID(roomName){
-      let roomID;
-      props.userData.user.rooms.forEach((roomObject)=>{
-        let currentRoomName = window.location['pathname'].split('/')[2]
-        if (currentRoomName == roomObject.name){
-          roomID = roomObject.id;
-        }
-      })
-      return roomID;
-    };
+
+    // function findRoomID(roomName){
+    //   let roomID;
+    //   props.userData.user.rooms.forEach((roomObject)=>{
+    //     let currentRoomName = window.location['pathname'].split('/')[2]
+    //     if (currentRoomName == roomObject.name){
+    //       roomID = roomObject.id;
+    //     }
+    //   })
+    //   return roomID;
+    // };
   }
 
   close() {
@@ -48,9 +48,8 @@ class PopupNote extends Component {
     });
   }
 
-  componentDidMount() {
-
-  }
+  // componentDidMount() {
+  // }
 
   submitForm() {
       // console.log("submit clicked");
@@ -61,18 +60,18 @@ class PopupNote extends Component {
       }).then(this.close.bind(this));
   }
 
-  setRoomIdState = () => {
-    this.setState({room_id: this.props.roomID});
-  }
+  // setRoomIdState = () => {
+  //   this.setState({room_id: this.props.roomID});
+  // }
 
-  setRoomId = (rooms) => {
-    rooms.forEach((room, i)=> {
-      if (window.location['pathname'].split('/')[2] == room.name) {
-        const roomID = room.id;
-        this.setRoomIdState(roomID);
-      };
-    });
-  }
+  // setRoomId = (rooms) => {
+  //   rooms.forEach((room, i)=> {
+  //     if (window.location['pathname'].split('/')[2] == room.name) {
+  //       const roomID = room.id;
+  //       this.setRoomIdState(roomID);
+  //     };
+  //   });
+  // }
 
   render() {
     return (

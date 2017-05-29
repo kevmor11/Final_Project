@@ -24930,7 +24930,7 @@
 	  _createClass(Navbar, [{
 	    key: 'render',
 	    value: function render() {
-	      console.log('userrrrrrr', this.state.user);
+	      // console.log('userrrrrrr', this.state.user);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -35747,9 +35747,9 @@
 	    _classCallCheck(this, PinboardItemRequest);
 	
 	    // super calls `constructor` in React.Component
+	    // console.log("Props from PBItemRequest", props)
 	    var _this = _possibleConstructorReturn(this, (PinboardItemRequest.__proto__ || Object.getPrototypeOf(PinboardItemRequest)).call(this, props));
 	
-	    console.log("Props from PBItemRequest", props);
 	    _this.state = {
 	      showModal: false,
 	      user: props.userData.user,
@@ -35812,7 +35812,8 @@
 	      var allPosts = void 0;
 	
 	      allPosts = this.state.userData.posts.map(function (post, i) {
-	        return _react2.default.createElement(_PinboardItemModal2.default, { key: i, title: post.title, description: "hey", img: "www.example.com", thumb: "www.google.com", link: "www.example.com", user: _this3.state.user, postID: 1, category: "note" });
+	        // console.log("POST", post);
+	        return _react2.default.createElement(_PinboardItemModal2.default, { key: i, title: post.title, description: post.description, img: post.image_file.url, thumb: post.image_file.thumb.url, link: post.link, user: _this3.state.user, category: post.category });
 	      });
 	      return _react2.default.createElement(
 	        'div',
@@ -35887,7 +35888,7 @@
 	  _createClass(PinboardItemModal, [{
 	    key: 'render',
 	    value: function render() {
-	      // console.log("STATE", this.state.user);
+	      // console.log("PARENT", this.props);
 	      switch (this.props.category) {
 	        case "image":
 	          return _react2.default.createElement(_PinItemModalImage2.default, {
@@ -56471,6 +56472,8 @@
 	  _createClass(PinItemModalLink, [{
 	    key: 'render',
 	    value: function render() {
+	      console.log("HELLO");
+	      console.log("INSIDE LINK", this.props);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -56703,10 +56706,6 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _propTypes = __webpack_require__(/*! prop-types */ 184);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-	
 	var _axios = __webpack_require__(/*! axios */ 209);
 	
 	var _axios2 = _interopRequireDefault(_axios);
@@ -56732,19 +56731,6 @@
 	
 	    var _this = _possibleConstructorReturn(this, (PopupNote.__proto__ || Object.getPrototypeOf(PopupNote)).call(this, props));
 	
-	    _this.setRoomIdState = function () {
-	      _this.setState({ room_id: _this.props.roomID });
-	    };
-	
-	    _this.setRoomId = function (rooms) {
-	      rooms.forEach(function (room, i) {
-	        if (window.location['pathname'].split('/')[2] == room.name) {
-	          var roomID = room.id;
-	          _this.setRoomIdState(roomID);
-	        };
-	      });
-	    };
-	
 	    _this.state = {
 	      title: '',
 	      content: '',
@@ -56754,16 +56740,17 @@
 	    _this.handleTitleChange = _this.handleTitleChange.bind(_this);
 	    _this.handleContentChange = _this.handleContentChange.bind(_this);
 	    _this.submitForm = _this.submitForm.bind(_this);
-	    function findRoomID(roomName) {
-	      var roomID = void 0;
-	      props.userData.user.rooms.forEach(function (roomObject) {
-	        var currentRoomName = window.location['pathname'].split('/')[2];
-	        if (currentRoomName == roomObject.name) {
-	          roomID = roomObject.id;
-	        }
-	      });
-	      return roomID;
-	    };
+	
+	    // function findRoomID(roomName){
+	    //   let roomID;
+	    //   props.userData.user.rooms.forEach((roomObject)=>{
+	    //     let currentRoomName = window.location['pathname'].split('/')[2]
+	    //     if (currentRoomName == roomObject.name){
+	    //       roomID = roomObject.id;
+	    //     }
+	    //   })
+	    //   return roomID;
+	    // };
 	    return _this;
 	  }
 	
@@ -56787,9 +56774,10 @@
 	        room_id: ''
 	      });
 	    }
-	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {}
+	
+	    // componentDidMount() {
+	    // }
+	
 	  }, {
 	    key: 'submitForm',
 	    value: function submitForm() {
@@ -56800,6 +56788,20 @@
 	        category: "note"
 	      }).then(this.close.bind(this));
 	    }
+	
+	    // setRoomIdState = () => {
+	    //   this.setState({room_id: this.props.roomID});
+	    // }
+	
+	    // setRoomId = (rooms) => {
+	    //   rooms.forEach((room, i)=> {
+	    //     if (window.location['pathname'].split('/')[2] == room.name) {
+	    //       const roomID = room.id;
+	    //       this.setRoomIdState(roomID);
+	    //     };
+	    //   });
+	    // }
+	
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -56888,6 +56890,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _axios = __webpack_require__(/*! axios */ 209);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
 	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 285);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -56912,7 +56918,6 @@
 	      title: '',
 	      description: ''
 	    };
-	
 	    _this.handleLinkChange = _this.handleLinkChange.bind(_this);
 	    _this.handleDescriptionChange = _this.handleDescriptionChange.bind(_this);
 	    _this.handleTitleChange = _this.handleTitleChange.bind(_this);
@@ -56936,7 +56941,7 @@
 	    key: 'handleTitleChange',
 	    value: function handleTitleChange(event) {
 	      this.setState({
-	        link: event.target.value
+	        title: event.target.value
 	      });
 	    }
 	  }, {
@@ -56950,16 +56955,16 @@
 	    key: 'submitForm',
 	    value: function submitForm(event) {
 	      // TODO change so we are not hard coding the ID
-	      axios.post('/api/rooms/1/posts', {
+	      _axios2.default.post('/api/rooms/' + this.props.roomID + '/posts', {
 	        link: this.state.link,
 	        title: this.state.title,
-	        description: this.state.description
+	        description: this.state.description,
+	        category: "link"
 	      }).then(this.close.bind(this));
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	
 	      return _react2.default.createElement(
 	        'div',
 	        null,
