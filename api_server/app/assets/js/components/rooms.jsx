@@ -35,7 +35,7 @@ class Rooms extends Component {
     })
     return (
       <div className="tile is-parent is-3 rooms">
-        <article className="tile is-child box">
+        <article className="tile is-child box rooms">
         <div className="content">
             <p className="subtitle">Your Rooms</p>
             <div className="field">

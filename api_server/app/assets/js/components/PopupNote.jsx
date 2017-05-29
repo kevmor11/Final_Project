@@ -47,10 +47,13 @@ class PopupNote extends Component {
     });
   }
 
-  componentDidMount() {
-  
+  postDB = () => { 
+    axios.post('/api/rooms/${1}/posts', {
+        title: this.state.title,
+        content: this.state.content,
+        category: "note"
+      }).then(this.close.bind(this));
   }
-
   submitForm(event) {
       console.log("submit clicked");
       axios.post(`/api/rooms/${this.state.currentRoomID}/posts`, {
@@ -59,9 +62,6 @@ class PopupNote extends Component {
         category: "note"
       }).then(this.close.bind(this));
 
-
-
-    
   }
 
   setRoomIdState = (id) => {
@@ -102,7 +102,6 @@ class PopupNote extends Component {
             </p>
           </Modal.Body>
         </Modal>
-
       </div>
     );
   }
