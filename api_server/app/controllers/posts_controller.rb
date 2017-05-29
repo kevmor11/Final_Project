@@ -32,8 +32,9 @@ class PostsController < ApplicationController
         title: @post.title,
         description: @post.description,
         user: @post.user.first_name,
-        content: @post.content
-        # category: @post.category
+        content: @post.content,
+        category: @post.category,
+        image: @post.image_file
       head :ok
     end
 
@@ -51,7 +52,6 @@ class PostsController < ApplicationController
   private
     def post_params
       params
-      .require(:post)
       .permit(
         :room_id,
         :user_id,
@@ -59,7 +59,8 @@ class PostsController < ApplicationController
         :title,
         :category,
         :link,
-        :description
+        :description,
+        :image_file
       )
     end
 

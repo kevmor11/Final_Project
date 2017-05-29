@@ -56795,13 +56795,10 @@
 	    value: function submitForm() {
 	      // console.log("submit clicked");
 	      _axios2.default.post('/api/rooms/' + this.props.roomID + '/posts', {
-	        post: {
-	          title: this.state.title,
-	          content: this.state.content,
-	          category: "note"
-	        }
+	        title: this.state.title,
+	        content: this.state.content,
+	        category: "note"
 	      }).then(this.close.bind(this));
-	      console.log('AYO', this.state);
 	    }
 	  }, {
 	    key: 'render',
@@ -57204,7 +57201,7 @@
 	                _react2.default.createElement(
 	                  'p',
 	                  { className: 'control' },
-	                  _react2.default.createElement('textarea', { className: 'input', type: 'text', value: this.state.content, id: 'image_description', onChange: this.handleDescriptionChange })
+	                  _react2.default.createElement('textarea', { className: 'input', type: 'text', value: this.state.description, id: 'image_description', onChange: this.handleDescriptionChange })
 	                )
 	              ),
 	              _react2.default.createElement(

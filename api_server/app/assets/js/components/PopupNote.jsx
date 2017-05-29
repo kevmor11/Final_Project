@@ -55,13 +55,10 @@ class PopupNote extends Component {
   submitForm() {
       // console.log("submit clicked");
       axios.post(`/api/rooms/${this.props.roomID}/posts`, {
-        post: {
-          title: this.state.title,
-          content: this.state.content,
-          category: "note"
-        }
+        title: this.state.title,
+        content: this.state.content,
+        category: "note"
       }).then(this.close.bind(this));
-      console.log('AYO', this.state);
   }
 
   setRoomIdState = () => {
