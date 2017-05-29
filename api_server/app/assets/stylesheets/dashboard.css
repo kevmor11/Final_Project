@@ -8,8 +8,23 @@
 .button.is-primary {
   background-color: #127A93; }
 
+.input {
+  opacity: 0.5; }
+
+.input:hover {
+  opacity: 1; }
+
 .button.is-primary:hover {
   text-decoration: none; }
+
+.box {
+  background-color: rgba(254, 252, 250, 0.57); }
+
+.table {
+  background-color: rgba(63, 179, 242, 0); }
+
+.table .td.hover {
+  background-color: rgba(63, 179, 242, 0) !important; }
 
 .dashboard {
   display: flex;
@@ -17,7 +32,7 @@
   justify-content: flex-start; }
 
 .notification.notification-center {
-  background-color: white; }
+  background-color: rgba(254, 252, 250, 0.57); }
 
 .notification {
   background-color: #D1D1D1; }
