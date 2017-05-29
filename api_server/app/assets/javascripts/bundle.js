@@ -35812,8 +35812,8 @@
 	      var allPosts = void 0;
 	
 	      allPosts = this.state.userData.posts.map(function (post, i) {
-	        // console.log("POST", post);
-	        return _react2.default.createElement(_PinboardItemModal2.default, { key: i, title: post.title, description: post.description, img: post.image_file.url, thumb: post.image_file.thumb.url, link: post.link, user: _this3.state.user, category: post.category });
+	        console.log("POST", post);
+	        return _react2.default.createElement(_PinboardItemModal2.default, { key: i, title: post.title, content: post.content, description: post.description, img: post.image_file.url, thumb: post.image_file.thumb.url, link: post.link, user: _this3.state.user, category: post.category });
 	      });
 	      return _react2.default.createElement(
 	        'div',
@@ -35904,7 +35904,7 @@
 	          return _react2.default.createElement(_PinItemModalNote2.default, {
 	            postID: this.props.postID,
 	            title: this.props.title,
-	            description: this.props.description,
+	            content: this.props.content,
 	            user: this.state.user
 	          });
 	        // break;
@@ -56364,6 +56364,7 @@
 	  _createClass(PinItemModalNote, [{
 	    key: 'render',
 	    value: function render() {
+	      // console.log('NOTE', this.props);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -56395,7 +56396,7 @@
 	            _react2.default.createElement(
 	              'p',
 	              null,
-	              this.props.description
+	              this.props.content
 	            )
 	          )
 	        )
