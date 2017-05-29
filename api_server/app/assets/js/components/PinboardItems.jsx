@@ -7,6 +7,7 @@ class PinboardItems extends Component {
 
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
+    
     this.state = {
       roomAxiosData:props.roomAxiosData
     }
@@ -19,7 +20,7 @@ class PinboardItems extends Component {
   render() {
     return(
       <div>
-        <PinboardItemRequest roomID={this.props.roomID} userData={this.props.userData} roomAxiosData={this.props.roomAxiosData}/>
+        <PinboardItemRequest post={this.props.posts} roomID={this.props.roomID} userData={this.props.userData} roomAxiosData={this.props.roomAxiosData}/>
       </div>
     )
   }

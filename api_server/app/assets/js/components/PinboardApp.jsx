@@ -17,7 +17,9 @@ class PinboardApp extends Component {
       user: props.userData.data.user,
       roomName: "",
       roomID: 0,
-      roomAxiosData:""
+      roomAxiosData:"",
+      here: "",
+      posts:[],
     };
   }
 
@@ -32,17 +34,43 @@ class PinboardApp extends Component {
       this.setState({
         roomName: name,
         roomID: ID,
-        roomAxiosData: res.data.room
+        roomAxiosData: res.data.room,
+        posts:res.data.room.posts
       })
     });
   }
 
+  updatePinboardApp = (title, content, category) => {
+    this.setState({
+      posts: this.state.posts.concat({
+        category: category,
+        content: content,
+        created_at: "2017-05-29T21:22:15.206Z",
+        description:"null",
+        id:90,
+        image_file: {thumb:{url:null}, url:null},
+        link: null,
+        room:{created_at:"2017-05-29T21:22:02.292Z",id:13,name:"googleeee",updated_at:"2017-05-29T21:22:02.292Z"},
+        seen: null,
+        title: title,
+        updated_at: "2017-05-29T21:22:15.206Z"    
+      })
+    }, ()=>{
+    console.log("posts in callback is :", this.state.posts);
+    })
+
+  }
 
   render() {
     return (
       <div>
         <Navbar currentUser={this.state.user} />
-        <Pinboard  userData={this.state.user} roomName={this.state.roomName} roomID={this.state.roomID} roomAxiosData={this.state.roomAxiosData} />
+        <Pinboard updatePinboardApp={this.updatePinboardApp}
+                  userData={this.state.user}
+                  roomName={this.state.roomName} 
+                  roomID={this.state.roomID} 
+                  roomAxiosData={this.state.roomAxiosData} 
+                  posts={this.state.posts} />
       </div>
     );
   }

@@ -19,16 +19,6 @@ class PopupNote extends Component {
     this.handleContentChange = this.handleContentChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
 
-    // function findRoomID(roomName){
-    //   let roomID;
-    //   props.userData.user.rooms.forEach((roomObject)=>{
-    //     let currentRoomName = window.location['pathname'].split('/')[2]
-    //     if (currentRoomName == roomObject.name){
-    //       roomID = roomObject.id;
-    //     }
-    //   })
-    //   return roomID;
-    // };
   }
 
   close() {
@@ -51,7 +41,8 @@ class PopupNote extends Component {
   // }
 
   submitForm() {
-      // console.log("submit clicked");
+      console.log("submit clicked");
+      this.props.updatePinboardApp(this.state.title, this.state.content,"note")
       axios.post(`/api/rooms/${this.props.roomID}/posts`, {
         title: this.state.title,
         content: this.state.content,

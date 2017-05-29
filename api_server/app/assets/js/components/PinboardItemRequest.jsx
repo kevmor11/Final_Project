@@ -5,29 +5,15 @@ export default
 class PinboardItemRequest extends Component {
 constructor(props) {
     super(props); // super calls `constructor` in React.Component
-    // console.log("Props from PBItemRequest", props)
     this.state = {
       showModal: false,
       user: props.userData.user,
       postID: null,
-      posts: [],
+      posts:"",
       userData:props.userData.user,
       roomAxiosData:props
     }
   }
-
-
-  // componentDidMount() {
-  //   // console.log('userIDDDDDD', this.props.userData.data.user.id);
-  //   axios.get(`/api/users/8.json`)
-  //     .then(res => {
-  //       console.log('res', res.data);
-  //       // console.log("Room data", res);
-  //       const user = res.data.user;
-  //       this.setState({ user });
-  //     });
-  //   // this.setupSubscription();
-  // }
 
 
   // updatePosts = (post) => {
@@ -48,14 +34,22 @@ constructor(props) {
   // }
 
   render() {
-    let allPosts;
-    allPosts = this.state.userData.posts.map((post, i) => {
-      return   <PinboardItemModal key={i} title={post.title} description={post.description} img={post.image_file.url} thumb={post.image_file.thumb.url} link={post.link} user={this.state.user} category={post.category} />
-    })
+      let allPosts;
+    if(this.props.post ){
+      allPosts = this.props.post.map((post, i) => {
+        return   <PinboardItemModal onClick={this.props.updatePinboard}
+                                    key={i} title={post.title} 
+                                    description={post.description} 
+                                    img={post.image_file.url} 
+                                    thumb={post.image_file.thumb.url} 
+                                    link={post.link}  
+                                    category={post.category} />
+      })
+    }
     return(
       <div className="components-container">
         {allPosts}
       </div>
     )
   }
-}
+} 
