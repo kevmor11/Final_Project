@@ -11,7 +11,8 @@ constructor(props) {
       user: props.userData.user,
       postID: null,
       posts: [],
-      userData:props.userData.user
+      userData:props.userData.user,
+      roomAxiosData:props
     }
   }
 
@@ -47,7 +48,7 @@ constructor(props) {
   // }
   render() {
     let allPosts;
-
+    // alert(this.props.roomAxiosData.posts);
     allPosts = this.state.userData.posts.map((post, i) => {
       return   <PinboardItemModal key={i} title={post.title} description={"hey"} img={"www.example.com"} thumb={"www.google.com"} link={"www.example.com"} user={this.state.user} postID={1} category={"note"} />
     })
