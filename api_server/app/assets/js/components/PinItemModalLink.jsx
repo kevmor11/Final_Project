@@ -26,8 +26,6 @@ constructor(props) {
   }
 
   render() {
-    console.log("HELLO");
-    console.log("INSIDE LINK", this.props);
     return(
       <div>
         <div className="item" onClick={this.open}>

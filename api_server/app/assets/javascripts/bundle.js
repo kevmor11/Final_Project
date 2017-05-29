@@ -56472,8 +56472,6 @@
 	  _createClass(PinItemModalLink, [{
 	    key: 'render',
 	    value: function render() {
-	      console.log("HELLO");
-	      console.log("INSIDE LINK", this.props);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -57084,13 +57082,12 @@
 	    var _this = _possibleConstructorReturn(this, (PopupLink.__proto__ || Object.getPrototypeOf(PopupLink)).call(this, props));
 	
 	    _this.state = {
-	      image: null,
-	      content: '',
+	      image: '',
+	      title: '',
 	      description: ''
 	    };
-	
 	    _this.handleImageChange = _this.handleImageChange.bind(_this);
-	    _this.handleContentChange = _this.handleContentChange.bind(_this);
+	    _this.handleTitleChange = _this.handleTitleChange.bind(_this);
 	    _this.handleDescriptionChange = _this.handleDescriptionChange.bind(_this);
 	    _this.submitForm = _this.submitForm.bind(_this);
 	    return _this;
@@ -57109,10 +57106,10 @@
 	      });
 	    }
 	  }, {
-	    key: 'handleContentChange',
-	    value: function handleContentChange(event) {
+	    key: 'handleTitleChange',
+	    value: function handleTitleChange(event) {
 	      this.setState({
-	        content: event.target.value
+	        title: event.target.value
 	      });
 	    }
 	  }, {
@@ -57125,22 +57122,22 @@
 	  }, {
 	    key: 'submitForm',
 	    value: function submitForm(event) {
-	      // TODO change so we are not hard coding user 2
-	      axios.post('/api/rooms/1/posts', {
+	      axios.post('/api/rooms/' + this.props.roomID + '/posts', {
 	        image: this.state.image,
-	        content: this.state.content,
-	        description: this.state.description
-	      });
+	        title: this.state.title,
+	        description: this.state.description,
+	        category: "image"
+	      }).then(this.close.bind(this));
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	
 	      var tooltip = _react2.default.createElement(
 	        _reactBootstrap.Tooltip,
 	        { id: 'tooltip' },
 	        'Upload a .jpg, .jpeg, .png, or .gif file.'
 	      );
+	      console.log("IMAGE", this.props);
 	
 	      return _react2.default.createElement(
 	        'div',
@@ -57192,7 +57189,7 @@
 	                _react2.default.createElement(
 	                  'p',
 	                  { className: 'control' },
-	                  _react2.default.createElement('textarea', { className: 'input', type: 'text', value: this.state.content, id: 'image_title', onChange: this.handleContentChange })
+	                  _react2.default.createElement('textarea', { className: 'input', type: 'text', value: this.state.title, id: 'image_title', onChange: this.handleTitleChange })
 	                )
 	              ),
 	              _react2.default.createElement(
@@ -57206,7 +57203,7 @@
 	                _react2.default.createElement(
 	                  'p',
 	                  { className: 'control' },
-	                  _react2.default.createElement('textarea', { className: 'input', type: 'text', value: this.state.description, id: 'image_description', onChange: this.handleDescriptionChange })
+	                  _react2.default.createElement('textarea', { className: 'input input-description', type: 'text', value: this.state.description, id: 'image_description', onChange: this.handleDescriptionChange })
 	                )
 	              ),
 	              _react2.default.createElement(

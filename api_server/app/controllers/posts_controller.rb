@@ -34,7 +34,7 @@ class PostsController < ApplicationController
         user: @post.user.first_name,
         content: @post.content,
         category: @post.category,
-        image: @post.image_file
+        image_file: @post.image_file
       head :ok
     end
 
