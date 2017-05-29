@@ -1,5 +1,5 @@
 node_modules
 .DS_Store
 .env
-bundle.js
-bundle.js.map
+app/assets/javascripts/bundle.js
+app/assets/javascripts/bundle.js.map

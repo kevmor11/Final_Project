@@ -36,7 +36,7 @@ class PinboardItemModal extends Component {
           <PinItemModalNote
           postID={this.props.postID}
           title={this.props.title}
-          description={this.props.description}
+          content={this.props.content}
           user={this.state.user}
           />);
         // break;
