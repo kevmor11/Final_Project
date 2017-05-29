@@ -9,6 +9,7 @@ class CreatePosts < ActiveRecord::Migration[5.1]
       t.text :description
       t.boolean :seen
       t.string :category
+      t.string :image_file
 
       t.timestamps
     end
