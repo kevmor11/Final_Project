@@ -22,13 +22,20 @@ class PinboardApp extends Component {
       posts:[],
     };
   }
-
+  updatePostsFromDB = () => {
+    console.log("updating from db ... ")
+    var location = window.location['pathname'].split('/')[2];
+    axios.get(`/rooms/${location}.json`).then((res) => {
+        this.setState({
+          posts:res.data.room.posts
+        })
+    });
+  }
   componentWillMount() {
     var location = window.location['pathname'].split('/')[2];
     var name = "";
     var ID = "";
     axios.get(`/rooms/${location}.json`).then((res) => {
-      console.log("RESPOSNSE", res.data.room)
       name = res.data.room.name;
       ID = res.data.room.id;
       this.setState({
@@ -40,25 +47,8 @@ class PinboardApp extends Component {
     });
   }
 
-  updatePinboardApp = (title, content, category) => {
-    this.setState({
-      posts: this.state.posts.concat({
-        category: category,
-        content: content,
-        created_at: "2017-05-29T21:22:15.206Z",
-        description:"null",
-        id:90,
-        image_file: {thumb:{url:null}, url:null},
-        link: null,
-        room:{created_at:"2017-05-29T21:22:02.292Z",id:13,name:"googleeee",updated_at:"2017-05-29T21:22:02.292Z"},
-        seen: null,
-        title: title,
-        updated_at: "2017-05-29T21:22:15.206Z"    
-      })
-    }, ()=>{
-    console.log("posts in callback is :", this.state.posts);
-    })
-
+  updatePinboardApp = () => {
+    this.updatePostsFromDB();
   }
 
   render() {

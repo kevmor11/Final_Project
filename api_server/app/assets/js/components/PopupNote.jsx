@@ -42,12 +42,11 @@ class PopupNote extends Component {
 
   submitForm() {
       console.log("submit clicked");
-      this.props.updatePinboardApp(this.state.title, this.state.content,"note")
       axios.post(`/api/rooms/${this.props.roomID}/posts`, {
         title: this.state.title,
         content: this.state.content,
         category: "note"
-      }).then(this.close.bind(this));
+      }).then(this.close.bind(this)).then(this.props.updatePinboardApp)
   }
 
   // setRoomIdState = () => {
