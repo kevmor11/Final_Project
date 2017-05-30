@@ -19,6 +19,7 @@ class PinboardItemRequest extends Component {
     let allPosts = [];
     if (this.props.post) {
       allPosts = this.props.post.map((post) => {
+        console.log("kevin", post);
         return (
           <PinboardItemModal
             onClick={this.props.updatePinboard}
@@ -30,6 +31,7 @@ class PinboardItemRequest extends Component {
             thumb={post.image_file.thumb.url}
             link={post.link}
             category={post.category}
+            user={post.user.first_name}
           />
         );
       });

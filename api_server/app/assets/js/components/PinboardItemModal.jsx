@@ -10,7 +10,6 @@ class PinboardItemModal extends Component {
     super(props); // super calls `constructor` in React.Component
     this.state = {
       showModal: false,
-      user: null,
       postID: null,
     };
   }
@@ -26,7 +25,7 @@ class PinboardItemModal extends Component {
             description={this.props.description}
             img={this.props.img}
             thumb={this.props.thumb}
-            user={this.state.user}
+            name={this.props.user}
           />);
       case "note":
         return (
@@ -34,7 +33,7 @@ class PinboardItemModal extends Component {
             postID={this.props.postID}
             title={this.props.title}
             content={this.props.content}
-            user={this.state.user}
+            name={this.props.user}
           />);
       case "link":
         return (
@@ -43,7 +42,7 @@ class PinboardItemModal extends Component {
             title={this.props.title}
             description={this.props.description}
             link={this.props.link}
-            user={this.state.user}
+            name={this.props.user}
           />);
       default:
         throw new Error('Content category is not valid');

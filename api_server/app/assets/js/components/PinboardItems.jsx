@@ -19,7 +19,7 @@ class PinboardItems extends Component {
 
   render() {
     return(
-      <div>
+      <div className="container">
         <PinboardItemRequest post={this.props.posts} roomID={this.props.roomID} userData={this.props.userData} roomAxiosData={this.props.roomAxiosData}/>
       </div>
     )
