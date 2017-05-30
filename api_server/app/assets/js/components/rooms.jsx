@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Room from './Room.jsx';
-import axios from 'axios';  
+import axios from 'axios';
 export default
 class Rooms extends Component {
   constructor(props) {
@@ -18,20 +18,20 @@ class Rooms extends Component {
       roomName: event.target.value
     });
   }
-  
+
   createRoomClick = (event) => {
-    console.log("clicked");
     this.setState({
       rooms:this.state.rooms.concat({ name: this.state.roomName})
         })
     axios.post(`/api/rooms`, {
       name: this.state.roomName
-    }).then(console.log('succuss'));
+    });
   }
   render() {
     let allRooms;
     allRooms = this.state.rooms.map((room, i) => {
-      return <Room key={i} roomName={room.name} roomNumber={i+1}/>
+      console.log('ROOMS', room);
+      return <Room key={room.id} roomName={room.name} roomNumber={i+1}/>
     })
     return (
       <div className="tile is-parent is-3 rooms">
@@ -40,7 +40,14 @@ class Rooms extends Component {
             <p className="subtitle">Your Rooms</p>
             <div className="field">
               <p className="control">
-                <input className="input" type="name" id="roomName" name="roomName" value={ this.state.roomName } onChange={ this.handleRoomNameChange } placeholder="Room Name" />
+                <input
+                  className="input"
+                  type="name" id="roomName"
+                  name="roomName"
+                  value={ this.state.roomName }
+                  onChange={ this.handleRoomNameChange }
+                  placeholder="Room Name"
+                />
               </p>
               <button className="button" onClick={this.createRoomClick}>Create</button>
             </div>

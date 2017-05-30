@@ -18,17 +18,11 @@ class PinboardSidebar extends Component {
 
 
   addUserToRoom = (invited_id) => {
-    console.log('addusertoroom', invited_id, "to", this.props.room.id);
     axios.post('/api/userrooms', {
       user_id: invited_id,
       room_id: this.props.room.id,
     })
-    .then((d) => {console.log("add-user success", d)})
-    .catch((e) => {console.log("add-user explosion", e)})
     this.props.refreshRoom();
-    // this.setState({
-    //   room_users: 2
-    // })
   }
 
   handleInviteFormChange = (event) => {
@@ -38,7 +32,6 @@ class PinboardSidebar extends Component {
   }
 
   submitInviteForm = () => {
-    console.log("submitting invite form for", this.state.receiver);
     axios.get('/api/users')
     .then(res => {
       const users = res.data.users;
@@ -85,7 +78,6 @@ class PinboardSidebar extends Component {
                       </tr>
                     )
                   })}
-
                 </tbody>
               </table>
             </div>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar.jsx';
 import Pinboard from './Pinboard.jsx'
-// import PropTypes from 'prop-types';
 import axios from 'axios';
 
 export default
@@ -20,14 +19,12 @@ class PinboardApp extends Component {
       this.setState({
         roomAxiosData: res.data.room,
       });
-      console.log("room data in PBApp", this.state.roomAxiosData);
     });
   }
 
   componentDidMount() {
     this.reviveRoomData();
   }
-
 
   render() {
     return (

@@ -19,7 +19,6 @@ class VideoSearch extends Component {
 
     gapi.client.setApiKey('AIzaSyCSsxTJF9KYHmuDbYt8TACQGF2wztIS7Zo');
     gapi.client.load('youtube', 'v3', () => {
-      // console.log("YT api loaded");
       var request = gapi.client.youtube.search.list({
         q: searchString,
         part: 'snippet',
@@ -27,17 +26,13 @@ class VideoSearch extends Component {
         // startIndex: 0,
       });
       request.execute((response) => {
-        // console.log(response);
         var srchItems = response.result.items;
         var relevantData = srchItems.map((item) => { return {
           title: item.snippet.title,
           url: item.snippet.thumbnails.default.url,
           id: item.id.videoId
         }});
-        // console.log("irrelephant", relevantData);
         this.setState({thumbnails: relevantData});
-
-        // console.log("gapi request finished, I guess");
 
       });
     });
@@ -65,7 +60,7 @@ class VideoSearch extends Component {
     var doVid = this.state.currentVideo;
     return (
       <div>
-        <Script url="https://apis.google.com/js/client.js?onload=googleApiClientReady" 
+        <Script url="https://apis.google.com/js/client.js?onload=googleApiClientReady"
                 onCreate={this.handleScriptCreate.bind(this)}
                 onError={this.handleScriptError.bind(this)}
                 onLoad={this.handleScriptLoad.bind(this)}/>
