@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar.jsx';
-import LoginButton from './LoginButton.jsx';
-import RegistrationButton from './RegistrationButton.jsx';
-import LoginField from './LoginField.jsx';
-import RegistrationFields from './RegistrationFields.jsx';
 import Pinboard from './Pinboard.jsx'
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import axios from 'axios';
 
 export default
@@ -13,47 +9,57 @@ class PinboardApp extends Component {
 
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
-    // console.log("I hate you", window.location['pathname'].split('/')[2]);
     this.state = {
-      openModal: '',
+      user: props.userData.data.user,
       roomName: "",
-      roomID: 0
+      roomID: 0,
+      roomAxiosData:"",
+      here: "",
+      posts:[],
     };
   }
 
-  componentWillMount() {
+  updatePostsFromDB = () => {
+    console.log("updating from db ... ")
+    var location = window.location['pathname'].split('/')[2];
+    axios.get(`/rooms/${location}.json`).then((res) => {
+        this.setState({
+          posts:res.data.room.posts
+        })
+    });
+  }
+
+  componentDidMount() {
     var location = window.location['pathname'].split('/')[2];
     var name = "";
     var ID = "";
     axios.get(`/rooms/${location}.json`).then((res) => {
-      // console.log('response', res);
       name = res.data.room.name;
       ID = res.data.room.id;
       this.setState({
         roomName: name,
-        roomID: ID
+        roomID: ID,
+        roomAxiosData: res.data.room,
+        posts:res.data.room.posts
       })
     });
   }
 
-  // openModal(modalName) {
-  //   // image, link, note
-  //   this.setState(Object.assign({}, this.state, { openModal: modalName }));
-  // }
+  updatePinboardApp = () => {
+    this.updatePostsFromDB();
+  }
 
   render() {
     return (
       <div>
-        <Navbar />
-        <Pinboard openModal={this.state.openModal} userData={this.props.userData} roomName={this.state.roomName} roomID={this.state.roomID} />
+        <Navbar currentUser={this.state.user} />
+        <Pinboard updatePinboardApp={this.updatePinboardApp}
+                  userData={this.state.user}
+                  roomName={this.state.roomName}
+                  roomID={this.state.roomID}
+                  roomAxiosData={this.state.roomAxiosData}
+                  posts={this.state.posts} />
       </div>
     );
   }
 }
-
-// class ExtendedApp extends App {
-//   render() {
-//     const inner = super.render(); // calls render in <App />
-//     return <div id="wrapped">{inner}</div>;
-//   }
-// }

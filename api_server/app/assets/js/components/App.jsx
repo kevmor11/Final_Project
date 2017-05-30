@@ -11,7 +11,10 @@ export default
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = {isLoggedIn: false};
+    this.state = {
+      isLoggedIn: true,
+      user: null
+    };
   }
 
   handleLoginClick = () => {
@@ -40,8 +43,8 @@ class App extends Component {
     
     return (
       <div>
-        <Navbar/>
-        <div className="field is-grouped welcome-space">
+        <Navbar currentUser={ this.state.user }/>
+        <div className="field is-grouped welcome-space registerApp">
           <div className="col-log-2 optionButtons">
             <LoginButton clickHandler={this.handleLoginClick}/>
             <RegistrationButton clickHandler={this.handleRegistrationClick} />

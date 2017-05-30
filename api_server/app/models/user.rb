@@ -20,7 +20,7 @@ class User < ApplicationRecord
 
   private
   def image_size_validation
-    errors[:content] << "should be less than 500MB" if content.size > 500.megabytes
+    errors[:avatar] << "should be less than 500MB" if avatar.size > 500.megabytes
   end
 
 end

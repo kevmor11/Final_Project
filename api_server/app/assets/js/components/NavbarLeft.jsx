@@ -1,25 +1,26 @@
 import React, {Component} from 'react';
 import Logo from './Logo.jsx';
-export default
 
+export default
 class NavbarLeft extends Component {
+
+  profileHomeClick = () => {
+    window.location.href = `/users/${this.props.user.id}`
+  }
+
   render() {
-    return (
-      <div className="nav-left">
-        <div className="nav-item">
-          <Logo />
+    if ( this.props.user !== null) {
+      return (
+        <div className="nav-left">
+          <a className="nav-item is-hidden-mobile is-active">
+            <span className="icon">
+              <i className="fa fa-home" onClick={this.profileHomeClick}></i>
+            </span>
+          </a>
         </div>
-        <a className="nav-item is-tab is-hidden-mobile is-active">
-          <span className="icon">
-            <i className="fa fa-home"></i>
-          </span>
-        </a>
-        <a className="nav-item is-tab is-hidden-mobile ">
-          <span className="icon">
-            <i className="fa fa-envelope-open" aria-hidden="true"></i>
-          </span>
-        </a>
-      </div>
-    )
+      )
+    } else {
+      return( <div></div>);
+    }
   }
 }

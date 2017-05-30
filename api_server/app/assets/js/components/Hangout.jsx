@@ -38,17 +38,18 @@ class Hangout extends Component {
   }
 
   render() {
+    console.log('rooooooomname in hangout', this.props.roomName);
     return (
       <div>
         <Messenger />
         { this.state.videoChat === false &&
-          <button className="button is-primary" onClick={this.openBroadcast}>Watch a Video<i class="fa fa-youtube-play" aria-hidden="true"></i></button>
+          <button className="button is-primary" onClick={this.openBroadcast}>Broadcast <i className="fa fa-video-camera" aria-hidden="true"></i></button>
         }
         { this.state.videoChat === true &&
-          <VideoChat />
+          <VideoChat roomName={this.props.roomName} roomID={this.props.roomID}/>
         }
         { this.state.streamVideo === false &&
-          <button className="button is-primary" onClick={this.openStream}>Watch a Video<i class="fa fa-youtube-play" aria-hidden="true"></i></button>
+          <button className="button is-primary" onClick={this.openStream}>Watch a Video <i className="fa fa-youtube-play" aria-hidden="true"></i></button>
         }
         { this.state.streamVideo === true &&
           <VideoSearch />

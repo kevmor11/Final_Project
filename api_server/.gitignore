@@ -14,3 +14,7 @@
 !/tmp/.keep
 
 .byebug_history
+app/assets/javascripts/bundle.js
+app/assets/javascripts/bundle.js.map
+.vscode
+public/uploads/

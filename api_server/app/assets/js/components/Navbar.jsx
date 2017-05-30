@@ -1,30 +1,36 @@
 import React, {Component} from 'react';
-import NavbarLeft from './NavbarLeft.jsx'
+import NavbarLeft from './NavbarLeft.jsx';
+import UserLogoutButton from './UserLogoutButton.jsx';
+import axios from 'axios';
+import Logo from './Logo.jsx';
 
+export default
 class Navbar extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: props.currentUser
+    }
+  }
+
+  // logOutClick = () => {
+  //   axios.delete(`/api/sessions/${this.state.user.id}`).then(this.handleRedirectToLogin);
+  // }
+
+  // handleRedirectToLogin = () => {
+  //   window.location.href = '/';
+  // }
   render() {
+    // console.log('userrrrrrr', this.state.user);
     return (
       <div>
         <nav className="nav has-shadow">
           <div className="container">
-            <NavbarLeft />
-            <span className="nav-toggle">
-              <span>one</span>
-              <span></span>
-              <span></span>
-            </span>
+            <Logo />
+            <NavbarLeft user={ this.state.user }/>
             <div className="nav-right nav-menu">
-              <a className="nav-item is-tab is-hidden-tablet is-active">Home</a>
-              <a className="nav-item is-tab is-hidden-tablet">Features</a>
-              <a className="nav-item is-tab is-hidden-tablet">Pricing</a>
-              <a className="nav-item is-tab is-hidden-tablet">About</a>
-              <a className="nav-item is-tab">
-                <figure className="image is-16x16" style={{"marginRight": "8px"}}>
-                  <img src="http://bulma.io/images/jgthms.png"/>
-                </figure>
-                Profile
-              </a>
-              <a className="nav-item is-tab">Log out</a>
+              <UserLogoutButton user={this.state.user}/>
             </div>
           </div>
         </nav>
@@ -32,5 +38,5 @@ class Navbar extends Component {
     )
   }
 }
-export default Navbar;
+
 

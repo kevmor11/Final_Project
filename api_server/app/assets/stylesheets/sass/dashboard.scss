@@ -6,23 +6,32 @@ $notification-color:#D1D1D1;
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
-  height: 1000px;
+  height: 100%;
 }
 
 .button.is-primary {
-background-color: #127A93;
+background-color: #c871ed;
+opacity: 0.5;
 }
+
+.input {
+  opacity: 1;
+}
+
+// .input:hover {
+//   opacity: 1;
+// }
 
 .button.is-primary:hover {
     text-decoration:none;
 }
 
-.tile .is-child .box {
-
+.box {
+  background-color: rgba(254, 252, 250, 0.57);
 }
 
-tile .is-parent {
-
+.table {
+  background-color: rgba(63, 179, 242, 0);
 }
 
 .dashboard {
@@ -32,7 +41,7 @@ tile .is-parent {
 }
 
 .notification.notification-center {
-  background-color:$notification-center-color;
+  background-color:rgba(254, 252, 250, 0.57);
 }
 
 .notification {
@@ -50,3 +59,16 @@ img.notification-avatar {
 .tile.is-child.box.dashboard.profilebox {
   right: 0;
 }
+
+#react-dashboard {
+  height: 100%;
+}
+
+#react-root {
+  height: 100%;
+}
+
+.registerApp {
+  height: 100%;
+}
+

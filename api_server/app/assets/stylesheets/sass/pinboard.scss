@@ -2,10 +2,14 @@
   padding: 20px;
   display: flex;
 
-  height: 700px;
+  height: 100%;
 }
+
+#react-pinboard {
+  height: 100%;
+}
+
 .hangout-pinboard {
-  background-color: white;
   padding-left:0;
   justify-content: center;
 }
@@ -109,7 +113,12 @@ img.img-title {
 }
 
 .button.is-primary {
-  margin-left: 16.5em;
+  background-color: #c871ed;
+  opacity: 0.5;
+}
+
+.pinboardButton {
+  margin-left: 16.5em !important;
 }
 
 .input {

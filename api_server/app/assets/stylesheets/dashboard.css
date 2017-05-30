@@ -3,13 +3,23 @@
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
-  height: 1000px; }
+  height: 100%; }
 
 .button.is-primary {
-  background-color: #127A93; }
+  background-color: #c871ed;
+  opacity: 0.5; }
+
+.input {
+  opacity: 1; }
 
 .button.is-primary:hover {
   text-decoration: none; }
+
+.box {
+  background-color: rgba(254, 252, 250, 0.57); }
+
+.table {
+  background-color: rgba(63, 179, 242, 0); }
 
 .dashboard {
   display: flex;
@@ -17,7 +27,7 @@
   justify-content: flex-start; }
 
 .notification.notification-center {
-  background-color: white; }
+  background-color: rgba(254, 252, 250, 0.57); }
 
 .notification {
   background-color: #D1D1D1; }
@@ -32,3 +42,12 @@ img.notification-avatar {
 
 .tile.is-child.box.dashboard.profilebox {
   right: 0; }
+
+#react-dashboard {
+  height: 100%; }
+
+#react-root {
+  height: 100%; }
+
+.registerApp {
+  height: 100%; }

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import axios from 'axios';
 import {Modal, Popover, OverlayTrigger} from 'react-bootstrap'
 
@@ -8,14 +7,18 @@ class PopupNote extends Component {
 
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
+    // console.log("HEY THERE", this.props);
+
     this.state = {
       title: '',
-      content: ''
+      content: '',
+      currentRoomName: window.location['pathname'].split('/')[2],
+      currentRoomID: this.props.roomID
     };
-
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleContentChange = this.handleContentChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
+
   }
 
   close() {
@@ -30,22 +33,38 @@ class PopupNote extends Component {
 
   handleContentChange(event) {
     this.setState({
-      content: event.target.value
+      content: event.target.value,
+      room_id:''
     });
   }
+  // componentDidMount() {
+  // }
 
-  submitForm(event) {
-    axios.post('/api/rooms/1/posts', {
-      title: this.state.title,
-      content: this.state.content,
-      category: "note"
-    }).then(this.close.bind(this));
+  submitForm() {
+      console.log("submit clicked");
+      axios.post(`/api/rooms/${this.props.roomID}/posts`, {
+        title: this.state.title,
+        content: this.state.content,
+        category: "note"
+      }).then(this.close.bind(this)).then(this.props.updatePinboardApp)
   }
+
+  // setRoomIdState = () => {
+  //   this.setState({room_id: this.props.roomID});
+  // }
+
+  // setRoomId = (rooms) => {
+  //   rooms.forEach((room, i)=> {
+  //     if (window.location['pathname'].split('/')[2] == room.name) {
+  //       const roomID = room.id;
+  //       this.setRoomIdState(roomID);
+  //     };
+  //   });
+  // }
 
   render() {
     return (
       <div>
-
         <Modal show={this.props.isActive} onHide={this.close.bind(this)}>
           <Modal.Header closeButton>
             <Modal.Title>Note</Modal.Title>
@@ -68,7 +87,6 @@ class PopupNote extends Component {
             </p>
           </Modal.Body>
         </Modal>
-
       </div>
     );
   }

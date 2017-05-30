@@ -2,28 +2,17 @@ import React, { Component } from 'react';
 import Room from './Room.jsx';
 import axios from 'axios';  
 export default
-
 class Rooms extends Component {
-
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
     this.state = {
-      user: null,
-      roomName: '',
-      rooms: []
+      roomName: "",
+      rooms: props.rooms,
+      allRoomsNames: props.rooms.map((room) => {
+      return room.name
+      })
     }
   }
-
-  componentDidMount() {
-    console.log('component didmount now', this.state);
-    // axios.get(`/api/users/2.json`)
-    //   .then(res => {
-    //     // console.log(res.data.user);
-    //     const user = res.data.user;
-    //     this.setState({ user });
-    //   });
-  }
-
   handleRoomNameChange = (event) => {
     this.setState({
       roomName: event.target.value
@@ -31,28 +20,22 @@ class Rooms extends Component {
   }
   
   createRoomClick = (event) => {
+    console.log("clicked");
+    this.setState({
+      rooms:this.state.rooms.concat({ name: this.state.roomName})
+        })
     axios.post(`/api/rooms`, {
       name: this.state.roomName
     }).then(console.log('succuss'));
   }
-
   render() {
     let allRooms;
-    // if (this.state.user){
-    //   allRooms = this.state.user.rooms.map((room,i) => { 
-    //   return <Room key={room.name} roomName={room.name} roomNumber={i+1}/>;
-    //     // return <Room key={i} roomName={room.name} roomNumber={i+1}/>
-    //   })
-    // }
-    console.log('render state now', this.state);
-    console.log('rooms', this.props.rooms);
-    allRooms = this.props.rooms.map((room, i) => {
-      return <Room key={room.name} roomName={room.name} roomNumber={i+1}/>
+    allRooms = this.state.rooms.map((room, i) => {
+      return <Room key={i} roomName={room.name} roomNumber={i+1}/>
     })
-
     return (
       <div className="tile is-parent is-3 rooms">
-        <article className="tile is-child box">
+        <article className="tile is-child box rooms">
         <div className="content">
             <p className="subtitle">Your Rooms</p>
             <div className="field">

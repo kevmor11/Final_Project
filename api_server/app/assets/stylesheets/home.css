@@ -1,7 +1,14 @@
+html {
+  height: 100%; }
+
 body {
-  background-color: #3591A7;
   background-size: 1450px 1200px;
-  height: 100vh; }
+  background-image: url("https://www.9to5animations.com/wp-content/uploads/2016/12/Nature-sunset-hd-wallpaper.jpg");
+  height: 100%; }
+
+.logo {
+  font-family: "Brush Script MT", cursive;
+  font-size: 2.5em; }
 
 .login-registration {
   /*background-color:red;*/
@@ -19,8 +26,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 5em; }
+  padding-top: 1em; }
   .is-grouped.welcome-space .optionButtons {
     display: flex;
     flex-direction: row;
     justify-content: flex-start; }
+
+.nav {
+  background-color: rgba(254, 252, 250, 0.57); }
+
+.icon .fa-home {
+  color: #4a4a4a;
+  font-size: 30px !important; }
