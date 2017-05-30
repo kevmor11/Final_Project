@@ -36,10 +36,20 @@ class PinboardContainer extends Component {
       <div>
         <div className="tile is-parent">
           <article className="tile is-child box mainboard-contents">
-            <PinboardHeader updatePinboardApp={this.props.updatePinboardApp} onPinboard={this.state.onPinboard} handlePinboardClick={this.handlePinboardClick} handleHangoutClick={this.handleHangoutClick} modalToggle={this.openModal.bind(this)} userData={this.state.user} roomID={this.props.roomID} />
+            <PinboardHeader updatePinboardApp={this.props.updatePinboardApp} 
+                            onPinboard={this.state.onPinboard} 
+                            handlePinboardClick={this.handlePinboardClick} 
+                            handleHangoutClick={this.handleHangoutClick} 
+                            modalToggle={this.openModal.bind(this)} 
+                            userData={this.state.user} 
+                            roomID={this.props.roomID} />
             <section>
               {this.state.onPinboard ? 
-                <PinboardItems posts={this.props.posts} roomAxiosData={this.props.roomAxiosData} userData={this.state.user} openModal={this.state.openModal} onClose={() => this.setState({openModal: ''})}/> : 
+                <PinboardItems posts={this.props.posts} 
+                                roomAxiosData={this.props.roomAxiosData} 
+                                userData={this.state.user} 
+                                openModal={this.state.openModal} 
+                                onClose={() => this.setState({openModal: ''})}/> : 
                   <Hangout roomName={this.props.roomName} roomID={this.props.roomID}/>}
               <section>
                 <p className="title">Main column</p>

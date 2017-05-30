@@ -22,10 +22,8 @@ class Pinboard extends Component {
     var roomUsers = 0;
     axios.get('/api/userrooms')
     .then(res => {
-      // console.log("USERROOM DATA", res.data.userrooms)
       const userrooms = res.data.userrooms;
       userrooms.forEach((item, i) => {
-        // console.log("INSIDE", item);
         if (item.room_id === this.props.roomID) {
           roomUsers += 1
         }
@@ -33,7 +31,6 @@ class Pinboard extends Component {
           room_users: roomUsers,
           roomID: this.props.roomID
         })
-        // console.log("room_users STATE", this.state.room_users);
       })
     });
   }
@@ -43,7 +40,13 @@ class Pinboard extends Component {
     <div>
       <div className="tile is-ancestor mainboard">
         <PinboardSidebar currentRoom={this.state.roomID} room_users={this.state.room_users} invited_id={this.state.invited_id} roomID={this.props.roomID}/>
-        <PinboardContainer updatePinboardApp={this.props.updatePinboardApp} openModal={this.state.openModal} userData={this.state} roomID={this.state.roomID} roomName={this.props.roomName}/>
+        <PinboardContainer updatePinboardApp={this.props.updatePinboardApp} 
+                            openModal={this.state.openModal} 
+                            userData={this.state} roomID={this.state.roomID} 
+                            roomName={this.props.roomName}
+                            roomID={this.state.roomID}
+                            roomAxiosData={this.props.roomAxiosData}
+                            posts={this.props.posts}/>
         </div>
       </div>
     )
