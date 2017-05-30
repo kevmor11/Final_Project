@@ -44,6 +44,7 @@ class PopupLink extends Component {
   }
 
   submitForm(event) {
+    console.log("submiting image");
     event.preventDefault();
     var data = new FormData();
     data.append('post[image_file]', this.state.imageData);
@@ -52,6 +53,7 @@ class PopupLink extends Component {
     data.append('post[category]', "image");
     axios.post(`/api/rooms/${this.props.roomID}/posts`, data)
     .then(this.close.bind(this))
+    .then(this.props.updatePinboardApp)
     .catch((err) => {
       console.log(err.message);
     });
