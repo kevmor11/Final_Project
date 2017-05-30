@@ -59,7 +59,7 @@ constructor(props) {
     let allPosts;
 
     allPosts = this.state.userData.posts.map((post, i) => {
-      console.log("POST", post);
+      // console.log("POST", post);
       return   <PinboardItemModal key={i} title={post.title} content={post.content} description={post.description} img={post.image_file.url} thumb={post.image_file.thumb.url} link={post.link} user={this.state.user} category={post.category} />
     })
     return(

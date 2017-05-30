@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar.jsx';
-import LoginButton from './LoginButton.jsx';
-import RegistrationButton from './RegistrationButton.jsx';
-import LoginField from './LoginField.jsx';
-import RegistrationFields from './RegistrationFields.jsx';
 import Pinboard from './Pinboard.jsx'
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -21,11 +17,6 @@ class PinboardApp extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   axios.get(`/api/rooms/${roomName}/posts/new`).then((res) => {
-
-  //   });
-  // }
   componentWillMount() {
     var location = window.location['pathname'].split('/')[2];
     var name = "";

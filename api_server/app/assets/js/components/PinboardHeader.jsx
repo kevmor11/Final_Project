@@ -17,6 +17,7 @@ class PinboardHeader extends Component {
       showModalNote: false,
       showModalLink: false,
       showModalImage: false,
+      onPinboard: props.onPinboard
     };
   }
 
@@ -43,10 +44,10 @@ class PinboardHeader extends Component {
   handleClick = () => {
     this.setState({showAddButtons: !this.state.showAddButtons})
   }
+
   render(){
     let containerClass = "add-content-container";
     if(this.state.showAddButtons) containerClass += " open";
-      // console.log("header console.log", this.props.userData)
 
     return(
       <div>
@@ -59,8 +60,8 @@ class PinboardHeader extends Component {
           </div>
           <div className="tabs is-centered">
             <ul>
-              <li><a className="is-active">Pinboard</a></li>
-              <li><a>Hangout</a></li>
+              <li><button className="button is-primary pinboardButton" onClick={this.props.handlePinboardClick}>Pinboard</button></li>
+              <li><button className="button is-primary" onClick={this.props.handleHangoutClick}>Hangout</button></li>
             </ul>
           </div>
         </header>
