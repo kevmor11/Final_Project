@@ -47,8 +47,8 @@ class Registration extends Component {
       email: this.state.email,
       password: this.state.password,
       gender: this.state.gender
-    }).then(this.goLoginPage).catch(err => {
-      console.log(err)
+    }).then(this.goLoginPage)
+      .catch(err => {console.log(err)
     });
   }
 
@@ -75,8 +75,14 @@ class Registration extends Component {
             <div className="field">
               <label htmlFor="email" className="label">Email</label>
               <p className="control">
-                <input className="input" type="email" name="email" id="email"
-                value={this.state.email} onChange={this.handleRegistrationChange} placeholder="Email"/>
+                <input
+                  className="input"
+                  type="email" name="email"
+                  id="email"
+                  value={this.state.email}
+                  onChange={this.handleRegistrationChange}
+                  placeholder="Email"
+                />
               </p>
             </div>
             <div className="field">

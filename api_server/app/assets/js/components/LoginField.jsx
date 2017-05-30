@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 export default
-class LoginField extends Component { 
+class LoginField extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
     };
 
     this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -16,10 +16,10 @@ class LoginField extends Component {
     this.handleRedirect = this.handleRedirect.bind(this);
     this.submitForm = this.submitForm.bind(this);
   }
-  
+
   handleEmailChange(event) {
     this.setState({
-      email: event.target.value 
+      email: event.target.value
     });
   }
 
@@ -44,29 +44,46 @@ class LoginField extends Component {
     return (
       <div className="col-lg-6">
         <div className="login">
-          {/*<form action="route" method="POST" className="login">*/}
-            <h1 className="title">Login here</h1>
-            <h2 className="subtitle">Enter your Email and Password </h2>
-            <div className="field">
-              <label htmlFor="name" className="label">Email</label>
-              <p className="control">
-                <input className="input" type="email" id="name" name="email" value={ this.state.email } onChange={ this.handleEmailChange } placeholder="Email" />
-              </p>
-            </div>
-            <div className="field">
-              <label htmlFor="password" className="label">Password</label>
-              <p className="control">
-                <input className="input" type="password" id="password" name="password" value={ this.state.password } onChange={ this.handlePasswordChange } placeholder="Password"/>
-              </p>
-            </div>
-            <div className="field is-grouped">
-              <p className="control">
-                <button type="submit" className="button is-primary" onClick={ this.submitForm }>Login</button>
-              </p>
-            </div>
-          {/*</form>*/}
+          <h1 className="title">Login here</h1>
+          <h2 className="subtitle">Enter your Email and Password </h2>
+          <div className="field">
+            <label htmlFor="name" className="label">Email</label>
+            <p className="control">
+              <input
+                className="input"
+                type="email" id="name"
+                name="email" value={this.state.email}
+                onChange={this.handleEmailChange}
+                placeholder="Email"
+              />
+            </p>
           </div>
+          <div className="field">
+            <label htmlFor="password" className="label">Password</label>
+            <p className="control">
+              <input
+                className="input"
+                type="password"
+                id="password"
+                name="password"
+                value={this.state.password}
+                onChange={this.handlePasswordChange}
+                placeholder="Password"
+              />
+            </p>
+          </div>
+          <div className="field is-grouped">
+            <p className="control">
+              <button
+                type="submit"
+                className="button is-primary"
+                onClick={this.submitForm}
+              >Login
+              </button>
+            </p>
+          </div>
+        </div>
       </div>
-    )
+    );
   }
 }

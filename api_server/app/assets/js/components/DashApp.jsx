@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar.jsx';
 import PropTypes from 'prop-types';
-import Notification from './Notification.jsx';
+// import Notification from './Notification.jsx';
 import UserProfile from './UserProfile.jsx';
 import Notifications from './Notifications.jsx';
 import Rooms from './Rooms.jsx';
-import axios from 'axios';
 
 export default
 class DashApp extends Component {
@@ -20,7 +19,7 @@ class DashApp extends Component {
 
   render() {
     let rooms = [];
-      rooms = this.state.user.rooms;
+    rooms = this.state.user.rooms;
 
     return (
       <div>
@@ -31,7 +30,7 @@ class DashApp extends Component {
               <Notifications />
             </div>
           </div>
-          <Rooms  rooms={this.state.user.rooms}/>
+          <Rooms rooms={this.state.user.rooms} />
         </div>
       </div>
     );

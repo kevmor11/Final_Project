@@ -38,7 +38,6 @@ class Hangout extends Component {
   }
 
   render() {
-    console.log('rooooooomname in hangout', this.props.roomName);
     return (
       <div>
         <Messenger />

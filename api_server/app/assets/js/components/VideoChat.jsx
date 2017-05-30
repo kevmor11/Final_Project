@@ -7,14 +7,13 @@ class VideoChat extends Component {
   render() {
     // var appearin = new AppearIn();
     // var room_name = "";
-    console.log('rooooooomname', this.props.roomName);
     return (
       <div>
         {/*{ appearin.getRandomRoomName(function(err, roomName){
             room_name = roomName;
           })
         }*/}
-        <iframe src={"//appear.in/" + this.props.roomName + "-" + this.props.roomID} width="800" height="640" frameBorder="0"></iframe>
+        <iframe src={"//appear.in/" + this.props.roomName + "-" + this.props.roomID} width="800" height="640" frameBorder="0" />
       </div>
     );
   }
