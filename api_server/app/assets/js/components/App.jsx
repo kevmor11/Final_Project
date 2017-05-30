@@ -12,7 +12,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      isLoggedIn: false,
+      isLoggedIn: true,
       user: null
     };
   }
@@ -44,7 +44,7 @@ class App extends Component {
     return (
       <div>
         <Navbar currentUser={ this.state.user }/>
-        <div className="field is-grouped welcome-space">
+        <div className="field is-grouped welcome-space registerApp">
           <div className="col-log-2 optionButtons">
             <LoginButton clickHandler={this.handleLoginClick}/>
             <RegistrationButton clickHandler={this.handleRegistrationClick} />

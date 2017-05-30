@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar.jsx';
-import LoginButton from './LoginButton.jsx';
-import RegistrationButton from './RegistrationButton.jsx';
-import LoginField from './LoginField.jsx';
-import RegistrationFields from './RegistrationFields.jsx';
 import Pinboard from './Pinboard.jsx'
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import axios from 'axios';
 
 export default
@@ -22,6 +18,7 @@ class PinboardApp extends Component {
       posts:[],
     };
   }
+
   updatePostsFromDB = () => {
     console.log("updating from db ... ")
     var location = window.location['pathname'].split('/')[2];
@@ -31,6 +28,7 @@ class PinboardApp extends Component {
         })
     });
   }
+
   componentWillMount() {
     var location = window.location['pathname'].split('/')[2];
     var name = "";
