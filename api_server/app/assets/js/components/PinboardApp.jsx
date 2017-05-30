@@ -3,6 +3,7 @@ import Navbar from './Navbar.jsx';
 import Pinboard from './Pinboard.jsx'
 // import PropTypes from 'prop-types';
 import axios from 'axios';
+import ActionCable from 'actioncable';
 
 export default
 class PinboardApp extends Component {
@@ -45,8 +46,28 @@ class PinboardApp extends Component {
     });
   }
 
+  componentDidMount() {
+    this.setSubscription();
+  }
+
+  setSubscription() {
+    console.log('setting subscription ', ActionCable);
+    this.cable = ActionCable.createConsumer();
+    this.cable.subscriptions.create("PostChannel", {
+      connected: () => {
+        console.log('connected')
+      },
+      disconnected: () => {
+        console.log('disconnected')
+      },
+      received: (data) => {
+        this.updatePostsFromDB(data);
+      }
+    });
+  }
+
   updatePinboardApp = () => {
-    this.updatePostsFromDB();
+    //this.updatePostsFromDB();
   }
 
   render() {

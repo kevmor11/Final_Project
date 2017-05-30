@@ -20,16 +20,18 @@ class PostsController < ApplicationController
       render json: { errors: ["Post could not be saved."] }, status: 500
     end
 
-    if @post.save
-      ActionCable.server.broadcast 'post',
-        title: @post.title,
-        description: @post.description,
-        user: @post.user.first_name,
-        content: @post.content,
-        category: @post.category,
-        image_file: @post.image_file
-      head :ok
-    end
+    # if @post.save
+    #   ActionCable.server.broadcast 'post',
+    #     title: @post.title,
+    #     link: @post.link,
+    #     description: @post.description,
+    #     user: @post.user.first_name,
+    #     seen: @post.seen,
+    #     content: @post.content,
+    #     category: @post.category,
+    #     image_file: @post.image_file
+    #   head :ok
+    # end
 
   end
 

@@ -21,7 +21,8 @@ class Post < ApplicationRecord
     end
 
     def broadcast 
-      PostJob.perform_later self
+      puts "HELLOOOO FROM POST MODEL"
+      PostJob.perform_now self
     end
 
   def image_size_validation

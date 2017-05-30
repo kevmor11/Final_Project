@@ -1,2 +1,1 @@
-//= require cable
 //= require bundle

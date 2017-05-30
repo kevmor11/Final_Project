@@ -1,9 +1,5 @@
 development:
-  adapter: redis
-  url: redis://localhost:6379/1
-  channel_prefix: api_server_development
-
-
+  adapter: async
 
 test:
   adapter: async
