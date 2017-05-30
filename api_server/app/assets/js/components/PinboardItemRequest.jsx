@@ -15,26 +15,8 @@ constructor(props) {
     }
   }
 
-
-  // updatePosts = (post) => {
-  //   this.setState({
-  //     posts: this.state.posts.concat({
-  //       user_first_name: post.user.first_name, description: post.description
-  //     })
-  //   });
-  // }
-
-  // setupSubscription() {
-  //   App.cable.subscriptions.create('PostsChannel', {
-  //     received(post) {
-  //       return this.updatePosts(post);
-  //     },
-  //     updatePosts: this.updatePosts.bind(this)
-  //   });
-  // }
-
   render() {
-      let allPosts;
+    let allPosts;
     if(this.props.post ){
       allPosts = this.props.post.map((post, i) => {
         return   <PinboardItemModal onClick={this.props.updatePinboard}
@@ -46,6 +28,7 @@ constructor(props) {
                                     category={post.category} />
       })
     }
+
     return(
       <div className="components-container">
         {allPosts}

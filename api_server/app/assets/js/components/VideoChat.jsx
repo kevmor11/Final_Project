@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import AppearIn from 'appearin-sdk';
+// import AppearIn from 'appearin-sdk';
 
 export default
 class VideoChat extends Component {
 
   render() {
-    var appearin = new AppearIn();
-    var room_name = "";
+    // var appearin = new AppearIn();
+    // var room_name = "";
+    console.log('rooooooomname', this.props.roomName);
     return (
       <div>
-        { appearin.getRandomRoomName()
-          .then(function (roomName) {
+        {/*{ appearin.getRandomRoomName(function(err, roomName){
             room_name = roomName;
-          });
-        }
-        <iframe src={"https://appear.in/" + room_name} width="800" height="640" frameborder="0" id="iframe-element"></iframe>
+          })
+        }*/}
+        <iframe src={"//appear.in/" + this.props.roomName + "-" + this.props.roomID} width="800" height="640" frameBorder="0"></iframe>
       </div>
     );
   }

@@ -1,12 +1,15 @@
 $background_color:#3591A7;
 $background_photo: 23;
 
+html {
+  height: 100%;
+}
 body {
   // background: url(http://www.psdgraphics.com/file/abstract-network-background.jpg);
   // background-color: $background_color;
   background-size: 1450px 1200px; 
   background-image: url("https://www.9to5animations.com/wp-content/uploads/2016/12/Nature-sunset-hd-wallpaper.jpg");
-  // height:100vh;
+  height: 100%;
 }
 
 .logo {
@@ -32,7 +35,7 @@ align-items:center
   display: flex;
   flex-direction:column;
   align-items: center;
-  padding-top: 2em;
+  padding-top: 1em;
 
   .optionButtons {
     display: flex;

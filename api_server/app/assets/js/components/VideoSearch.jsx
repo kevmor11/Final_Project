@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import VideoSearchBox from './VideoSearchBox.jsx';
 import VideoThumbnailList from './VideoThumbnailList.jsx';
 import VideoPlayer from './VideoPlayer.jsx';
+import Script from 'react-load-script';
 
 export default
 class VideoSearch extends Component {
@@ -46,12 +47,29 @@ class VideoSearch extends Component {
     this.setState({currentVideo: vid});
   }
 
+  handleScriptCreate() {
+    this.setState({ scriptLoaded: false })
+  }
+
+  handleScriptError() {
+    this.setState({ scriptError: true })
+  }
+
+  handleScriptLoad() {
+    this.setState({ scriptLoaded: true })
+  }
+
   render() {
     var doBox = !this.state.currentVideo;
     var doNails = (this.state.thumbnails.length > 0) && (!this.state.currentVideo);
     var doVid = this.state.currentVideo;
     return (
       <div>
+        <Script url="https://apis.google.com/js/client.js?onload=googleApiClientReady" 
+                onCreate={this.handleScriptCreate.bind(this)}
+                onError={this.handleScriptError.bind(this)}
+                onLoad={this.handleScriptLoad.bind(this)}/>
+
         {doBox   ? ( <VideoSearchBox doSearch={this.searchAndShow} color={this.state.color} /> ) : ""}
         {doNails ? ( <VideoThumbnailList nails={this.state.thumbnails} pick={this.pickVideo} /> ) : ""}
         {doVid   ? ( <VideoPlayer vid={this.state.currentVideo} /> ) : ""}
