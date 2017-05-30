@@ -1,5 +1,6 @@
 node_modules
 .DS_Store
 .env
-app/assets/javascripts/bundle.js
-app/assets/javascripts/bundle.js.map
+api_server/app/assets/javascripts/bundle.js
+api_server/app/assets/javascripts/bundle.js.map
+public/uploads/

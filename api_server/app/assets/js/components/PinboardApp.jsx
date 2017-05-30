@@ -15,50 +15,53 @@ class PinboardApp extends Component {
     super(props); // super calls `constructor` in React.Component
     this.state = {
       user: props.userData.data.user,
-      openModal: '',
       roomName: "",
-      roomID: 0
+      roomID: 0,
+      roomAxiosData:"",
+      here: "",
+      posts:[],
     };
   }
-
-  // componentDidMount() {
-  //   axios.get(`/api/rooms/${roomName}/posts/new`).then((res) => {
-
-  //   });
-  // }
+  updatePostsFromDB = () => {
+    console.log("updating from db ... ")
+    var location = window.location['pathname'].split('/')[2];
+    axios.get(`/rooms/${location}.json`).then((res) => {
+        this.setState({
+          posts:res.data.room.posts
+        })
+    });
+  }
   componentWillMount() {
     var location = window.location['pathname'].split('/')[2];
     var name = "";
     var ID = "";
     axios.get(`/rooms/${location}.json`).then((res) => {
-      // console.log('response', res);
       name = res.data.room.name;
       ID = res.data.room.id;
       this.setState({
         roomName: name,
-        roomID: ID
+        roomID: ID,
+        roomAxiosData: res.data.room,
+        posts:res.data.room.posts
       })
     });
   }
 
-  // openModal(modalName) {
-  //   // image, link, note
-  //   this.setState(Object.assign({}, this.state, { openModal: modalName }));
-  // }
+  updatePinboardApp = () => {
+    this.updatePostsFromDB();
+  }
 
   render() {
     return (
       <div>
         <Navbar currentUser={this.state.user} />
-        <Pinboard openModal={this.state.openModal} userData={this.state.user} roomName={this.state.roomName} roomID={this.state.roomID} />
+        <Pinboard updatePinboardApp={this.updatePinboardApp}
+                  userData={this.state.user}
+                  roomName={this.state.roomName} 
+                  roomID={this.state.roomID} 
+                  roomAxiosData={this.state.roomAxiosData} 
+                  posts={this.state.posts} />
       </div>
     );
   }
 }
-
-// class ExtendedApp extends App {
-//   render() {
-//     const inner = super.render(); // calls render in <App />
-//     return <div id="wrapped">{inner}</div>;
-//   }
-// }

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {Modal, Button, OverlayTrigger} from 'react-bootstrap'
+import {Modal, Button, OverlayTrigger, Tooltip} from 'react-bootstrap'
 
 export default
 class PopupLink extends Component {
@@ -41,17 +41,19 @@ class PopupLink extends Component {
   }
 
   submitForm(event){
-    // TODO change so we are not hard coding the ID
+    console.log("submit clicked")
     axios.post(`/api/rooms/${this.props.roomID}/posts`, {
       link: this.state.link,
       title: this.state.title,
       description: this.state.description,
       category: "link"
-    }).then(this.close.bind(this));
+    }).then(this.close.bind(this)).then(this.props.updatePinboardApp)
   }
 
-
   render() {
+    const tooltip = (
+      <Tooltip id="tooltip">Please enter a valid URL.</Tooltip>
+    );
     return (
       <div>
 
@@ -62,9 +64,11 @@ class PopupLink extends Component {
           <Modal.Body>
             <div className="field">
               <label htmlFor="url" className="label">URL</label>
-              <p className="control">
-                <input className="input" type="url" value={ this.state.link } id="url" onChange={ this.handleLinkChange } />
-              </p>
+              <OverlayTrigger placement="bottom" overlay={tooltip} style="z-index: 9001" >
+                <p className="control">
+                  <input className="input" type="url" value={ this.state.link } id="url" onChange={ this.handleLinkChange } />
+                </p>
+              </OverlayTrigger>
             </div>
             <div className="field">
               <label htmlFor="title" className="label">Title</label>
