@@ -3,7 +3,7 @@ class PostChannel < ApplicationCable::Channel
   # default method which is called when a client connects to the channel
   # subscribes the client to listen to changes
   def subscribed
-    stream_from "channel_public_post"
+    stream_from "post"
   end
   
   def unsubscribed
@@ -15,3 +15,5 @@ class PostChannel < ApplicationCable::Channel
   end
   
 end
+
+

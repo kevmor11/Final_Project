@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     end
 
     if @post.save
-      ActionCable.server.broadcast 'channel_public_post',
+      ActionCable.server.broadcast 'post',
         title: @post.title,
         description: @post.description,
         user: @post.user.first_name,
