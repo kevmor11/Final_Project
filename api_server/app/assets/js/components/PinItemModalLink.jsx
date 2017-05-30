@@ -38,7 +38,7 @@ constructor(props) {
             <Modal.Title>{this.props.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <a href={"http://" + this.props.link}>{this.props.link}</a>
+            <a href={this.props.link}>{this.props.link}</a>
             <p>{this.props.description}</p>
           </Modal.Body>
         </Modal>

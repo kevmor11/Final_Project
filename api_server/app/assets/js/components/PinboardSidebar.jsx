@@ -31,6 +31,7 @@ class PinboardSidebar extends Component {
     });
   }
 
+  // TODO Change this so we are not requesting the entire user database, but instead we are sending the email to the database to be checked on server side
   submitInviteForm = () => {
     axios.get('/api/users')
     .then(res => {
