@@ -16,7 +16,6 @@ class VideoSearch extends Component {
   }
 
   searchAndShow = (searchString) => {
-
     gapi.client.setApiKey('AIzaSyCSsxTJF9KYHmuDbYt8TACQGF2wztIS7Zo');
     gapi.client.load('youtube', 'v3', () => {
       var request = gapi.client.youtube.search.list({
@@ -33,7 +32,6 @@ class VideoSearch extends Component {
           id: item.id.videoId
         }});
         this.setState({thumbnails: relevantData});
-
       });
     });
   }
@@ -42,15 +40,15 @@ class VideoSearch extends Component {
     this.setState({currentVideo: vid});
   }
 
-  handleScriptCreate() {
+  handleScriptCreate = () => {
     this.setState({ scriptLoaded: false })
   }
 
-  handleScriptError() {
+  handleScriptError = () => {
     this.setState({ scriptError: true })
   }
 
-  handleScriptLoad() {
+  handleScriptLoad = () => {
     this.setState({ scriptLoaded: true })
   }
 
@@ -61,9 +59,9 @@ class VideoSearch extends Component {
     return (
       <div>
         <Script url="https://apis.google.com/js/client.js?onload=googleApiClientReady"
-                onCreate={this.handleScriptCreate.bind(this)}
-                onError={this.handleScriptError.bind(this)}
-                onLoad={this.handleScriptLoad.bind(this)}/>
+                onCreate={this.handleScriptCreate}
+                onError={this.handleScriptError}
+                onLoad={this.handleScriptLoad}/>
 
         {doBox   ? ( <VideoSearchBox doSearch={this.searchAndShow} color={this.state.color} /> ) : ""}
         {doNails ? ( <VideoThumbnailList nails={this.state.thumbnails} pick={this.pickVideo} /> ) : ""}

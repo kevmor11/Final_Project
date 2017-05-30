@@ -40,10 +40,17 @@ class UsersController < ApplicationController
   end
 
   # if User.exists?
+    # def me
+    #   render json: current_user, serializer: UserSerializer, status: 200
+    # end
+
     def me
-      render json: current_user, serializer: UserSerializer, status: 200
+      if current_user
+        render json: current_user, serializer: UserSerializer, status: 200
+      else
+        render json: { errors: current_user.errors.full_messages }, status: 422
+      end
     end
-  # end
 
   private
 
@@ -55,10 +62,10 @@ class UsersController < ApplicationController
 
 end
 
-  def me
-    if current_user
-      render json: current_user, serializer: UserSerializer, status: 200
-    else
-      render :new
-    end
-  end
+  # def me
+  #   if current_user
+  #     render json: current_user, serializer: UserSerializer, status: 200
+  #   else
+  #     render :new
+  #   end
+  # end

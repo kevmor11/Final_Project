@@ -33,12 +33,12 @@ constructor(props) {
           <i className="add fa fa-link"></i>
         </div>
 
-        <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
+        <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
             <Modal.Title>{this.props.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <a href={"http://" + this.props.link}>{this.props.link}</a>
+            <a href={this.props.link}>{this.props.link}</a>
             <p>{this.props.description}</p>
           </Modal.Body>
         </Modal>

@@ -15,8 +15,6 @@ class PinboardSidebar extends Component {
     }
   }
 
-
-
   addUserToRoom = (invited_id) => {
     axios.post('/api/userrooms', {
       user_id: invited_id,
@@ -31,6 +29,7 @@ class PinboardSidebar extends Component {
     });
   }
 
+  // TODO Change this so we are not requesting the entire user database, but instead we are sending the email to the database to be checked on server side
   submitInviteForm = () => {
     axios.get('/api/users')
     .then(res => {

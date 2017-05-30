@@ -1,8 +1,12 @@
 class SessionsController < ApplicationController
 
   def new
-    respond_to do |format|
-      format.html {}
+    if session[:user_id]
+      render "users/show"
+    else
+      respond_to do |format|
+        format.html {}
+      end
     end
   end
 
@@ -11,12 +15,12 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       render json: user, serializer: UserSerializer, status: 201
     else
-      render json: { errors: ["Invalid e-mail or password."] }, status: 422 
+      render json: { errors: ["Invalid e-mail or password."] }, status: 422
     end
   end
 
-  def destroy 
+  def destroy
     session[:user_id] = nil
   end
-  
+
 end
