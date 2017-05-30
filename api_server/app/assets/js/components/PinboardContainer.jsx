@@ -34,7 +34,7 @@ class PinboardContainer extends Component {
       <div>
         <div className="tile is-parent">
           <article className="tile is-child box mainboard-contents">
-            <PinboardHeader updatePinboardApp={this.props.updatePinboardApp}
+            <PinboardHeader refreshRoom={this.props.refreshRoom}
                             onPinboard={this.state.onPinboard}
                             handlePinboardClick={this.handlePinboardClick}
                             handleHangoutClick={this.handleHangoutClick}
@@ -43,6 +43,7 @@ class PinboardContainer extends Component {
                             roomID={this.props.roomID} />
             <section>
               {this.state.onPinboard ? <PinboardItems
+                                        refreshRoom={this.props.refreshRoom}
                                         posts={this.props.posts}
                                         roomAxiosData={this.props.roomAxiosData}
                                         userData={this.state.user}

@@ -31,7 +31,6 @@ class PinboardApp extends Component {
       <div>
         <Navbar currentUser={this.props.userData.data.user} />
         <Pinboard
-          updatePinboardApp={this.reviveRoomData}
           user={this.props.userData.data.user}
           room={this.state.roomAxiosData}
           posts={this.state.roomAxiosData.posts}

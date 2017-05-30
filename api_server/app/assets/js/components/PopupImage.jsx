@@ -47,7 +47,7 @@ class PopupLink extends Component {
     data.append('post[category]', "image");
     axios.post(`/api/rooms/${this.props.roomID}/posts`, data)
     .then(this.close.bind(this))
-    .then(this.props.updatePinboardApp)
+    .then(this.props.refreshRoom)
     .catch((err) => {
       console.log(err.message);
     });

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-// import {Card, CardTitle, Col} from 'react-materialize'
 import PropTypes from 'prop-types';
-import {Modal, Button, OverlayTrigger} from 'react-bootstrap'
+import {Modal, Button, OverlayTrigger} from 'react-bootstrap';
+import axios from 'axios';
 
 export default
 class PinItemModalLink extends Component {
@@ -26,9 +26,19 @@ constructor(props) {
     this.setState({ showModal: false });
   }
 
+  onClickDeletePost = () => {
+    this.props.deletePost(this.props.postID);
+  }
+  // deletePost = () => {
+  //   axios.delete(`/api/rooms/${this.props.roomID}/posts/${this.props.postID}`)
+  //     .then(this.props.refreshRoom);
+  // }
+
   render() {
+    console.log('jinnnnnnny', this.props.postID);
     return(
       <div>
+        <a><i className="fa fa-trash-o" onClick={this.onClickDeletePost}></i></a>
         <div className="item-container" onClick={this.open}>
           <p className="item img-title">{this.props.title}</p>
           <hr />
