@@ -11,6 +11,7 @@ class PostChannel < ApplicationCable::Channel
   
   #custom action
   def speak
+    puts "HIIIIIII"
   end
   
 end

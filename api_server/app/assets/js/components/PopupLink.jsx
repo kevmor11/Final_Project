@@ -40,6 +40,23 @@ class PopupLink extends Component {
     })
   }
 
+  updatePosts = (post) => {
+    this.setState({
+      posts: this.state.posts.concat({
+        user_first_name: post.user.first_name, description: post.description
+      })
+    });
+  }
+
+  setupSubscription() {
+    App.cable.subscriptions.create('PostChannel', {
+      received(post) {
+        return this.updatePosts(post);
+      },
+      updatePosts: this.updatePosts.bind(this)
+    });
+  }
+
   submitForm(event){
     console.log("submit clicked")
     axios.post(`/api/rooms/${this.props.roomID}/posts`, {

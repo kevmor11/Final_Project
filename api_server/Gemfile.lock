@@ -57,6 +57,10 @@ GEM
       mime-types (>= 1.16)
     case_transform (0.2)
       activesupport
+    coffee (0.0.5)
+      httparty
+      json_pure
+      thor
     concurrent-ruby (1.0.5)
     connection_pool (2.2.1)
     erubi (1.6.0)
@@ -66,10 +70,13 @@ GEM
     ffi (1.9.18)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    httparty (0.15.5)
+      multi_xml (>= 0.5.2)
     i18n (0.8.1)
     jbuilder (2.6.4)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2)
+    json_pure (2.1.0)
     jsonapi-renderer (0.1.2)
     jwt (1.5.6)
     listen (3.1.5)
@@ -88,6 +95,7 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.10.2)
     multi_json (1.12.1)
+    multi_xml (0.6.0)
     nio4r (2.0.0)
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
@@ -161,6 +169,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   byebug
   carrierwave (~> 1.0)
+  coffee
   faker
   jbuilder (~> 2.5)
   jwt (~> 1.5)
