@@ -19,15 +19,19 @@ constructor(props) {
     let allPosts;
     if(this.props.post ){
       allPosts = this.props.post.map((post, i) => {
-        return   <PinboardItemModal onClick={this.props.updatePinboard}
-                                    key={i} 
-                                    title={post.title} 
-                                    description={post.description} 
-                                    img={post.image_file.url} 
-                                    content={post.content}
-                                    thumb={post.image_file.thumb.url} 
-                                    link={post.link}  
-                                    category={post.category} />
+        console.log("HELLO", post.user.first_name);
+        return (
+            <PinboardItemModal onClick={this.props.updatePinboard}
+                                        key={i} 
+                                        title={post.title} 
+                                        description={post.description} 
+                                        img={post.image_file.url} 
+                                        content={post.content}
+                                        thumb={post.image_file.thumb.url} 
+                                        link={post.link}  
+                                        category={post.category}
+                                        userName={post.user.first_name} />
+        )   
       })
     }
     allPosts.reverse();

@@ -1,7 +1,6 @@
 .tile.is-ancestor.mainboard {
   padding: 20px;
   display: flex;
-
   height: 100%;
 }
 
@@ -21,22 +20,26 @@
 .components-container {
   display: flex;
   flex-flow: row wrap;
-
 }
-.item {
+
+.item-container {
+  border-radius: 10px;
   margin: 10px;
   flex-wrap: wrap;
-  padding: 30px 50px;
+  padding: 20px 30px;
   flex-grow: 10;
-  background: skyblue;
+  background: rgba(254, 252, 250, 0.57);
   line-height: 100px;
-  display: flex;
-  border-radius: 10px;
+
 }
 
-.item:hover {
+.item-container:hover {
   background: #d49de8;
   cursor: pointer;
+}
+
+.item {
+  display: flex;
 }
 
 .add-content-container {

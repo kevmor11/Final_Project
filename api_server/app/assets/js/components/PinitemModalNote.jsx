@@ -29,10 +29,16 @@ constructor(props) {
     // console.log('NOTE', this.props);
     return(
       <div>
-        <div className="item" onClick={this.open}>
-          <p className="img-title">{this.props.title}</p>
-          <i className="add fa fa-sticky-note-o"></i>
+        <div className="item-container" onClick={this.open}>
+          <h4><b className="item">{this.props.title}</b></h4>
+          <hr/>
+          <p className="item">{this.props.content}</p>
         </div>
+        {/*<div className="item-container" onClick={this.open}>
+          <p className="item img-title">{this.props.title}</p>
+          <i className="item add fa fa-sticky-note-o"></i>
+          <p className="item">{this.props.name}</p>
+        </div>*/}
 
         <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
           <Modal.Header closeButton>
@@ -41,6 +47,9 @@ constructor(props) {
           <Modal.Body>
             <p>{this.props.content}</p>
           </Modal.Body>
+          <Modal.Footer>
+            <p>By: {this.props.name}</p>
+          </Modal.Footer>
         </Modal>
       </div>
     )

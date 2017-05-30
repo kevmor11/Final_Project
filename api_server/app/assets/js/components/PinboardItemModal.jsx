@@ -29,6 +29,7 @@ class PinboardItemModal extends Component {
           img={this.props.img}
           thumb={this.props.thumb}
           user={this.state.user}
+          name={this.props.userName}
           />);
         // break;
       case "note":
@@ -38,6 +39,7 @@ class PinboardItemModal extends Component {
           title={this.props.title}
           content={this.props.content}
           user={this.state.user}
+          name={this.props.userName}
           />);
         // break;
       case "link":
@@ -48,6 +50,7 @@ class PinboardItemModal extends Component {
           description={this.props.description}
           link={this.props.link}
           user={this.state.user}
+          name={this.props.userName}
           />);
         // break;
       default:

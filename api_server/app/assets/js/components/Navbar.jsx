@@ -14,15 +14,9 @@ class Navbar extends Component {
     }
   }
 
-  // logOutClick = () => {
-  //   axios.delete(`/api/sessions/${this.state.user.id}`).then(this.handleRedirectToLogin);
-  // }
 
-  // handleRedirectToLogin = () => {
-  //   window.location.href = '/';
-  // }
   render() {
-    // console.log('userrrrrrr', this.state.user);
+
     return (
       <div>
         <nav className="nav has-shadow">

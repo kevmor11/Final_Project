@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+// import {Card, CardTitle, Col} from 'react-materialize'
 import PropTypes from 'prop-types';
 import {Modal, Button, OverlayTrigger} from 'react-bootstrap'
 
@@ -28,9 +29,9 @@ constructor(props) {
   render() {
     return(
       <div>
-        <div className="item" onClick={this.open}>
-          <p className="img-title">{this.props.title}</p>
-          <i className="add fa fa-link"></i>
+        <div className="item-container" onClick={this.open}>
+          <p className="item img-title">{this.props.title}</p>
+          <hr />
         </div>
 
         <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
@@ -41,6 +42,9 @@ constructor(props) {
             <a href={this.props.link}>{this.props.link}</a>
             <p>{this.props.description}</p>
           </Modal.Body>
+          <Modal.Footer>
+            <p>By: {this.props.name}</p>
+          </Modal.Footer>
         </Modal>
       </div>
     )
