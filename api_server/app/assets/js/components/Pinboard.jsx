@@ -8,18 +8,23 @@ class Pinboard extends Component {
 
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
+    console.log("pinboard ctor props:", props);
     this.state = {
       openModal: '',
       user: props.userData,
       receiver: "",
       room_users: 1,
       invited_id: "",
-      roomID: ""
+      roomID: props.roomID
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log("pinboard updating props from", this.props, "to", nextProps)
+  }
+
   componentDidMount() {
-    var roomUsers = 0;
+   var roomUsers = 0;
     axios.get('/api/userrooms')
     .then(res => {
       // console.log("USERROOM DATA", res.data.userrooms)
@@ -50,7 +55,7 @@ class Pinboard extends Component {
       throw new Error('Could not add a user to the room because', err.message);
     });
     this.setState({
-      room_users: 2
+      room_users: this.props.room.user.length
     })
   }
 

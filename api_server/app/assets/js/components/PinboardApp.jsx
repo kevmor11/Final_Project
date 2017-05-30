@@ -14,10 +14,11 @@ class PinboardApp extends Component {
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
     this.state = {
-      user: props.userData.data.user,
+      // user: props.userData.data.user,
       openModal: '',
       roomName: "",
-      roomID: 0
+      roomID: 0,
+      room: {}
     };
   }
 
@@ -35,6 +36,7 @@ class PinboardApp extends Component {
       name = res.data.room.name;
       ID = res.data.room.id;
       this.setState({
+        room: res.data.room,
         roomName: name,
         roomID: ID
       })
@@ -52,8 +54,8 @@ class PinboardApp extends Component {
   render() {
     return (
       <div>
-        <Navbar currentUser={this.state.user} />
-        <Pinboard openModal={this.state.openModal} userData={this.state.user} roomName={this.state.roomName} roomID={this.state.roomID} />
+        <Navbar currentUser={this.props.userData.data.user} />
+        <Pinboard userData={this.props.userData.data.user} roomName={this.state.roomName} roomID={this.state.roomID} room={this.state.room} />
       </div>
     );
   }

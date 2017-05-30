@@ -35248,10 +35248,11 @@
 	    var _this = _possibleConstructorReturn(this, (PinboardApp.__proto__ || Object.getPrototypeOf(PinboardApp)).call(this, props));
 	
 	    _this.state = {
-	      user: props.userData.data.user,
+	      // user: props.userData.data.user,
 	      openModal: '',
 	      roomName: "",
-	      roomID: 0
+	      roomID: 0,
+	      room: {}
 	    };
 	    return _this;
 	  }
@@ -35276,6 +35277,7 @@
 	        name = res.data.room.name;
 	        ID = res.data.room.id;
 	        _this2.setState({
+	          room: res.data.room,
 	          roomName: name,
 	          roomID: ID
 	        });
@@ -35295,8 +35297,8 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_Navbar2.default, { currentUser: this.state.user }),
-	        _react2.default.createElement(_Pinboard2.default, { openModal: this.state.openModal, userData: this.state.user, roomName: this.state.roomName, roomID: this.state.roomID })
+	        _react2.default.createElement(_Navbar2.default, { currentUser: this.props.userData.data.user }),
+	        _react2.default.createElement(_Pinboard2.default, { userData: this.props.userData.data.user, roomName: this.state.roomName, roomID: this.state.roomID, room: this.state.room })
 	      );
 	    }
 	  }]);
@@ -35370,7 +35372,7 @@
 	        throw new Error('Could not add a user to the room because', err.message);
 	      });
 	      _this.setState({
-	        room_users: 2
+	        room_users: _this.props.room.user.length
 	      });
 	    };
 	
@@ -35399,18 +35401,24 @@
 	      });
 	    };
 	
+	    console.log("pinboard ctor props:", props);
 	    _this.state = {
 	      openModal: '',
 	      user: props.userData,
 	      receiver: "",
 	      room_users: 1,
 	      invited_id: "",
-	      roomID: ""
+	      roomID: props.roomID
 	    };
 	    return _this;
 	  }
 	
 	  _createClass(Pinboard, [{
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      console.log("pinboard updating props from", this.props, "to", nextProps);
+	    }
+	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      var _this2 = this;
@@ -35541,10 +35549,11 @@
 	      var room_users = [];
 	      var room_users_firstNames = [];
 	      _axios2.default.get('/api/rooms.json').then(function (res) {
+	        // console.log("rooms.json:", res);
 	        var rooms = res.data.rooms;
 	        // console.log("ROOMS", rooms);
 	        rooms.forEach(function (item, i) {
-	          // console.log("INSIDE", item.id);
+	          // console.log("INSIDE", this.props.currentRoom, item.id);
 	          if (_this2.props.currentRoom === item.id) {
 	            room_name = item.name;
 	            room_users = item.users;
@@ -35560,9 +35569,12 @@
 	          roomName: room_name,
 	          roomUsers: room_users_firstNames
 	        });
-	        // console.log("NAME STATE", this.state);
+	        console.log("NAME STATE", _this2.state);
 	      }).catch(function (err) {
+	        // TODO, figure out better error handling
+	        alert("everything is terrible, and also I am a bad dev");
 	        throw new Error('Could not retrieve room information because', err.message);
+	        console.log('ERROR: Could not retrieve room information because', err.message);
 	      });
 	    }
 	  }, {

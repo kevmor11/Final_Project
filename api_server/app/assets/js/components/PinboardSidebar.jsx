@@ -18,30 +18,34 @@ class PinboardSidebar extends Component {
     var room_users = [];
     var room_users_firstNames = [];
     axios.get(`/api/rooms.json`)
-      .then(res => {
-        var rooms = res.data.rooms;
-        // console.log("ROOMS", rooms);
-        rooms.forEach((item, i) => {
-          // console.log("INSIDE", item.id);
-          if (this.props.currentRoom === item.id) {
-            room_name = item.name;
-            room_users = item.users;
-            // console.log("USERS", room_users);
-            // console.log("INSIDE");
-          }
-        })
-        room_users.forEach((item, i) => {
-          // console.log("INSIDE FOREACH", item.first_name);
-          room_users_firstNames.push(item.first_name);
-        });
-        this.setState({
-          roomName: room_name,
-          roomUsers: room_users_firstNames
-        })
-      // console.log("NAME STATE", this.state);
+    .then(res => {
+      // console.log("rooms.json:", res);
+      var rooms = res.data.rooms;
+      // console.log("ROOMS", rooms);
+      rooms.forEach((item, i) => {
+        // console.log("INSIDE", this.props.currentRoom, item.id);
+        if (this.props.currentRoom === item.id) {
+          room_name = item.name;
+          room_users = item.users;
+          // console.log("USERS", room_users);
+          // console.log("INSIDE");
+        }
+      })
+      room_users.forEach((item, i) => {
+        // console.log("INSIDE FOREACH", item.first_name);
+        room_users_firstNames.push(item.first_name);
+      });
+      this.setState({
+        roomName: room_name,
+        roomUsers: room_users_firstNames
+      })
+      console.log("NAME STATE", this.state);
     })
     .catch((err) => {
+      // TODO, figure out better error handling
+      alert("everything is terrible, and also I am a bad dev");
       throw new Error('Could not retrieve room information because', err.message);
+      console.log('ERROR: Could not retrieve room information because', err.message);
     });
   }
 
