@@ -42,7 +42,8 @@ class PopupLink extends Component {
       title: this.state.title,
       description: this.state.description,
       category: "link"
-    }).then(this.close.bind(this)).then(this.props.updatePinboardApp)
+    }).then(this.close)
+      .then(this.props.updatePinboardApp)
   }
 
   render() {

@@ -10,33 +10,28 @@ class LoginField extends Component {
       email: '',
       password: '',
     };
-
-    this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.handleRedirect = this.handleRedirect.bind(this);
-    this.submitForm = this.submitForm.bind(this);
   }
 
-  handleEmailChange(event) {
+  handleEmailChange = (event) => {
     this.setState({
       email: event.target.value
     });
   }
 
-  handlePasswordChange(event) {
+  handlePasswordChange = (event) => {
     this.setState({
       password: event.target.value
     });
   }
 
-  submitForm(event) {
+  submitForm = (event) => {
     axios.post('/api/sessions', {
       email: this.state.email,
       password: this.state.password
     }).then(this.handleRedirect);
   }
 
-  handleRedirect(res) {
+  handleRedirect = (res) => {
     window.location.href = `/users/${res.data.user.id}`;
   }
 

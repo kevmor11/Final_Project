@@ -14,7 +14,7 @@ class Registration extends Component {
       password: "",
       gender: ""
       }
-    this.handleRegistrationChange =this.handleRegistrationChange.bind(this);
+    this.handleRegistrationChange =this.handleRegistrationChange;
   }
 
   handleRedirect = (res) => {
