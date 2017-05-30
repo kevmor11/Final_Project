@@ -15,8 +15,6 @@ class PinboardSidebar extends Component {
     }
   }
 
-
-
   addUserToRoom = (invited_id) => {
     axios.post('/api/userrooms', {
       user_id: invited_id,

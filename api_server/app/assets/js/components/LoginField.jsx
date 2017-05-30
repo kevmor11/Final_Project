@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import AlertContainer from 'react-alert'
 import axios from 'axios';
 
 export default
@@ -10,6 +11,20 @@ class LoginField extends Component {
       email: '',
       password: '',
     };
+  }
+
+  alertOptions = {
+    offset: 255,
+    position: 'top right',
+    theme: 'dark',
+    time: 8000,
+    transition: 'scale'
+  }
+
+  showAlert = () => {
+    this.msg.show('Sorry, your Email or Password did not match our records. Please try again or Register.', {
+      type: 'error',
+    })
   }
 
   handleEmailChange = (event) => {
@@ -24,11 +39,18 @@ class LoginField extends Component {
     });
   }
 
+  enterKeyPress = (e) => {
+    if(e.charCode==13){
+      this.submitForm();
+    }
+  }
+
   submitForm = (event) => {
     axios.post('/api/sessions', {
       email: this.state.email,
       password: this.state.password
-    }).then(this.handleRedirect);
+    }).then(this.handleRedirect)
+      .catch(this.showAlert);
   }
 
   handleRedirect = (res) => {
@@ -50,6 +72,7 @@ class LoginField extends Component {
                 name="email" value={this.state.email}
                 onChange={this.handleEmailChange}
                 placeholder="Email"
+                onKeyPress={this.enterKeyPress}
               />
             </p>
           </div>
@@ -64,6 +87,7 @@ class LoginField extends Component {
                 value={this.state.password}
                 onChange={this.handlePasswordChange}
                 placeholder="Password"
+                onKeyPress={this.enterKeyPress}
               />
             </p>
           </div>
@@ -78,6 +102,7 @@ class LoginField extends Component {
             </p>
           </div>
         </div>
+        <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
       </div>
     );
   }
