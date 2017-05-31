@@ -18,7 +18,7 @@ class VideoThumbNail extends Component {
           alt="No Image Available."
           onClick={this.createVideo}
           style={{width:'204px', height:'128px'}}
-        ></img>
+        />
       </div>
     );
   }

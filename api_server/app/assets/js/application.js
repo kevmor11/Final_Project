@@ -1,1 +1,1 @@
-//= require testing
+// require testing

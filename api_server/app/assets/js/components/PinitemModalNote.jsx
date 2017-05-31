@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Modal, Button, OverlayTrigger} from 'react-bootstrap'
+import {Modal, Button} from 'react-bootstrap'
 
 export default
 class PinItemModalNote extends Component {
@@ -26,7 +26,6 @@ constructor(props) {
   }
 
   render() {
-    // console.log('NOTE', this.props);
     return(
       <div>
         <div className="item" onClick={this.open}>
@@ -34,7 +33,7 @@ constructor(props) {
           <i className="add fa fa-sticky-note-o"></i>
         </div>
 
-        <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
+        <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
             <Modal.Title>{this.props.title}</Modal.Title>
           </Modal.Header>

@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
-import {Modal, Button, OverlayTrigger, Tooltip} from 'react-bootstrap'
+import { Modal, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 export default
 class PopupLink extends Component {
@@ -13,46 +13,40 @@ class PopupLink extends Component {
       title: '',
       description: '',
     };
-    this.handleImageChange = this.handleImageChange.bind(this);
-    this.handleTitleChange = this.handleTitleChange.bind(this);
-    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
-    this.submitForm = this.submitForm.bind(this);
   }
 
-  close() {
+  close = () => {
     this.props.onClose();
   }
 
-  handleImageChange(event) {
+  handleImageChange = (event) => {
     this.setState({
       imageData: event.target.files[0],
-      image: event.target.value
+      image: event.target.value,
     });
-    console.log("EVENT", event.target.files);
   }
 
-  handleTitleChange(event) {
+  handleTitleChange = (event) => {
     this.setState({
-      title: event.target.value
+      title: event.target.value,
     });
   }
 
-  handleDescriptionChange(event) {
+  handleDescriptionChange = (event) => {
     this.setState({
-      description: event.target.value
+      description: event.target.value,
     });
   }
 
-  submitForm(event) {
-    console.log("submiting image");
+  submitForm = (event) => {
+    const data = new FormData();
     event.preventDefault();
-    var data = new FormData();
     data.append('post[image_file]', this.state.imageData);
     data.append('post[title]', this.state.title);
     data.append('post[description]', this.state.description);
     data.append('post[category]', "image");
     axios.post(`/api/rooms/${this.props.roomID}/posts`, data)
-    .then(this.close.bind(this))
+    .then(this.close)
     .then(this.props.updatePinboardApp)
     .catch((err) => {
       console.log(err.message);
@@ -67,7 +61,7 @@ class PopupLink extends Component {
     return (
       <div>
 
-        <Modal show={this.props.isActive} onHide={this.close.bind(this)}>
+        <Modal show={this.props.isActive} onHide={this.close}>
           <Modal.Header closeButton>
             <Modal.Title>Image</Modal.Title>
           </Modal.Header>
@@ -77,20 +71,20 @@ class PopupLink extends Component {
               <label htmlFor="image_file" className="label">Image</label>
               <OverlayTrigger placement="bottom" overlay={tooltip} style="z-index: 9001" >
                 <p className="control">
-                  <input className="input" type="file" value={ this.state.image } id="image_file" onChange={ this.handleImageChange } />
+                  <input className="input" type="file" value={this.state.image} id="image_file" onChange={this.handleImageChange} />
                 </p>
               </OverlayTrigger>
             </div>
             <div className="field">
               <label htmlFor="image_title" className="label">Title</label>
               <p className="control">
-                <textarea className="input" type="text" value={ this.state.title } id="image_title" onChange={ this.handleTitleChange } />
+                <textarea className="input" type="text" value={this.state.title} id="image_title" onChange={this.handleTitleChange} />
               </p>
             </div>
             <div className="field">
               <label htmlFor="image_description" className="label">Description</label>
               <p className="control">
-                <textarea className="input input-description" type="text" value={ this.state.description } id="image_description" onChange={ this.handleDescriptionChange } />
+                <textarea className="input input-description" type="text" value={this.state.description} id="image_description" onChange={this.handleDescriptionChange} />
               </p>
             </div>
             <p className="control">

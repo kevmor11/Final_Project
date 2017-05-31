@@ -33,14 +33,6 @@ class App extends Component {
       allRooms = user.rooms.map((room, i))
     }
 
-    // let userFieldInput = null;
-    // if (isLoggedIn) {
-    //   userFieldInput = <LoginField />;
-    // } else {
-    //   userFieldInput = <RegistrationFields />;
-    // }
-
-    
     return (
       <div>
         <Navbar currentUser={ this.state.user }/>
@@ -54,4 +46,4 @@ class App extends Component {
       </div>
     )
   }
-}  
+}

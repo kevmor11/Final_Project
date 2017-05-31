@@ -7,49 +7,20 @@ class PinboardSidebar extends Component {
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
     this.state = {
-      roomName: "",
-      roomUsers: [],
-      invited_id: "",
+      // roomName: props.room.name,
+      // roomUsers: [],
+      // invited_id: "",
       receiver: "",
-      room_users: 1
+      room_users: props.room_users  // todo: abolish
     }
   }
 
-  // Get Room Name and Room users
-  componentDidMount() {
-    var room_name = "";
-    var room_users = [];
-    var room_users_firstNames = [];
-    axios.get(`/api/rooms.json`)
-      .then(res => {
-        var rooms = res.data.rooms;
-        rooms.forEach((item, i) => {
-          if (this.props.currentRoom === item.id) {
-            room_name = item.name;
-            room_users = item.users;
-          }
-        })
-        room_users.forEach((item, i) => {
-          room_users_firstNames.push(item.first_name);
-        })
-        this.setState({
-          roomName: room_name,
-          roomUsers: room_users_firstNames
-        })
-      // console.log("NAME STATE", this.state);
-    });
-  }
-
-  addUserToRoom = () => {
-    console.log('addusertoroom', this.state.invited_id);
-    console.log('addusertoroom roomid', this.props.roomID);
+  addUserToRoom = (invited_id) => {
     axios.post('/api/userrooms', {
-      user_id: this.state.invited_id,
-      room_id: this.props.roomID,
-    });
-    this.setState({
-      room_users: 2
+      user_id: invited_id,
+      room_id: this.props.room.id,
     })
+    this.props.refreshRoom();
   }
 
   handleInviteFormChange = (event) => {
@@ -58,38 +29,32 @@ class PinboardSidebar extends Component {
     });
   }
 
+  // TODO Change this so we are not requesting the entire user database, but instead we are sending the email to the database to be checked on server side
   submitInviteForm = () => {
-    var userID = "";
     axios.get('/api/users')
     .then(res => {
       const users = res.data.users;
       users.forEach((user, i) => {
         if (user.email === this.state.receiver) {
-          console.log("INSIDE", user.id);
-          userID = user.id;
-          this.setState({
-            invited_id: userID
-          })
-          console.log('setstate invited_id', this.state.invited_id);
-          this.addUserToRoom();
+          this.addUserToRoom(user.id);
         }
       })
     });
   }
 
   render() {
-    // console.log("STATE", this.state);
+    var users = this.props.room.users || [];
     return(
       <div>
         <div className="tile is-parent is-2 rooms">
           <article className="tile is-child box">
             <div className="content">
-            { this.props.room_users === 1 &&
+            { users.length === 1 &&
             <div className="user-invite">
               <div className="field">
                 <label htmlFor="receiver" className="label">Invite Someone to Join Your Room</label>
                 <p className="control">
-                  <input className="input" type="text" name="receiver" id="invite_receiver" onChange={ this.handleInviteFormChange } />
+                  <input className="input" type="text" name="receiver" id="invite_receiver" onChange={ this.handleInviteFormChange } value={this.state.receiver} />
                 </p>
               </div>
                 <p className="control">
@@ -97,7 +62,7 @@ class PinboardSidebar extends Component {
                 </p>
               </div>
             }
-              <p className="subtitle">{this.state.roomName}</p>
+              <p className="subtitle">{this.props.room.name}</p>
               <table className="table">
                 <thead>
                   <tr>
@@ -105,15 +70,13 @@ class PinboardSidebar extends Component {
                   </tr>
                 </thead>
                 <tbody>
-
-                  { this.state.roomUsers.map((item, i) => {
+                  {users.map((item) => {
                     return (
-                      <tr key={i}>
-                        <td>{item}</td>
+                      <tr key={item.id}>
+                        <td>{item.first_name}</td>
                       </tr>
                     )
                   })}
-
                 </tbody>
               </table>
             </div>

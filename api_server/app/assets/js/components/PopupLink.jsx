@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
-import {Modal, Button, OverlayTrigger, Tooltip} from 'react-bootstrap'
+import { Modal, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 export default
 class PopupLink extends Component {
@@ -10,61 +10,46 @@ class PopupLink extends Component {
     this.state = {
       link: '',
       title: '',
-      description: ''
+      description: '',
     }
-    this.handleLinkChange = this.handleLinkChange.bind(this);
-    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
-    this.handleTitleChange = this.handleTitleChange.bind(this);
-    this.submitForm = this.submitForm.bind(this);
   }
 
-  close() {
+  close = () => {
     this.props.onClose();
   }
 
-  handleLinkChange(event) {
+  handleLinkChange = (event) => {
     this.setState({
-      link: event.target.value
-    })
+      link: event.target.value,
+    });
   }
 
-  handleTitleChange(event) {
+  handleTitleChange = (event) => {
     this.setState({
-      title: event.target.value
-    })
+      title: event.target.value,
+    });
   }
 
-  handleDescriptionChange(event) {
+  handleDescriptionChange = (event) => {
     this.setState({
-      description: event.target.value
-    })
+      description: event.target.value,
+    });
   }
 
-  // updatePosts = (post) => {
-  //   this.setState({
-  //     posts: this.state.posts.concat({
-  //       user_first_name: post.user.first_name, description: post.description
-  //     })
-  //   });
-  // }
-
-  // setupSubscription() {
-  //   App.cable.subscriptions.create('PostChannel', {
-  //     received(post) {
-  //       return this.updatePosts(post);
-  //     },
-  //     updatePosts: this.updatePosts.bind(this)
-  //   });
-  // }
-
-  submitForm(event){
-    console.log("submit clicked")
+  submitForm = () => {
+    let link = this.state.link;
+    var prefix = 'http://';
+    if (link.substr(0, prefix.length) !== prefix) {
+      link = prefix + link;
+    }
     axios.post(`/api/rooms/${this.props.roomID}/posts`, {
-      link: this.state.link,
+      link: link,
       title: this.state.title,
       description: this.state.description,
       category: "link"
-    }).then(this.close.bind(this))
+
+    }).then(this.close)
+      // .then(this.props.updatePinboardApp)
   }
 
   render() {
@@ -73,8 +58,7 @@ class PopupLink extends Component {
     );
     return (
       <div>
-
-        <Modal show={this.props.isActive} onHide={this.close.bind(this)}>
+        <Modal show={this.props.isActive} onHide={this.close}>
           <Modal.Header closeButton>
             <Modal.Title>Link</Modal.Title>
           </Modal.Header>
@@ -83,20 +67,20 @@ class PopupLink extends Component {
               <label htmlFor="url" className="label">URL</label>
               <OverlayTrigger placement="bottom" overlay={tooltip} style="z-index: 9001" >
                 <p className="control">
-                  <input className="input" type="url" value={ this.state.link } id="url" onChange={ this.handleLinkChange } />
+                  <input className="input" type="url" value={this.state.link} id="url" onChange={this.handleLinkChange} />
                 </p>
               </OverlayTrigger>
             </div>
             <div className="field">
               <label htmlFor="title" className="label">Title</label>
               <p className="control">
-                <textarea className="input" type="text" value={ this.state.title } id="title" onChange={ this.handleTitleChange } />
+                <textarea className="input" type="text" value={this.state.title} id="title" onChange={this.handleTitleChange} />
               </p>
             </div>
             <div className="field">
               <label htmlFor="link_description" className="label">Description</label>
               <p className="control">
-                <textarea className="input" type="text" value={ this.state.description } id="link_description" onChange={ this.handleDescriptionChange } />
+                <textarea className="input" type="text" value={this.state.description} id="link_description" onChange={this.handleDescriptionChange} />
               </p>
             </div>
             <p className="control">

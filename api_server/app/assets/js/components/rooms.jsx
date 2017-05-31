@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Room from './Room.jsx';
-import axios from 'axios';  
+import AlertContainer from 'react-alert'
+import axios from 'axios';
+
 export default
 class Rooms extends Component {
   constructor(props) {
@@ -8,30 +10,53 @@ class Rooms extends Component {
     this.state = {
       roomName: "",
       rooms: props.rooms,
-      allRoomsNames: props.rooms.map((room) => {
-      return room.name
-      })
+      // allRoomsNames: props.rooms.map((room) => {
+      // return room.name
+      // })
     }
   }
+
+  alertOptions = {
+    offset: 255,
+    position: 'top right',
+    theme: 'dark',
+    time: 8000,
+    transition: 'scale'
+  }
+
+  showAlert = () => {
+    this.msg.show('Sorry, your Email or Password did not match our records. Please try again or Register.', {
+      type: 'error',
+    })
+  }
+
   handleRoomNameChange = (event) => {
     this.setState({
       roomName: event.target.value
     });
   }
-  
+
+  enterKeyPress = (e) => {
+    if(e.charCode==13){
+      this.createRoomClick();
+    }
+  }
+
   createRoomClick = (event) => {
-    console.log("clicked");
     this.setState({
       rooms:this.state.rooms.concat({ name: this.state.roomName})
-        })
+    })
     axios.post(`/api/rooms`, {
       name: this.state.roomName
-    }).then(console.log('succuss'));
+    })
+    // .catch(this.showAlert);
   }
+
   render() {
     let allRooms;
     allRooms = this.state.rooms.map((room, i) => {
-      return <Room key={i} roomName={room.name} roomNumber={i+1}/>
+      console.log("KEVIN", room);
+      return <Room key={room.id} roomName={room.name} roomNumber={i+1}/>
     })
     return (
       <div className="tile is-parent is-3 rooms">
@@ -40,7 +65,16 @@ class Rooms extends Component {
             <p className="subtitle">Your Rooms</p>
             <div className="field">
               <p className="control">
-                <input className="input" type="name" id="roomName" name="roomName" value={ this.state.roomName } onChange={ this.handleRoomNameChange } placeholder="Room Name" />
+                <input
+                  className="input"
+                  type="name"
+                  id="roomName"
+                  name="roomName"
+                  value={ this.state.roomName }
+                  onChange={ this.handleRoomNameChange }
+                  placeholder="Room Name"
+                  onKeyPress={this.enterKeyPress}
+                />
               </p>
               <button className="button" onClick={this.createRoomClick}>Create</button>
             </div>
@@ -58,6 +92,7 @@ class Rooms extends Component {
             </table>
           </div>
         </article>
+      {/*<AlertContainer ref={a => this.msg = a} {...this.alertOptions} />*/}
       </div>
     );
   }
