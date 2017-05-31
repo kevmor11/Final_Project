@@ -10,14 +10,12 @@ class VideoThumbNail extends Component {
 
   render() {
     return (
-      <div>
+      <div className="youtube-thumbnail" onClick={this.createVideo}>
         <label className="vid-thumb-title">{this.props.nail.title}</label>
-        <br />
         <img
           className="thumb"
           src={this.props.nail.url}
           alt="No Image Available."
-          onClick={this.createVideo}
           style={{width:'204px', height:'128px'}}
         />
       </div>

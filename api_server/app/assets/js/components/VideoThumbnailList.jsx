@@ -9,7 +9,7 @@ class VideoThumbnailList extends Component {
       return (<VideoThumbnail key={i} nail={nail} pick={this.props.pick} />);
     });
     return (
-      <div>
+      <div className="thumbnail-list">
         {allNails}
       </div>
     );

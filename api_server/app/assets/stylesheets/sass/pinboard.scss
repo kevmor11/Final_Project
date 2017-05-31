@@ -29,12 +29,15 @@
   margin: 10px;
   flex-wrap: wrap;
   padding: 20px 30px;
-  flex-grow: 10;
   background: rgba(254, 252, 250, 0.57);
   line-height: 100px;
   height: 257px;
   max-width: 260px;
   max-height: 200px;
+}
+
+.item-div {
+  flex-grow: 1;
 }
 
 .item-container:hover {
@@ -59,7 +62,7 @@ p.item {
 }
 
 .hangout-container {
-  padding: 8em;
+  padding: 1em;
 }
 
 .add-content-container {
@@ -220,4 +223,25 @@ img.img-title {
 
 .image-desc {
   margin: 0 7px;
+}
+
+.youtube-thumbnail {
+  max-width: 13em;
+  padding: 1em 1em;
+  background-color: rgba(254, 252, 250, 0.57);
+  border-radius: 10px;
+  margin: 10px;
+  cursor: pointer;
+  flex-grow: 1;
+}
+
+.thumbnail-list {
+  display: flex;
+  flex-flow: wrap row;  
+}
+
+.vid-thumb-title {
+  cursor: pointer;
+  font-size: .8 em;
+  height: 6em;
 }
