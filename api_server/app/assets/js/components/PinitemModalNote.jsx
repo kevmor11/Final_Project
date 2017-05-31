@@ -36,13 +36,8 @@ constructor(props) {
         <div className="item-container" onClick={this.open}>
           <h4><b className="item">{this.props.title}</b></h4>
           <hr/>
-          <p className="item">{this.props.content}</p>
+          <p className="item">{this.props.description}</p>
         </div>
-        {/*<div className="item-container" onClick={this.open}>
-          <p className="item img-title">{this.props.title}</p>
-          <i className="item add fa fa-sticky-note-o"></i>
-          <p className="item">{this.props.name}</p>
-        </div>*/}
 
         <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
@@ -59,3 +54,4 @@ constructor(props) {
     )
   }
 }
+

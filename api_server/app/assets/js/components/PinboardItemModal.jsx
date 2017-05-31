@@ -21,10 +21,14 @@ class PinboardItemModal extends Component {
   }
 
   render() {
+    let choice;
+
+    console.log(`Rendering ${this.props.category} in PinboardItemModal`);
+    console.log(this.props);
+    
     switch (this.props.category) {
       case "image":
-      // console.log('modal', this.props.roomID);
-        return (
+        choice = (
           <PinItemModalImage
             postID={this.props.postID}
             title={this.props.title}
@@ -36,19 +40,21 @@ class PinboardItemModal extends Component {
             refreshRoom={this.props.refreshRoom}
             deletePost={this.deletePost}
           />);
+        break;
       case "note":
-        return (
+        choice = (
           <PinItemModalNote
             postID={this.props.postID}
             title={this.props.title}
-            content={this.props.content}
+            description={this.props.description}
             name={this.props.user}
             roomID={this.props.roomID}
             refreshRoom={this.props.refreshRoom}
             deletePost={this.deletePost}
           />);
+        break;
       case "link":
-        return (
+        choice = (
           <PinItemModalLink
             postID={this.props.postID}
             title={this.props.title}
@@ -59,8 +65,11 @@ class PinboardItemModal extends Component {
             refreshRoom={this.props.refreshRoom}
             deletePost={this.deletePost}
           />);
+        break;
       default:
         throw new Error('Content category is not valid');
     }
+
+    return choice;
   }
 }
