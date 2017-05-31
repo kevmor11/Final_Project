@@ -5,10 +5,6 @@ import PropTypes from 'prop-types';
 export default
 class PinboardItems extends Component {
 
-  constructor(props) {
-    super(props); // super calls `constructor` in React.Component
-  }
-
   static propTypes = {
     openModal: PropTypes.string
   }

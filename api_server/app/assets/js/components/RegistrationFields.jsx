@@ -15,7 +15,6 @@ class Registration extends Component {
       password: "",
       gender: ""
     }
-    // this.handleRegistrationChange = this.handleRegistrationChange;   // whiskey tango foxtrot
   }
 
   alertOptions = {
@@ -74,8 +73,6 @@ class Registration extends Component {
     .then((response) => {
       console.log("yay new user", response);
       this.redirectToUserPage();
-    // }).catch((err) => {
-    //   console.log("boo no new user", err);
     }).catch(this.showAlert);
 
   }
@@ -138,7 +135,6 @@ class Registration extends Component {
                   value={this.state.password}
                   onChange={this.handleRegistrationChange}
                   placeholder="Password"
-
                 />
               </p>
             </div>
