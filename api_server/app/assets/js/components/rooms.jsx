@@ -39,6 +39,24 @@ class Rooms extends Component {
     }
   }
 
+  deleteRoom = (roomID, roomName) => {
+    let allRooms = [];
+    this.state.rooms.forEach((room,i)=>{
+      if (!(roomID === room.id)) {
+        allRooms.push(room);
+      }
+    })
+    this.setState({
+    rooms:allRooms
+  })
+    
+    axios.delete(`/api/rooms/${roomID}`)
+    .then(console.log('roomdeleted!'))
+    // .then(()=>{
+    // })
+  
+  }
+ 
   createRoomClick = (event) => {
     this.setState({
       rooms:this.state.rooms.concat({ name: this.state.roomName})
@@ -54,7 +72,7 @@ class Rooms extends Component {
   render() {
     let allRooms;
     allRooms = this.state.rooms.map((room, i) => {
-      return <Room key={i} roomID={room.id} roomName={room.name} roomNumber={i+1}/>
+      return <Room key={i} roomID={room.id} roomName={room.name} roomNumber={i+1} deleteRoom={this.deleteRoom}/>
     })
     return (
       <div className="tile is-parent is-3 rooms">

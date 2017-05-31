@@ -8,8 +8,9 @@ class Rooms extends Component {
     window.location.href = "/rooms/" + this.props.roomName;
   }
 
-  deleteRoom = () => {
-    axios.delete(`/api/rooms/${this.props.roomID}`).then(console.log('roomdeleted!'))
+  onDeleteRoom = () => {
+    this.props.deleteRoom(this.props.roomID, this.props.roomName);
+
   }
 
   render() {
@@ -18,12 +19,12 @@ class Rooms extends Component {
         <th className="room-list">{this.props.roomNumber}</th>
         <td>
           <p className="field">
-            <a><i className="fa fa-trash-o" onClick={this.deleteRoom}></i></a>
+            <a><i className="fa fa-trash-o" onClick={this.onDeleteRoom}></i></a>
             <a onClick={this.redirectionTime}>
               {this.props.roomName}
             </a>
           </p>
-        </td>
+        </td> 
       </tr>
     );
   }
