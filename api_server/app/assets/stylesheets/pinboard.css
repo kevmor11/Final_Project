@@ -35,6 +35,9 @@
 .item {
   display: flex; }
 
+.hangout-container {
+  padding: 8em; }
+
 .add-content-container {
   display: inline-block;
   position: relative; }
@@ -101,7 +104,23 @@ img.img-title {
   opacity: 0.5; }
 
 .pinboardButton {
-  margin-left: 16.5em !important; }
+  margin-left: -16em;
+  padding: 0.4em 10em;
+  margin-left: 30px; }
+
+.hangoutButton {
+  margin-left: 5em !important;
+  padding: 0.4em 10em; }
+
+.video-chat {
+  padding: 0.4em 10em;
+  margin: 2em;
+  margin-left: 30px; }
+
+.youtube {
+  padding: 0.4em 9.2em;
+  margin-left: 30px;
+  margin: 2em; }
 
 .input {
   resize: none; }
@@ -115,3 +134,9 @@ img.img-title {
 
 .room-icon {
   margin-left: 40px; }
+
+.fa-video-camera {
+  margin-left: 2em; }
+
+.fa-youtube-play {
+  margin-left: 2em; }
