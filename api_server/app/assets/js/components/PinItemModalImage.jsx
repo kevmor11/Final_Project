@@ -39,7 +39,7 @@ constructor(props) {
           <img className="item img-thumb" src={'http://localhost:3000/' + this.props.thumb}/>*/}
         {/*</div>*/}
 
-        <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
+        <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
             <Modal.Title>{this.props.title}</Modal.Title>
           </Modal.Header>

@@ -4,7 +4,7 @@ import LoginField from './LoginField.jsx';
 
 export default
 class LoginRegister extends Component {
-  render(){
+  render() {
     return (
       <div className="login-registration container">
         <LoginField />

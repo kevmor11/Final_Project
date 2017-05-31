@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import axios from 'axios';
 import App from './App.jsx';
 import DashApp from './DashApp.jsx';

@@ -37,12 +37,19 @@ class PopupLink extends Component {
   }
 
   submitForm = () => {
+    let link = this.state.link;
+    var prefix = 'http://';
+    if (link.substr(0, prefix.length) !== prefix) {
+      link = prefix + link;
+    }
     axios.post(`/api/rooms/${this.props.roomID}/posts`, {
-      link: this.state.link,
+      link: link,
       title: this.state.title,
       description: this.state.description,
       category: "link"
-    }).then(this.close.bind(this)).then(this.props.updatePinboardApp)
+
+    }).then(this.close)
+      .then(this.props.updatePinboardApp)
   }
 
   render() {

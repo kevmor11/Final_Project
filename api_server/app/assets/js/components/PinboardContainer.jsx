@@ -24,7 +24,7 @@ class PinboardContainer extends Component {
     this.setState({onPinboard: false});
   }
 
-  openModal(modalName) {
+  openModal = (modalName) => {
     this.setState(Object.assign({}, this.state, { openModal: modalName }));
   }
 
@@ -38,7 +38,7 @@ class PinboardContainer extends Component {
                             onPinboard={this.state.onPinboard}
                             handlePinboardClick={this.handlePinboardClick}
                             handleHangoutClick={this.handleHangoutClick}
-                            modalToggle={this.openModal.bind(this)}
+                            modalToggle={this.openModal}
                             userData={this.state.user}
                             roomID={this.props.roomID} />
             <section>

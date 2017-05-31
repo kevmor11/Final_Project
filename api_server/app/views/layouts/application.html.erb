@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,14 +8,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.1/css/bulma.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <%= stylesheet_link_tag 'application' %>
+  <%= action_cable_meta_tag %>
   <title>Bridge</title>
 </head>
 <body>
 
     <%= yield %>
     <%= javascript_include_tag 'application' %>
-    <%= action_cable_meta_tag %>
+    <script src="/assets/bundle.js"></script>
 </body>
 </html>
-
-
