@@ -5,7 +5,6 @@ import RegistrationButton from './RegistrationButton.jsx';
 import LoginField from './LoginField.jsx';
 import RegistrationFields from './RegistrationFields.jsx';
 import axios from 'axios';
-import http from 'http';
 
 export default
 class App extends Component {

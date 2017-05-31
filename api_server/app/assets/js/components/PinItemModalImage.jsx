@@ -37,13 +37,14 @@ constructor(props) {
           <h4><b className="item">{this.props.title}</b></h4>
           <img src={this.props.thumb} alt="Avatar"/>
         </div>
+
         <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
             <Modal.Title>{this.props.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <img src={this.props.img}/>
-            <p>{this.props.description}</p>
+            <img className="modal-image" src={this.props.img}/>
+            <p className="image-desc">{this.props.description}</p>
           </Modal.Body>
           <Modal.Footer>
             <p>By: {this.props.name}</p>

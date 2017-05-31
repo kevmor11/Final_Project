@@ -7,6 +7,7 @@ $notification-color:#D1D1D1;
   flex-direction: row-reverse;
   justify-content: flex-end;
   height: 100%;
+  width: 100%;
 }
 
 .button.is-primary {
@@ -23,7 +24,7 @@ $notification-color:#D1D1D1;
 }
 
 .box {
-  background-color: rgba(254, 252, 250, 0.57);
+  background-color: rgba(254, 252, 250, 0.7);
 }
 
 .table {
@@ -66,8 +67,4 @@ img.notification-avatar {
 
 .registerApp {
   height: 100%;
-}
-
-.nav-item {
-  margin-left: 90px;
 }
