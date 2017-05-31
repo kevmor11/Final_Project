@@ -9,7 +9,7 @@ class PopupNote extends Component {
     super(props); // super calls `constructor` in React.Component
     this.state = {
       title: '',
-      content: '',
+      description: '',
       currentRoomName: window.location['pathname'].split('/')[2],
       currentRoomID: this.props.roomID
     };
@@ -27,7 +27,7 @@ class PopupNote extends Component {
 
   handleContentChange = (event) => {
     this.setState({
-      content: event.target.value,
+      description: event.target.value,
       room_id:'',
     });
   }
@@ -35,7 +35,7 @@ class PopupNote extends Component {
   submitForm = () => {
       axios.post(`/api/rooms/${this.props.roomID}/posts`, {
         title: this.state.title,
-        content: this.state.content,
+        description: this.state.description,
         category: "note"
       }).then(this.close).then(this.props.refreshRoom)
   }
@@ -55,9 +55,9 @@ class PopupNote extends Component {
               </p>
             </div>
             <div className="field">
-              <label htmlFor="note_content" className="label">Content</label>
+              <label htmlFor="note_description" className="label">Description</label>
               <p className="control">
-                <textarea className="input input-description" type="text" value={this.state.content} name="content" id="note_content" onChange={this.handleContentChange}  />
+                <textarea className="input input-description" type="text" value={this.state.description} name="description" id="note_content" onChange={this.handleContentChange}  />
               </p>
             </div>
             <p className="control">
