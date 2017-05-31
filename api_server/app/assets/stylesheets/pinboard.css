@@ -39,13 +39,14 @@
   display: inline-block;
   position: relative; }
   .add-content-container.open .photo {
-    transform: translate(2.5em); }
+    transform: translate(2.5em);
+    cursor: pointer; }
   .add-content-container.open .message {
-    transform: translate(5em); }
+    transform: translate(5em);
+    cursor: pointer; }
   .add-content-container.open .note {
-    transform: translate(7.5em); }
-  .add-content-container.open .voice-message {
-    transform: translate(10em); }
+    transform: translate(7.5em);
+    cursor: pointer; }
 
 .add-content {
   position: absolute;
@@ -66,7 +67,8 @@
   background: #8cebcc; }
 
 .fa-plus {
-  padding: 5px 5.5px; }
+  padding: 5px 5.5px;
+  cursor: pointer; }
 
 .fa-trash-o {
   margin-top: 0px;

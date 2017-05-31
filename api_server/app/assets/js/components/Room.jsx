@@ -13,7 +13,7 @@ class Rooms extends Component {
         <th>{this.props.roomNumber}</th>
         <td>
           <p className="field">
-            <a className="button is-danger is-outlined" onClick={this.redirectionTime}>
+            <a onClick={this.redirectionTime}>
               {this.props.roomName}
             </a>
           </p>
