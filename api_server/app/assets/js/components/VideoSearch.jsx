@@ -21,7 +21,7 @@ class VideoSearch extends Component {
       var request = gapi.client.youtube.search.list({
         q: searchString,
         part: 'snippet',
-        maxResults: 10,
+        maxResults: 12,
         // startIndex: 0,
       });
       request.execute((response) => {
