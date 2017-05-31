@@ -49,7 +49,7 @@ class PopupLink extends Component {
       category: "link"
 
     }).then(this.close)
-      // .then(this.props.updatePinboardApp)
+      .then(this.props.updatePinboardApp)
   }
 
   render() {

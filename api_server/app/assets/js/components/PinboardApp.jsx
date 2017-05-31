@@ -24,6 +24,7 @@ class PinboardApp extends Component {
   }
 
   componentDidMount() {
+    this.reviveRoomData();
     this.setSubscription();
   }
 
@@ -42,16 +43,12 @@ class PinboardApp extends Component {
       disconnected: (e) => {
         console.log('disconnected', e)
       },
-      received: (data) => {
-        this.updatePostsFromDB(data);
+      received: () => {
+        this.reviveRoomData();
       }
     });
   }
 
-  updatePinboardApp = () => {
-    //this.updatePostsFromDB();
-    this.reviveRoomData();
-  }
 
   render() {
     return (
