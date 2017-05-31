@@ -18,8 +18,8 @@ class Navbar extends Component {
       <div>
         <nav className="nav has-shadow">
           <div className="container">
-            <Logo />
             <NavbarLeft user={ this.state.user} />
+            <Logo />
             <div className="nav-right nav-menu">
               <UserLogoutButton user={this.state.user} />
             </div>

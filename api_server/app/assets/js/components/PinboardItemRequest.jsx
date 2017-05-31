@@ -11,7 +11,6 @@ class PinboardItemRequest extends Component {
       postID: null,
       posts: '',
       userData: props.userData.user,
-      roomAxiosData: props,
     };
   }
 

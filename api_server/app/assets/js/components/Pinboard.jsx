@@ -12,6 +12,8 @@ class Pinboard extends Component {
   }
 
   render() {
+  console.log("KEVIN", this.props);
+  console.log("HEY", this.state);
     return (
       <div>
         <div className="tile is-ancestor mainboard">
@@ -25,8 +27,7 @@ class Pinboard extends Component {
             userData={this.state}
             roomName={this.props.room.name}
             roomID={this.props.room.id}
-            // TODO change all references to roomAxiosData to room
-            roomAxiosData={this.props.room}
+            room={this.props.room}
             posts={this.props.posts}
           />
         </div>
