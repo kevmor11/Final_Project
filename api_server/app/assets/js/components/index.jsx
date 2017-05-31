@@ -7,20 +7,20 @@ import PinboardApp from './PinboardApp.jsx';
 
 const pages = {
   'react-dashboard': DashApp,
-  'react-root': App,
-  'react-pinboard': PinboardApp,
+  'react-pinboard': PinboardApp
 };
-
 
 function run(user) {
   Object.entries(pages).forEach(([id, Component]) => {
     const root = document.getElementById(id);
-    if (!root) { return; }
+    if (!root ) return;
     ReactDOM.render(
       <Component userData={user} />, root);
   });
 }
 
-axios.get('/users/me')
-.then(run)
-.catch(run);   // not logged in
+function index() {
+  ReactDOM.render(<App />, document.getElementById('react-root'));
+}
+
+axios('/users/me').then(run).catch(index);

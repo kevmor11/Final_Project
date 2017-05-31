@@ -56,7 +56,7 @@ class Rooms extends Component {
     let allRooms;
     allRooms = this.state.rooms.map((room, i) => {
       console.log("KEVIN", room);
-      return <Room key={room.id} roomName={room.name} roomNumber={i+1}/>
+      return <Room key={i} roomName={room.name} roomNumber={i+1}/>
     })
     return (
       <div className="tile is-parent is-3 rooms">
