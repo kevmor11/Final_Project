@@ -30,7 +30,7 @@
 
 .container {
   width: 100%;
-}
+  min-width: 500px; }
 
 .item-container:hover {
   background: #d49de8;
@@ -102,8 +102,8 @@ img.img-title {
   background-color: #c871ed;
   opacity: 0.5; }
 
-.pinboardButton {
-  margin-left: 16.5em !important; }
+.tabs.is-centered ul {
+  padding-bottom: 7px; }
 
 .input {
   resize: none; }
@@ -114,7 +114,3 @@ img.img-title {
 .modal-title {
   display: inline;
   margin-left: 16.5em; }
-
-.vid-thumb-title {
-  font-size: 13px;
-}
