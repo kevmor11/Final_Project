@@ -65,9 +65,9 @@ class PinboardHeader extends Component {
             </ul>
           </div>
         </header>
-        <PopupNote refreshRoom={this.props.refreshRoom} isActive={this.state.showModalNote} onClose={this.close} userData={this.props.userData} roomID={this.props.roomID} />
-        <PopupLink refreshRoom={this.props.refreshRoom} isActive={this.state.showModalLink} onClose={this.close} userData={this.props.userData} roomID={this.props.roomID} />
-        <PopupImage refreshRoom={this.props.refreshRoom} isActive={this.state.showModalImage} onClose={this.close} userData={this.props.userData} roomID={this.props.roomID} />
+        <PopupNote refreshRoom={this.props.refreshRoom} isActive={this.state.showModalNote} onClose={this.close} roomID={this.props.roomID} />
+        <PopupLink refreshRoom={this.props.refreshRoom} isActive={this.state.showModalLink} onClose={this.close} roomID={this.props.roomID} />
+        <PopupImage refreshRoom={this.props.refreshRoom} isActive={this.state.showModalImage} onClose={this.close} roomID={this.props.roomID} />
       </div>
     )
   }

@@ -7,11 +7,7 @@ class PinboardSidebar extends Component {
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
     this.state = {
-      // roomName: props.room.name,
-      // roomUsers: [],
-      // invited_id: "",
       receiver: "",
-      room_users: props.room_users  // todo: abolish
     }
   }
 

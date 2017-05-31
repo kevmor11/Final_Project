@@ -10,7 +10,7 @@ class PinboardApp extends Component {
   constructor(props) {
     super(props); // super calls `constructor` in React.Component
     this.state = {
-      roomAxiosData:"",
+      roomAxiosData: "",
     };
   }
 
@@ -51,11 +51,12 @@ class PinboardApp extends Component {
 
 
   render() {
+    console.log("PinboardApp props", this.props);
     return (
       <div>
-        <Navbar currentUser={this.props.userData.data.user} />
+        <Navbar currentUser={this.props.user} />
         <Pinboard
-          user={this.props.userData.data.user}
+          user={this.props.user}
           room={this.state.roomAxiosData}
           posts={this.state.roomAxiosData.posts}
           refreshRoom={this.reviveRoomData}

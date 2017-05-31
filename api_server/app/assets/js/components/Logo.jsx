@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 export default
 class Logo extends Component {
   render() {
     return (
       <div className="nav-item">
-        <p className="logo"> Bridge </p>
+        <img src="http://i.imgur.com/FS0aMRv.png" />
       </div>
     );
   }
