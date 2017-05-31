@@ -39,13 +39,13 @@
   display: inline-block;
   position: relative; }
   .add-content-container.open .photo {
-    transform: translate(2.5em); }
+    transform: translate(2.7em); }
   .add-content-container.open .message {
-    transform: translate(5em); }
+    transform: translate(5.4em); }
   .add-content-container.open .note {
-    transform: translate(7.5em); }
+    transform: translate(8.1em); }
   .add-content-container.open .voice-message {
-    transform: translate(10em); }
+    transform: translate(10.8em); }
 
 .add-content {
   position: absolute;
@@ -59,8 +59,11 @@
   .add-content.top {
     position: relative; }
 
+.add-content.add:hover {
+  background: #87dff2; }
+
 .add {
-  padding: 5px 5.5px; }
+  padding: 6px 6.5px; }
 
 .add-button {
   background: #8cebcc; }

@@ -46,7 +46,7 @@
   display: inline-block;
   position: relative;
   &.open{
-  $dist: 2.5em;
+  $dist: 2.7em;
     .photo{
       transform: translate($dist);
     }
@@ -74,9 +74,15 @@
     position:relative;
   }
 }
-.add {
-  padding: 5px 5.5px;
+
+.add-content.add:hover {
+  background: #87dff2;
 }
+
+.add {
+  padding: 6px 6.5px;
+}
+
 .add-button {
   background: #8cebcc;
 }

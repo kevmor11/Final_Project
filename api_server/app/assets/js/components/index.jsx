@@ -6,7 +6,6 @@ import DashApp from './DashApp.jsx';
 import PinboardApp from './PinboardApp.jsx';
 
 const pages = {
-  'react-root': App,
   'react-dashboard': DashApp,
   'react-pinboard': PinboardApp,
 };
@@ -21,4 +20,9 @@ function run(response) {
   });
 }
 
-axios('/users/me').then(run).catch(run);
+function index() {
+  ReactDOM.render(
+    <App />, document.getElementById('react-root'));
+}
+
+axios('/users/me').then(run).catch(index);
