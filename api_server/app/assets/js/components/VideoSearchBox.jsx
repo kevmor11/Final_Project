@@ -27,11 +27,11 @@ class VideoSearchBox extends Component {
 
   render() {
     return (
-      <div>
+      <div className="content">
         <h2>Search</h2>
         <label>
-          <input id="query" value={this.state.searchString} type="text" onChange={this.updateText} onKeyPress={this.enterKeyPress} />
-          <button id="search-button" onClick={this.doSearch} >Search</button>
+          <input id="query" className="input" value={this.state.searchString} type="text" onChange={this.updateText} onKeyPress={this.enterKeyPress} />
+          <button id="search-button" className="button" onClick={this.doSearch} >Search</button>
         </label>
       </div>
     );
