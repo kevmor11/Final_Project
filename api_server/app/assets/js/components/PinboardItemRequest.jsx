@@ -22,6 +22,7 @@ class PinboardItemRequest extends Component {
         // console.log('keviiiin', post.room.id);
         return (
           <PinboardItemModal
+            className="StickyNote"
             onClick={this.props.refreshRoom}
             key={post.id}
             title={post.title}
