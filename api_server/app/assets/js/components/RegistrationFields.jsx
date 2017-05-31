@@ -6,7 +6,7 @@ import http from 'http';
 export default
 class Registration extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       first_name: "",
@@ -79,7 +79,7 @@ class Registration extends Component {
 
   render(){
     return (
-        <div className="col-lg-6">
+        <div className="col-lg-6 register-form">
           <form action="/" method="POST" className="registration" onSubmit={this.handleRegistrationSubmit}>
             <h1 className="title">Sign Up here</h1>
             <h2 className="subtitle">Join in and bridge with your loved ones </h2>
@@ -141,7 +141,7 @@ class Registration extends Component {
             <div className="field">
               <label className="label">Gender</label>
               <p className="control">
-                <span className="select">
+                <span className="select-gender select">
                   <select name="gender" value={this.state.gender} onChange={this.handleRegistrationChange}>
                     <option value="" disabled>Please Select</option>
                     <option>Male</option>
@@ -154,7 +154,7 @@ class Registration extends Component {
             </div>
             <div className="field is-grouped">
               <p className="control">
-                <button className="button is-primary" >Register</button>
+                <button className="button is-primary register" >Register</button>
               </p>
             </div>
           </form>

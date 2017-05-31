@@ -96,7 +96,7 @@ img.img-title {
 
 .button.is-primary {
   background-color: #c871ed;
-  opacity: 0.5; }
+  opacity: 0.9; }
 
 .pinboardButton {
   margin-left: 16.5em !important; }
@@ -113,3 +113,7 @@ img.img-title {
 
 .room-icon {
   margin-left: 40px; }
+
+.container {
+  width: 100%;
+  min-width: 500px; }
