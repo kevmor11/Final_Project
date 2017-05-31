@@ -38,7 +38,7 @@ constructor(props) {
             <Modal.Title>{this.props.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <p>{this.props.content}</p>
+            <p>{this.props.description}</p>
           </Modal.Body>
         </Modal>
       </div>
