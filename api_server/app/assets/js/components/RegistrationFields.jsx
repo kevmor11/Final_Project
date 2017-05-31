@@ -81,8 +81,7 @@ class Registration extends Component {
     return (
         <div className="col-lg-6 register-form">
           <form action="/" method="POST" className="registration" onSubmit={this.handleRegistrationSubmit}>
-            <h1 className="title">Sign Up here</h1>
-            <h2 className="subtitle">Join in and bridge with your loved ones </h2>
+            <h1 className="title register-title">Register</h1>
             <div className="field">
               <label htmlFor="first-name" className="label">Firstname</label>
               <p className="control">
