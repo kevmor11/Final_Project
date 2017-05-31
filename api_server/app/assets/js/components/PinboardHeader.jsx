@@ -60,7 +60,7 @@ class PinboardHeader extends Component {
           <div className="tabs is-centered">
             <ul>
               <li><button className="button is-primary pinboardButton" onClick={this.props.handlePinboardClick}>Pinboard</button></li>
-              <li><button className="button is-primary" onClick={this.props.handleHangoutClick}>Hangout</button></li>
+              <li><button className="button is-primary hangoutButton" onClick={this.props.handleHangoutClick}>Hangout</button></li>
             </ul>
           </div>
         </header>
