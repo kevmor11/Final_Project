@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AlertContainer from 'react-alert';
 import axios from 'axios';
 import { Modal, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
@@ -12,6 +13,20 @@ class PopupLink extends Component {
       title: '',
       description: '',
     }
+  }
+
+  alertOptions = {
+    offset: 255,
+    position: 'top right',
+    theme: 'dark',
+    time: 8000,
+    transition: 'scale'
+  }
+
+  showAlert = () => {
+    this.msg.show('Oops, something went wrong and your post could not be added.', {
+      type: 'error',
+    })
   }
 
   close = () => {
@@ -47,7 +62,9 @@ class PopupLink extends Component {
       title: this.state.title,
       description: this.state.description,
       category: "link"
-    }).then(this.close.bind(this)).then(this.props.refreshRoom)
+    }).then(this.close)
+      .catch(this.showAlert)
+      .then(this.props.refreshRoom)
   }
 
   render() {
@@ -86,6 +103,7 @@ class PopupLink extends Component {
             </p>
           </Modal.Body>
         </Modal>
+        <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
       </div>
     );
   }

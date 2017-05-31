@@ -21,5 +21,4 @@ function run(response) {
   });
 }
 
-
 axios('/users/me').then(run).catch(run);

@@ -59,10 +59,9 @@ class LoginField extends Component {
 
   render(){
     return (
-      <div className="col-lg-6">
+      <div className="col-lg-6 register-form">
         <div className="login">
-          <h1 className="title">Login here</h1>
-          <h2 className="subtitle">Enter your Email and Password </h2>
+          <h1 className="login-title title">Login</h1>
           <div className="field">
             <label htmlFor="name" className="label">Email</label>
             <p className="control">
@@ -95,7 +94,7 @@ class LoginField extends Component {
             <p className="control">
               <button
                 type="submit"
-                className="button is-primary"
+                className="button is-primary login"
                 onClick={this.submitForm}
               >Login
               </button>
