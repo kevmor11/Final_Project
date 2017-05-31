@@ -52,9 +52,9 @@ class PinboardHeader extends Component {
       <div>
         <header className="hangout-pinboard">
           <div className={containerClass}>
-            <div className="add-content photo" onClick={this.openImage}><i className="add fa fa-picture-o"></i></div>
-            <div className="add-content message" onClick={this.openLink}><i className="add fa fa-link"></i></div>
-            <div className="add-content note"  onClick={this.openNote}><i className="add fa fa-sticky-note-o"></i></div>
+            <div className="add-content photo add" onClick={this.openImage}><i className="add fa fa-picture-o"></i></div>
+            <div className="add-content message add" onClick={this.openLink}><i className="add fa fa-link"></i></div>
+            <div className="add-content note add"  onClick={this.openNote}><i className="add fa fa-sticky-note-o"></i></div>
             <div className="add-content add-button" onClick={this.handleClick}><i className="fa fa-plus"></i></div>
           </div>
           <div className="tabs is-centered">

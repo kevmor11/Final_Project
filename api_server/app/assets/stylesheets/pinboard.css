@@ -39,13 +39,13 @@
   display: inline-block;
   position: relative; }
   .add-content-container.open .photo {
-    transform: translate(2.5em);
+    transform: translate(2.7em);
     cursor: pointer; }
   .add-content-container.open .message {
-    transform: translate(5em);
+    transform: translate(5.4em);
     cursor: pointer; }
   .add-content-container.open .note {
-    transform: translate(7.5em);
+    transform: translate(8.1em);
     cursor: pointer; }
 
 .add-content {
@@ -60,8 +60,11 @@
   .add-content.top {
     position: relative; }
 
+.add-content.add:hover {
+  background: #87dff2; }
+
 .add {
-  padding: 5px 5.5px; }
+  padding: 6px 6.5px; }
 
 .add-button {
   background-color: #d49de8; }
@@ -98,7 +101,7 @@ img.img-title {
 
 .button.is-primary {
   background-color: #c871ed;
-  opacity: 0.5; }
+  opacity: 0.9; }
 
 .pinboardButton {
   margin-left: 16.5em !important; }
@@ -115,3 +118,7 @@ img.img-title {
 
 .room-icon {
   margin-left: 40px; }
+
+.container {
+  width: 100%;
+  min-width: 500px; }

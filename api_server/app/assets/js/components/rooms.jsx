@@ -46,6 +46,9 @@ class Rooms extends Component {
     axios.post(`/api/rooms`, {
       name: this.state.roomName
     })
+    this.setState({
+      roomName: ""
+    })
   }
 
   render() {
