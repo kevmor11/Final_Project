@@ -20,7 +20,7 @@ class Pinboard extends Component {
             refreshRoom={this.props.refreshRoom}
           />
           <PinboardContainer
-            updatePinboardApp={this.props.updatePinboardApp}
+            refreshRoom={this.props.refreshRoom}
             // TODO don't pass in this.state
             userData={this.state}
             roomName={this.props.room.name}

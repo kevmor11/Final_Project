@@ -37,7 +37,7 @@ class PopupNote extends Component {
         title: this.state.title,
         content: this.state.content,
         category: "note"
-      }).then(this.close).then(this.props.updatePinboardApp)
+      }).then(this.close).then(this.props.refreshRoom)
   }
 
   render() {
