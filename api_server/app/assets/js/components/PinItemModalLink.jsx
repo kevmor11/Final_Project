@@ -41,6 +41,7 @@ constructor(props) {
         <a><i className="fa fa-trash-o" onClick={this.onClickDeletePost}></i></a>
         <div className="item-container" onClick={this.open}>
           <p className="item img-title">{this.props.title}</p>
+          <p>{this.props.link}>{this.props.link}</p>
           <hr />
         </div>
 
