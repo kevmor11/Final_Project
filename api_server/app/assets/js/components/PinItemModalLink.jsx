@@ -29,18 +29,13 @@ constructor(props) {
   onClickDeletePost = () => {
     this.props.deletePost(this.props.postID);
   }
-  // deletePost = () => {
-  //   axios.delete(`/api/rooms/${this.props.roomID}/posts/${this.props.postID}`)
-  //     .then(this.props.refreshRoom);
-  // }
 
   render() {
-    console.log('jinnnnnnny', this.props.postID);
     return(
       <div>
         <a><i className="fa fa-trash-o" onClick={this.onClickDeletePost}></i></a>
         <div className="item-container" onClick={this.open}>
-          <p className="item img-title">{this.props.title}</p>
+          <h4><b className="item img-title">{this.props.title}</b></h4>
           <p>{this.props.link}>{this.props.link}</p>
           <hr />
         </div>

@@ -17,7 +17,6 @@ class PinboardHeader extends Component {
       showModalNote: false,
       showModalLink: false,
       showModalImage: false,
-      onPinboard: props.onPinboard
     };
   }
 

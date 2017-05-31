@@ -4,8 +4,12 @@
 
   height: 700px;
 }
+
+#react-pinboard {
+  height: 100%;
+}
+
 .hangout-pinboard {
-  background-color: white;
   padding-left:0;
   justify-content: center;
 }
@@ -18,20 +22,24 @@
   display: flex;
   flex-flow: row wrap;
 }
-.item {
-  margin: 10px;
-  flex-wrap: wrap;
-  padding: 30px 50px;
-  flex-grow: 10;
-  background: skyblue;
-  line-height: 100px;
-  display: flex;
+
+.item-container {
   border-radius: 10px;
+  margin: 10px;
+  flex-wrap: wrap; 
+  padding: 20px 30px;
+  flex-grow: 10;
+  background: rgba(254, 252, 250, 0.57);
+  line-height: 100px;
 }
 
-.item:hover {
+.item-container:hover {
   background: rgba(200, 113, 237, 0.54);
   cursor: pointer;
+}
+
+.item {
+  display: flex;
 }
 
 .add-content-container {
@@ -47,9 +55,6 @@
     }
     .note{
       transform:translate($dist * 3);
-    }
-    .voice-message{
-      transform: translate($dist * 4);
     }
   }
 }
@@ -75,6 +80,7 @@
 
 .fa-plus {
   padding: 5px 5.5px;
+  cursor: pointer;
 }
 
 .close-popup {
@@ -87,4 +93,42 @@ h2.popup-header {
 }
 .whatever {
   background-color: red;
+}
+
+.modal {
+  z-index: 9001;
+}
+
+img.img-thumb {
+  height: 100%;
+}
+
+img.img-title {
+  height: 100%;
+}
+
+#tooltip {
+  max-width: none;
+  z-index: 9001;
+}
+
+.pinboardButton {
+  margin-left: 16.5em !important;
+}
+
+.input {
+  resize: none;
+}
+
+.input-description {
+  height: 200px;
+}
+
+.modal-title { 
+  display: inline; 
+  margin-left: 16.5em;
+}
+
+.room-icon {
+  margin-left: 40px;
 }

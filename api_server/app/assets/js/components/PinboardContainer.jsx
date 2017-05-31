@@ -26,7 +26,7 @@ class PinboardContainer extends Component {
     this.setState(Object.assign({}, this.state, { openModal: modalName }));
   }
 
-  render(){
+  render() {
     return(
       <div>
         <div className="tile is-parent">

@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 
 export default
 class VideoPlayer extends Component {
-
   render() {
-    var url = "https://youtube.com/embed/" + this.props.vid;
+    const url = "https://youtube.com/embed/" + this.props.vid;
     return (
       <iframe
         width="560"

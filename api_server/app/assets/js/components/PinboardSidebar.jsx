@@ -30,7 +30,7 @@ class PinboardSidebar extends Component {
     axios.get('/api/users')
     .then(res => {
       const users = res.data.users;
-      users.forEach((user, i) => {
+      users.forEach((user) => {
         if (user.email === this.state.receiver) {
           this.addUserToRoom(user.id);
         }
@@ -45,10 +45,9 @@ class PinboardSidebar extends Component {
         <div className="tile is-parent is-2 rooms">
           <article className="tile is-child box">
             <div className="content">
-            { users.length === 1 &&
             <div className="user-invite">
               <div className="field">
-                <label htmlFor="receiver" className="label">Invite Someone to Join Your Room</label>
+                <label htmlFor="receiver" className="label">Invite a Friend</label>
                 <p className="control">
                   <input className="input" type="text" name="receiver" id="invite_receiver" onChange={ this.handleInviteFormChange } value={this.state.receiver} />
                 </p>
@@ -57,14 +56,12 @@ class PinboardSidebar extends Component {
                   <button type="submit" className="pinboard button is-primary" onClick={ this.submitInviteForm }>Submit</button>
                 </p>
               </div>
-            }
+              <br />
               <p className="subtitle">{this.props.room.name}</p>
+              <i className="fa fa-heart-o fa-2x" aria-hidden="true"/>
+              <br/>
+              <br/>
               <table className="table">
-                <thead>
-                  <tr>
-                    <th><i className="fa fa-heart-o fa-2x" aria-hidden="true"></i></th>
-                  </tr>
-                </thead>
                 <tbody>
                   {users.map((item) => {
                     return (
@@ -75,6 +72,12 @@ class PinboardSidebar extends Component {
                   })}
                 </tbody>
               </table>
+              {/*<i className="fa fa-heart-o fa-2x room-icon" aria-hidden="true" />
+                {users.map((item) => {
+                  return (
+                    <p>{item.first_name}</p>
+                  )
+                })}*/}
             </div>
           </article>
         </div>

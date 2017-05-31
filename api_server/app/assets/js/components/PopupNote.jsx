@@ -11,7 +11,6 @@ class PopupNote extends Component {
       title: '',
       description: '',
       currentRoomName: window.location['pathname'].split('/')[2],
-      currentRoomID: this.props.roomID
     };
   }
 
