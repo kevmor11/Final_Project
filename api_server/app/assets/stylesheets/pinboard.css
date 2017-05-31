@@ -29,9 +29,9 @@
   flex-grow: 10;
   background: rgba(254, 252, 250, 0.57);
   line-height: 100px;
-  height: 257px;
+  height: 267px;
   max-width: 260px;
-  max-height: 200px; }
+  max-height: 210px; }
 
 .item-container:hover {
   background: #d49de8;
@@ -178,3 +178,6 @@ img.img-title {
 
 .image-desc {
   margin: 0 7px; }
+
+.image-thumb {
+  margin: 3px 0; }

@@ -35,7 +35,7 @@ constructor(props) {
         <a><i className="fa fa-trash-o" onClick={this.onClickDeletePost}></i></a>
         <div className="item-container" onClick={this.open}>
           <h4><b className="item">{this.props.title}</b></h4>
-          <img src={this.props.thumb} alt="Avatar"/>
+          <img className="image-thumb" src={this.props.thumb} alt="Avatar"/>
         </div>
 
         <Modal show={this.state.showModal} onHide={this.close}>
