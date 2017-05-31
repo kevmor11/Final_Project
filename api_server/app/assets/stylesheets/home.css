@@ -2,7 +2,9 @@ html {
   height: 100%; }
 
 body {
-  background-size: 1450px 1200px;
+  overflow: auto;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   background-image: url("https://www.9to5animations.com/wp-content/uploads/2016/12/Nature-sunset-hd-wallpaper.jpg");
   height: 100%; }
 
