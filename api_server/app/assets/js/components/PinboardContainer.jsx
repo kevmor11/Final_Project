@@ -41,7 +41,7 @@ class PinboardContainer extends Component {
               {this.state.onPinboard ? <PinboardItems
                                         posts={this.props.posts}
                                         room={this.props.room}
-                                        userData={this.props.userData}
+                                        user={this.props.user}
                                         openModal={this.state.openModal}
                                         onClose={() => this.setState({openModal: ''})}
                                       /> : <Hangout roomName={this.props.roomName} roomID={this.props.roomID}/>}

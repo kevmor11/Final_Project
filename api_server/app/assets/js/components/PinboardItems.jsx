@@ -19,7 +19,7 @@ class PinboardItems extends Component {
         <PinboardItemRequest
           post={this.props.posts}
           roomID={this.props.roomID}
-          userData={this.props.userData}
+          user={this.props.user}
         />
       </div>
     )

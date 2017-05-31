@@ -27,12 +27,13 @@ class PinboardApp extends Component {
   }
 
   render() {
+    console.log("PinboardApp props", this.props);
     return (
       <div>
-        <Navbar currentUser={this.props.userData.data.user} />
+        <Navbar currentUser={this.props.user} />
         <Pinboard
           updatePinboardApp={this.reviveRoomData}
-          user={this.props.userData.data.user}
+          user={this.props.user}
           room={this.state.roomAxiosData}
           posts={this.state.roomAxiosData.posts}
           refreshRoom={this.reviveRoomData}

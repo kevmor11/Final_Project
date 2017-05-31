@@ -30,7 +30,7 @@ constructor(props) {
         <div className="item" onClick={this.open}>
           <p className="img-title">{this.props.title}</p>
           <i className="add fa fa-picture-o"></i>
-          <img className="img-thumb" src={'http://localhost:3000/' + this.props.thumb}/>
+          <img className="img-thumb" src={this.props.thumb}/>
         </div>
 
         <Modal show={this.state.showModal} onHide={this.close}>
@@ -38,7 +38,7 @@ constructor(props) {
             <Modal.Title>{this.props.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <img src={'http://localhost:3000/' + this.props.img}/>
+            <img src={this.props.img}/>
             <p>{this.props.description}</p>
           </Modal.Body>
         </Modal>
