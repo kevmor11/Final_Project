@@ -50,6 +50,11 @@ class PinboardApp extends Component {
     this.setSubscription();
   }
 
+  componentWillUnmount() {
+    if(!this.cable) { return; }
+    this.cable.disconnect();
+  }
+
   setSubscription() {
     console.log('setting subscription ', ActionCable);
     this.cable = ActionCable.createConsumer();
@@ -57,8 +62,8 @@ class PinboardApp extends Component {
       connected: () => {
         console.log('connected')
       },
-      disconnected: () => {
-        console.log('disconnected')
+      disconnected: (e) => {
+        console.log('disconnected', e)
       },
       received: (data) => {
         this.updatePostsFromDB(data);
