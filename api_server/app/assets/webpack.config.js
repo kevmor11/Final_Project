@@ -2,11 +2,11 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  devtool: 'eval',
+  devtool: 'source-map',
   entry: './js/components/index.jsx',
   output: {
     filename: 'bundle.js',
-    path: path.join(__dirname, 'javascripts')
+    path: path.join(__dirname, 'javascripts'),
   },
   // output: {
   //   path: path.join(__dirname, 'dist'),
@@ -18,12 +18,12 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loaders: ['babel-loader'],
-        include: path.join(__dirname, 'js')
+        include: path.join(__dirname, 'js'),
       },
       {
         test: /\.scss$/,
-        loaders: ["style-loader", "css-loader", "sass-loader"]
-      }
-    ]
-  }
+        loaders: ["style-loader", "css-loader", "sass-loader"],
+      },
+    ],
+  },
 };

@@ -46,13 +46,11 @@ class Rooms extends Component {
     axios.post(`/api/rooms`, {
       name: this.state.roomName
     })
-    // .catch(this.showAlert);
   }
 
   render() {
     let allRooms;
     allRooms = this.state.rooms.map((room, i) => {
-      console.log("KEVIN", room);
       return <Room key={i} roomName={room.name} roomNumber={i+1}/>
     })
     return (

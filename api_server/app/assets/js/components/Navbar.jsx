@@ -5,13 +5,12 @@ import Logo from './Logo.jsx';
 
 export default
 class Navbar extends Component {
-
   render() {
     return (
       <div>
         <nav className="nav has-shadow">
           <div className="container">
-            <NavbarLeft user={ this.props.currentUser} />
+            <NavbarLeft user={this.props.currentUser} />
             <Logo />
             <div className="nav-right nav-menu">
               <UserLogoutButton user={this.props.currentUser} />

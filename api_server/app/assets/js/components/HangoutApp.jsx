@@ -8,7 +8,6 @@ import RegistrationFields from './RegistrationFields.jsx';
 
 export default
 class HangoutApp extends Component {
-
   render() {
     return (
       <div>

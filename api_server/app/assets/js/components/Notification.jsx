@@ -13,6 +13,6 @@ class Notification extends Component {
         <p className="notification-content">Nawar! invited you to join his room.</p>
         <button className="btn btn-primary">Join</button>
       </div>
-    )
+    );
   }
-}  
+}
