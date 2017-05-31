@@ -55,7 +55,6 @@ class Rooms extends Component {
   render() {
     let allRooms;
     allRooms = this.state.rooms.map((room, i) => {
-      console.log("KEVIN", room);
       return <Room key={room.id} roomName={room.name} roomNumber={i+1}/>
     })
     return (

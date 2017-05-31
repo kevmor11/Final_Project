@@ -12,12 +12,14 @@ const pages = {
 };
 
 
-function run(user) {
+function run(response) {
   Object.entries(pages).forEach(([id, Component]) => {
     const root = document.getElementById(id);
     if (!root) { return; }
+    const user = (response instanceof Error) ? {} : response.data.user;
+
     ReactDOM.render(
-      <Component userData={user} />, root);
+      <Component user={user} />, root);
   });
 }
 
