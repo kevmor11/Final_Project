@@ -25,14 +25,12 @@ class RoomsController < ApplicationController
     respond_to do |format|
       format.json { render json: @room }
       format.html {}
+    end
   end
 
-
-    # if @room.present?
-    #   render json: @room, serializer: RoomSerializer, status: 200
-    # else
-    #   render json: { errors: ["Room not found."] }, status: 422
-    # end
+  def destroy
+    @room = Room.find params[:id]
+    @room.destroy
   end
 
   private

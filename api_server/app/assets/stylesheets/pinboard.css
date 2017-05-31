@@ -35,22 +35,26 @@
 .item {
   display: flex; }
 
+.hangout-container {
+  padding: 8em; }
+
 .add-content-container {
   display: inline-block;
   position: relative; }
   .add-content-container.open .photo {
-    transform: translate(2.7em); }
+    transform: translate(2.7em);
+    cursor: pointer; }
   .add-content-container.open .message {
-    transform: translate(5.4em); }
+    transform: translate(5.4em);
+    cursor: pointer; }
   .add-content-container.open .note {
-    transform: translate(8.1em); }
-  .add-content-container.open .voice-message {
-    transform: translate(10.8em); }
+    transform: translate(8.1em);
+    cursor: pointer; }
 
 .add-content {
   position: absolute;
   border-radius: 100%;
-  background: #8cebff;
+  background-color: rgba(62, 192, 243, 0.54);
   display: inline-block;
   padding: .5em;
   width: 2.5em;
@@ -66,10 +70,11 @@
   padding: 6px 6.5px; }
 
 .add-button {
-  background: #8cebcc; }
+  background-color: #d49de8; }
 
 .fa-plus {
-  padding: 5px 5.5px; }
+  padding: 5px 5.5px;
+  cursor: pointer; }
 
 .fa-trash-o {
   margin-top: 0px;
@@ -102,7 +107,23 @@ img.img-title {
   opacity: 0.9; }
 
 .pinboardButton {
-  margin-left: 16.5em !important; }
+  margin-left: -16em;
+  padding: 0.4em 10em;
+  margin-left: 30px; }
+
+.hangoutButton {
+  margin-left: 5em !important;
+  padding: 0.4em 10em; }
+
+.video-chat {
+  padding: 0.4em 10em;
+  margin: 2em;
+  margin-left: 30px; }
+
+.youtube {
+  padding: 0.4em 9.2em;
+  margin-left: 30px;
+  margin: 2em; }
 
 .input {
   resize: none; }
@@ -120,3 +141,9 @@ img.img-title {
 .container {
   width: 100%;
   min-width: 500px; }
+
+.fa-video-camera {
+  margin-left: 2em; }
+
+.fa-youtube-play {
+  margin-left: 2em; }
