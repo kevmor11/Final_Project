@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import PinItemModalImage from './PinItemModalImage.jsx'
-import PinItemModalNote from './PinItemModalNote.jsx'
-import PinItemModalLink from './PinItemModalLink.jsx'
+import PinItemModalImage from './PinItemModalImage.jsx';
+import PinItemModalNote from './PinItemModalNote.jsx';
+import PinItemModalLink from './PinItemModalLink.jsx';
+import axios from 'axios';
 
 export default
 class PinboardItemModal extends Component {
@@ -10,43 +11,65 @@ class PinboardItemModal extends Component {
     super(props); // super calls `constructor` in React.Component
     this.state = {
       showModal: false,
-      user: null,
       postID: null,
     };
   }
 
+  deletePost = (postID) => {
+    axios.delete(`/api/rooms/${this.props.roomID}/posts/${postID}`)
+      .then(this.props.refreshRoom);
+  }
 
   render() {
+    let choice;
+
+    console.log(`Rendering ${this.props.category} in PinboardItemModal`);
+    console.log(this.props);
+    
     switch (this.props.category) {
       case "image":
-        return (
+        choice = (
           <PinItemModalImage
             postID={this.props.postID}
             title={this.props.title}
             description={this.props.description}
             img={this.props.img}
             thumb={this.props.thumb}
-            user={this.state.user}
+            name={this.props.user}
+            roomID={this.props.roomID}
+            refreshRoom={this.props.refreshRoom}
+            deletePost={this.deletePost}
           />);
+        break;
       case "note":
-        return (
+        choice = (
           <PinItemModalNote
             postID={this.props.postID}
             title={this.props.title}
-            content={this.props.content}
-            user={this.state.user}
+            description={this.props.description}
+            name={this.props.user}
+            roomID={this.props.roomID}
+            refreshRoom={this.props.refreshRoom}
+            deletePost={this.deletePost}
           />);
+        break;
       case "link":
-        return (
+        choice = (
           <PinItemModalLink
             postID={this.props.postID}
             title={this.props.title}
             description={this.props.description}
             link={this.props.link}
-            user={this.state.user}
+            name={this.props.user}
+            roomID={this.props.roomID}
+            refreshRoom={this.props.refreshRoom}
+            deletePost={this.deletePost}
           />);
+        break;
       default:
         throw new Error('Content category is not valid');
     }
+
+    return choice;
   }
 }

@@ -21,10 +21,13 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find_by(name: params[:id])
+    @posts = @room.posts.all
     respond_to do |format|
       format.json { render json: @room }
       format.html {}
-    end
+  end
+
+
     # if @room.present?
     #   render json: @room, serializer: RoomSerializer, status: 200
     # else

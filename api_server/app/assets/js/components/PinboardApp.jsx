@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navbar from './Navbar.jsx';
 import Pinboard from './Pinboard.jsx'
 import axios from 'axios';
+import ActionCable from 'actioncable';
 
 export default
 class PinboardApp extends Component {
@@ -24,7 +25,30 @@ class PinboardApp extends Component {
 
   componentDidMount() {
     this.reviveRoomData();
+    this.setSubscription();
   }
+
+  componentWillUnmount() {
+    if(!this.cable) { return; }
+    this.cable.disconnect();
+  }
+
+  setSubscription() {
+    console.log('setting subscription ', ActionCable);
+    this.cable = ActionCable.createConsumer();
+    this.cable.subscriptions.create("PostChannel", {
+      connected: () => {
+        console.log('connected')
+      },
+      disconnected: (e) => {
+        console.log('disconnected', e)
+      },
+      received: () => {
+        this.reviveRoomData();
+      }
+    });
+  }
+
 
   render() {
     console.log("PinboardApp props", this.props);
@@ -32,7 +56,6 @@ class PinboardApp extends Component {
       <div>
         <Navbar currentUser={this.props.user} />
         <Pinboard
-          updatePinboardApp={this.reviveRoomData}
           user={this.props.user}
           room={this.state.roomAxiosData}
           posts={this.state.roomAxiosData.posts}

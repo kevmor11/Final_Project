@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get '/users/me', to: 'users#me'
+  
 
+  # Enablize ActionCable
   mount ActionCable.server => '/cable'
 
   scope '/api' do

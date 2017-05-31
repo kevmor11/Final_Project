@@ -15,8 +15,9 @@ class PinboardItems extends Component {
 
   render() {
     return(
-      <div>
+      <div className="container">
         <PinboardItemRequest
+          refreshRoom={this.props.refreshRoom}
           post={this.props.posts}
           roomID={this.props.roomID}
           user={this.props.user}

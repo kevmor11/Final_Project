@@ -13,8 +13,8 @@ class Pinboard extends Component {
             refreshRoom={this.props.refreshRoom}
           />
           <PinboardContainer
-            updatePinboardApp={this.props.updatePinboardApp}
             user={this.props.user}
+            refreshRoom={this.props.refreshRoom}
             roomName={this.props.room.name}
             roomID={this.props.room.id}
             room={this.props.room}
