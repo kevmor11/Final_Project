@@ -10,9 +10,6 @@ class Rooms extends Component {
     this.state = {
       roomName: "",
       rooms: props.rooms,
-      // allRoomsNames: props.rooms.map((room) => {
-      // return room.name
-      // })
     }
   }
 

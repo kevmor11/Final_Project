@@ -18,7 +18,6 @@ class PinboardItemRequest extends Component {
     let allPosts = [];
     if (this.props.post) {
       allPosts = this.props.post.map((post) => {
-        console.log('keviiiin', post.description);
         return (
           <PinboardItemModal
             className="StickyNote"

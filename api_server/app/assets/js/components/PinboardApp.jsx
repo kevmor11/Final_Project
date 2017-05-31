@@ -51,7 +51,7 @@ class PinboardApp extends Component {
 
 
   render() {
-    console.log("PinboardApp props", this.props);
+  console.log("KEVIN", this.state.roomAxiosData.posts);
     return (
       <div>
         <Navbar currentUser={this.props.user} />

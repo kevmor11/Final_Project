@@ -22,10 +22,6 @@ class PinboardItemModal extends Component {
 
   render() {
     let choice;
-
-    console.log(`Rendering ${this.props.category} in PinboardItemModal`);
-    console.log(this.props);
-    
     switch (this.props.category) {
       case "image":
         choice = (
@@ -69,7 +65,6 @@ class PinboardItemModal extends Component {
       default:
         throw new Error('Content category is not valid');
     }
-
     return choice;
   }
 }
