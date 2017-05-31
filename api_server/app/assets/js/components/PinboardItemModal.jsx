@@ -33,7 +33,7 @@ class PinboardItemModal extends Component {
           <PinItemModalNote
             postID={this.props.postID}
             title={this.props.title}
-            content={this.props.content}
+            description={this.props.description}
             user={this.state.user}
           />);
       case "link":
