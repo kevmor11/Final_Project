@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       render json: user, serializer: UserSerializer, status: 201
     else
-      render json: { errors: [user.errors.full_messages] }, status: 422
+      render json: { errors:  }, status: 422
     end
   end
 
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
       if current_user
         render json: current_user, serializer: UserSerializer, status: 200
       else
-        render json: { errors: current_user.errors.full_messages }, status: 422
+        render json: { errors: ["user not found"]}, status: 422
       end
     end
 
