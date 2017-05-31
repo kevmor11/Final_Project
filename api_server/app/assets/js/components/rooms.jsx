@@ -81,7 +81,7 @@ class Rooms extends Component {
                 <tr>
                   <th>
                   </th>
-                  <th>Room Name</th>
+                  <th>Rooms</th>
                 </tr>
               </thead>
               <tbody>

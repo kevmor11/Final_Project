@@ -3,7 +3,8 @@
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
-  height: 100%; }
+  height: 100%;
+  width: 100%; }
 
 .button.is-primary {
   background-color: #c871ed;
@@ -16,7 +17,7 @@
   text-decoration: none; }
 
 .box {
-  background-color: rgba(254, 252, 250, 0.57); }
+  background-color: rgba(254, 252, 250, 0.7); }
 
 .table {
   background-color: rgba(63, 179, 242, 0); }
@@ -51,6 +52,3 @@ img.notification-avatar {
 
 .registerApp {
   height: 100%; }
-
-.nav-item {
-  margin-left: 90px; }

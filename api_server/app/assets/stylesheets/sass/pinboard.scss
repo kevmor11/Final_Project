@@ -2,6 +2,7 @@
   padding: 20px;
   display: flex;
   height: 100%;
+  width: 100%;
 }
 
 #react-pinboard {
@@ -16,6 +17,7 @@
   padding-top:0;
   padding-left:2;
   padding-right:2;
+  min-width: 65em;
 }
 .components-container {
   display: flex;
@@ -30,7 +32,9 @@
   flex-grow: 10;
   background: rgba(254, 252, 250, 0.57);
   line-height: 100px;
-
+  height: 257px;
+  max-width: 260px;
+  max-height: 200px;
 }
 
 .item-container:hover {
@@ -40,6 +44,18 @@
 
 .item {
   display: flex;
+}
+
+p.item {
+  height: 257px;
+  max-width: 260px;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5; /* number of lines to show */
+  max-height: 5*20px;
 }
 
 .hangout-container {
@@ -80,7 +96,7 @@
 }
 
 .add-content.add:hover {
-  background: #87dff2;
+  background: #7bc8ed;
 }
 
 .add {
@@ -138,13 +154,15 @@ img.img-title {
 
 .pinboardButton {
   margin-left: -16em;
-  padding: 0.4em 10em;
+  padding: 0.4em 5em;
   margin-left: 30px;
+  margin-bottom: .6em;
 }
 
 .hangoutButton {
   margin-left: 5em !important;
-  padding: 0.4em 10em;
+  padding: 0.4em 5em;
+  margin-bottom: .6em;
 }
 
 .video-chat {
@@ -169,7 +187,7 @@ img.img-title {
 
 .modal-title {
   display: inline;
-  margin-left: 16.5em; 
+  margin-left: 16.5em;
 }
 
 .room-icon {
@@ -187,4 +205,19 @@ img.img-title {
 
 .fa-youtube-play {
   margin-left: 2em;
+}
+
+.modal-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 0 auto;
+}
+
+.modal-header {
+  background-color: #edf3ff;
+}
+
+.image-desc {
+  margin: 0 7px;
 }
