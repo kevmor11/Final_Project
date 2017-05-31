@@ -10,8 +10,6 @@ class PinboardContainer extends Component {
     super(props); // super calls `constructor` in React.Component
     this.state = {
       openModal: '',
-      user: props.userData,
-      roomAxiosData:props.roomAxiosData,
       onPinboard: true,
     };
   }
@@ -29,7 +27,6 @@ class PinboardContainer extends Component {
   }
 
   render(){
-
     return(
       <div>
         <div className="tile is-parent">
@@ -39,14 +36,13 @@ class PinboardContainer extends Component {
                             handlePinboardClick={this.handlePinboardClick}
                             handleHangoutClick={this.handleHangoutClick}
                             modalToggle={this.openModal}
-                            userData={this.state.user}
                             roomID={this.props.roomID} />
             <section>
               {this.state.onPinboard ? <PinboardItems
                                         refreshRoom={this.props.refreshRoom}
                                         posts={this.props.posts}
-                                        roomAxiosData={this.props.roomAxiosData}
-                                        userData={this.state.user}
+                                        room={this.props.room}
+                                        user={this.props.user}
                                         openModal={this.state.openModal}
                                         onClose={() => this.setState({openModal: ''})}
                                       /> : <Hangout roomName={this.props.roomName} roomID={this.props.roomID}/>}

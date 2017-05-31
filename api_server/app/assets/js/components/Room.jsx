@@ -10,7 +10,7 @@ class Rooms extends Component {
   render() {
     return (
       <tr>
-        <th>{this.props.roomNumber}</th>
+        <th className="room-list">{this.props.roomNumber}</th>
         <td>
           <p className="field">
             <a onClick={this.redirectionTime}>
