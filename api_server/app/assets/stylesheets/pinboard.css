@@ -28,6 +28,10 @@
   background: rgba(254, 252, 250, 0.57);
   line-height: 100px; }
 
+.container {
+  width: 100%;
+}
+
 .item-container:hover {
   background: #d49de8;
   cursor: pointer; }
@@ -110,3 +114,7 @@ img.img-title {
 .modal-title {
   display: inline;
   margin-left: 16.5em; }
+
+.vid-thumb-title {
+  font-size: 13px;
+}

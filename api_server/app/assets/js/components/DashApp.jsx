@@ -8,29 +8,20 @@ import Rooms from './Rooms.jsx';
 
 export default
 class DashApp extends Component {
-
-  constructor(props) {
-    super(props); // super calls `constructor` in React.Component
-    this.state = {
-      user: props.userData.data.user,
-    }
-  }
-
-
   render() {
     let rooms = [];
-    rooms = this.state.user.rooms;
+    rooms = this.props.user.rooms;
 
     return (
       <div>
-        <Navbar currentUser={this.state.user} />
+        <Navbar currentUser={this.props.user} />
         <div className="tile is-ancestor logged">
           <div className="tile is-vertical is-8">
             <div className="tile">
               <Notifications />
             </div>
           </div>
-          <Rooms rooms={this.state.user.rooms} />
+          <Rooms rooms={rooms} />
         </div>
       </div>
     );

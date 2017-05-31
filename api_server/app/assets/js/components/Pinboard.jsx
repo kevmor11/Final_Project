@@ -4,13 +4,6 @@ import PinboardContainer from './PinboardContainer.jsx'
 
 export default
 class Pinboard extends Component {
-  constructor(props) {
-    super(props); // super calls `constructor` in React.Component
-    this.state = {
-      user: props.userData,
-    };
-  }
-
   render() {
     return (
       <div>
@@ -20,13 +13,11 @@ class Pinboard extends Component {
             refreshRoom={this.props.refreshRoom}
           />
           <PinboardContainer
+            user={this.props.user}
             refreshRoom={this.props.refreshRoom}
-            // TODO don't pass in this.state
-            userData={this.state}
             roomName={this.props.room.name}
             roomID={this.props.room.id}
-            // TODO change all references to roomAxiosData to room
-            roomAxiosData={this.props.room}
+            room={this.props.room}
             posts={this.props.posts}
           />
         </div>

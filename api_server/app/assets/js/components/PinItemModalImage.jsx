@@ -34,22 +34,15 @@ constructor(props) {
       <div>
         <a><i className="fa fa-trash-o" onClick={this.onClickDeletePost}></i></a>
         <div className="item-container" onClick={this.open}>
-          <h4><b className="item">{this.props.title}</b></h4> 
-          <img src={'http://localhost:3000/' + this.props.thumb} alt="Avatar"/>
+          <h4><b className="item">{this.props.title}</b></h4>
+          <img src={this.props.thumb} alt="Avatar"/>
         </div>
-        {/*<div className="item-container" onClick={this.open}>
-          <p className="item img-title">{this.props.title}</p>
-          <i className="item add fa fa-picture-o"></i>
-          <p className="item">{this.props.name}</p>
-          <img className="item img-thumb" src={'http://localhost:3000/' + this.props.thumb}/>*/}
-        {/*</div>*/}
-
         <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
             <Modal.Title>{this.props.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <img src={'http://localhost:3000/' + this.props.img}/>
+            <img src={this.props.img}/>
             <p>{this.props.description}</p>
           </Modal.Body>
           <Modal.Footer>

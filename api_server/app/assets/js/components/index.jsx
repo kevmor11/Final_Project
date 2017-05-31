@@ -15,7 +15,7 @@ function run(user) {
     const root = document.getElementById(id);
     if (!root ) return;
     ReactDOM.render(
-      <Component userData={user} />, root);
+      <Component user={user} />, root);
   });
 }
 

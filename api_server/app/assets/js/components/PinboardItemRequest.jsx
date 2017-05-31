@@ -7,11 +7,10 @@ class PinboardItemRequest extends Component {
     super(props); // super calls `constructor` in React.Component
     this.state = {
       showModal: false,
-      user: props.userData.user,
+      user: props.user,
       postID: null,
       posts: '',
-      userData: props.userData.user,
-      roomAxiosData: props,
+      userData: props.user,
     };
   }
 

@@ -11,7 +11,8 @@ class VideoThumbNail extends Component {
   render() {
     return (
       <div>
-        <label>{this.props.nail.title}</label>
+        <label className="vid-thumb-title">{this.props.nail.title}</label>
+        <br />
         <img
           className="thumb"
           src={this.props.nail.url}
