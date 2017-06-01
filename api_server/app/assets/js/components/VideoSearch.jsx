@@ -61,7 +61,7 @@ class VideoSearch extends Component {
 
         {doBox   ? ( <VideoSearchBox doSearch={this.searchAndShow} color={this.state.color} /> ) : ""}
         {doNails ? ( <VideoThumbnailList nails={this.state.thumbnails} pick={this.props.pickVideo} /> ) : ""}
-        {doVid   ? ( <VideoPlayer vid={this.props.currentVideo} /> ) : ""}
+        {doVid   ? ( <VideoPlayer vid={this.props.currentVideo} simulate={this.props.simulate} /> ) : ""}
       </div>
     );
   }

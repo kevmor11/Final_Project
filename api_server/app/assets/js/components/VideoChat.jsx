@@ -13,7 +13,7 @@ class VideoChat extends Component {
             room_name = roomName;
           })
         }*/}
-        <iframe src={"//appear.in/" + this.props.roomName + "-" + this.props.roomID} width="800" height="640" frameBorder="0" />
+        <iframe src={"//appear.in/" + this.props.roomName + "-" + this.props.roomID} frameBorder="0" allowFullScreen="true" id="iframe" />
       </div>
     );
   }
