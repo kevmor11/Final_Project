@@ -45,30 +45,19 @@ class PinboardSidebar extends Component {
         <div className="tile is-parent is-2 rooms">
           <article className="tile is-child box">
             <div className="content">
-            <div className="user-invite">
-              <div className="field">
-                <label htmlFor="receiver" className="label">Invite a Friend</label>
-                <p className="control">
-                  <input className="input" type="text" name="receiver" id="invite_receiver" onChange={ this.handleInviteFormChange } value={this.state.receiver} />
-                </p>
-              </div>
+              <div className="user-invite">
+                <div className="field">
+                  <label htmlFor="receiver" className="label">Invite a Friend</label>
+                  <p className="control">
+                    <input className="input" type="text" name="receiver" id="invite_receiver" onChange={ this.handleInviteFormChange } value={this.state.receiver} />
+                  </p>
+                </div>
                 <p className="control">
                   <button type="submit" className="pinboard button hover" onClick={ this.submitInviteForm }>Send Invite</button>
                 </p>
               </div>
               <br />
               <h3 className="subtitle">{this.props.room.name}</h3>
-              {/*<table className="table">
-                <tbody>
-                  {users.map((item) => {
-                    return (
-                      <tr key={item.id}>
-                        <td>{item.first_name}</td>
-                      </tr>
-                    )
-                  })}
-                </tbody>
-              </table>*/}
               <h5>Members:</h5>
               <ul>
                 {users.map((item) => {
