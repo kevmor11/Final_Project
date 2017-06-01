@@ -42,7 +42,6 @@ class Hangout extends Component {
 
   pickVideo = (vid) => {
     this.setState({currentVideo: vid}, () => {
-      console.log("ABOUT TO PERFORM LOAD VIDEO");
       this.channel.loadVideo(vid);
     });
   }
