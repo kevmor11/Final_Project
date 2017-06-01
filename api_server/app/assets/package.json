@@ -33,7 +33,8 @@
     "react-modal": "^1.7.7",
     "sass-loader": "6.0.5",
     "style-loader": "0.18.1",
-    "webpack": "^2.6.1"
+    "webpack": "^2.6.1",
+    "youtube-iframe": "^1.0.3"
   },
   "devDependencies": {
     "webpack-dev-server": "2.4.5"

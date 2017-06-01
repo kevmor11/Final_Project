@@ -118,9 +118,7 @@ class Hangout extends Component {
         this.renderForAll(data.video);
       },
       loadVideo: function(id) {
-        this.perform('load', { video: id }, () => {
-          this.updateVideo(id);
-        });
+        this.perform('load', { video: id });
       }
     });
   }
