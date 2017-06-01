@@ -68,3 +68,6 @@
 .profile-name {
   font-size: 2em;
   margin-top: 1em; }
+
+.room-name {
+  cursor: pointer; }

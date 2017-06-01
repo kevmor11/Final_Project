@@ -20,9 +20,9 @@ class Rooms extends Component {
         <td>
           <p className="field">
             <a><i className="fa fa-trash-o" onClick={this.onDeleteRoom}></i></a>
-            <a onClick={this.redirectionTime}>
+            <div className="room-name" onClick={this.redirectionTime}>
               {this.props.roomName}
-            </a>
+            </div>
           </p>
         </td> 
       </tr>
