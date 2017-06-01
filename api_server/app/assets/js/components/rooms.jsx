@@ -72,7 +72,7 @@ class Rooms extends Component {
       return <Room key={i} roomID={room.id} roomName={room.name} roomNumber={i+1} deleteRoom={this.deleteRoom}/>
     })
     return (
-      <div className="tile is-parent is-3 rooms">
+      <div className="tile is-parent profile is-3 rooms">
         <article className="tile is-child box rooms">
         <div className="content">
             <p className="subtitle">Your Rooms</p>

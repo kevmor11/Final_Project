@@ -7,7 +7,20 @@
   width: 100%; }
 
 .button.hover {
-  background-color: #8790db;
+  background-color: #8790db; }
+
+.logged {
+  width: 100%; }
+
+.dash-container {
+  width: 100%; }
+
+.profile {
+  width: 100%;
+  flex-grow: 1; }
+
+.button.is-primary {
+  background-color: #c871ed;
   opacity: 0.9; }
 
 .input {
@@ -27,28 +40,31 @@
   flex-direction: column;
   justify-content: flex-start; }
 
-.notification.notification-center {
-  background-color: rgba(254, 252, 250, 0.57); }
-
-.notification {
-  background-color: #D1D1D1; }
-
-p.notification-content {
-  display: inline;
-  margin-left: 15px; }
-
-img.notification-avatar {
-  border-radius: 4px;
-  height: 50px; }
-
 .tile.is-child.box.dashboard.profilebox {
   right: 0; }
 
 #react-dashboard {
-  height: 100%; }
+  height: 100%;
+  width: 100%; }
 
 #react-root {
   height: 100%; }
 
 .registerApp {
   height: 100%; }
+
+.profile-container {
+  padding: 2em;
+  margin: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center; }
+
+.profile-avatar {
+  max-block-size: 10em; }
+
+.profile-name {
+  font-size: 2em;
+  margin-top: 1em; }
