@@ -69,11 +69,14 @@ class PinboardSidebar extends Component {
                   })}
                 </tbody>
               </table>*/}
+              <h5>Members:</h5>
+              <ul>
                 {users.map((item) => {
                   return (
-                    <p key={item.id}>{item.first_name}</p>
+                    <li key={item.id}>{item.first_name}</li>
                   )
                 })}
+              </ul>
             </div>
           </article>
         </div>
