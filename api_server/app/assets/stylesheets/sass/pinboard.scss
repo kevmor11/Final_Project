@@ -1,3 +1,5 @@
+$button-color: #8DCEEE;
+$button-color-hover: #87adff;
 $trashDeleteButtonColor : white;
 
 .tile.is-ancestor.mainboard {
@@ -39,8 +41,10 @@ $trashDeleteButtonColor : white;
   padding: 20px 30px;
   background: rgba(254, 252, 250, 0.57);
   line-height: 100px;
-  height: 257px;
-  max-height: 200px;
+  height: 267px;
+  max-height: 210px;
+  // height: 257px;
+  // max-height: 200px;
 }
 
 .item-div {
@@ -48,7 +52,7 @@ $trashDeleteButtonColor : white;
 }
 
 .item-container:hover {
-  background: #d49de8;
+  background: $button-color-hover;
   cursor: pointer;
 }
 
@@ -66,6 +70,16 @@ p.item {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 5; /* number of lines to show */
   max-height: 5*20px;
+}
+
+button.video-chat {
+  // padding: 8em;
+    left: 25.4%;
+}
+
+button.youtube {
+  // padding: 8em;
+    left: 25.4%;
 }
 
 .hangout-container {
@@ -94,19 +108,19 @@ p.item {
 .add-content {
   position:absolute;
   border-radius: 100%;
-  background-color: rgba(62, 192, 243, 0.54);
+  background-color: #6ba3ff;
   display: inline-block;
   padding: .5em;
   width: 2.5em;
   height: 2.5em;
-  transition: transform .5s linear;
+  transition: transform .3s linear;
   &.top{
     position:relative;
   }
 }
 
 .add-content.add:hover {
-  background: #7bc8ed;
+  background: $button-color-hover;
 }
 
 .add {
@@ -114,7 +128,7 @@ p.item {
 }
 
 .add-button {
-  background-color: #d49de8;
+  background-color: $button-color;
 }
 
 .fa-plus {
@@ -136,9 +150,7 @@ h2.popup-header {
   display: flex;
   // background-color: blue;
 }
-.whatever {
-  background-color: red;
-}
+
 .modal {
   z-index: 9001;
 }
@@ -157,9 +169,10 @@ img.img-title {
   z-index: 9001;
 }
 
-.button.is-primary {
-  background-color: #c871ed;
+.button.hover {
+  background-color: $button-color;
   opacity: 0.9;
+  border: none;
 }
 
 .pinboardButton {
@@ -225,11 +238,15 @@ img.img-title {
 }
 
 .modal-header {
-  background-color: #edf3ff;
+  background-color: $button-color;
 }
 
 .image-desc {
   margin: 0 7px;
+}
+
+.image-thumb {
+  margin: 3px 0;
 }
 
 .youtube-thumbnail {
@@ -244,11 +261,16 @@ img.img-title {
 
 .thumbnail-list {
   display: flex;
-  flex-flow: wrap row;  
+  flex-flow: wrap row;
 }
 
 .vid-thumb-title {
   cursor: pointer;
   font-size: .8 em;
   height: 6em;
+}
+
+.hover:hover {
+  background-color: $button-color-hover;
+  border: none;
 }

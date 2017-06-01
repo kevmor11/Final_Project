@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const LoginButton = ({ clickHandler }) => (
   <p className="control">
-    <button className="button is-primary create-room" onClick={clickHandler}> Create Room </button>
+    <button className="button hover create-room" onClick={clickHandler}> Create Room </button>
   </p>
 );
 

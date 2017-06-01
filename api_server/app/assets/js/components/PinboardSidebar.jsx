@@ -53,7 +53,7 @@ class PinboardSidebar extends Component {
                 </p>
               </div>
                 <p className="control">
-                  <button type="submit" className="pinboard button is-primary" onClick={ this.submitInviteForm }>Submit</button>
+                  <button type="submit" className="pinboard button hover" onClick={ this.submitInviteForm }>Submit</button>
                 </p>
               </div>
               <br />

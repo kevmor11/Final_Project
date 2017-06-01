@@ -94,7 +94,7 @@ class LoginField extends Component {
             <p className="control">
               <button
                 type="submit"
-                className="button is-primary login"
+                className="button hover login"
                 onClick={this.submitForm}
               >Login
               </button>

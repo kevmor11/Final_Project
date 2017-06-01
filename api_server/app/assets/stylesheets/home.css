@@ -41,13 +41,13 @@ body {
   color: #4a4a4a;
   font-size: 30px !important; }
 
-.button.is-primary.login {
+.button.hover.login {
   margin-left: 3.8em; }
 
 .button.landing {
   margin: 5px; }
 
-.button.is-primary.register {
+.button.hover.register {
   margin-left: 3.5em; }
 
 .select-gender {

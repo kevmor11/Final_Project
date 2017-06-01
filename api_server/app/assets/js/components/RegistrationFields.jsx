@@ -153,7 +153,7 @@ class Registration extends Component {
             </div>
             <div className="field is-grouped">
               <p className="control">
-                <button className="button is-primary register" >Register</button>
+                <button className="button hover register" >Register</button>
               </p>
             </div>
           </form>
