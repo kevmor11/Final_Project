@@ -40,10 +40,6 @@
 .item-div {
   flex-grow: 1; }
 
-.container {
-  width: 100%;
-  min-width: 500px; }
-
 .item-container:hover {
   background: #87adff;
   cursor: pointer; }
@@ -113,7 +109,9 @@ button.youtube {
 
 .fa-trash-o {
   margin-top: 0px;
-  float: right; }
+  float: right;
+  color: #8DCEEE !important;
+  size: 2em; }
 
 .close-popup {
   width: 10px; }
