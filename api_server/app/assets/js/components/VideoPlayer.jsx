@@ -9,8 +9,9 @@ class VideoPlayer extends Component {
         width="560"
         height="315"
         src={url}
-        frameBorder="0"
+        frameBorder="1"
         allowFullScreen="true"
+        className="youtube-player"
       />
     );
   }
