@@ -52,8 +52,11 @@ p.item {
   /* number of lines to show */
   max-height: 100px; }
 
-.hangout-container {
-  padding: 8em; }
+button.video-chat {
+  left: 25.4%; }
+
+button.youtube {
+  left: 25.4%; }
 
 .add-content-container {
   display: inline-block;

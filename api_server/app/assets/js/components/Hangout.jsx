@@ -43,7 +43,7 @@ class Hangout extends Component {
         <Messenger />
         { this.state.videoChat === false &&
           <button className="button is-primary video-chat" onClick={this.openBroadcast}>Video Chat<i className="fa fa-video-camera" aria-hidden="true"></i></button>
-        }<br />
+        }<br/>
         { this.state.videoChat === true &&
           <VideoChat roomName={this.props.roomName} roomID={this.props.roomID}/>
         }
