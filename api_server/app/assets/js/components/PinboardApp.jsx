@@ -51,7 +51,6 @@ class PinboardApp extends Component {
 
 
   render() {
-    console.log("PinboardApp props", this.props);
     return (
       <div>
         <Navbar currentUser={this.props.user} />

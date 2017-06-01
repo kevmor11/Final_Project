@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import AlertContainer from 'react-alert';
 import axios from 'axios';
 import {Modal, Popover, OverlayTrigger} from 'react-bootstrap'
 
@@ -11,8 +12,22 @@ class PopupNote extends Component {
       title: '',
       description: '',
       currentRoomName: window.location['pathname'].split('/')[2],
-      currentRoomID: this.props.roomID
     };
+  }
+
+
+  alertOptions = {
+    offset: 255,
+    position: 'top right',
+    theme: 'dark',
+    time: 8000,
+    transition: 'scale'
+  }
+
+  showAlert = () => {
+    this.msg.show('Oops, something went wrong and your post could not be added.', {
+      type: 'error',
+    })
   }
 
   close = () => {
@@ -37,7 +52,9 @@ class PopupNote extends Component {
         title: this.state.title,
         description: this.state.description,
         category: "note"
-      }).then(this.close).then(this.props.refreshRoom)
+      }).then(this.close)
+        .catch(this.showAlert)
+        .then(this.props.refreshRoom)
   }
 
   render() {
@@ -61,10 +78,11 @@ class PopupNote extends Component {
               </p>
             </div>
             <p className="control">
-              <button type="submit" className="button is-primary" onClick={this.submitForm}>Submit</button>
+              <button type="submit" className="button hover" onClick={this.submitForm}>Submit</button>
             </p>
           </Modal.Body>
         </Modal>
+        <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
       </div>
     );
   }

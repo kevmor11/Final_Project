@@ -31,8 +31,9 @@ constructor(props) {
 
   render() {
     return(
-      <div>
-        <a><i className="fa fa-trash-o" onClick={this.onClickDeletePost}></i></a>
+      <div className="item-div">
+        <a><i className="fa fa-trash-o deleteIcon" onClick={this.onClickDeletePost}></i></a>
+
         <div className="item-container" onClick={this.open}>
           <h4><b className="item">{this.props.title}</b></h4>
           <hr/>

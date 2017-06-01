@@ -13,7 +13,7 @@ class UserProfile extends Component {
           <figure className="image is-4by3">
             <img src={this.props.avatarURL}/>
           </figure>
-          <a className="button is-primary">
+          <a className="button hover">
             <span className="icon">
                 <i className="fa fa-user-circle-o" aria-hidden="true"></i>
               </span>

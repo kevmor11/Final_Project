@@ -48,7 +48,7 @@ class UsersController < ApplicationController
       if current_user
         render json: current_user, serializer: UserSerializer, status: 200
       else
-        render json: { errors: current_user.errors.full_messages }, status: 422
+        render json: { errors: ["User not found."] }, status: 422
       end
     end
 

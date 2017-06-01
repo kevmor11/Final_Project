@@ -10,9 +10,6 @@ class Rooms extends Component {
     this.state = {
       roomName: "",
       rooms: props.rooms,
-      // allRoomsNames: props.rooms.map((room) => {
-      // return room.name
-      // })
     }
   }
 
@@ -42,6 +39,21 @@ class Rooms extends Component {
     }
   }
 
+  deleteRoom = (roomID, roomName) => {
+    let allRooms = [];
+    this.state.rooms.forEach((room,i)=>{
+      if (!(roomID === room.id)) {
+        allRooms.push(room);
+      }
+    })
+    this.setState({
+    rooms:allRooms
+  })
+    
+    axios.delete(`/api/rooms/${roomID}`)
+    .then(console.log('roomdeleted!'))
+  }
+ 
   createRoomClick = (event) => {
     this.setState({
       rooms:this.state.rooms.concat({ name: this.state.roomName})
@@ -49,13 +61,15 @@ class Rooms extends Component {
     axios.post(`/api/rooms`, {
       name: this.state.roomName
     })
-    // .catch(this.showAlert);
+    this.setState({
+      roomName: ""
+    })
   }
 
   render() {
     let allRooms;
     allRooms = this.state.rooms.map((room, i) => {
-      return <Room key={room.id} roomName={room.name} roomNumber={i+1}/>
+      return <Room key={i} roomID={room.id} roomName={room.name} roomNumber={i+1} deleteRoom={this.deleteRoom}/>
     })
     return (
       <div className="tile is-parent is-3 rooms">
@@ -82,7 +96,7 @@ class Rooms extends Component {
                 <tr>
                   <th>
                   </th>
-                  <th>Room Name</th>
+                  <th>Rooms</th>
                 </tr>
               </thead>
               <tbody>

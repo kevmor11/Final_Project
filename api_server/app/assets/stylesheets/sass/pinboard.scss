@@ -1,7 +1,12 @@
+$button-color: #8DCEEE;
+$button-color-hover: #87adff;
+$trashDeleteButtonColor : white;
+
 .tile.is-ancestor.mainboard {
   padding: 20px;
   display: flex;
   height: 100%;
+  width: 100%;
 }
 
 #react-pinboard {
@@ -16,10 +21,17 @@
   padding-top:0;
   padding-left:2;
   padding-right:2;
+  min-width: 65em;
 }
 .components-container {
   display: flex;
   flex-flow: row wrap;
+  .deleteIcon{
+    content: "\f014";
+    background: $trashDeleteButtonColor;
+    border-radius: 100%;
+    padding: 5px;
+  }
 }
 
 .item-container {
@@ -27,10 +39,16 @@
   margin: 10px;
   flex-wrap: wrap;
   padding: 20px 30px;
-  flex-grow: 10;
   background: rgba(254, 252, 250, 0.57);
   line-height: 100px;
+  height: 267px;
+  max-height: 210px;
+  // height: 257px;
+  // max-height: 200px;
+}
 
+.item-div {
+  flex-grow: 1;
 }
 
 .container {
@@ -39,7 +57,7 @@
 }
 
 .item-container:hover {
-  background: #d49de8;
+  background: $button-color-hover;
   cursor: pointer;
 }
 
@@ -47,47 +65,80 @@
   display: flex;
 }
 
+p.item {
+  height: 257px;
+  max-width: 260px;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5; /* number of lines to show */
+  max-height: 5*20px;
+}
+
+button.video-chat {
+  // padding: 8em;
+    left: 25.4%;
+}
+
+button.youtube {
+  // padding: 8em;
+    left: 25.4%;
+}
+
+.hangout-container {
+  padding: 1em;
+}
+
 .add-content-container {
   display: inline-block;
   position: relative;
   &.open{
-  $dist: 2.5em;
+  $dist: 2.7em;
     .photo{
       transform: translate($dist);
+      cursor: pointer;
     }
     .message{
       transform: translate($dist * 2);
+      cursor: pointer;
     }
     .note{
       transform:translate($dist * 3);
-    }
-    .voice-message{
-      transform: translate($dist * 4);
+      cursor: pointer;
     }
   }
 }
 .add-content {
   position:absolute;
   border-radius: 100%;
-  background: #8cebff;
+  background-color: #6ba3ff;
   display: inline-block;
   padding: .5em;
   width: 2.5em;
   height: 2.5em;
-  transition: transform .5s linear;
+  transition: transform .3s linear;
   &.top{
     position:relative;
   }
 }
-.add {
-  padding: 5px 5.5px;
+
+.add-content.add:hover {
+  background: $button-color-hover;
 }
+
+.add {
+  padding: 6px 6.5px;
+}
+
 .add-button {
-  background: #8cebcc;
+  background-color: $button-color;
 }
 
 .fa-plus {
   padding: 5px 5.5px;
+  cursor: pointer;
 
 }
 
@@ -104,9 +155,7 @@ h2.popup-header {
   display: flex;
   // background-color: blue;
 }
-.whatever {
-  background-color: red;
-}
+
 .modal {
   z-index: 9001;
 }
@@ -125,13 +174,35 @@ img.img-title {
   z-index: 9001;
 }
 
-.button.is-primary {
-  background-color: #c871ed;
-  opacity: 0.5;
+.button.hover {
+  background-color: $button-color;
+  opacity: 0.9;
+  border: none;
 }
 
-.tabs.is-centered ul {
-  padding-bottom: 7px;
+.pinboardButton {
+  margin-left: -16em;
+  padding: 0.4em 5em;
+  margin-left: 30px;
+  margin-bottom: .6em;
+}
+
+.hangoutButton {
+  margin-left: 5em !important;
+  padding: 0.4em 5em;
+  margin-bottom: .6em;
+}
+
+.video-chat {
+  padding: 0.4em 10em;
+  margin: 2em;
+  margin-left: 30px;
+}
+
+.youtube {
+  padding: 0.4em 9.2em;
+  margin-left: 30px;
+  margin: 2em;
 }
 
 .input {
@@ -145,4 +216,66 @@ img.img-title {
 .modal-title {
   display: inline;
   margin-left: 16.5em;
+}
+
+.room-icon {
+  margin-left: 40px;
+}
+
+.container {
+  width: 100%;
+  min-width: 500px;
+}
+
+.fa-video-camera {
+  margin-left: 2em;
+}
+
+.fa-youtube-play {
+  margin-left: 2em;
+}
+
+.modal-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 0 auto;
+}
+
+.modal-header {
+  background-color: $button-color;
+}
+
+.image-desc {
+  margin: 0 7px;
+}
+
+.image-thumb {
+  margin: 3px 0;
+}
+
+.youtube-thumbnail {
+  max-width: 13em;
+  padding: 1em 1em;
+  background-color: rgba(254, 252, 250, 0.57);
+  border-radius: 10px;
+  margin: 10px;
+  cursor: pointer;
+  flex-grow: 1;
+}
+
+.thumbnail-list {
+  display: flex;
+  flex-flow: wrap row;
+}
+
+.vid-thumb-title {
+  cursor: pointer;
+  font-size: .8 em;
+  height: 6em;
+}
+
+.hover:hover {
+  background-color: $button-color-hover;
+  border: none;
 }

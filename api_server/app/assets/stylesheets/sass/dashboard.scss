@@ -7,27 +7,24 @@ $notification-color:#D1D1D1;
   flex-direction: row-reverse;
   justify-content: flex-end;
   height: 100%;
+  width: 100%;
 }
 
-.button.is-primary {
-background-color: #c871ed;
-opacity: 0.5;
+.button.hover {
+  background-color: #8790db;
+  opacity: 0.9;
 }
 
 .input {
   opacity: 1;
 }
 
-// .input:hover {
-//   opacity: 1;
-// }
-
-.button.is-primary:hover {
+.button.hover:hover {
     text-decoration:none;
 }
 
 .box {
-  background-color: rgba(254, 252, 250, 0.57);
+  background-color: rgba(254, 252, 250, 0.7);
 }
 
 .table {
@@ -71,4 +68,3 @@ img.notification-avatar {
 .registerApp {
   height: 100%;
 }
-
