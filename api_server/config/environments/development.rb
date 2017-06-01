@@ -2,9 +2,9 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
 
-  # config.action_cable.url = "http://localhost:3000/cable"
+  config.action_cable.url = "http://localhost:3000/cable"
   # config.action_cable.url = "ws://10.30.10.49:9292/cable"
-  config.action_cable.url = "wss://421cc2dc.ngrok.io/cable"
+  # config.action_cable.url = "wss://421cc2dc.ngrok.io/cable"
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
