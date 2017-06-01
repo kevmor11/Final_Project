@@ -18,12 +18,12 @@ class Rooms extends Component {
       <tr>
         <th className="room-list">{this.props.roomNumber}</th>
         <td>
-          <p className="field">
-            <a><i className="fa fa-trash-o" onClick={this.onDeleteRoom}></i></a>
+          <div className="field">
+            <a><i className="fa fa-trash-o deleteIcon" onClick={this.onDeleteRoom}></i></a>
             <div className="room-name" onClick={this.redirectionTime}>
               {this.props.roomName}
             </div>
-          </p>
+          </div>
         </td> 
       </tr>
     );

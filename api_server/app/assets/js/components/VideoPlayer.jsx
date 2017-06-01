@@ -5,6 +5,7 @@ export default
 class VideoPlayer extends Component {
   constructor(props) {
     super(props);
+
     IFrameVideoApi.load(() => {
       this.player = new YT.Player('video-player', {
         events: {

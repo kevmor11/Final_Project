@@ -15,7 +15,7 @@ class Hangout extends Component {
       videoChat: false,
       currentVideo: "",
       play: 0,
-      playerState: "",
+      playerState: 0,
     };
 
     // var player;
@@ -55,7 +55,6 @@ class Hangout extends Component {
 
   pickVideo = (vid) => {
     this.setState({currentVideo: vid}, () => {
-      console.log("ABOUT TO PERFORM LOAD VIDEO");
       this.channel.loadVideo(vid);
     });
   }
@@ -73,7 +72,7 @@ class Hangout extends Component {
 
   playForAll = (serverValue) => {
     console.log("PLAYING FOR ALL");
-    player.playVideo
+    this.setState({playerState: serverValue});
   }
 
   componentDidMount() {
@@ -100,6 +99,7 @@ class Hangout extends Component {
         console.log('disconnected', e)
       },
       received: (data) => {
+        console.log("HERE BE DATA....  ", data);
         // TODO: setState based on incoming socket message.
         // if there is a message that says play video or pause video,
       // this.setState({playerState: /* Your new player state */})
@@ -115,18 +115,22 @@ class Hangout extends Component {
         this.perform('load', { video: id });
       },
       playVideoSocket: function(n) {
+        console.log("N IN PLAY VIDEO SOCKET IS: ", n);
         this.perform('play', { play: n });
       }
     });
   }
   onPlayerStateChange = (playerState) => {
-
-    switch(event.data) {
+    console.log("--PLAYERSTATE--", playerState);
+    console.log("--EVENT.DATA-- ", event.data);
+    switch(playerState) {
       case 1:
         console.log("Video Playing");
+        this.channel.playVideoSocket(1);
         break;
       case 2:
         console.log("Video Paused");
+        this.channel.playVideoSocket(2);
         break;
       default:
         console.log("OTHER STATE");

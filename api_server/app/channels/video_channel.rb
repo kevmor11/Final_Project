@@ -22,6 +22,7 @@ class VideoChannel < ApplicationCable::Channel
   end
 
   def play data
-    ActionCable.server.broadcast("play", data)
+    puts "playing video #{data['play']}"
+    ActionCable.server.broadcast("video", data)
   end
 end
