@@ -20,11 +20,12 @@
 .components-container {
   display: flex;
   flex-flow: row wrap; }
-  .components-container .deleteIcon {
-    content: "\f014";
-    background: white;
-    border-radius: 100%;
-    padding: 5px; }
+
+.deleteIcon {
+  content: "\f014";
+  background: white;
+  border-radius: 100%;
+  padding: 5px; }
 
 .item-container {
   border-radius: 10px;
@@ -36,13 +37,12 @@
   height: 267px;
   max-height: 210px; }
 
-.container {
-  width: 100%;
-  min-width: 500px; }
-
 .item-div {
   flex-grow: 1; }
 
+.container {
+  width: 100%;
+  min-width: 500px; }
 
 .item-container:hover {
   background: #87adff;
@@ -138,7 +138,6 @@ img.img-title {
   opacity: 0.9;
   border: none; }
 
-
 .pinboardButton {
   margin-left: -16em;
   padding: 0.4em 5em;
@@ -160,7 +159,6 @@ img.img-title {
   margin-left: 30px;
   margin: 2em; }
 
-
 .input {
   resize: none; }
 
@@ -170,7 +168,6 @@ img.img-title {
 .modal-title {
   display: inline;
   margin-left: 16.5em; }
-
 
 .room-icon {
   margin-left: 40px; }
@@ -221,4 +218,3 @@ img.img-title {
 .hover:hover {
   background-color: #87adff;
   border: none; }
-
