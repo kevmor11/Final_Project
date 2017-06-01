@@ -63,11 +63,19 @@
   align-items: center; }
 
 .profile-avatar {
-  max-block-size: 10em; }
+  max-block-size: 13em;
+  padding-top: 2em; }
+
+.profile-content {
+  padding-top: 2em;
+  font-size: 1.1em; }
 
 .profile-name {
-  font-size: 2em;
-  margin-top: 1em; }
+  font-size: 2em; }
 
 .room-name {
-  cursor: pointer; }
+  cursor: pointer;
+  font-size: 1.2em; }
+
+.logoutButton {
+  margin-left: 2em; }

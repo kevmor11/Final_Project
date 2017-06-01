@@ -19,7 +19,7 @@ class UserLogoutButton extends Component {
           <div className="nav-item is-tab">
             Welcome { this.props.user.first_name }!
           </div>
-          <a className="control nav-item is-tab logoutButton" onClick={ this.logOutClick }>Log out</a>
+          <button className="button hover logoutButton" onClick={ this.logOutClick }>Log out</button>
         </div>
       )
     } else {
