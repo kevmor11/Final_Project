@@ -26,13 +26,13 @@ $trashDeleteButtonColor : white;
 .components-container {
   display: flex;
   flex-flow: row wrap;
+}
   .deleteIcon{
     content: "\f014";
     background: $trashDeleteButtonColor;
     border-radius: 100%;
     padding: 5px;
   }
-}
 
 .item-container {
   border-radius: 10px;
@@ -49,6 +49,11 @@ $trashDeleteButtonColor : white;
 
 .item-div {
   flex-grow: 1;
+}
+
+.container {
+  width: 100%;
+  min-width: 500px;
 }
 
 .item-container:hover {

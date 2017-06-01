@@ -20,9 +20,12 @@ function run(response) {
   });
 }
 
+
 function index() {
     ReactDOM.render(
       <App />, document.getElementById('react-root'));
 }
 
+
 axios('/users/me').then(run).catch(index);
+
