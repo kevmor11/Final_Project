@@ -1,42 +1,37 @@
 import React, { Component } from 'react';
 import IFrameVideoApi from 'youtube-iframe';
 
-
 export default
 class VideoPlayer extends Component {
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
     IFrameVideoApi.load(() => {
       this.player = new YT.Player('video-player', {
         events: {
-          // 'onReady': (n) => this.player.playVideo(),
-          'onStateChange': () => this.response(state),
+          'onStateChange': this.onPlayerStateChange.bind(this),
         }
       });
     });
   }
 
-  response = (state) => {
-    console.log("WE MADE IT", state);
-    // if (state === 1) {
-    //   console.log("PLAYING")
-    // }
+  onPlayerStateChange (event){
+    this.props.onPlayerStateChange(event.data);
   }
-
-  // if(this.props.play === 1) {
-  //   this.player.playVideo()
-  // } else {
-  //   this.player.pauseVideo()
-  // }
 
   onClickPlay = (e) => {
     e.target.playVideo()
   }
-
-  onClickVideo = (e) => {
-    this.props.simulate(document.getElementById("video-player"), "click");
-
+  componentDidUpdate(prevProps){
+    // If there is a difference between old state and new state.
+    if(prevProps.playerState !== this.props.playerState && this.player !== undefined){
+      console.log("PROPS CHANGED", this.props.playerState);
+      // Do something based on change.
+      switch(this.props.playerState){
+        case 1: this.player.playVideo(); break;
+        case 2: this.player.pauseVideo(); break;
+        default: break;
+      }
+    }
   }
 
   render() {
@@ -49,7 +44,6 @@ class VideoPlayer extends Component {
         frameBorder="1"
         allowFullScreen="true"
         className="youtube-player"
-        onClick={this.onClickVideo}
         id="video-player"
       />
     );
