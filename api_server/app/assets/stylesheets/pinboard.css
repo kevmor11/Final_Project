@@ -35,7 +35,7 @@
   flex-grow: 1; }
 
 .item-container:hover {
-  background: #d49de8;
+  background: #87adff;
   cursor: pointer; }
 
 .item {
@@ -78,23 +78,23 @@ button.youtube {
 .add-content {
   position: absolute;
   border-radius: 100%;
-  background-color: rgba(62, 192, 243, 0.54);
+  background-color: #6ba3ff;
   display: inline-block;
   padding: .5em;
   width: 2.5em;
   height: 2.5em;
-  transition: transform .5s linear; }
+  transition: transform .3s linear; }
   .add-content.top {
     position: relative; }
 
 .add-content.add:hover {
-  background: #7bc8ed; }
+  background: #87adff; }
 
 .add {
   padding: 6px 6.5px; }
 
 .add-button {
-  background-color: #d49de8; }
+  background-color: #8DCEEE; }
 
 .fa-plus {
   padding: 5px 5.5px;
@@ -110,9 +110,6 @@ button.youtube {
 h2.popup-header {
   display: flex; }
 
-.whatever {
-  background-color: red; }
-
 .modal {
   z-index: 9001; }
 
@@ -126,9 +123,10 @@ img.img-title {
   max-width: none;
   z-index: 9001; }
 
-.button.is-primary {
-  background-color: #c871ed;
-  opacity: 0.9; }
+.button.hover {
+  background-color: #8DCEEE;
+  opacity: 0.9;
+  border: none; }
 
 .pinboardButton {
   margin-left: -16em;
@@ -181,7 +179,7 @@ img.img-title {
   margin: 0 auto; }
 
 .modal-header {
-  background-color: #edf3ff; }
+  background-color: #8DCEEE; }
 
 .image-desc {
   margin: 0 7px; }
@@ -206,3 +204,7 @@ img.img-title {
   cursor: pointer;
   font-size: .8 em;
   height: 6em; }
+
+.hover:hover {
+  background-color: #87adff;
+  border: none; }

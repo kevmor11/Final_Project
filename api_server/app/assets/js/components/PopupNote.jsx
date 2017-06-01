@@ -78,7 +78,7 @@ class PopupNote extends Component {
               </p>
             </div>
             <p className="control">
-              <button type="submit" className="button is-primary" onClick={this.submitForm}>Submit</button>
+              <button type="submit" className="button hover" onClick={this.submitForm}>Submit</button>
             </p>
           </Modal.Body>
         </Modal>

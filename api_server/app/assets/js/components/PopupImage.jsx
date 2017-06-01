@@ -101,7 +101,7 @@ class PopupLink extends Component {
               </p>
             </div>
             <p className="control">
-              <button type="submit" className="button is-primary">Submit</button>
+              <button type="submit" className="button hover">Submit</button>
             </p>
             </form>
           </Modal.Body>
