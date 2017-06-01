@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Messenger from './Messenger.jsx';
 import VideoChat from './VideoChat.jsx';
 import VideoSearch from './VideoSearch.jsx';
+import ActionCable from 'actioncable';
 
 export default
 class Hangout extends Component {
@@ -9,7 +10,8 @@ class Hangout extends Component {
     super(props);
     this.state = {
       streamVideo: false,
-      videoChat: false
+      videoChat: false,
+      currentVideo: ""
     };
   }
 
@@ -37,6 +39,55 @@ class Hangout extends Component {
     });
   }
 
+
+  pickVideo = (vid) => {
+    this.setState({currentVideo: vid}, () => {
+      console.log("ABOUT TO PERFORM LOAD VIDEO");
+      this.channel.loadVideo(vid);
+    });
+  }
+
+
+  renderForAll = (vid) => {
+    this.setState({currentVideo: vid, streamVideo: true});
+  }
+
+
+  componentDidMount() {
+    this.setSubscription();
+  }
+
+  componentWillUnmount() {
+    if(!this.cable) { return; }
+    this.cable.disconnect();
+  }
+
+  handshake(type) {
+
+  }
+
+  setSubscription() {
+    console.log('setting subscription ', ActionCable);
+    this.cable = ActionCable.createConsumer();
+    this.channel = this.cable.subscriptions.create("VideoChannel", {
+      connected: () => {
+        console.log('connected')
+      },
+      disconnected: (e) => {
+        console.log('disconnected', e)
+      },
+      received: (data) => {
+        this.renderForAll(data.video);
+      },
+      loadVideo: function(id) {
+        this.perform('load', { video: id }, () => {
+          this.updateVideo(id);
+        });
+      }
+    });
+  }
+
+
   render() {
     return (
       <div>
@@ -51,7 +102,7 @@ class Hangout extends Component {
           <button className="button is-primary" onClick={this.openStream}>Watch a Video <i className="fa fa-youtube-play" aria-hidden="true"></i></button>
         }
         { this.state.streamVideo === true &&
-          <VideoSearch />
+          <VideoSearch currentVideo={this.state.currentVideo} pickVideo={this.pickVideo} />
         }
       </div>
     );

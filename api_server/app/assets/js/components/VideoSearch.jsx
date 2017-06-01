@@ -11,7 +11,6 @@ class VideoSearch extends Component {
       super(props);
       this.state = {
         thumbnails: [],
-        currentVideo: "",
       }
   }
 
@@ -36,9 +35,6 @@ class VideoSearch extends Component {
     });
   }
 
-  pickVideo = (vid) => {
-    this.setState({currentVideo: vid});
-  }
 
   handleScriptCreate = () => {
     this.setState({ scriptLoaded: false })
@@ -53,9 +49,9 @@ class VideoSearch extends Component {
   }
 
   render() {
-    var doBox = !this.state.currentVideo;
-    var doNails = (this.state.thumbnails.length > 0) && (!this.state.currentVideo);
-    var doVid = this.state.currentVideo;
+    var doBox = !this.props.currentVideo;
+    var doNails = (this.state.thumbnails.length > 0) && (!this.props.currentVideo);
+    var doVid = this.props.currentVideo;
     return (
       <div>
         <Script url="https://apis.google.com/js/client.js?onload=googleApiClientReady"
@@ -64,8 +60,8 @@ class VideoSearch extends Component {
                 onLoad={this.handleScriptLoad}/>
 
         {doBox   ? ( <VideoSearchBox doSearch={this.searchAndShow} color={this.state.color} /> ) : ""}
-        {doNails ? ( <VideoThumbnailList nails={this.state.thumbnails} pick={this.pickVideo} /> ) : ""}
-        {doVid   ? ( <VideoPlayer vid={this.state.currentVideo} /> ) : ""}
+        {doNails ? ( <VideoThumbnailList nails={this.state.thumbnails} pick={this.props.pickVideo} /> ) : ""}
+        {doVid   ? ( <VideoPlayer vid={this.props.currentVideo} /> ) : ""}
       </div>
     );
   }

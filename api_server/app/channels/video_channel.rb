@@ -9,8 +9,13 @@ class VideoChannel < ApplicationCable::Channel
   end
   
   #custom action
-  def speak
-    puts "HIIIIIII"
+  def load data
+    puts "loading video #{data['video']}"
+    ActionCable.server.broadcast("video", data)
+  end
+
+  def loaded
+  
   end
 
   def play
