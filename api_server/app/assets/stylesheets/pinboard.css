@@ -20,6 +20,11 @@
 .components-container {
   display: flex;
   flex-flow: row wrap; }
+  .components-container .deleteIcon {
+    content: "\f014";
+    background: white;
+    border-radius: 100%;
+    padding: 5px; }
 
 .item-container {
   border-radius: 10px;
