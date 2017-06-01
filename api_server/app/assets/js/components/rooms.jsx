@@ -89,7 +89,7 @@ class Rooms extends Component {
                   onKeyPress={this.enterKeyPress}
                 />
               </p>
-              <button className="button" onClick={this.createRoomClick}>Create</button>
+              <button className="button hover" onClick={this.createRoomClick}>Create</button>
             </div>
             <table className="table">
               <thead>
