@@ -57,11 +57,8 @@ class PinboardSidebar extends Component {
                 </p>
               </div>
               <br />
-              <p className="subtitle">{this.props.room.name}</p>
-              <i className="fa fa-heart-o fa-2x" aria-hidden="true"/>
-              <br/>
-              <br/>
-              <table className="table">
+              <h3 className="subtitle">{this.props.room.name}</h3>
+              {/*<table className="table">
                 <tbody>
                   {users.map((item) => {
                     return (
@@ -71,13 +68,12 @@ class PinboardSidebar extends Component {
                     )
                   })}
                 </tbody>
-              </table>
-              {/*<i className="fa fa-heart-o fa-2x room-icon" aria-hidden="true" />
+              </table>*/}
                 {users.map((item) => {
                   return (
-                    <p>{item.first_name}</p>
+                    <p key={item.id}>{item.first_name}</p>
                   )
-                })}*/}
+                })}
             </div>
           </article>
         </div>
