@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar.jsx';
 import PropTypes from 'prop-types';
-// import Notification from './Notification.jsx';
 import UserProfile from './UserProfile.jsx';
-import Notifications from './Notifications.jsx';
+import Profile from './Profile.jsx';
 import Rooms from './Rooms.jsx';
 
 export default
@@ -13,14 +12,10 @@ class DashApp extends Component {
     rooms = this.props.user.rooms;
     console.log(this.props.user);
     return (
-      <div>
+      <div className="dash-container">
         <Navbar currentUser={this.props.user} />
         <div className="tile is-ancestor logged">
-          <div className="tile is-vertical is-8">
-            <div className="tile">
-              <Notifications />
-            </div>
-          </div>
+          <Profile currentUser={this.props.user}/>
           <Rooms rooms={rooms} />
         </div>
       </div>
