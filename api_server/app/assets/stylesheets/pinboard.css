@@ -20,6 +20,11 @@
 .components-container {
   display: flex;
   flex-flow: row wrap; }
+  .components-container .deleteIcon {
+    content: "\f014";
+    background: white;
+    border-radius: 100%;
+    padding: 5px; }
 
 .item-container {
   border-radius: 10px;
@@ -29,7 +34,6 @@
   background: rgba(254, 252, 250, 0.57);
   line-height: 100px;
   height: 257px;
-  max-width: 260px;
   max-height: 200px; }
 
 .item-div {

@@ -1,3 +1,5 @@
+$trashDeleteButtonColor : white;
+
 .tile.is-ancestor.mainboard {
   padding: 20px;
   display: flex;
@@ -22,6 +24,12 @@
 .components-container {
   display: flex;
   flex-flow: row wrap;
+  .deleteIcon{
+    content: "\f014";
+    background: $trashDeleteButtonColor;
+    border-radius: 100%;
+    padding: 5px;
+  }
 }
 
 .item-container {
@@ -32,7 +40,6 @@
   background: rgba(254, 252, 250, 0.57);
   line-height: 100px;
   height: 257px;
-  max-width: 260px;
   max-height: 200px;
 }
 
