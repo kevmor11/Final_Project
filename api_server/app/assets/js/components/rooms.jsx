@@ -52,9 +52,6 @@ class Rooms extends Component {
     
     axios.delete(`/api/rooms/${roomID}`)
     .then(console.log('roomdeleted!'))
-    // .then(()=>{
-    // })
-  
   }
  
   createRoomClick = (event) => {
