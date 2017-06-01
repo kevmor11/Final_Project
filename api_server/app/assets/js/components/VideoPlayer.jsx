@@ -9,15 +9,29 @@ class VideoPlayer extends Component {
     IFrameVideoApi.load(() => {
       this.player = new YT.Player('video-player', {
         events: {
-          'onReady': () => this.player.playVideo(),
-          'onStateChange': () => console.log('yt state changed')
+          // 'onReady': (n) => this.player.playVideo(),
+          'onStateChange': () => this.response(state),
         }
       });
     });
-
   }
 
+  response = (state) => {
+    console.log("WE MADE IT", state);
+    // if (state === 1) {
+    //   console.log("PLAYING")
+    // }
+  }
 
+  // if(this.props.play === 1) {
+  //   this.player.playVideo()
+  // } else {
+  //   this.player.pauseVideo()
+  // }
+
+  onClickPlay = (e) => {
+    e.target.playVideo()
+  }
 
   onClickVideo = (e) => {
     this.props.simulate(document.getElementById("video-player"), "click");
