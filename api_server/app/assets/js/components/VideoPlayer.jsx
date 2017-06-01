@@ -6,22 +6,28 @@ export default
 class VideoPlayer extends Component {
   constructor() {
     super();
-
+    var player;
     IFrameVideoApi.load(() => {
-      this.player = new YT.Player('video-player', {
+      player = new YT.Player('video-player', {
         events: {
           // 'onReady': (n) => this.player.playVideo(),
-          'onStateChange': () => this.response(state),
+          'onStateChange': this.onPlayerStateChange,
         }
       });
     });
   }
 
-  response = (state) => {
-    console.log("WE MADE IT", state);
-    // if (state === 1) {
-    //   console.log("PLAYING")
-    // }
+  onPlayerStateChange = (event) => {
+    switch(event.data) {
+      case 1:
+        console.log("Video Playing");
+        break;
+      case 2:
+        console.log("Video Paused");
+        break;
+      default:
+        console.log("OTHER STATE");
+    }
   }
 
   // if(this.props.play === 1) {
