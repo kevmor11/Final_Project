@@ -53,7 +53,7 @@ class PinboardSidebar extends Component {
                 </p>
               </div>
                 <p className="control">
-                  <button type="submit" className="pinboard button hover" onClick={ this.submitInviteForm }>Submit</button>
+                  <button type="submit" className="pinboard button hover" onClick={ this.submitInviteForm }>Send Invite</button>
                 </p>
               </div>
               <br />
@@ -69,11 +69,14 @@ class PinboardSidebar extends Component {
                   })}
                 </tbody>
               </table>*/}
+              <h5>Members:</h5>
+              <ul>
                 {users.map((item) => {
                   return (
-                    <p key={item.id}>{item.first_name}</p>
+                    <li key={item.id}>{item.first_name}</li>
                   )
                 })}
+              </ul>
             </div>
           </article>
         </div>
