@@ -136,20 +136,6 @@ class Hangout extends Component {
     }
   }
 
-  socketPlay = () => {
-
-  }
-
-  // triggerPlayer = (state) => {
-  //   switch(this.state.playerState) {
-  //     case 1:
-  //       player.playVideo();
-  //       break;
-  //     case 2:
-  //       player.pauseVideo();
-  //   }
-  // }
-
   render() {
     return (
       <div className="hangout-container container">
