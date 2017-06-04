@@ -7,8 +7,6 @@ class UserroomsController < ApplicationController
 
   def create
     userroom = Userroom.new(userroom_params)
-    # userroom.user_id = current_user.id
-    # userroom.room_id = Room.find params[:room_id]
     if userroom.save
       render json: userroom.room, serializer: RoomSerializer, status: 201
     else

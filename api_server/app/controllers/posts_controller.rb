@@ -1,38 +1,18 @@
 class PostsController < ApplicationController
   
   def new
-    # @room = Rooms.find_by(room_id: params[:room_id])
     puts "Room found"
-    # render json: @room
   end
 
   def create
-
     @post = Post.new(post_params)
-    # @post = room.posts.new
     @post.user = current_user
-
     @post.room = Room.find params[:room_id]
-
     if @post.save
       render json: @post
     else
       render json: { errors: ["Post could not be saved."] }, status: 500
     end
-
-    # if @post.save
-    #   ActionCable.server.broadcast 'post',
-    #     title: @post.title,
-    #     link: @post.link,
-    #     description: @post.description,
-    #     user: @post.user.first_name,
-    #     seen: @post.seen,
-    #     content: @post.content,
-    #     category: @post.category,
-    #     image_file: @post.image_file
-    #   head :ok
-    # end
-
   end
 
   def show

@@ -8,21 +8,11 @@ class VideoChannel < ApplicationCable::Channel
   def unsubscribed
   end
 
-  #custom action
   def load data
-    puts "loading video #{data['video']}"
     ActionCable.server.broadcast("video", data)
   end
 
-
-
-
-  def loaded
-
-  end
-
   def play data
-    puts "playing video #{data['play']}"
     ActionCable.server.broadcast("video", data)
   end
 end

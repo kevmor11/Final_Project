@@ -12,11 +12,11 @@ class RoomsController < ApplicationController
     user = current_user
     room = user.rooms.create(room_params)
     userroom = user.userrooms.where(room: room.id).first
-    # if room.save
+    if room.save
       render json: room, serializer: RoomSerializer, status: 201
-    # else
-    #   render json: { errors: [user.errors.full_messages] }, status: 422
-    # end
+    else
+      render json: { errors: [room.errors.full_messages] }, status: 422
+    end
   end
 
   def show

@@ -24,11 +24,6 @@ class UsersController < ApplicationController
       format.json { render json: @user }
       format.html { @user }
     end
-    # if @user.present?
-    #   render json: @user, serializer: UserSerializer, status: 200
-    # else
-    #   render json: { errors: ["User not found."] }, status: 422
-    # end
   end
 
   def update
@@ -39,18 +34,13 @@ class UsersController < ApplicationController
     end
   end
 
-  # if User.exists?
-    # def me
-    #   render json: current_user, serializer: UserSerializer, status: 200
-    # end
-
-    def me
-      if current_user
-        render json: current_user, serializer: UserSerializer, status: 200
-      else
-        render json: { errors: ["User not found."] }, status: 422
-      end
+  def me
+    if current_user
+      render json: current_user, serializer: UserSerializer, status: 200
+    else
+      render json: { errors: ["User not found."] }, status: 422
     end
+  end
 
   private
 
@@ -61,11 +51,3 @@ class UsersController < ApplicationController
 
 
 end
-
-  # def me
-  #   if current_user
-  #     render json: current_user, serializer: UserSerializer, status: 200
-  #   else
-  #     render :new
-  #   end
-  # end
