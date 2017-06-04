@@ -17,7 +17,6 @@ function run(response) {
     const user = (response instanceof Error) ? {} : response.data.user;
     ReactDOM.render(
       <Component user={user} />, root);
-    console.log('Got Past Render')
   });
 }
 

@@ -7,7 +7,7 @@ export default
 class PinItemModalLink extends Component {
 
 constructor(props) {
-    super(props); // super calls `constructor` in React.Component
+    super(props); 
     this.state = {
       showModal: false,
       user: null,

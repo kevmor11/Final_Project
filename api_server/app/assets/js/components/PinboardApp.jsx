@@ -8,7 +8,7 @@ export default
 class PinboardApp extends Component {
 
   constructor(props) {
-    super(props); // super calls `constructor` in React.Component
+    super(props); 
     this.state = {
       roomAxiosData: "",
     };
@@ -34,15 +34,10 @@ class PinboardApp extends Component {
   }
 
   setSubscription() {
-    console.log('setting subscription ', ActionCable);
     this.cable = ActionCable.createConsumer();
     this.cable.subscriptions.create("PostChannel", {
-      connected: () => {
-        console.log('connected')
-      },
-      disconnected: (e) => {
-        console.log('disconnected', e)
-      },
+      connected: () => {},
+      disconnected: (e) => {},
       received: () => {
         this.reviveRoomData();
       }

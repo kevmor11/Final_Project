@@ -7,7 +7,7 @@ export default
 class PopupLink extends Component {
 
   constructor(props) {
-    super(props); // super calls `constructor` in React.Component
+    super(props); 
     this.state = {
       imageData: null,
       image: '',

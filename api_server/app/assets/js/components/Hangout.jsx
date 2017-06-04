@@ -17,16 +17,6 @@ class Hangout extends Component {
       play: 0,
       playerState: 0,
     };
-
-    // var player;
-    // IFrameVideoApi.load(() => {
-    //   player = new YT.Player('video-player', {
-    //     events: {
-    //       'onStateChange': this.onPlayerStateChange,
-    //     }
-    //   });
-    // });
-
   }
 
   openBroadcast = () => {
@@ -59,19 +49,12 @@ class Hangout extends Component {
     });
   }
 
-  // playVideo = (n) => {
-  //   this.setState({play: n}, () => {
-  //     console.log('ABOUT TO PLAY');
-  //     this.channel.playVideo(n);
-  //   })
-  // }
 
   renderForAll = (vid) => {
     this.setState({currentVideo: vid, streamVideo: true});
   }
 
   playForAll = (serverValue) => {
-    console.log("PLAYING FOR ALL");
     this.setState({playerState: serverValue});
   }
 
@@ -89,21 +72,11 @@ class Hangout extends Component {
   }
 
   setSubscription() {
-    console.log('setting subscription ', ActionCable);
     this.cable = ActionCable.createConsumer();
     this.channel = this.cable.subscriptions.create("VideoChannel", {
-      connected: () => {
-        console.log('connected')
-      },
-      disconnected: (e) => {
-        console.log('disconnected', e)
-      },
+      connected: () => {},
+      disconnected: (e) => {},
       received: (data) => {
-        console.log("HERE BE DATA....  ", data);
-        // TODO: setState based on incoming socket message.
-        // if there is a message that says play video or pause video,
-      // this.setState({playerState: /* Your new player state */})
-
         if (data.video) {
           this.renderForAll(data.video);
         }
@@ -115,44 +88,28 @@ class Hangout extends Component {
         this.perform('load', { video: id });
       },
       playVideoSocket: function(n) {
-        console.log("N IN PLAY VIDEO SOCKET IS: ", n);
         this.perform('play', { play: n });
       }
     });
   }
   onPlayerStateChange = (playerState) => {
-    console.log("--PLAYERSTATE--", playerState);
-    console.log("--EVENT.DATA-- ", event.data);
     switch(playerState) {
       case 1:
-        console.log("Video Playing");
         this.channel.playVideoSocket(1);
         break;
       case 2:
-        console.log("Video Paused");
         this.channel.playVideoSocket(2);
         break;
       default:
         console.log("OTHER STATE");
 
       this.setState({playerState });
-      // TODO: Send a socket message of play or pause.
     }
   }
 
   socketPlay = () => {
 
   }
-
-  // triggerPlayer = (state) => {
-  //   switch(this.state.playerState) {
-  //     case 1:
-  //       player.playVideo();
-  //       break;
-  //     case 2:
-  //       player.pauseVideo();
-  //   }
-  // }
 
   render() {
     return (

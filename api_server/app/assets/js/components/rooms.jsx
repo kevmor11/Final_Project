@@ -6,7 +6,7 @@ import axios from 'axios';
 export default
 class Rooms extends Component {
   constructor(props) {
-    super(props); // super calls `constructor` in React.Component
+    super(props); 
     this.state = {
       roomName: "",
       rooms: props.rooms,
@@ -47,11 +47,9 @@ class Rooms extends Component {
       }
     })
     this.setState({
-    rooms:allRooms
+      rooms:allRooms
   })
-    
-    axios.delete(`/api/rooms/${roomID}`)
-    .then(console.log('roomdeleted!'))
+    axios.delete(`/api/rooms/${roomID}`);
   }
  
   createRoomClick = (event) => {

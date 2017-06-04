@@ -4,7 +4,7 @@ import PinboardItemModal from './PinboardItemModal.jsx';
 export default
 class PinboardItemRequest extends Component {
   constructor(props) {
-    super(props); // super calls `constructor` in React.Component
+    super(props); 
     this.state = {
       showModal: false,
       postID: null,

@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
-// import {Card, CardTitle, CardPanel} from 'react-materialize'
 import {Modal, Button, OverlayTrigger} from 'react-bootstrap'
 
 export default
 class PinItemModalImage extends Component {
 
 constructor(props) {
-    super(props); // super calls `constructor` in React.Component
+    super(props); 
     this.state = {
       showModal: false,
       user: null,

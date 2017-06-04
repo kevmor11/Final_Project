@@ -10,7 +10,6 @@ class DashApp extends Component {
   render() {
     let rooms = [];
     rooms = this.props.user.rooms;
-    console.log(this.props.user);
     return (
       <div className="dash-container">
         <Navbar currentUser={this.props.user} />

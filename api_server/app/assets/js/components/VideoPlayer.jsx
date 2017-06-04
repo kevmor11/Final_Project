@@ -23,10 +23,7 @@ class VideoPlayer extends Component {
     e.target.playVideo()
   }
   componentDidUpdate(prevProps){
-    // If there is a difference between old state and new state.
     if(prevProps.playerState !== this.props.playerState && this.player !== undefined){
-      console.log("PROPS CHANGED", this.props.playerState);
-      // Do something based on change.
       switch(this.props.playerState){
         case 1: this.player.playVideo(); break;
         case 2: this.player.pauseVideo(); break;

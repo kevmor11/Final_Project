@@ -38,7 +38,6 @@ class Registration extends Component {
   }
 
   redirectToUserPage = (res) => {
-    // window.location.href = `/users/${res.data.user.id}`;
     window.location.href = '/';
   }
 
@@ -71,7 +70,6 @@ class Registration extends Component {
       gender: this.state.gender
     })
     .then((response) => {
-      console.log("yay new user", response);
       this.redirectToUserPage();
     }).catch(this.showAlert);
 
