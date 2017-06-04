@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   
   def new
-    puts "Room found"
   end
 
   def create
