@@ -1,6 +1,6 @@
 # Bridge App 
 
-![Chat Preview](https://media.giphy.com/media/3ohhwtWKYlYa14LpuM/giphy.gif)
+![](https://i.imgur.com/DJDyAwm.png)
 
 ### Winner of the Lighthouse Labs YVR Demo Day People's Choice Award (June 2017)
 
