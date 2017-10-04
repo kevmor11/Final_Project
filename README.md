@@ -15,7 +15,7 @@ Web application targeted at couples or friends in long distance relationships, w
 Rails 5.1, Node.js, React.js, ActionCable, PostgreSQL, HTML, CSS
 
 ## Setup
-Clone this repo to your desktop and from repository root directory run `cd client && npm install` as well as `cd api_server && bundle install` to install all the dependencies.
+Clone this repo to your desktop and from repository root directory run `cd api_server && bundle install` to install all the dependencies.
 
 ---
 
