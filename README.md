@@ -21,4 +21,5 @@ Clone this repo to your desktop and from repository root directory run `cd clien
 
 ## Usage
 
-Once the dependencies are installed, you can run  `rails s` from the 'api_server' directory to start the application. You will then be able to access it at localhost:3000
+Once the dependencies are installed, you can run  `rails s` from the 'api_server' directory to start the application.
+You will then be able to access it at localhost:3000
